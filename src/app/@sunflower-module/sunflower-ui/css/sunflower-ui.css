@@ -15,9 +15,9 @@
 
 /* Local Imports - These Imports are from within the project */
 /* Base */
+/* This Import consists of all the consistant properties */
 @import "./sunflower-base-ui.css";
 /* Theme*/
 @import "./theme/sunflower-themes.css";
-
 /* Components */
 @import "./components/sunflower-components.css";

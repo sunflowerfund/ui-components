@@ -1,0 +1,56 @@
+/* 
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is an entry for all styles that help build a component's look and feel.
+*/
+
+/* Shared Attributes and Values */
+
+/* Root Style for Consistent Matrix */
+:root {
+  /* Colors */
+  --yellow: rgb(255, 191, 0);
+  --black: rgb(0, 0, 0);
+  --grey: rgb(77, 74, 73);
+  --lightgrey: rgb(233, 228, 222);
+  --white: rgb(255, 255, 255);
+  --magenta: rgb(168, 0, 113);
+  --green: rgb(163, 204, 0);
+  --blue: rgb(0, 78, 204);
+  --lightblue: rgb(0, 237, 164);
+  --red: rgb(214, 46, 65);
+  --danger: rgb(255, 103, 121);
+  --warning:rgb(233, 138, 46);
+  /* Green - to be resolved */
+  /* Look & Feel */
+  --shadow: rgb(180, 180, 180, 0.726);
+
+  /* Sizes */
+  --font-weight-default: 500;
+  --font-size-default: 1.6rem;
+  --font-weight-small: 300;
+  --font-size-small: 1rem;
+  --font-weight-medium: 500;
+  --font-size-medium: 1.8rem;
+  --font-weight-bold: 600;
+  --font-size-large: 2rem;
+  /* Breakpoints */
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  /* Transition */
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+
+}
+
+html {
+  /* Default */
+  font-size: 9px;
+}

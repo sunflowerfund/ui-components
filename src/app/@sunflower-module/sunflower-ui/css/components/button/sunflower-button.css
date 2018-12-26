@@ -1,0 +1,153 @@
+/* 
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is a file consisting of all the styling that will be used for creating a button.
+*/
+
+/* Default */
+.btn{
+    /* outline */
+    border: 1px solid var(--black);
+    background: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: .5px;
+    min-width:fit-content;
+    width:fit-content;
+    max-width: 100%;
+    max-height: fit-content;
+    /* Look */
+    font-size: var(--font-size-default);
+    /* Text */
+    text-align: center;
+    text-overflow: clip;  
+}
+/* Pseudo - for buttons */
+.btn:hover{
+    box-shadow: 2.5px 2.5px 2px var(--shadow);
+    cursor: pointer;
+}
+/* Attributes - Sizing: */
+.btn[class*="--default"]{
+    font-weight: var(--font-weight-default) !important;
+    font-size: var(--font-size-default);
+}
+.btn[class*="--small"]{
+    border: .5px solid  var(--black);
+    font-weight: var(--font-weight-small) !important;
+    font-size: var(--font-size-small);
+    padding: 2.5px 10px;
+}
+
+.btn[class*="--large"]{
+    border: 1.8px solid  var(--black);
+    font-weight: var(--font-weight-bold) !important;
+    font-size: var(--font-size-large);
+}
+
+/* Button Types: */
+
+.btn-primary{
+    /* Look */
+    color: var(--black);
+    background-color: var(--yellow);
+    border-color: var(--yellow);
+    font-weight: var(--font-weight-medium);
+    box-shadow: 2.5px 2.5px 2px var(--shadow);
+}
+
+.btn-secondary{
+    color: var(--yellow);
+    background-color: transparent;
+    border-color: var(--yellow);
+    font-weight: var(--font-weight-small);
+}
+
+/* Attributes - Conditions that alter look and feel. */
+/* Attributes - Actions and Conditions: */
+
+/* --success - condition when 'success' is introduced to a btn  */
+.btn[class*="--success"]{
+    color: var(--lightblue);
+}
+
+.btn-primary[class*='--success']{
+    color: var(--white);
+    background-color: var(--lightblue); 
+    border-color: var(--lightblue);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn-secondary[class*="--success"]{
+    color: var(--lightblue);
+    background-color: transparent; 
+    border-color: var(--lightblue);
+    font-weight: var(--font-weight-small);
+}
+
+/* --danger - condition when 'danger' is introduced to a btn  */
+
+.btn[class*="--danger"]{
+    color: var(--danger);
+}
+
+.btn-primary[class*='--danger']{
+    color: var(--white);
+    background-color: var(--danger); 
+    border-color: var(--danger);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn-secondary[class*="--danger"]{
+    color: var(--danger);
+    background-color: transparent; 
+    border-color: var(--danger);
+    font-weight: var(--font-weight-small);
+}
+
+/* --warning - condition when 'warning' is introduced to a btn  */
+
+.btn[class*="--warning"]{
+    color: var(--warning);
+}
+
+.btn-primary[class*='--warning']{
+    color: var(--white);
+    background-color: var(--warning); 
+    border-color: var(--warning);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn-secondary[class*="--warning"]{
+    color: var(--warning);
+    background-color: transparent; 
+    border-color: var(--warning);
+    font-weight: var(--font-weight-small);
+}
+
+/* --disabled - condition when 'disabled' is introduced to a btn  */
+
+.btn[class*="--disabled"]{
+    color: var(--lightgrey);
+    box-shadow: none;
+}
+
+.btn-primary[class*='--disabled']{
+    color: var(--white);
+    background-color: var(--lightgrey); 
+    border-color: var(--lightgrey);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn-secondary[class*="--disabled"]{
+    background-color: transparent; 
+    border-color: var(--lightgrey);
+    font-weight: var(--font-weight-small);
+}
+/* Psuedo - this only applies to disabled buttons */
+.btn[class*="--disabled"]:hover{
+    box-shadow: none;
+    cursor: not-allowed;
+}
