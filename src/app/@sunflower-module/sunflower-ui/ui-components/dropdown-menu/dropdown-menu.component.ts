@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import{ FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'sun-dropdown-menu',
@@ -17,6 +18,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
       </div>
     </div>
   </div>
+  <input [(ngModel)]="title"/>
+  {{item}}
   `
 })
 export class DropdownMenuComponent implements OnInit {
@@ -24,7 +27,7 @@ export class DropdownMenuComponent implements OnInit {
   title:string;
 @Input()
   items: string[]|number[]|any[];
-@Output()
+@Output('Value')
   option: EventEmitter<string|number|any> = new EventEmitter<string|number|any>()
  
   item:string|number|any;
