@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'sun-dropdown-menu',
   template: `
   <div class="sun-dropdown"  [class.--focus]="open" (click)="draw()" (blur)="draw()">
     <div class="sun-dropdown-item"  [class.--focus]="open">
-    {{ (title !== undefined)? title: item }}
+    {{ (item !== undefined)? item: title }}
     </div>
     <div class="sun-dropdown-container">
     <ng-content></ng-content>
@@ -24,7 +24,10 @@ export class DropdownMenuComponent implements OnInit {
   title:string;
 @Input()
   items: string[]|number[]|any[];
-  item: string|number|any;
+@Output()
+  option: EventEmitter<string|number|any> = new EventEmitter<string|number|any>()
+ 
+  item:string|number|any;
 
   // Conditions
    private open:boolean;
@@ -46,6 +49,7 @@ export class DropdownMenuComponent implements OnInit {
 
   select(item:string|number|any):void{
     this.item = item;
+    this.option .emit(this.item);
   }
 
   // The following are 

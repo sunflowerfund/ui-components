@@ -8,7 +8,7 @@
 <!-- Container - Containing Dropdown -->
 
 <div style="max-width: 350px;">
-<sun-dropdown-menu title="choose an item" ></sun-dropdown-menu>
+<sun-dropdown-menu (option)="alertIt($event)"title="choose an item" [items]=" ['1st item','2nd item','3rd item']" ></sun-dropdown-menu>
 </div>
 hello world
 this.item = "choose items";
