@@ -1,0 +1,106 @@
+/* 
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is a file consisting of all the styling that will be used for creating a dropdown input.
+    >>> Note: A dropdown is nested buttons -
+*/
+
+/* Default */
+/* Container */
+
+.sun-dropdown {
+  /* outline */
+  border: 1px solid var(--black);
+  background: none;
+  border-radius: 5px;
+  /* padding: 5px 10px; */
+  margin: .5px;
+  width: 100%;
+  max-width: 100%;
+  /* max-height: fit-content; */
+  /* Look */
+  font-size: var(--font-size-default);
+  /* Text */
+  text-align: left;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.sun-dropdown-item {
+  padding: 5px 10px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sun-dropdown-container {
+  display: none;
+  z-index: 1;
+  overflow-y: hidden;
+  overflow-y: auto;
+  background-color: var(--white);
+}
+
+
+/* Pseudo */
+
+.sun-dropdown > .sun-dropdown-item::after {
+  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0d7";
+  font-size: var(--font-size-default);
+  float: right;
+  position: relative;
+  align-items: center;
+}
+
+.sun-dropdown-item:first-child:focus {
+  display: inherit;
+}
+
+.sun-dropdown-item:last-child {
+  border-bottom-color: transparent;
+}
+/* Pseudo - for buttons */
+
+/* This is for when its clicked */
+.sun-dropdown-item:first-child.--focus+.sun-dropdown-container {
+  display: block;
+  position: absolute;
+  margin: 2px -1px;
+  width: 100%;
+  border: 1px solid var(--yellow);
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: 2.5px 2.5px 2px var(--shadow);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  /* Points */
+  max-height: 100vh;
+}
+
+/* Click Listener - For Component */
+.sun-dropdown.--focus {
+  box-shadow: 2.5px 2.5px 2px var(--shadow);
+  border-color: var(--yellow);
+  border-radius: 5px 5px 0 0;
+}
+
+/* Hover Effect */
+.sun-dropdown:hover {
+  cursor: pointer;
+  border-color: var(--yellow);
+  box-shadow: 2.5px 2.5px 2px var(--shadow);
+}
+
+/* Styles for items that are going to be within the dropdown menu */
+.sun-dropdown-container > .sun-dropdown-item:hover,
+.active {
+  background-color: var(--yellow);
+  color: var(--grey);
+  box-shadow: 2px 2.5px 2.5px 2px var(--shadow);
+}
