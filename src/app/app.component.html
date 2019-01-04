@@ -1,1 +1,13 @@
-<sunflower-button>Button</sunflower-button>
+<h1>Sunflower Fund Buttons:</h1>
+
+<div style="max-width: fit-content;">
+<sunflower-button type="secondary" [attrs]="['--success']" click="alert('Button Clicked!')">Register and become a donor!</sunflower-button>
+</div>
+
+<h1> Dropdown Menu</h1>
+<!-- The Custom Dropdon Button -->
+<!-- Container - Containing Dropdown -->
+
+<div style="max-width: 243.78px;">
+<sun-dropdown-menu title="choose an item" type="secondary" [attrs]="['--success']" [items]=" ['1st item','2nd item','3rd item']" (output)="getOption($event)" ></sun-dropdown-menu>
+</div>
