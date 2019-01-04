@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from "@angular/core";
 @Component({
   selector: "sunflower-button",
   template: `
-    <div [class]="build"><ng-content></ng-content></div>
+    <div [class]="class"><ng-content></ng-content></div>
 
     <!-- 
     This is code that renders the code for a button.
@@ -27,7 +27,7 @@ export class ButtonComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  get build(): string {
+  get class(): string {
     return `btn btn-${this.type} ${
       this.attrs ? this.attrs.join().replace(",", " ") : ""
     }`;

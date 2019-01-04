@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ui-components';
+  hello = "hello";
 
-  alertIt(emit){
-    console.log(emit);
+  getOption(option){
+    console.log(option);
   }
 }
