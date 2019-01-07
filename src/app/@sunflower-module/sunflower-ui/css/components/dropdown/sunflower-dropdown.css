@@ -173,6 +173,19 @@
   color: var(--danger);
 }
 
+/* Warning */
+.sun-dropdown[class*="--warning"] {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.sun-dropdown[class*="--warning"]>.sun-dropdown-container{
+  border: 1px solid var(--warning) !important
+}
+.sun-dropdown[class*="--warning"]>.sun-dropdown-item::after {
+  color: var(--warning);
+}
+
 
 /* Disabled */
 .sun-dropdown[class*='--disabled'] {

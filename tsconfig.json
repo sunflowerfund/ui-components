@@ -17,6 +17,12 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths":{
+      "@sunflower-module/*":["@sunflower-module/"],
+      "@sunflower-ui/*":["@sunflower-module/sunflower-ui"],
+      "@sunflower-components/*":["@sunflower-module/sunflower-ui/ui-components"],
+      "@sunflower-models/*":["./src/app/@sunflower-model/sunflower-ui/model"]
+    }
   }
 }
