@@ -9,11 +9,13 @@
 /* Global Imports from all stylesheets that build the Sunflower UI */
 
 
+/* Navbar*/
+@import "./navbar/sunflower-navbar.css";
 /* Input */
 @import "./input/sunflower-input.css";
 
 /* Button */
 @import "./button/sunflower-button.css";
 
-/* Dropdown - Container*/
+/* Dropdown - sunflower*/
 @import "./dropdown/sunflower-dropdown.css";

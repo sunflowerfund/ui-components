@@ -36,6 +36,9 @@
   --font-size-medium: 1.8rem;
   --font-weight-bold: 600;
   --font-size-large: 2rem;
+  --font-size-xlarge:2.5rem;
+  --font-size-xxlarge:3rem;
+  --font-size-xxxlarge:3.5rem;
   /* Breakpoints */
 }
 
