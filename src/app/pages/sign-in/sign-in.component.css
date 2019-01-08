@@ -1,0 +1,52 @@
+.singIn{
+    text-align: center;
+}
+
+.rememmber{
+    width: 320px; 
+    display: inline-block; 
+    padding: 20px
+}
+
+.signInHeading{
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 28px;
+}
+
+.imgCont > img{
+    width: 100%;
+    opacity: .8;
+}
+
+.imgCont{
+    overflow: hidden;
+    height: auto;
+    
+    
+}
+
+.labelForgot{
+    float: right;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+}
+
+.labelRemember{
+    float: left;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+}
+
+.signinButton{
+    margin-top: 10%;
+}
+
+.imgCont img{
+    /* max-height: 1200px; */
+    background-size: cover;
+    width: 100%;
+    max-width: 1024px;
+    max-height: 540px;
+}

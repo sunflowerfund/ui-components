@@ -5,3 +5,49 @@
  * Github: https://github.com/sunflowerfund
  * Description: This is a file consisting of all the styling that will be used for creating an input field.
 */
+
+.input{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+    
+    font-size: var(--font-size-medium);
+    margin: 15px;
+    padding: 0 0 5px 5px;
+
+    /* Goes with the different themes */
+    border-bottom: 2px solid var(--yellow);
+}
+
+.input[class*="--success"]{
+    border-bottom: 2px solid var(--yellow);
+}
+
+.input[class*="--warning"]{
+    border-bottom: 2px solid var(--warning);
+}
+
+.input[class*="--danger"]{
+    border-bottom: 2px solid var(--danger);
+}
+
+/* Attributes - Sizing: */
+.input[class*="--default"]{
+    font-weight: var(--font-weight-default) !important;
+    font-size: var(--font-size-default);
+}
+.input[class*="--small"]{
+    /* border: .5px solid  var(--black); */
+    font-weight: var(--font-weight-small) !important;
+    font-size: var(--font-size-small);
+    padding: 2.5px 10px;
+}
+
+.input[class*="--large"]{
+    /* border: 1.8px solid  var(--black); */
+    font-weight: var(--font-weight-bold) !important;
+    font-size: var(--font-size-large);
+}
