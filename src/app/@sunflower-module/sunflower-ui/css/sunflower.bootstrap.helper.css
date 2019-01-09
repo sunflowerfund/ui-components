@@ -1,0 +1,70 @@
+/* Helpers */
+.h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  padding: 10px 0;
+  text-transform: capitalize;
+  text-overflow: clip;
+  white-space: wrap;
+  
+  text-overflow:ellipsis ; 
+}
+
+.font-weight-light {
+  font-weight: 200;
+  padding: 10px 0;
+}
+
+.font-weight-bold {
+  font-weight: 800;
+}
+
+.color-yellow {
+  color: var(--yellow);
+}
+
+.color-white {
+  color: var(--white);
+}
+
+.mw-fc {
+  max-width: fit-content !important;
+}
+
+.m-auto {
+  margin: auto !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize{
+  text-transform: capitalize;
+}
+
+.white-space-preline {
+  white-space: pre-line;
+}
+
+.btn-container {
+  width: 100%;
+  padding: 10px 0;
+  display: block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-self-auto {
+  align-self: center !important;
+  max-height: fit-content;
+}
