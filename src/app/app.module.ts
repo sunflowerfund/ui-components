@@ -1,3 +1,4 @@
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,8 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
     DropdownMenuComponent,
     NavbarComponent,
     SignInComponent,
-    InputComponent
+    InputComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
