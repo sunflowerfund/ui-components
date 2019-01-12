@@ -114,6 +114,44 @@ height: 100%;
   }
 }
 
+.mvh-100{
+  min-height: 100vh;
+}
+.w-100{
+  width: 100%;
+  padding: 0 15px;
+}
+.mw-lg{
+  max-width: var(--startpoint-lg);
+}
+.no-float{
+  float: unset;
+}
+.d-table{
+  display: table;
+}
+.flex-1{
+  display: inline-block;
+  /* height: ; */
+  height: flex-end;
+
+  /* flex-direction: column; */
+}
+.bg-pink{
+  background-color: pink;
+}
+.justify-content{
+  white-space: pre-wrap;
+  text-justify: newspaper
+}
+.section{
+  width: 100%;
+  display: block;
+  align-items: center;
+  height: fit-content;
+}
+
+
 /* Stash
 
     background: linear-gradient(to bottom right, #f9e56686 , var(--yellow) )
