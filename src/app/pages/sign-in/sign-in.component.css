@@ -15,34 +15,23 @@
     font-size: 28px;
 }
 
-.imgCont > img{
-    width: 100%;
-    opacity: .8;
+.imgCont{
+    display: none;
 }
 
 
-
-
 .bg-image {
-    
-    background-image: url("../../../assets/img/children2.jpeg");
-       
+    background-image: url("../../../assets/img/children2.jpeg"); 
     filter: blur(4px);
     -webkit-filter: blur(4px);    
-    
-    height: 100%; 
-
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
   
-  
   .bg-text {
-    
     color: white;
-    /* font-weight: bold;
-    border: 3px solid #f1f1f1; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -53,17 +42,6 @@
     text-align: center;
   }
 
-
-
-
-.imgCont{
-    width: 100%;
-    height: 40%;
-    overflow: hidden;
-    height: auto;
-    height: 400px;
-    background: url('../../../assets/img/children2.jpeg') no-repeat center center;
-}
 
 .labelForgot{
     float: right;
@@ -81,10 +59,67 @@
     margin-top: 10%;
 }
 
-.imgCont img{
-    /* max-height: 1200px; */
-    background-size: cover;
-    width: 100%;
-    /* max-width: 1024px; */
-    max-height: 540px;
+img{
+    width: 0;
+}
+
+@media (max-width: 640px) {
+
+    .imgCont img{
+        background-size: cover;
+        width: 100%;
+        max-height: 540px;
+    }
+
+    .imgCont{
+        display: block;
+        height: 0px;
+    }
+    
+    .imgCont > img{
+        width: 100%;
+        opacity: .8;
+    }
+
+
+    .bg-image {
+        display: none;
+    }
+
+    .bg-text {
+        color: white;
+        position: relative;
+        top: 18%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .imgCont{
+        width: 100%;
+        height: 40%;
+        overflow: hidden;
+        height: auto;
+        height: 400px;
+    }
+
+    .labelForgot{
+        color: #000000;
+    }
+
+    .labelRemember{
+        color: #000000;
+    }
+
+    .signInHeading{
+        color: #000000;
+    }
+
+    .inputs{
+        color: #000000;
+    }
 }
