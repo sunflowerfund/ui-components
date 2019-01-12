@@ -1,0 +1,127 @@
+/*
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is a file consisting of the Main Routing
+ * Module that will monitor how you navigate through the app/site
+ */
+
+.header {
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 100vw;
+  height: 75vh;
+  min-height: fit-content;
+  max-height: calc(100% + 25px);
+  /* background-color: #ffe115;    */
+  background: linear-gradient(to bottom right, var(--yellow-transparent), var(--yellow));
+  display: block;
+  overflow-x: hidden;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  justify-content: end;
+  /* text-align: center; */
+}
+
+.sun-container {
+  height: 100%;
+  min-height: fit-content;
+}
+
+/* Pseudo */
+.contain::-webkit-scrollbar,
+.header::-webkit-scrollbar {
+  display: none;
+}
+.f-h{
+height: 100%;
+}
+.m-auto {
+  margin: auto !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+.spacing-25px{
+  padding: 45px 10px;
+  max-height: fit-content;
+}
+.mh-ft{
+    max-height: fit-content;
+}
+.spacing-5px{
+  padding: 25px 10px;
+}
+.checkbox{
+  min-width: 5px;
+  color: transparent;
+  min-height: 5px;
+  border-radius: 2.5px;
+  border: .5px solid var(--black);
+  float: unset;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.font-size-medium{
+  font-size: var(--font-size-medium);
+}
+.d-block {
+  display: block;
+}
+.icon{
+  width: 100%;
+  height: 100%;
+  max-width: 95px;
+  max-height: 125px;
+  object-fit: contain;
+  float: left;
+  object-position: center;
+}
+/* @media(max-width: 640px) {
+  .content-m-2 {
+    text-align: center;
+  }
+} */
+.video-player{
+  background-color: var(--lightgrey);
+  width: 100%;
+  height: 275px;
+  width: 550px;
+  background-image: url('../../../../assets/img/icons/play-button.png');
+  background-position: center;
+  background-size:  15%;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  float:unset ;
+}
+.mw-550px{
+  max-width: 550px;
+}
+.gradient-background{
+  background: linear-gradient(to bottom left, var(--yellow-transparent), var(--yellow));
+  /* color: var() */
+}
+@media(max-width:768px) {
+  .header {
+    /* padding: 75px 0; */
+      height: 100%;
+      max-height: fit-content;
+  }
+}
+
+/* Stash
+
+    background: linear-gradient(to bottom right, #f9e56686 , var(--yellow) )
+    , url('../../../../assets/img/background/oldMan.jpg');
+    display: block; 
+    overflow: hidden;
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+*/

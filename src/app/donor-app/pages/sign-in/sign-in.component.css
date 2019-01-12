@@ -21,7 +21,7 @@
 
 
 .bg-image {
-    background-image: url("../../../assets/img/children2.jpeg"); 
+    background-image: url("../../../../assets/img/children2.jpeg"); 
     filter: blur(4px);
     -webkit-filter: blur(4px);    
     height: 100%;
@@ -64,6 +64,7 @@ img{
 }
 
 @media (max-width: 640px) {
+
     .imgCont img{
         background-size: cover;
         width: 100%;
@@ -88,7 +89,7 @@ img{
     .bg-text {
         color: white;
         position: relative;
-        top: 28%;
+        top: 18%;
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
