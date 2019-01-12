@@ -2,6 +2,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -10,6 +11,14 @@ import { DropdownMenuComponent } from './@sunflower-module/sunflower-ui/ui-compo
 import { NavbarComponent } from './@sunflower-module/sunflower-ui/ui-components/navbar/navbar.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/input/input.component';
+
+
+const appRoutes: Routes = [
+  { path: '', component:  SignInComponent},
+  { path: 'login', component: SignInComponent },
+  { path: 'register', component: SignUpComponent },
+];
+
 
 @NgModule({
   declarations: [
@@ -23,7 +32,8 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]
