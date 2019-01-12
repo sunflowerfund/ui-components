@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, HostListener, OnInit } from "@angular/core";
 import { Path } from "../../model/path.model";
 @Component({
   selector: "sunflower-navbar",
   template: `
-    <div class="navbar">
+    <div class="navbar" [class.active]="isNavbarActive">
       <div class="navbar-brand">
         <img
           src="./assets/img/sunflower/sunflower-fund-sunflower.png"
@@ -36,8 +36,12 @@ import { Path } from "../../model/path.model";
 export class NavbarComponent implements OnInit {
   @Input()
     paths:Path[];
-  
-  constructor() {}
+    isNavbarActive:boolean;
 
+  constructor() {}
+  @HostListener('window:scroll', ['$event'])
+  adjust(evt) {
+    this.isNavbarActive = evt.path[1].scrollY > 10;
+  }
   ngOnInit() {}
 }

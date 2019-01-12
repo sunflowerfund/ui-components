@@ -1,0 +1,71 @@
+/* 
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is an entry for all styles that help build a component's look and feel.
+*/
+/* bootstrap */
+/*  */
+.block,.full-height {
+  display: block;
+  width: 100%;
+  max-width: inherit;
+  min-height: inherit;
+  min-height: 100%;
+  max-height: 100%;
+  font-size: var(--font-size-medium);
+}
+
+.contain-float,.full-height {
+  display: inline-block;
+  margin: auto;
+  max-width: var(--startpoint-lg);
+  width: calc(inherit - 20px) ;
+  min-height: 100%;
+  height: fit-content;
+  /* max-height: 100%; */
+  overflow-x:hidden;
+  text-overflow:ellipsis ; 
+  padding: 0 10px;
+}
+
+/* .contain- */
+
+.content-m-2,.content-m-1  {
+  max-width: calc(50% - 20px);
+  width: 100%;
+  min-height: inherit;
+  padding: 0 10px;
+  float: left;
+  align-items: center;
+  align-content: center;
+  display: block;
+}
+.content-m-1{
+  max-width: calc(100% - 20px);
+}
+
+/* Medium Size Viewport */
+@media(max-width: 768px) {
+  .contain{
+    max-height: 100%;
+    min-height: 100%;
+  }
+  .content-m-2  {
+    max-width: calc(100% - 20px);
+    float: none;
+  }
+  .md-hide{
+    display: none;
+  }
+}
+
+.h1{
+    font-size: var(--font-size-xxlarge);
+    font-weight: 800;
+    text-transform: capitalize;
+    /* color: var(--yellow); */
+} 
+
+  /* pseudo */
