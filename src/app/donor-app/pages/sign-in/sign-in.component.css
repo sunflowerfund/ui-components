@@ -31,15 +31,19 @@
   }
   
   .bg-text {
-    color: white;
+    color: #21252B;
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: 2;
     width: 80%;
     padding: 20px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    border-radius: 5px;
   }
 
 
@@ -51,6 +55,11 @@
 
 .labelRemember{
     float: left;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+}
+
+.signupLink{
     font-size: var(--font-size-medium);
     cursor: pointer;
 }
@@ -120,6 +129,10 @@ img{
     }
 
     .inputs{
+        color: #000000;
+    }
+
+    .signupLink{
         color: #000000;
     }
 }
