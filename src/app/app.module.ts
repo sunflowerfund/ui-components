@@ -15,6 +15,7 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
 import { HomePage } from "./donor-app/pages/home/home.page";
 import { MainRoutingModule } from "./donor-app/main.routing.module";
 import { ComponentsPage } from "./donor-app/pages/components.page";
+import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ComponentsPage } from "./donor-app/pages/components.page";
     DropdownMenuComponent,
     NavbarComponent,
     HomePage,
-    ComponentsPage
+    ComponentsPage,
+    CircularIndicatorComponent
   ],
   imports: [BrowserModule, MainRoutingModule, FormsModule],
   providers: [],

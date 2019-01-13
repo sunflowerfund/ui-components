@@ -14,7 +14,6 @@ import { ComponentsPage } from './pages/components.page';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
-
 const routes: Route[] = [
   { path: "", component: HomePage },
   { path: "login", component:  SignInComponent},
@@ -31,6 +30,7 @@ const routes: Route[] = [
       //   { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: []
 })
 export class MainRoutingModule {}

@@ -1,0 +1,54 @@
+/* 
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is a file consisting of all the styling that will be used for creating an circular indicator.
+*/
+
+.indicator {
+    width: 4em;
+    height: 4em;
+    text-align: center;
+    line-height: 4em;
+    border-radius: 5em;
+    margin: 0 1em;
+    display: inline-block;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+.indicator::before{
+  content: '';
+  position: absolute;
+  top: .9em;
+  left: -4em;
+  width: 4em;
+  height: .2em;
+  background: dodgerblue;
+  z-index: -1;
+}
+
+.indicator:first-child::before {
+  display: none;
+}
+
+.active {
+  background: dodgerblue;
+}
+
+.active ~ .indicator {
+  background: lightblue;
+}
+
+.active ~ .indicator::before {
+    margin-top: 1em;
+    background: lightblue;
+}
+
+/* body {
+  font-family: sans-serif;
+  padding: 2em;
+} */
