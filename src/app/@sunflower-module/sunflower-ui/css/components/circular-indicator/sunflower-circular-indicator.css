@@ -7,10 +7,10 @@
 */
 
 .indicator {
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     text-align: center;
-    line-height: 4em;
+    line-height: 3em;
     border-radius: 5em;
     margin: 0 1em;
     display: inline-block;
@@ -18,37 +18,66 @@
     position: relative;
     cursor: pointer;
     font-size: 2em;
+
+    border: 1px solid rgb(255, 191, 0);
+    background: white;
+    color: rgb(255, 191, 0);
 }
 
-.indicator::before{
+ul{
+  text-align: center;
+  margin-top: 15%;
+}
+
+/* .indicator::before{
   content: '';
   position: absolute;
-  top: .9em;
+  top: 1.5em;
   left: -4em;
   width: 4em;
   height: .2em;
-  background: dodgerblue;
+  background: rgb(255, 191, 0);
   z-index: -1;
-}
+} */
 
-.indicator:first-child::before {
+/* .indicator:first-child::before {
   display: none;
-}
+} */
 
 .active {
-  background: dodgerblue;
+  /* background: dodgerblue; */
+  border: 1px solid rgb(255, 191, 0);
+  background: rgb(255, 191, 0);
+  color: white;
 }
 
 .active ~ .indicator {
-  background: lightblue;
+  border: 1px solid rgb(255, 191, 0);
+  background: white;
+  color: rgb(255, 191, 0);
 }
 
 .active ~ .indicator::before {
-    margin-top: 1em;
-    background: lightblue;
+    /* margin-top: .5em; */
+    background: rgb(255, 191, 0);
 }
 
-/* body {
-  font-family: sans-serif;
-  padding: 2em;
-} */
+@media (max-width: 650px) {
+  .indicator{
+    width: 2em;
+    height: 2em;
+    /* text-align: center; */
+    line-height: 2em;
+  }
+
+  .active ~ .indicator::before {
+    margin-top: .2em;
+    background: rgb(255, 191, 0);
+  }
+
+  @media (max-width: 520px) {
+    .indicator{
+      display: none;
+    }
+  }
+}
