@@ -22,11 +22,13 @@
     border: 1px solid rgb(255, 191, 0);
     background: white;
     color: rgb(255, 191, 0);
+
+    margin-top: 100px;
 }
 
 ul{
   text-align: center;
-  margin-top: 15%;
+  /* margin-top: 15%; */
 }
 
 /* .indicator::before{

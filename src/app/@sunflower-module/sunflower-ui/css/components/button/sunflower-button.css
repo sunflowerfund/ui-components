@@ -161,3 +161,14 @@
   box-shadow: none;
   cursor: not-allowed;
 }
+
+/* --prograssive - condition when 'prograssive' is introduced to a btn  */
+
+.btn-primary[class*='--prograssive'] {
+    color: var(--white);
+    position: relative;
+    top: 60%;
+    margin: 0 auto;
+    width: 50%;
+}
+

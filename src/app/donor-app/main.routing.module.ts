@@ -31,6 +31,6 @@ const routes: Route[] = [
     )
   ],
   exports: [RouterModule],
-  declarations: [DashboardComponent]
+  declarations: []
 })
 export class MainRoutingModule {}

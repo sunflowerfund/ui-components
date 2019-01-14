@@ -1,2 +1,36 @@
-<!-- <h1>Welcome</h1> -->
-<!-- <sun-circular-indicator></sun-circular-indicator> -->
+<div class = "dash">
+  <sun-indicator></sun-indicator>
+
+  <div class="bg-text">
+    <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Surname"></app-input>
+    <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Full Name"></app-input>
+
+    <div class = "check">
+      <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="getOption($event)" ></sun-dropdown-menu>
+    </div>
+
+    <div class = "check" style = "text-align: center">
+      <app-input class="inputs" type = "text" placeholder = "Identity Number"></app-input>
+    </div>
+
+    <div class = "check">
+      <div class = "dob left">
+          <sun-dropdown-menu title="Day" [items]=" ['20']" (output)="getOption($event)" ></sun-dropdown-menu>
+      </div>
+      <div class = "dob">
+          <sun-dropdown-menu title="Month" [items]=" ['Feb']" (output)="getOption($event)" ></sun-dropdown-menu>
+      </div>
+      <div class = "dob right">
+          <sun-dropdown-menu title="Year" [items]=" ['1998']" (output)="getOption($event)" ></sun-dropdown-menu>
+      </div>
+      <div class = "ethnicity">
+          <sun-dropdown-menu title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']" (output)="getOption($event)" ></sun-dropdown-menu>
+      </div>
+    </div>
+    <br>
+
+    
+  </div>
+
+  <sunflower-button class = "prograssive" [attrs]="['--prograssive']" type = "primary">Next</sunflower-button>
+</div>
