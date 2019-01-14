@@ -10,7 +10,7 @@
 .bg-text {
     color: #21252B;
     position: absolute;
-    top: 350px;
+    top: 420px;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -73,5 +73,63 @@
         width: 100%; 
         margin-top: 18px;
     }
-
   }
+
+
+
+  /* Indicator */
+
+  
+.indicator {
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    line-height: 3em;
+    border-radius: 5em;
+    margin: 0 1em;
+    display: inline-block;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    font-size: 2em;
+    border: 1px solid rgb(255, 191, 0);
+    background: white;
+    color: rgb(255, 191, 0);
+
+    margin-top: 100px;
+}
+ul{
+  text-align: center;
+}
+.active {
+  /* background: dodgerblue; */
+  border: 1px solid rgb(255, 191, 0);
+  background: rgb(255, 191, 0);
+  color: white;
+}
+.active ~ .indicator {
+  border: 1px solid rgb(255, 191, 0);
+  background: white;
+  color: rgb(255, 191, 0);
+}
+.active ~ .indicator::before {
+    background: rgb(255, 191, 0);
+}
+@media (max-width: 650px) {
+  .indicator{
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+  }
+
+  .active ~ .indicator::before {
+    margin-top: .2em;
+    background: rgb(255, 191, 0);
+  }
+
+  @media (max-width: 520px) {
+    .indicator{
+      display: none;
+    }
+  }
+}

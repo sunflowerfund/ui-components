@@ -18,57 +18,33 @@
     position: relative;
     cursor: pointer;
     font-size: 2em;
-
     border: 1px solid rgb(255, 191, 0);
     background: white;
     color: rgb(255, 191, 0);
 
     margin-top: 100px;
 }
-
 ul{
   text-align: center;
-  /* margin-top: 15%; */
 }
-
-/* .indicator::before{
-  content: '';
-  position: absolute;
-  top: 1.5em;
-  left: -4em;
-  width: 4em;
-  height: .2em;
-  background: rgb(255, 191, 0);
-  z-index: -1;
-} */
-
-/* .indicator:first-child::before {
-  display: none;
-} */
-
 .active {
   /* background: dodgerblue; */
   border: 1px solid rgb(255, 191, 0);
   background: rgb(255, 191, 0);
   color: white;
 }
-
 .active ~ .indicator {
   border: 1px solid rgb(255, 191, 0);
   background: white;
   color: rgb(255, 191, 0);
 }
-
 .active ~ .indicator::before {
-    /* margin-top: .5em; */
     background: rgb(255, 191, 0);
 }
-
 @media (max-width: 650px) {
   .indicator{
     width: 2em;
     height: 2em;
-    /* text-align: center; */
     line-height: 2em;
   }
 
