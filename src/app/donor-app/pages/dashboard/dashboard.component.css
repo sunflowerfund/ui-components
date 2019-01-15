@@ -115,6 +115,19 @@ ul{
 .active ~ .indicator::before {
     background: rgb(255, 191, 0);
 }
+.checkbox{
+    min-width: 5px;
+    color: transparent;
+    min-height: 5px;
+    border-radius: 2.5px;
+    border: .5px solid var(--black);
+    float: unset;
+  }
+  .cursor-pointer{
+    cursor: pointer;
+    font-size: 18px;
+  }
+
 @media (max-width: 650px) {
   .indicator{
     width: 2em;
