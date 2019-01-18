@@ -22,3 +22,7 @@
 
 /* Input */
 @import "./input/sunflower-input.css";
+
+/* Circular Indicator */
+@import "./circular-indicator/sunflower-circular-indicator.css"
+

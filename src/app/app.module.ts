@@ -1,6 +1,5 @@
 import { SignUpComponent } from './donor-app/pages/sign-up/sign-up.component';
 import { SignInComponent } from './donor-app/pages/sign-in/sign-in.component';
-// import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,11 +11,15 @@ import { NavbarComponent } from './@sunflower-module/sunflower-ui/ui-components/
 // import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/input/input.component';
 
-import { HomePage } from "./donor-app/pages/home/home.page";
-import { MainRoutingModule } from "./donor-app/main.routing.module";
-import { ComponentsPage } from "./donor-app/pages/components.page";
+import { HomePage } from './donor-app/pages/home/home.page';
+import { MainRoutingModule } from './donor-app/main.routing.module';
+import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
+import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
+// tslint:disable-next-line:max-line-length
+// import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,11 @@ import { environment } from '../environments/environment';
     DropdownMenuComponent,
     NavbarComponent,
     HomePage,
-    ComponentsPage
+    ComponentsPage,
+    CircularIndicatorComponent,
+    DashboardComponent
   ],
+  // tslint:disable-next-line:max-line-length
   imports: [BrowserModule, MainRoutingModule, FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,96 @@
+<div class = "dash">
+  <!-- <sun-indicator></sun-indicator> -->
+
+
+
+  <ul>
+    <li (click) = "setUpClass(1)" [class] = "class1">1</li>
+    <li (click) = "setUpClass(2)" [class] = "class2">2</li>
+    <li (click) = "setUpClass(3)" [class] = "class3">3</li>
+    <li (click) = "setUpClass(4)" [class] = "class4">4</li>
+  </ul>
+
+
+
+  <div class="bg-text">
+    <div *ngIf = "index == 1">
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Surname"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Full Name"></app-input>
+
+      <div class = "check">
+        <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="getOption($event)" ></sun-dropdown-menu>
+      </div>
+
+      <div class = "check" style = "text-align: center">
+        <app-input class="inputs" type = "text" placeholder = "Identity Number"></app-input>
+      </div>
+
+      <div class = "check">
+        <div class = "dob left">
+            <sun-dropdown-menu title="Day" [items]=" ['20']" (output)="getOption($event)" ></sun-dropdown-menu>
+        </div>
+        <div class = "dob">
+            <sun-dropdown-menu title="Month" [items]=" ['Feb']" (output)="getOption($event)" ></sun-dropdown-menu>
+        </div>
+        <div class = "dob right">
+            <sun-dropdown-menu title="Year" [items]=" ['1998']" (output)="getOption($event)" ></sun-dropdown-menu>
+        </div>
+        <div class = "ethnicity">
+            <sun-dropdown-menu title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']" (output)="getOption($event)" ></sun-dropdown-menu>
+        </div>
+      </div>
+      <br>
+    </div>
+
+
+    <div *ngIf = "index == 2">
+      <div class = "check" style = "text-align: center">
+        <app-input class="inputs" type = "text" placeholder = "Postal Address"></app-input>
+      </div>
+
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Home telephone"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Work telephone"></app-input>
+      <br>
+
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "E-mail"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Mobile number"></app-input>
+    </div>
+
+
+    <div *ngIf = "index == 3">
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "First Emergency Contact"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Relationship"></app-input>
+      <br>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "E-mail"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Mobile number"></app-input>
+      <br>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Second Emergency Contact"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Relationship"></app-input>
+      <br>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "E-mail"></app-input>
+      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Mobile number"></app-input>
+    </div>
+
+    <div *ngIf = "index == 4">
+      <textarea readonly style="width: 80%; max-width: 750px;max-height: 350px;">
+        1.  kmlkfmmsdflmkfdmgv
+        2.  smrkmgfsremgmlremgkm
+        3.  mkmamremglre
+      </textarea>
+      <br>
+      <br>
+      <span class="cursor-pointer">
+          3.1 I confirm I would like to register as a blood stem cell donor
+          Yes <a class="checkbox">......</a> No <a class="checkbox">......</a>
+      </span>
+    </div>
+    
+
+  </div>
+
+  <sunflower-button (click) = "setUpClass((index+1))" class = "prograssive" [attrs]="['--prograssive']" type = "primary">{{buttonNext}}</sunflower-button>
+  <!-- <br>
+  <sunflower-button class = "prograssive" [attrs]="['--prograssive', '--lightblue']" type = "primary">Skip</sunflower-button> -->
+
+</div>
+
