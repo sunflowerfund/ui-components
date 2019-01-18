@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'sun-page-components',
   template: `
-  
+
 <h1>Sunflower Navbar:</h1>
 <sunflower-navbar></sunflower-navbar>
 

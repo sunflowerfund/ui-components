@@ -15,6 +15,8 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
 import { HomePage } from "./donor-app/pages/home/home.page";
 import { MainRoutingModule } from "./donor-app/main.routing.module";
 import { ComponentsPage } from "./donor-app/pages/components.page";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { ComponentsPage } from "./donor-app/pages/components.page";
     HomePage,
     ComponentsPage
   ],
-  imports: [BrowserModule, MainRoutingModule, FormsModule],
+  imports: [BrowserModule, MainRoutingModule, FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [],
   bootstrap: [AppComponent]
 })
