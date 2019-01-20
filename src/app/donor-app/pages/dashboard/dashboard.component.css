@@ -125,7 +125,31 @@ ul{
   }
   .cursor-pointer{
     cursor: pointer;
-    font-size: 18px;
+    font-size: 14px;
+  }
+
+  .TsTextArea{
+    width: 80%;
+      max-width: 750px;
+      min-height: 150px;
+      height: 150px;
+      max-height: 150px;
+      min-width: 750px;
+      box-shadow: 0px 10px 30px 0px #ccc;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      
+  }
+
+  
+
+  @media (max-width: 1000px) {
+    .TsTextArea{
+      min-width: 80%;
+    }
   }
 
 @media (max-width: 650px) {
@@ -143,6 +167,10 @@ ul{
   @media (max-width: 520px) {
     .indicator{
       display: none;
+    }
+
+    .prograssive{
+      margin-top: 15%;
     }
   }
 }
