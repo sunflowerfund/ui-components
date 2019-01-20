@@ -14,7 +14,7 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
 import { HomePage } from './donor-app/pages/home/home.page';
 import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
@@ -36,7 +36,9 @@ import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.compon
     DashboardComponent
   ],
   // tslint:disable-next-line:max-line-length
-  imports: [BrowserModule, MainRoutingModule, FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+  imports: [BrowserModule, MainRoutingModule, FormsModule, 
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
