@@ -22,7 +22,7 @@
       </div>
 
       <div class = "check" style = "text-align: center">
-        <app-input class="inputs" type = "text" placeholder = "Identity Number"></app-input>
+        <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Identity Number"></app-input>
       </div>
 
       <div class = "check">
@@ -45,7 +45,7 @@
 
     <div *ngIf = "index == 2">
       <div class = "check" style = "text-align: center">
-        <app-input class="inputs" type = "text" placeholder = "Postal Address"></app-input>
+        <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Postal Address"></app-input>
       </div>
 
       <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Home telephone"></app-input>

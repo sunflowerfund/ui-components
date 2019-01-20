@@ -26,6 +26,12 @@
     border-bottom: 2px solid var(--yellow);
 }
 
+.input[class*="--full"]{
+    max-width: 100%;
+    margin: 0 0 15px;
+    border-bottom: 2px solid var(--yellow);
+}
+
 .input[class*="--success"]{
     border-bottom: 2px solid var(--yellow);
 }

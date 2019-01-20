@@ -49,10 +49,10 @@ export class InputComponent implements OnInit {
       // }
     }
 
-    if(this.outputText == ""){
-      this.attrs = [];
-      this.attrs.push('--success')
-    }
+    // if(this.outputText == ""){
+    //   this.attrs = [];
+    //   this.attrs.push('--success')
+    // }
 
   }
 
