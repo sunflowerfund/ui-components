@@ -19,6 +19,7 @@
     max-width: 320px;
     padding: 0 0 5px 5px;
     border-bottom: 2px solid var(--yellow);
+    margin: 15px;
 }
 
 .input[class*="--fifty"]{
@@ -38,7 +39,7 @@
 }
 
 .input[class*="--default"]{
-    margin: 15px;
+    
     /* font-weight: var(--font-weight-default) !important;
     font-size: var(--font-size-small); */
 }
