@@ -2,47 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'sun-dropdown-menu',
-  template: `
-  <div [class]="class" [class.--focus]="open" (click)="draw()">
-    <div class="sun-dropdown-item" [class.--focus]="open">
-    {{ (item !== undefined)? item: title }}
-    </div>
-    <div class="sun-dropdown-container" [ngClass]="_attrs">
-    <!--ng-content></ng-content-->
-      <div *ngFor="let listItem of items" class="sun-dropdown-item"  [class.active]="listItem === item" (click)="select(listItem)" >
-        {{listItem}}
-      </div>
-      <div *ngIf="items === undefined || items === 0" class="sun-dropdown-item" [ngClass]="type">
-       <i> _empty_ </i>
-      </div>
-    </div>
-  </div>
-  <!--
-  This is code that renders the code for a dropdown selector.
-  How it works:
-
-      UI Toggle:
-
-    <sun-dropdown-menu type="primary" [attrs]="['--large','--danger']"></sun-dropdown-menu>
-
-  The * type * attribute is to specify which version of the button.
-  The * attrs * is an array of conditions that will influence the feel
-
-
-      Passing Data for Rendering:
-
-<sun-dropdown-menu title="choose an item" [items]=" ['1st item','2nd item','3rd item']" (output)="getOption($event)" ></sun-dropdown-menu>
-
-  The * title * attribute is to specify the default text to be displayed on the dropdown.
-  The * items * is an array of items that will be rendered on this element.
-        [NB = Array Objects referencing: DropdownItem, String and Numbers are adviced.
-          should you use any other refence class ensure that the toString() method has
-          been overridden to whatever text state you would like to be represented.}
-
-  Note: ng-content doesn't get registered - data (to date) need to be passed in for
-  rendering.
-  -->
-  `
+  template: `<h1>Hello input</h1>`
 })
 export class DropdownMenuComponent implements OnInit {
   // Data Input
