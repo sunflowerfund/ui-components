@@ -14,10 +14,12 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
 import { HomePage } from './donor-app/pages/home/home.page';
 import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
-// import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
+import { DriveRegistrationComponent } from './donor-app/pages/drive-registration/drive-registration.component';
 // tslint:disable-next-line:max-line-length
 // import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
@@ -31,13 +33,14 @@ import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.compon
     DropdownMenuComponent,
     NavbarComponent,
     HomePage,
+    DriveRegistrationComponent,
     ComponentsPage,
     CircularIndicatorComponent,
     DashboardComponent
   ],
   // tslint:disable-next-line:max-line-length
   imports: [BrowserModule, MainRoutingModule, FormsModule, 
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
