@@ -2,7 +2,6 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'sun-dropdown-menu',
-  template: `<h1>Hello input</h1>`
   template: `
   <div [class]="class" [class.--focus]="open" (click)="draw()">
     <div class="sun-dropdown-item" [class.--focus]="open">
