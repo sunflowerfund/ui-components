@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'sun-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class FormPage implements OnInit {
   index:number = 1;
   class1:string = "active indicator";
   class2:string = "indicator";

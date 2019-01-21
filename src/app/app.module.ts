@@ -1,3 +1,4 @@
+import { FormPage } from './donor-app/pages/form/form.component';
 import { SignUpComponent } from './donor-app/pages/sign-up/sign-up.component';
 import { SignInComponent } from './donor-app/pages/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +18,6 @@ import { ComponentsPage } from './donor-app/pages/components.page';
 // import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
-import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
 // tslint:disable-next-line:max-line-length
 // import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
@@ -33,7 +33,7 @@ import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.compon
     HomePage,
     ComponentsPage,
     CircularIndicatorComponent,
-    DashboardComponent
+    FormPage
   ],
   // tslint:disable-next-line:max-line-length
   imports: [BrowserModule, MainRoutingModule, FormsModule, 
