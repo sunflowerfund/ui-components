@@ -27,16 +27,16 @@
 
       <div class = "check">
         <div class = "dob left">
-            <sun-dropdown-menu title="Day" [items]=" ['20']" (output)="getOption($event)" ></sun-dropdown-menu>
+            <sun-dropdown-menu title="Day" [items]=" ['20']" (output)="setDay($event)" ></sun-dropdown-menu>
         </div>
         <div class = "dob">
-            <sun-dropdown-menu title="Month" [items]=" ['Feb']" (output)="getOption($event)" ></sun-dropdown-menu>
+            <sun-dropdown-menu title="Month" [items]=" ['Feb']" (output)="setMonth($event)" ></sun-dropdown-menu>
         </div>
         <div class = "dob right">
-            <sun-dropdown-menu title="Year" [items]=" ['1998']" (output)="getOption($event)" ></sun-dropdown-menu>
+            <sun-dropdown-menu title="Year" [items]=" ['1998']" (output)="setYear($event)" ></sun-dropdown-menu>
         </div>
         <div class = "ethnicity">
-            <sun-dropdown-menu title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']" (output)="getOption($event)" ></sun-dropdown-menu>
+            <sun-dropdown-menu title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']" (output)="setEthnicity($event)" ></sun-dropdown-menu>
         </div>
       </div>
       <br>

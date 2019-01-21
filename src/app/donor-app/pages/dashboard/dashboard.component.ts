@@ -49,5 +49,29 @@ export class DashboardComponent implements OnInit {
       this.buttonNext = "Submit";
     }
   }
+  day:number|string;
+  setDay(day:number |string):void{
+    this.day = day;
+  }
+
+  month:number|string;
+  setMonth(month:number |string):void{
+    this.month = month;
+  }
+
+  year:number|string;
+  setYear(year:number |string):void{
+    this.year = year;
+  }
+  
+  ethnicity:string;
+  setEthnicity(ethnicity:string):void{
+    this.ethnicity = ethnicity;
+  }
+
+
+
 
 }
+
+
