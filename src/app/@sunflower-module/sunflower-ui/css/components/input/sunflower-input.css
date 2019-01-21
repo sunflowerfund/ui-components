@@ -16,12 +16,19 @@
     margin: auto;
     margin-bottom: 15px;
     font-size: var(--font-size-medium);
-    
+    max-width: 320px;
     padding: 0 0 5px 5px;
     border-bottom: 2px solid var(--yellow);
+    margin: 15px;
 }
 
 .input[class*="--fifty"]{
+    border-bottom: 2px solid var(--yellow);
+}
+
+.input[class*="--full"]{
+    max-width: 100%;
+    margin: 0 0 15px;
     border-bottom: 2px solid var(--yellow);
 }
 
@@ -38,10 +45,9 @@
 }
 
 .input[class*="--default"]{
-    max-width: 320px;
-    margin: 15px;
-    font-weight: var(--font-weight-default) !important;
-    font-size: var(--font-size-default);
+    
+    /* font-weight: var(--font-weight-default) !important;
+    font-size: var(--font-size-small); */
 }
 .input[class*="--small"]{
     font-weight: var(--font-weight-small) !important;

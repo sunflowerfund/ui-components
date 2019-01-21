@@ -17,4 +17,8 @@ export class SignInComponent implements OnInit {
     this.router.navigate(['register'])
   }
 
+  sign(){
+    this.router.navigate(['dashboard']);
+  }
+
 }
