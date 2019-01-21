@@ -31,4 +31,9 @@ export class ComponentsPage implements OnInit {
   ngOnInit() {
   }
 
+dropdownOption;
+  getOption(str){
+    this.dropdownOption = str;
+  }
+
 }
