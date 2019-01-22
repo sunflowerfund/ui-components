@@ -28,9 +28,9 @@ const routes: Route[] = [
       { path: "", redirectTo: "/", pathMatch: "full" }
     ]
   },
+  { path: "u/new/form", component: DashboardComponent },
   { path: "drive", component: DriveRegistrationComponent },
   { path: "components", component: ComponentsPage },
-  { path: "dashboard", component: DashboardComponent },
   { path: "", redirectTo: "/", pathMatch: "full" }
 ];
 

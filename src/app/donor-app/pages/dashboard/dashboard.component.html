@@ -1,79 +1,73 @@
-<div class = "dash">
-  <!-- <sun-indicator></sun-indicator> -->
+<sunflower-navbar>
+  <sunflower-button routerLink="/" type="primary active" [attrs]="['btn-small']">
+    skip <i class="fa fa-chevron-right"></i>
+  </sunflower-button>
+</sunflower-navbar>
 
+<div class="banner d-flex background">
+  <div class="contain-float m-auto p-tb25px text-center">
 
-
-  <ul>
-    <li (click) = "setUpClass(1)" [class] = "class1">1</li>
-    <li (click) = "setUpClass(2)" [class] = "class2">2</li>
-    <li (click) = "setUpClass(3)" [class] = "class3">3</li>
-    <li (click) = "setUpClass(4)" [class] = "class4">4</li>
-  </ul>
-
-
-
-  <div class="bg-text">
-    <div *ngIf = "index == 1">
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Surname"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Full Name"></app-input>
-
-      <div class = "check">
-        <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)" ></sun-dropdown-menu>
-      </div>
-
-      <div class = "check" style = "text-align: center">
-        <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Identity Number"></app-input>
-      </div>
-
-      <div class = "check">
-        <div class = "dob left">
-            <sun-dropdown-menu title="Day" [items]=" ['20']" (output)="setDay($event)" ></sun-dropdown-menu>
+    <div class="form-container m-auto">
+      <ul>
+        <li (click)="setUpClass(1)" [class]="class1">1</li>
+        <li (click)="setUpClass(2)" [class]="class2">2</li>
+        <li (click)="setUpClass(3)" [class]="class3">3</li>
+        <li (click)="setUpClass(4)" [class]="class4">4</li>
+      </ul>
+      <h1 class="text-size-large font-weight-medium color-grey">
+        Create iamHope Account!
+      </h1>
+      <div class="d-block m-auto" *ngIf="index == 1">
+        <h1 class="text-size-medium font-weight-medium color-white">
+          Fill in Personal Details:
+        </h1>
+        <app-input [attrs]="['--full']" type="text" placeholder="First Name"></app-input>
+        <app-input [attrs]="['--full']" type="text" placeholder="Last Name"></app-input>
+        <div class="btn-container">
+          <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
         </div>
-        <div class = "dob">
-            <sun-dropdown-menu title="Month" [items]=" ['Feb']" (output)="setMonth($event)" ></sun-dropdown-menu>
-        </div>
-        <div class = "dob right">
-            <sun-dropdown-menu title="Year" [items]=" ['1998']" (output)="setYear($event)" ></sun-dropdown-menu>
-        </div>
-        <div class = "ethnicity">
-            <sun-dropdown-menu title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']" (output)="setEthnicity($event)" ></sun-dropdown-menu>
+
+        <app-input [attrs]="['--full']" class="inputs" type="text" placeholder="Identity Number"></app-input>
+        <div class="btn-container text-center">
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Day" [items]=" ['20']" (output)="setDay($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Month" [items]=" ['Feb']" (output)="setMonth($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Year" [items]=" ['1998']" (output)="setYear($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']"
+            (output)="setEthnicity($event)"></sun-dropdown-menu>
         </div>
       </div>
-      <br>
-    </div>
+      <div class="m-auto" *ngIf="index == 2">
+        <h1 class="text-size-medium font-weight-medium color-grey">
+          Fill in Contact Details:
+        </h1>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Postal Address"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Home telephone"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Work telephone"></app-input>
 
-
-    <div *ngIf = "index == 2">
-      <div class = "check" style = "text-align: center">
-        <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Postal Address"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Mobile number"></app-input>
       </div>
-
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Home telephone"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Work telephone"></app-input>
-      <br>
-
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "E-mail"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Mobile number"></app-input>
-    </div>
-
-
-    <div *ngIf = "index == 3">
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "First Emergency Contact"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Relationship"></app-input>
-      <br>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "E-mail"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Mobile number"></app-input>
-      <br>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Second Emergency Contact"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Relationship"></app-input>
-      <br>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "E-mail"></app-input>
-      <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Mobile number"></app-input>
-    </div>
-
-    <div *ngIf = "index == 4">
-      <textarea readonly class = "TsTextArea">
-      
+      <div class="m-auto" *ngIf="index == 3">
+        <h1 class="text-size-medium font-weight-medium color-grey">
+          Fill in Next of Kin Details:
+        </h1>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="First Emergency Contact"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Relationship"></app-input>
+        <br>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Mobile number"></app-input>
+        <br>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Second Emergency Contact"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Relationship"></app-input>
+        <br>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Mobile number"></app-input>
+      </div>
+      <div class="m-auto" *ngIf="index == 4">
+        <h1 class="text-size-medium font-weight-medium color-grey">
+          Terms and Aggreements
+        </h1>
+        <textarea readonly class="TsTextArea">
         1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
         1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
         1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
@@ -88,32 +82,15 @@
         1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
         
       </textarea>
-      <br>
-      <br>
-      <span class="cursor-pointer">
-          3.1 I confirm I would like to register as a blood stem cell donor.<br>
-          Yes <a class="checkbox">......</a> No <a class="checkbox">......</a>
-      </span>
-      <br>
-      <br>
-      <span class="cursor-pointer">
-          3.2 I agree that The Sunflower Fund may use my HLA unlinked data for research approved by The Sunflower Fund.<br>
-          Yes <a class="checkbox">......</a> No <a class="checkbox">......</a>
-      </span>
-      <br>
-      <br>
-      <span class="cursor-pointer">
-          3.3 I agree to receiving communication for The Sunflower Fund.<br>
-          Yes <a class="checkbox">......</a> No <a class="checkbox">......</a>
-      </span>
+      </div>
+    <div class="btn-container text-center">
+        <sunflower-button type="primary">Next</sunflower-button>
     </div>
-    
+    <div class="btn-container text-center">
+        <sunflower-button type="secondary">Skip</sunflower-button>
+    </div>
+      <!-- eng -->
+    </div>
 
   </div>
-
-  <sunflower-button (click) = "setUpClass((index+1))" class = "prograssive" [attrs]="['--prograssive']" type = "primary">{{buttonNext}}</sunflower-button>
-  <!-- <br>
-  <sunflower-button class = "prograssive" [attrs]="['--prograssive', '--lightblue']" type = "primary">Skip</sunflower-button> -->
-
 </div>
-

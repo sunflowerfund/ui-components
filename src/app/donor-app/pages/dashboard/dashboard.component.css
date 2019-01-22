@@ -6,7 +6,12 @@
 .fifty{
     max-width: 320px;
 }
-
+.background{
+  background: var(--background-gradient-secondary), url('../../../../assets/img/background/children.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .bg-text {
     color: #21252B;
     position: absolute;
@@ -81,25 +86,24 @@
 
   
 .indicator {
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     text-align: center;
-    line-height: 3em;
+    line-height: 2em;
     border-radius: 5em;
     margin: 0 1em;
     display: inline-block;
     color: white;
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     font-size: 2em;
     border: 1px solid rgb(255, 191, 0);
     background: white;
     color: rgb(255, 191, 0);
-
-    margin-top: 100px;
 }
 ul{
   text-align: center;
+  margin-bottom: 15px;
 }
 .active {
   /* background: dodgerblue; */
@@ -129,12 +133,11 @@ ul{
   }
 
   .TsTextArea{
-    width: 80%;
-      max-width: 750px;
+    width: calc(100% - 20px);
       min-height: 150px;
       height: 150px;
       max-height: 150px;
-      min-width: 750px;
+      /* min-width: 750px; */
       box-shadow: 0px 10px 30px 0px #ccc;
       border: 1px solid #ccc;
       border-radius: 6px;
