@@ -31,7 +31,7 @@
 }
 
 .form-container {
-  width: 100%;
+  width: calc(100% - 20px);
   /* min-width: fit-content; */
   max-width: 400px;
   padding: 10px 35px;
