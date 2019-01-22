@@ -54,6 +54,11 @@
   --startpoint-md: 768px;
   --breakpoint-md: 960px;
   --startpoint-lg: 1024px;  
+  /* Padding Properties */
+  --padding-sides-sm: .3vw;
+  /* Gredients */
+  --background-gradient-secondary:linear-gradient(to bottom right, rgba(77, 74, 73, 0.822), rgba(255, 191, 0, 0.164));
+  --background-gradient: linear-gradient(to bottom, rgb(77, 74, 73), rgba(77, 74, 73, 0.849));
 }
 
 * {
@@ -70,8 +75,10 @@
 
 html,body {
   /* Default */
-  font-size: 9px;
+  font-size: calc(5px + .5vw);
   width: 100%;
+  min-height: fit-content;
+  min-width: 100vw;
   height: 100%;
   max-height: fit-content;
 }

@@ -7,32 +7,36 @@
  * Module that will monitor how you navigate through the app/site
  */
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
-import { HomePage } from './pages/home/home.page';
-import { ComponentsPage } from './pages/components.page';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { DriveRegistrationComponent } from './pages/drive-registration/drive-registration.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Route } from "@angular/router";
+import { HomePage } from "./pages/home/home.page";
+import { ComponentsPage } from "./pages/components.page";
+import { SignInComponent } from "./pages/sign-in/sign-in.component";
+import { SignUpComponent } from "./pages/sign-up/sign-up.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { DriveRegistrationComponent } from "./pages/drive-registration/drive-registration.component";
+import { SunflowerPage } from "./pages/sunflower/sunflower.page";
 
 const routes: Route[] = [
-  { path: '', component: HomePage },
-  { path: 'login', component:  SignInComponent},
-  { path: 'medic', component: DriveRegistrationComponent },
-  { path: 'register', component: SignUpComponent },
-  { path: 'components', component: ComponentsPage },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' }
+  {
+    path: "",
+    component: SunflowerPage,
+    children: [
+      { path: "", component: HomePage },
+      { path: "u", component: SignInComponent },
+      { path: "u/new", component: SignUpComponent },
+      { path: "", redirectTo: "/", pathMatch: "full" }
+    ]
+  },
+  { path: "u/new/form", component: DashboardComponent },
+  { path: "medic", component: DriveRegistrationComponent },
+  { path: "components", component: ComponentsPage },
+  { path: "", redirectTo: "/", pathMatch: "full" }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      routes
-    )
-  ],
-  exports: [RouterModule],
-  declarations: []
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+  // declarations: []
 })
 export class MainRoutingModule {}

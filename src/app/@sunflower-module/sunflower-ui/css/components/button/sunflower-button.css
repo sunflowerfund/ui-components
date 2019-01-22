@@ -12,7 +12,7 @@
   border: 1px solid var(--black);
   background: none;
   border-radius: 5px;
-  padding: 10px 25px;
+  padding: calc( 5px + var(--padding-sides-sm))  calc( 25px + var(--padding-sides-sm));
   margin: .5px;
   width: auto;
   max-width: 100%;
@@ -34,6 +34,8 @@
 
 .btn-primary:hover{
   background-color: var(--dark-yellow);
+  box-shadow:none;
+  border-color: var(--dark-yellow); 
   color: var(--white);
 }
 
@@ -64,7 +66,7 @@
   background-color: var(--yellow);
   border-color: var(--yellow);
   font-weight: var(--font-weight-medium);
-  box-shadow: 2.5px 2.5px 2px var(--shadow);
+  /* box-shadow: 2.5px 2.5px 2px var(--shadow); */
 }
 
 .btn-secondary {
@@ -173,3 +175,9 @@
     max-width: 600px;
 }
 
+/* Button Sizing */
+.btn-sm{
+  margin: 0;
+  padding: 5px 10px;
+  font: -.5rem;
+}
