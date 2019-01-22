@@ -18,7 +18,7 @@
       <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "Full Name"></app-input>
 
       <div class = "check">
-        <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="getOption($event)" ></sun-dropdown-menu>
+        <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)" ></sun-dropdown-menu>
       </div>
 
       <div class = "check" style = "text-align: center">

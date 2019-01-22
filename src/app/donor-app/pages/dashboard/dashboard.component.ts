@@ -49,6 +49,11 @@ export class DashboardComponent implements OnInit {
       this.buttonNext = "Submit";
     }
   }
+  gender:string;
+  setGender(gender:string){
+    this.gender = gender; 
+  }
+
   day:number|string;
   setDay(day:number |string):void{
     this.day = day;

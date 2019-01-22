@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   <input [(ngModel)] = "outputText" (keyup) = "validate()" type="{{type}}" [class]="buildInput" placeholder="{{placeholder}}">
 
   `,
-})
+}) 
 export class InputComponent implements OnInit {
   @Input()
   type: string;
