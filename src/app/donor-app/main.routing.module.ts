@@ -19,7 +19,7 @@ import { DriveRegistrationComponent } from './pages/drive-registration/drive-reg
 const routes: Route[] = [
   { path: '', component: HomePage },
   { path: 'login', component:  SignInComponent},
-  { path: 'drive', component: DriveRegistrationComponent },
+  { path: 'medic', component: DriveRegistrationComponent },
   { path: 'register', component: SignUpComponent },
   { path: 'components', component: ComponentsPage },
   { path: 'dashboard', component: DashboardComponent },

@@ -1,21 +1,172 @@
- 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
- 
 
-<div class = "check" style = "text-align: center">
-  <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Name"></app-input>
-</div>
-<div class = "check" style = "text-align: center">
-  <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Surname"></app-input>
-</div>
-<div class = "check" style = "text-align: center">
-  <app-input [attrs] = "['--full']" class="inputs" type = "text" placeholder = "Identity Number"></app-input>
-</div>
- 
+
+  <br>
+  <br>
+  <br>
+
   
+<!-- 
+<div class="checkbox-container display-flex col-md-2 col-sm-2 col-xs-12">
+  <label class="text-line-middle checkbox-label"></label>
+  <div class="checkbox" (click)="checkPet('cats')">
+    <i [ngClass]="petMap['cats'] ? 'checked' : 'unchecked'" class="fa fa-check"></i>
+  </div>
+</div> -->
+
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="line">
+    <div class="height-46 display-flex">
+      <label class="text-line-middle text">Are you Healthy</label>
+    </div>
+    <!-- Yes -->
+    <div class="display-flex">
+      <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+      <label class="text-line-middle radio-label">Yes</label>
+    </div>
+
+    <!-- No -->
+    <div class="display-flex">
+      <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+      <label class="text-line-middle radio-label">No</label>
+    </div>
+  </div>
+
+  <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle text">Does your family agree to you donating stem cells</label>
+      </div>
+      <!-- Yes -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+        <label class="text-line-middle radio-label">Yes</label>
+      </div>
+  
+      <!-- No -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+        <label class="text-line-middle radio-label">No</label>
+      </div>
+    </div>
+    <br>
+    <div class="line">
+        <div class="height-46 display-flex">
+          <label class="text-line-middle text">Do your ankle swell up in the end of day</label>
+        </div>
+        <!-- Yes -->
+        <div class="display-flex">
+          <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+          <label class="text-line-middle radio-label">Yes</label>
+        </div>
+    
+        <!-- No -->
+        <div class="display-flex">
+          <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+          <label class="text-line-middle radio-label">No</label>
+        </div>
+      </div>
+      <br>
+
+      <div class="line">
+    <div class="height-46 display-flex">
+      <label class="text-line-middle ">Do you consider yourself a high risk for Hepatitis B, Hepatitis C or Hiv</label>
+    </div>
+    <!-- Yes -->
+    <div class="display-flex">
+      <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+      <label class="text-line-middle radio-label">Yes</label>
+    </div>
+
+    <!-- No -->
+    <div class="display-flex">
+      <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+      <label class="text-line-middle radio-label">No</label>
+    </div>
+  </div>
+<br>
+
+  <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle">What is your Weight</label>
+      </div>
+      <!-- input field -->
+          <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "85kg"></app-input>
+    </div>
+
+  <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle">What is your Height</label>
+      </div>
+      <!-- input field -->
+          <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "120 cm"></app-input>
+    </div>
+
+    <div class="line">
+        <div class="height-46 display-flex">
+          <label class="text-line-middle ">Are you a regular Blood donor</label>
+        </div>
+        <!-- Yes -->
+        <div class="display-flex">
+          <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+          <label class="text-line-middle radio-label">Yes</label>
+        </div>
+    
+        <!-- No -->
+        <div class="display-flex">
+          <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+          <label class="text-line-middle radio-label">No</label>
+        </div>
+      </div>
+      <div class="line">
+          <div class="height-46 display-flex">
+            <label class="text-line-middle ">Do you get up more than once a night to pass urine</label>
+          </div>
+          <!-- Yes -->
+          <div class="display-flex">
+            <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+            <label class="text-line-middle radio-label">Yes</label>
+          </div>
+      
+          <!-- No -->
+          <div class="display-flex">
+            <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+            <label class="text-line-middle radio-label">No</label>
+          </div>
+        </div>
+        <div class="line">
+            <div class="height-46 display-flex">
+              <label class="text-line-middle ">Have you ever tested for Hepatitis B, Hepatitis C or HIV</label>
+            </div>
+            <!-- Yes -->
+            <div class="display-flex">
+              <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+              <label class="text-line-middle radio-label">Yes</label>
+            </div>
+        
+            <!-- No -->
+            <div class="display-flex">
+              <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+              <label class="text-line-middle radio-label">No</label>
+            </div>
+          </div>
+          <div class="line">
+              <div class="height-46 display-flex">
+                <label class="text-line-middle ">Are you or your partner at risk of any sexually transmitted infections</label>
+              </div>
+              <!-- Yes -->
+              <div class="display-flex">
+                <div class="radio" [ngClass]="item1 ? 'selected' : 'unselected'" (click)="setItem1(true);"></div>
+                <label class="text-line-middle radio-label">Yes</label>
+              </div>
+          
+              <!-- No -->
+              <div class="display-flex">
+                <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+                <label class="text-line-middle radio-label">No</label>
+              </div>
+            </div>
+            

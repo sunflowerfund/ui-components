@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./drive-registration.component.css']
 })
 export class DriveRegistrationComponent implements OnInit {
-
-  constructor() { }
+  item1 : boolean;
+  constructor() {
+    this.item1 = false;
+   }
 
   ngOnInit() {
   }
 
+  setItem1(val ){
+    this.item1 =  val;
+  }
 }
