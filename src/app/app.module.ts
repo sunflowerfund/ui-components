@@ -12,6 +12,7 @@ import { NavbarComponent } from './@sunflower-module/sunflower-ui/ui-components/
 import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/input/input.component';
 
 import { HomePage } from './donor-app/pages/home/home.page';
+
 import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -20,6 +21,7 @@ import { environment } from '../environments/environment';
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
 import { DriveRegistrationComponent } from './donor-app/pages/drive-registration/drive-registration.component';
+import { SunflowerPage } from './donor-app/pages/sunflower/sunflower.page';
 // tslint:disable-next-line:max-line-length
 // import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
@@ -33,6 +35,7 @@ import { DriveRegistrationComponent } from './donor-app/pages/drive-registration
     DropdownMenuComponent,
     NavbarComponent,
     HomePage,
+    SunflowerPage,
     DriveRegistrationComponent,
     ComponentsPage,
     CircularIndicatorComponent,

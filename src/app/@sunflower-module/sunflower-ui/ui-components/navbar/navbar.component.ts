@@ -4,16 +4,17 @@ import { Path } from "../../model/path.model";
   selector: "sunflower-navbar",
   template: `
     <div class="navbar" [class.active]="isNavbarActive">
-      <div class="navbar-brand">
+      <div class="navbar-brand" routerLink="/">
         <img
           src="./assets/img/sunflower/sunflower-fund-sunflower.png"
           class="brand-img"
           alt=""
         />
       </div>
-      <div class="navbar-brand-name">Sunflower Fund</div>
+      <div class="navbar-brand-name"  routerLink="/">Sunflower Fund</div>
       <div class="navbar-container">
         <a *ngFor="let path of paths" class="navbar-item fa" [ngClass]="path.icon">{{ path.name }}</a>
+        <ng-content></ng-content>
       </div>
     </div>
 
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit {
   constructor() {}
   @HostListener('window:scroll', ['$event'])
   adjust(evt) {
-    this.isNavbarActive = evt.path[1].scrollY > 10;
+    this.isNavbarActive = evt.path[1].scrollY > 5 ;
   }
   ngOnInit() {}
 }
