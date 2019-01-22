@@ -25,16 +25,34 @@
 }
 
 
+.profile{
+    width: 45%;
+    object-fit: contain;
+    border-radius: 50%;
+  }
 .bg-image {
-    background-image: url("../../../../assets/img/children2.jpeg"); 
-    filter: blur(4px);
+    background-image:  var(--background-gradient-secondary), url("../../../../assets/img/children2.jpeg"); 
+    /* filter: blur(4px);
     -webkit-filter: blur(4px);    
-    height: 100%;
+    height: 100%; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
   
+.labelForgot{
+    /* float: right; */
+    font-size: var(--font-size-default);
+    cursor: pointer;
+    max-width: 50%;
+}
+
+.labelRemember{
+    /* float: left; */
+    font-size: var(--font-size-default);
+    cursor: pointer;
+    max-width: 50%;
+}
   .bg-text {
     color: #21252B;
     position: absolute;
