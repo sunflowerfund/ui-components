@@ -1,23 +1,4 @@
-
-
-  <br>
-  <br>
-  <br>
-
-  
-<!-- 
-<div class="checkbox-container display-flex col-md-2 col-sm-2 col-xs-12">
-  <label class="text-line-middle checkbox-label"></label>
-  <div class="checkbox" (click)="checkPet('cats')">
-    <i [ngClass]="petMap['cats'] ? 'checked' : 'unchecked'" class="fa fa-check"></i>
-  </div>
-</div> -->
-
-
-<br>
-<br>
-<br>
-<br>
+ 
 
 <div class="line">
     <div class="height-46 display-flex">
@@ -31,7 +12,7 @@
 
     <!-- No -->
     <div class="display-flex">
-      <div class="radio" [ngClass]="!item1 ? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
+      <div class="radio" [ngClass]="!item1? 'selected' : 'unselected'" (click)="setItem1(false)"></div>
       <label class="text-line-middle radio-label">No</label>
     </div>
   </div>
@@ -94,7 +75,7 @@
         <label class="text-line-middle">What is your Weight</label>
       </div>
       <!-- input field -->
-          <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "85kg"></app-input>
+          <app-input [attrs] = "['--default']" class="fifty" type = "text" placeholder = "85 kg"></app-input>
     </div>
 
   <div class="line">
