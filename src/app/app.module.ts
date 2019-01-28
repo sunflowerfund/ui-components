@@ -41,8 +41,7 @@ import { SunflowerPage } from './donor-app/pages/sunflower/sunflower.page';
     CircularIndicatorComponent,
     DashboardComponent
   ],
-  // tslint:disable-next-line:max-line-length
-  imports: [BrowserModule, MainRoutingModule, FormsModule, 
+  imports: [BrowserModule, MainRoutingModule, FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

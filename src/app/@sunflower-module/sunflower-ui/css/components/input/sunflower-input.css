@@ -25,6 +25,11 @@
 .input[class*="--fifty"]{
     border-bottom: 2px solid var(--yellow);
 }
+.input[class*="--input-fifty"]{
+    border-bottom: 2px solid var(--yellow);
+    width: 275px
+}
+
 
 .input[class*="--full"]{
     max-width: 100%;
