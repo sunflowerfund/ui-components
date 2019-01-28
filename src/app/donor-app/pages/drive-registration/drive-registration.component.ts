@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MedicalScreening } from 'src/app/@sunflower-module/sunflower-ui/model/medicalScreening.model';
+// import { MedicalScreening } from 'src/app/@sunflower-module/sunflower-ui/model/medicalScreening.model';
 
 @Component({
   selector: 'app-drive-registration',
@@ -9,15 +9,34 @@ import { MedicalScreening } from 'src/app/@sunflower-module/sunflower-ui/model/m
 
 
 export class DriveRegistrationComponent implements OnInit {
-  item1: boolean;
-  // medic:MedicalScreening;
+  yesToAll = false;
+    areYouHealthy ;
+    areYouHealthyPrestine = false ;
+    doesYourFamilyAgreeForyouToDonate = false;
+    doesYourFamilyAgreeForyouToDonatePrestine = false;
+    doesYourAnkleSwellEdnOfDay = false;
+    doesYourAnkleSwellEdnOfDayPrestine = false;
+    areYouAHighRiskForhepatitisOrHiv = true;
+    areYouAHighRiskForhepatitisOrHivPrestine = false;
+    whatsYourWeight = '';
+    whatsYourHeight = '';
+    AreYouARegularBloodDonor = false;
+    AreYouARegularBloodDonorPrestine = false;
+    DoYouGetUpMorethanOnceAtNight = false;
+    DoYouGetUpMorethanOnceAtNightPrestine = false;
+    haveYouEverBeenTestedForHiv = false;
+    haveYouEverBeenTestedForHivPrestine = false;
+    AreYouOrYourPartnerRiskOfSTI = false;
+    AreYouOrYourPartnerRiskOfSTIPrestine = false;
+    areYouAPlateletDonor = false;
+    areYouWillingToBeAproachedToBeAPlatelet = false;
+    IConsentToMyPersonalInfoGiveToSANBS = false;
+    IAgreeToBiengContactedBySANBSAndWPBTSToDonatePlatelet = false;
+    HaveYouEverBeenPregnant = false;
+    IfSoNumberOfPregnancies = false;
+    dateOfLastPregnancy = false;
 
-  constructor(
-    // public medic: MedicalScreening
-    ) {
-    this.item1 = false;
-
-
+  constructor( ) {
     // this.medic.areYouHealthy = true;
     // this.medic.doesYourFamilyAgreeForyouToDonate = '';
     // this.medic.doesYourAnkleSwellEdnOfDay = '';
@@ -39,9 +58,27 @@ export class DriveRegistrationComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.checkAnswering();
   }
 
-  setItem1(val ) {
-    this.item1 =  val;
+  checkAnswering() {
+    if (
+      this.areYouHealthy === false ||
+      this.doesYourFamilyAgreeForyouToDonate === false ||
+      this.doesYourAnkleSwellEdnOfDay === false ||
+      this.areYouAHighRiskForhepatitisOrHiv === false ||
+      this.whatsYourWeight === '' ||
+      this.whatsYourHeight === '' ||
+      this.AreYouARegularBloodDonor === false ||
+      this.DoYouGetUpMorethanOnceAtNight === false ||
+      this.haveYouEverBeenTestedForHiv === false ||
+      this.AreYouOrYourPartnerRiskOfSTI === false
+    ) {
+      this.yesToAll = true;
+    }
   }
+
+chill(){
+   window.alert('wewrewertre')
+}
 }
