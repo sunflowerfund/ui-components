@@ -22,6 +22,8 @@ import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-
 import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
 import { DriveRegistrationComponent } from './donor-app/pages/drive-registration/drive-registration.component';
 import { SunflowerPage } from './donor-app/pages/sunflower/sunflower.page';
+import { StepTwoComponent } from './donor-app/pages/drive-registration/step-two/step-two.component';
+import { StepOneComponent } from './donor-app/pages/drive-registration/step-one/step-one.component';
 // tslint:disable-next-line:max-line-length
 // import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
@@ -39,7 +41,9 @@ import { SunflowerPage } from './donor-app/pages/sunflower/sunflower.page';
     DriveRegistrationComponent,
     ComponentsPage,
     CircularIndicatorComponent,
-    DashboardComponent
+    DashboardComponent,
+    StepTwoComponent,
+    StepOneComponent,
   ],
   imports: [BrowserModule, MainRoutingModule, FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
