@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./step-two.component.css', './../drive-registration.component.css']
 })
 export class StepTwoComponent implements OnInit {
+isAWomen = false;
 
   numberOfPregnancy;
   dateOfLastPregnancy;
@@ -23,6 +24,10 @@ export class StepTwoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  finish(){
+    window.alert('Well Done, All entered info is saved !!!')
   }
 
 }

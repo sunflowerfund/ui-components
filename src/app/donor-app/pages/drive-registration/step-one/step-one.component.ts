@@ -62,6 +62,7 @@ export class StepOneComponent implements OnInit {
 
   next() {
    this.driveReg.step += 1;
+   
   }
 
 }
