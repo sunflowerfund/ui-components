@@ -1,0 +1,19 @@
+.isAFemale{
+    
+    font-size: xx-large;
+    width: 100%;
+    text-align: center;
+  
+}
+.innerText{
+    background-color: var(--yellow);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+}
+.infomate{
+    font-size: 15px;
+}
+.fr{
+    float: right;
+} 

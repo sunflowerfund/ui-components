@@ -37,6 +37,7 @@
 }
 
 .sun-dropdown-container {
+  /* max-height: 100px; */
   display: none;
   z-index: 1;
   overflow-y: hidden;
@@ -82,7 +83,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   /* Points */
-  max-height: 100vh;
+  max-height: 250px;
 }
 
 /* Click Listener - For Component */

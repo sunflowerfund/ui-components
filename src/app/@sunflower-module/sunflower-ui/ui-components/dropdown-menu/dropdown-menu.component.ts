@@ -20,7 +20,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   <!-- 
   This is code that renders the code for a dropdown selector.
   How it works:
-  
+
       UI Toggle:
 
     <sun-dropdown-menu type="primary" [attrs]="['--large','--danger']"></sun-dropdown-menu>
@@ -56,7 +56,7 @@ export class DropdownMenuComponent implements OnInit {
   item: any;
 
   // Conditions
-    open:boolean;
+  open: boolean;
   // UI Attributes
   @Input()
   protected type: string;

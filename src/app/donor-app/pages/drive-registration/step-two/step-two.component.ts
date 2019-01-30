@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { templateData } from "../../../../../assets/template-data/date";
 
 @Component({
   selector: 'app-step-two',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./step-two.component.css', './../drive-registration.component.css']
 })
 export class StepTwoComponent implements OnInit {
+  isAWomen = false;
+Days;
+Months;
+Years;
 
   numberOfPregnancy;
   dateOfLastPregnancy;
@@ -20,9 +25,17 @@ export class StepTwoComponent implements OnInit {
   areYouAPlateletDonor;
   areYouAPlateletDonorPrestine;
 
-  constructor() { }
+  constructor() {
+    this.Days = templateData.Days;
+    this.Months = templateData.Months;
+    this.Years = templateData.Years;
+  }
 
   ngOnInit() {
+  }
+
+  finish() {
+    window.alert('Well Done, All entered info is saved !!!');
   }
 
 }
