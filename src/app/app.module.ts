@@ -1,6 +1,7 @@
 import { SignUpComponent } from './donor-app/pages/sign-up/sign-up.component';
 import { SignInComponent } from './donor-app/pages/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,6 +25,8 @@ import { DriveRegistrationComponent } from './donor-app/pages/drive-registration
 import { SunflowerPage } from './donor-app/pages/sunflower/sunflower.page';
 import { StepTwoComponent } from './donor-app/pages/drive-registration/step-two/step-two.component';
 import { StepOneComponent } from './donor-app/pages/drive-registration/step-one/step-one.component';
+import { AuthService } from './donor-app/services/auth.service';
+import { AuthGuardService } from './donor-app/services/auth-guard.service';
 // tslint:disable-next-line:max-line-length
 // import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 
@@ -45,10 +48,14 @@ import { StepOneComponent } from './donor-app/pages/drive-registration/step-one/
     StepTwoComponent,
     StepOneComponent,
   ],
-  imports: [BrowserModule, MainRoutingModule, FormsModule,
+  imports: [
+    BrowserModule,
+     MainRoutingModule,
+      FormsModule,
+      HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

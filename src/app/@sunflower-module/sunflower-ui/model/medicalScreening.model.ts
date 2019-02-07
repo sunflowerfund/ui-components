@@ -16,4 +16,8 @@ export class MedicalScreening {
   HaveYouEverBeenPregnant;
   IfSoNumberOfPregnancies;
   dateOfLastPregnancy;
+  areYouWillingToBeApproachedToBeAPlateletDonor;
+  iConsentToMyPersonalInformationBeingGivenSABSandWPBTS;
+  iAgreeToBeContactedBySANBSandWPBTSToDonatePlatelets;
+  haveYouEverBeenPregnant;
 }
