@@ -16,7 +16,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+    // private messageService: MessageService
+    ) { }
 
 
   /** GET SunflowerUser from the server */
@@ -37,6 +38,7 @@ export class AuthService {
 
 
 // POST : add user to the server
+  // tslint:disable-next-line:max-line-length
   addSunflowerUser (sunflower: { emailAddress: string; name: string; surname: string; password: string; confirmPassword: string; }): Observable<SunflowerUser> {
     return this.http.post<SunflowerUser>('https://jsonplaceholder.typicode.com/todos/1', sunflower, httpOptions).pipe(
       tap((newSunflowerUser: SunflowerUser) => this.log(`added Sunflower user w/ id=${newSunflowerUser.id}`)),
