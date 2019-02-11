@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
+  user = {
+    username:'',
+    password:''
+  }
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -17,7 +21,7 @@ export class SignInComponent implements OnInit {
     this.router.navigate(['register'])
   }
 
-  sign(){
+  login(){
     this.router.navigate(['/u/new/form']);
   }
 

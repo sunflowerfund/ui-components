@@ -9,7 +9,7 @@
   </div>
   <!-- Yes -->
   <div class="display-flex">
-    <div class="radio" [ngClass]="areYouHealthy && areYouHealthyPrestine ? 'selected' : 'unselected'" (click)="areYouHealthy = true; areYouHealthyPrestine=true"></div>
+    <div class="radio" [(ngModel)]="name" [ngClass]="areYouHealthy && areYouHealthyPrestine ? 'selected' : 'unselected'" (click)="areYouHealthy = true; areYouHealthyPrestine=true"></div>
     <label class="text-line-middle radio-label">Yes</label>
   </div>
 

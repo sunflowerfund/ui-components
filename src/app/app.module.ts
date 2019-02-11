@@ -50,12 +50,12 @@ import { AuthGuardService } from './donor-app/services/auth-guard.service';
   ],
   imports: [
     BrowserModule,
-     MainRoutingModule,
-      FormsModule,
-      HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    MainRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [AuthService, AuthGuardService],
-  bootstrap: [AppComponent]
+      bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -5,8 +5,8 @@
       <h1 class="text-size-default font-weight-medium color-grey">
         iAm Hope for life Account
       </h1>
-      <app-input [attrs]="['--default']" class="inputs" type="text" placeholder="Username"></app-input>
-      <app-input [attrs]="['--default']" class="inputs" type="password" placeholder="Password"></app-input>
+      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" class="inputs" type="text" placeholder="Username"></app-input>
+      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.password" class="inputs" type="password" placeholder="Password"></app-input>
       
       <div class="btn-container d-inline-block">
       <div class = "labelRemember d-inline-block text-left">Remember Me?</div>

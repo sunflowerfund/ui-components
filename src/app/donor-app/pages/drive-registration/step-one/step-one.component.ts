@@ -7,7 +7,7 @@ import { DriveRegistrationService } from 'src/app/donor-app/services/drive-regis
   styleUrls: ['./step-one.component.css', './../drive-registration.component.css']
 })
 export class StepOneComponent implements OnInit {
-
+  name
 
   yesToAll = false;
   areYouHealthy;
@@ -18,8 +18,8 @@ export class StepOneComponent implements OnInit {
   doesYourAnkleSwellEdnOfDayPrestine = false;
   areYouAHighRiskForhepatitisOrHiv = true;
   areYouAHighRiskForhepatitisOrHivPrestine = false;
-  whatsYourWeight = '';
-  whatsYourHeight = '';
+  whatsYourWeight;
+  whatsYourHeight ; 
   AreYouARegularBloodDonor = false;
   AreYouARegularBloodDonorPrestine = false;
   DoYouGetUpMorethanOnceAtNight = false;
@@ -49,8 +49,8 @@ export class StepOneComponent implements OnInit {
       this.doesYourFamilyAgreeForyouToDonate === false ||
       this.doesYourAnkleSwellEdnOfDay === false ||
       this.areYouAHighRiskForhepatitisOrHiv === false ||
-      this.whatsYourWeight === '' ||
-      this.whatsYourHeight === '' ||
+      this.whatsYourWeight === 0 ||
+      this.whatsYourHeight === 0 ||
       this.AreYouARegularBloodDonor === false ||
       this.DoYouGetUpMorethanOnceAtNight === false ||
       this.haveYouEverBeenTestedForHiv === false ||
@@ -62,7 +62,6 @@ export class StepOneComponent implements OnInit {
 
   next() {
    this.driveReg.step += 1;
-   
   }
 
 }

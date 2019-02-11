@@ -29,9 +29,9 @@
 
         <app-input [attrs]="['--full']" class="inputs" type="text" placeholder="Identity Number"></app-input>
         <div class="btn-container text-center">
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Day" [items]=" ['20']" (output)="setDay($event)"></sun-dropdown-menu>
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Month" [items]=" ['Feb']" (output)="setMonth($event)"></sun-dropdown-menu>
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Year" [items]=" ['1998']" (output)="setYear($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Day" [items]="Days"  (output)="setDay($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Month"  [items]="Months" (output)="setMonth($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Year" [items]="Years"  (output)="setYear($event)"></sun-dropdown-menu>
           <sun-dropdown-menu class="mw-fc fl m-5" title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
         </div>

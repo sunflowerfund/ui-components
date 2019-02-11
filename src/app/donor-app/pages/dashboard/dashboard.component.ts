@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { templateData } from 'src/assets/template-data/date';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +12,17 @@ export class DashboardComponent implements OnInit {
   class2:string = "indicator";
   class3:string = "indicator";
   class4:string = "indicator";
+  Days;
+Months;
+Years;
+
 
   buttonNext: string = "Next";
-  constructor() { }
+  constructor() {
+    this.Days = templateData.Days;
+    this.Months = templateData.Months;
+    this.Years = templateData.Years;
+   }
 
   ngOnInit() {
   }

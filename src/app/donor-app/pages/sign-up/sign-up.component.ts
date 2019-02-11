@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'sign-up-page',
@@ -8,19 +10,46 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  sunflowerUser = {
 
-  ngOnInit() {
+    emailAddress: '',
+    name: '',
+    surname: '',
+    password: '',
+    confirmPassword: ''
   }
 
-  login(){
+  user: SunflowerUser;
+  temp;
+
+  constructor(
+    private router: Router,
+    public auth: AuthService
+  ) { }
+
+  ngOnInit() {    
+  }
+
+  getUsers(): void {
+    this.auth.getSunflowerUseres()
+    .subscribe(response => this.temp = response);
+  }
+
+
+
+
+  login() {
     this.router.navigate(['login']);
   }
 
-  sign(){
+  sign() {
     this.router.navigate(['dashboard']);
   }
-  register(){
 
+  register(): void {
+    // this.auth.addSunflowerUser(this.sunflowerUser);
+    this.getUsers();
+    console.log('from button', this.temp);
+    
   }
 }
