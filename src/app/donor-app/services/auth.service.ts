@@ -22,14 +22,14 @@ export class AuthService {
 
   /** GET SunflowerUser from the server */
   getCurrentSunflowerUser(): Observable<SunflowerUser[]> {
-    return this.http.get<SunflowerUser[]>('this.SunflowerUseresUrl')
+    return this.http.get<SunflowerUser[]>('this.SunflowerUseresUrl');
   }
 
 
 
   /** GET SunflowerUseres from the server */
   getSunflowerUseres(): Observable<SunflowerUser[]> {
-    return this.http.get<SunflowerUser[]>('https://jsonplaceholder.typicode.com/users')
+    return this.http.get<SunflowerUser[]>('http://localhost:62314/')
       .pipe(
         tap(_ => this.log('fetchedSunflowerUseres')),
         catchError(this.handleError('getSunflowerUseres', []))
@@ -50,7 +50,7 @@ export class AuthService {
 
 
  /** PUT: update the user on the server */
- updateHero (sunflower: SunflowerUser): Observable<any> {
+ updateUser (sunflower: SunflowerUser): Observable<any> {
   return this.http.put('this.heroesUrl', sunflower, httpOptions).pipe(
     tap(_ => this.log(`updated user id=${sunflower.id}`)),
     catchError(this.handleError<any>('updateUser'))

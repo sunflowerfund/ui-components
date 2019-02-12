@@ -1,7 +1,7 @@
 <sunflower-navbar>
-  <sunflower-button routerLink="/" type="primary active" [attrs]="['btn-small']">
+  <!-- <sunflower-button routerLink="/" type="primary active" [attrs]="['btn-small']">
     skip <i class="fa fa-chevron-right"></i>
-  </sunflower-button>
+  </sunflower-button> -->
 </sunflower-navbar>
 
 <div class="banner d-flex background">
@@ -15,8 +15,9 @@
         <li (click)="setUpClass(4)" [class]="class4">4</li>
       </ul>
       <h1 class="text-size-large font-weight-medium color-grey">
-        Create iamHope Account!
+        Create I am Hope Account!
       </h1>
+
       <div class="d-block m-auto" *ngIf="index == 1">
         <h1 class="text-size-medium font-weight-medium color-white">
           Fill in Personal Details:
@@ -32,10 +33,11 @@
           <sun-dropdown-menu class="mw-fc fl m-5" title="Day" [items]="Days"  (output)="setDay($event)"></sun-dropdown-menu>
           <sun-dropdown-menu class="mw-fc fl m-5" title="Month"  [items]="Months" (output)="setMonth($event)"></sun-dropdown-menu>
           <sun-dropdown-menu class="mw-fc fl m-5" title="Year" [items]="Years"  (output)="setYear($event)"></sun-dropdown-menu>
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Ethnicity" [items]=" ['Black','Coloured', 'Asian/Indian','White', 'Other/Unknown','Female']"
+          <sun-dropdown-menu class="mw-fc fl m-5" title="Ethnicity" [items]=" ['African','Coloured', 'Asian/Indian','White']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
         </div>
       </div>
+
       <div class="m-auto" *ngIf="index == 2">
         <h1 class="text-size-medium font-weight-medium color-grey">
           Fill in Contact Details:
@@ -47,6 +49,8 @@
         <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input>
         <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Mobile number"></app-input>
       </div>
+      
+
       <div class="m-auto" *ngIf="index == 3">
         <h1 class="text-size-medium font-weight-medium color-grey">
           Fill in Next of Kin Details:
@@ -84,10 +88,13 @@
       </textarea>
       </div>
     <div class="btn-container text-center">
+      <br>
+      <br>
         <sunflower-button type="primary">Next</sunflower-button>
     </div>
+
     <div class="btn-container text-center">
-        <sunflower-button type="secondary">Skip</sunflower-button>
+          <br>  <!-- <sunflower-button type="secondary">Skip</sunflower-button> -->
     </div>
       <!-- eng -->
     </div>
