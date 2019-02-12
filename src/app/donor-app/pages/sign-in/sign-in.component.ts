@@ -9,19 +9,19 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
 
   user = {
-    username:'',
-    password:''
-  }
+    username: '',
+    password: ''
+  };
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  register(){
-    this.router.navigate(['register'])
+  register() {
+    this.router.navigate(['register']);
   }
 
-  login(){
+  login() {
     this.router.navigate(['/u/new/form']);
   }
 

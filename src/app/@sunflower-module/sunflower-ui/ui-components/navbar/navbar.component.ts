@@ -18,10 +18,10 @@ import { Path } from "../../model/path.model";
       </div>
     </div>
 
-    <!-- 
+    <!--
     This is code that renders the code for a button.
     How it works:
-    
+
       <sunflower-navbar [paths]="pathsArray">Button</sunflower-button>
 
     The * paths * attribute is to pass an array links/paths described on the 
