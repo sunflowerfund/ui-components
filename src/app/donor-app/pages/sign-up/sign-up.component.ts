@@ -1,55 +1,111 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
 import { AuthService } from '../../services/auth.service';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+
+
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'sign-up-page',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
 
+formErrors = {
+    'email': '',
+    'password': ''
+  };
+
+  validationMessages = {
+    'email': {
+      'required': 'Email is required.',
+      'email': 'Email must be a valid email'
+    },
+    'password': {
+      'required': 'Password is required.',
+      'pattern': 'Password must be include at one letter and one number.',
+      'minlength': 'Password must be at least 4 characters long.',
+      'maxlength': 'Password cannot be more than 40 characters long.',
+    }
+  };
+
+  userForm: FormGroup;
+
   sunflowerUser = {
+    username: '',
+    password: ''
+  };
 
-    emailAddress: '',
-    name: '',
-    surname: '',
-    password: '',
-    confirmPassword: ''
-  }
-
-  user: SunflowerUser;
-  temp;
+  confirmPassword: '';
 
   constructor(
     private router: Router,
-    public auth: AuthService
+    public auth: AuthService,
+    private fb: FormBuilder,
   ) { }
 
-  ngOnInit() {    
+  ngOnInit(): void {
+    this.buildForm();
   }
-
-  getUsers(): void {
-    this.auth.getSunflowerUseres()
-    .subscribe(response => this.temp = response);
-  }
-
-
-
 
   login() {
     this.router.navigate(['login']);
   }
 
-  sign() {
-    this.router.navigate(['dashboard']);
+  // sign() {
+  //   this.router.navigate(['dashboard']);
+  // }
+
+  register() {
+    if (this.userForm.valid) {
+      this.auth.registerSunflowerUser(this.userForm.value)
+        .subscribe(() => { }, error => {
+          console.log(error);
+        });
+    }window.alert('Form not valid');
+
   }
 
-  register(): void {
-    // this.auth.addSunflowerUser(this.sunflowerUser);
-    this.getUsers();
-    console.log('from button', this.temp);
-    
+
+  buildForm(): void {
+    this.userForm = this.fb.group({
+      'email': ['', [
+        Validators.required,
+        Validators.email
+      ]
+      ],
+      'password': ['', [
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        Validators.minLength(4),
+        Validators.maxLength(8)
+      ]
+      ],
+    });
+
+    this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.onValueChanged(); // reset validation messages
   }
+
+  // Updates validation state on form changes.
+  onValueChanged(data?: any) {
+    if (!this.userForm) { return; }
+    const form = this.userForm;
+    // tslint:disable-next-line:forin
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        // tslint:disable-next-line:forin
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
 }

@@ -14,10 +14,11 @@ const httpOptions = {
 })
 export class AuthService {
 
+  baseUrl = 'https://localhost:5000/api/auth/';
   constructor(
     private http: HttpClient,
-    // private messageService: MessageService
-    ) { }
+
+  ) { }
 
 
   /** GET SunflowerUser from the server */
@@ -29,7 +30,7 @@ export class AuthService {
 
   /** GET SunflowerUseres from the server */
   getSunflowerUseres(): Observable<SunflowerUser[]> {
-    return this.http.get<SunflowerUser[]>('http://localhost:62314/')
+    return this.http.get<SunflowerUser[]>('https://localhost:5000/api/values')
       .pipe(
         tap(_ => this.log('fetchedSunflowerUseres')),
         catchError(this.handleError('getSunflowerUseres', []))
@@ -37,38 +38,51 @@ export class AuthService {
   }
 
 
-// POST : add user to the server
+  login(model: any) {
+    console.log(model);
+    return this.http.post(this.baseUrl + 'login', model, httpOptions).pipe(
+      map((response: any) => {
+        const user = response;
+        if (user) {
+          localStorage.setItem('token', user.token);
+          console.log(user.token);
+        }
+      })
+    );
+  }
+  // POST : add user to the server
   // tslint:disable-next-line:max-line-length
-  addSunflowerUser (sunflower: { emailAddress: string; name: string; surname: string; password: string; confirmPassword: string; }): Observable<SunflowerUser> {
-    return this.http.post<SunflowerUser>('https://jsonplaceholder.typicode.com/todos/1', sunflower, httpOptions).pipe(
-      tap((newSunflowerUser: SunflowerUser) => this.log(`added Sunflower user w/ id=${newSunflowerUser.id}`)),
-      catchError(this.handleError<SunflowerUser>('addSunFlowerUser'))
+  registerSunflowerUser(sunflower: {username: string, password: string}): Observable<SunflowerUser> {
+    console.log(sunflower);
+    return this.http.post(this.baseUrl + 'register', sunflower, httpOptions).pipe(
+      tap((newSunflowerUser: any) => this.log(`user added successfully !!!`)),
+      catchError(this.handleError('addSunFlowerUser'))
     );
 
   }
 
 
 
- /** PUT: update the user on the server */
- updateUser (sunflower: SunflowerUser): Observable<any> {
-  return this.http.put('this.heroesUrl', sunflower, httpOptions).pipe(
-    tap(_ => this.log(`updated user id=${sunflower.id}`)),
-    catchError(this.handleError<any>('updateUser'))
-  );
-}
-
-
- /* GET User whose name contains search term */
- searchSunFlower(term: string): Observable<SunflowerUser[]> {
-  if (!term.trim()) {
-    // if not search term, return empty array.
-    return of([]);
+  /** PUT: update the user on the server */
+  updateUser(sunflower: SunflowerUser): Observable<any> {
+    return this.http.put('this.heroesUrl', sunflower, httpOptions).pipe(
+      tap(_ => this.log(`updated user id=${sunflower.id}`)),
+      catchError(this.handleError<any>('updateUser'))
+    );
   }
-  return this.http.get<SunflowerUser[]>(`${ 'getUrl' }/?name=${term}`).pipe(
-    tap(_ => this.log(`found User matching "${term}"`)),
-    catchError(this.handleError<SunflowerUser[]>('searchSunflower', []))
-  );
-}
+
+
+  /* GET User whose name contains search term */
+  searchSunFlower(term: string): Observable<SunflowerUser[]> {
+    if (!term.trim()) {
+      // if not search term, return empty array.
+      return of([]);
+    }
+    return this.http.get<SunflowerUser[]>(`${'getUrl'}/?name=${term}`).pipe(
+      tap(_ => this.log(`found User matching "${term}"`)),
+      catchError(this.handleError<SunflowerUser[]>('searchSunflower', []))
+    );
+  }
 
 
 
@@ -95,9 +109,10 @@ export class AuthService {
       return of(result as T);
     };
   }
-  
+
   /** Log aSunflowerUserService message with the MessageService */
   private log(message: string) {
     // this.messageService.add(`SunflowerUserService: ${message}`);
+    console.log(message);
   }
 }

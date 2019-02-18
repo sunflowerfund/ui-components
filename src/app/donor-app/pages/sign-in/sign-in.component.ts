@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'sign-in-page',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
@@ -12,7 +14,8 @@ export class SignInComponent implements OnInit {
     username: '',
     password: ''
   };
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -22,7 +25,10 @@ export class SignInComponent implements OnInit {
   }
 
   login() {
-    this.router.navigate(['/u/new/form']);
+    this.auth.login(this.user).subscribe(() => {}, error => {
+      console.log(error);
+
+    });
   }
 
 }
