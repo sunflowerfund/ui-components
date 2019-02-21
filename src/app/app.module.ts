@@ -14,6 +14,7 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
 
 import { HomePage } from './donor-app/pages/home/home.page';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -27,6 +28,7 @@ import { SunflowerPage } from './donor-app/pages/sunflower/sunflower.page';
 import { StepTwoComponent } from './donor-app/pages/drive-registration/step-two/step-two.component';
 import { StepOneComponent } from './donor-app/pages/drive-registration/step-one/step-one.component';
 import { AuthService } from './donor-app/services/auth.service';
+import { ToastrModule } from 'ngx-toastr';
 import { AuthGuardService } from './donor-app/services/auth-guard.service';
 import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-components/ng-date-picker/ng-date-picker.component'; 
 @NgModule({
@@ -51,8 +53,10 @@ import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-compo
   imports: [
     BrowserModule,
     ReactiveFormsModule ,
+    BrowserAnimationsModule,
     MainRoutingModule,
     NgbModule,
+    ToastrModule.forRoot(),
     FormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

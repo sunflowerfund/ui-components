@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {  FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -10,7 +11,8 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
   // tslint:disable-next-line:component-selector
   selector: 'sign-up-page',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
+  providers: [ ToastrService]
 })
 export class SignUpComponent implements OnInit {
 
@@ -44,6 +46,7 @@ formErrors = {
   constructor(
     private router: Router,
     public auth: AuthService,
+    private toastr: ToastrService,
     private fb: FormBuilder,
   ) { }
 
@@ -55,19 +58,22 @@ formErrors = {
     this.router.navigate(['login']);
   }
 
-  // sign() {
-  //   this.router.navigate(['dashboard']);
-  // }
-
   register() {
     if (this.userForm.valid) {
       this.auth.registerSunflowerUser(this.userForm.value)
-        .subscribe(() => { }, error => {
+        .subscribe(() => {
+          this.showToaster();
+         }, error => {
           console.log(error);
         });
     }window.alert('Form not valid');
 
   }
+
+
+  showToaster(){
+    this.toastr.success('Account created Successfully.');
+}
 
 
   buildForm(): void {

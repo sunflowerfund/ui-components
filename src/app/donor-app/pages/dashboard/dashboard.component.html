@@ -16,37 +16,48 @@
       </ul>
       <h1 class="text-size-large font-weight-medium color-grey">
         Create I am Hope Account!
-      </h1>
+      </h1><br>
+      <br>
 
       <div class="d-block m-auto" *ngIf="index == 1">
-        <h1 class="text-size-medium font-weight-medium color-white">
-          Fill in Personal Details:
-        </h1>
-        <app-input [attrs]="['--full']" type="text" placeholder="First Name"></app-input>
-        <app-input [attrs]="['--full']" type="text" placeholder="Last Name"></app-input>
+    
+        <label  class="labels " for="Firstname">First Name</label>
+        <app-input [attrs]="['--full']" type="text" placeholder="i.e Jane"></app-input>
+        <label  class="labels " for="Firstname">Last Name</label>
+
+        <app-input [attrs]="['--full']" type="text" placeholder="i.e Doe"></app-input>
         <div class="btn-container">
           <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
         </div>
+        <label  class="labels " for="Firstname">ID Number</label>
 
-        <app-input [attrs]="['--full']" class="inputs" type="text" placeholder="Identity Number"></app-input>
+        <app-input [attrs]="['--full']" class="inputs" type="number" placeholder="Identity Number"></app-input>
         <div class="btn-container text-center">
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Day" [items]="Days"  (output)="setDay($event)"></sun-dropdown-menu>
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Month"  [items]="Months" (output)="setMonth($event)"></sun-dropdown-menu>
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Year" [items]="Years"  (output)="setYear($event)"></sun-dropdown-menu>
-          <sun-dropdown-menu class="mw-fc fl m-5" title="Ethnicity" [items]=" ['African','Coloured', 'Asian/Indian','White']"
+        
+          <sun-dropdown-menu   title="Ethnicity" [items]=" ['African','Coloured', 'Asian/Indian','White']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
+       
         </div>
       </div>
 
       <div class="m-auto" *ngIf="index == 2">
-        <h1 class="text-size-medium font-weight-medium color-grey">
+        <!-- <h1 class="text-size-medium font-weight-medium color-grey">
           Fill in Contact Details:
-        </h1>
+        </h1> -->
+        <br>
+        <label  class="labels " for="Firstname">Postal Address</label>
         <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Postal Address"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Home telephone"></app-input>
+       
+        <label  class="labels " for="Firstname">Home Tel</label>
+        <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="Home telephone"></app-input>
+       
+        <label  class="labels " for="Firstname">Work Tel</label>
         <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Work telephone"></app-input>
 
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input>
+        <!-- <label  class="labels " for="Firstname">ID Number</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input> -->
+
+        <label  class="labels " for="Firstname">ID Number</label>
         <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Mobile number"></app-input>
       </div>
       
@@ -73,7 +84,7 @@
         </h1>
         <!-- <textarea readonly class="TsTextArea">
         1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        1.2 I have understood the information provided to me firebaprior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
         1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
         1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
         1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
