@@ -3,17 +3,22 @@
     <div class="form-container m-auto">
       <img src="./assets/img/sunflower/sunflower-fund-sunflower.png" alt="" class="profile">
       <h1 class="text-size-default font-weight-medium color-grey">
-        iAm Hope for life Account
+        I am Hope for life Account
       </h1>
-      <app-input [attrs]="['--default']" class="inputs" type="text" placeholder="Username"></app-input>
-      <app-input [attrs]="['--default']" class="inputs" type="password" placeholder="Password"></app-input>
+      <br>
+      <label class="labels ">Email Address</label>
+
+      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" class="inputs" type="text" placeholder="Username"></app-input>
+      <br>
+      <label class="labels ">Password</label>
+      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.password" class="inputs" type="password" placeholder="Password"></app-input>
       
       <div class="btn-container d-inline-block">
       <div class = "labelRemember d-inline-block text-left">Remember Me?</div>
       <div class = "labelForgot d-inline-block text-right">Forgot Password?</div>        
       </div>
       <div class="btn-container text-center">
-      <sunflower-button routerLink="/u/new/form" type = "primary">Sign in</sunflower-button> 
+      <sunflower-button  (click)="login()" type = "primary">Log in</sunflower-button> 
       <div class="btn-container">
      <label (click) = "register()" class = "font-size-default">Don't have an account? <a class="link" routerLink="/u/new">Sign Up</a></label>
      </div>       

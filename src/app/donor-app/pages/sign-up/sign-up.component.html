@@ -1,56 +1,39 @@
-<!-- <div class="bg-image"></div>
-
-<div class = "imgCont">
-    <img src="../../../assets/img/children2.jpeg" alr="">
-</div>
-
-<div class="bg-text">
-
-  <h1 class="signInHeading">Sign in to mySunDonor Account:</h1>
-
-  <app-input [attrs] = "['--default']" class="inputs" type = "text" placeholder = "Name"></app-input>
-  <br>
-  <app-input [attrs] = "['--default']" class="inputs" type = "text" placeholder = "Surname"></app-input>
-  <br>
-  <app-input [attrs] = "['--default']" class="inputs" type = "text" placeholder = "Username"></app-input>
-  <br>
-  <app-input [attrs] = "['--default']" class="inputs"  type = "password" placeholder = "Password"></app-input>
-  <br>
-  <app-input [attrs] = "['--default']" class="inputs"  type = "password" placeholder = "Confirm Password"></app-input>
-  <br>
-  <div class = "rememmber">
-      <div class = "signinButton">
-        <sunflower-button  (click) = "sign()"  type = "primary">Sign in</sunflower-button>
-        <br>
-        <br>
-        <label routerLink="/u" class = "loginLink">Already have an account? Login</label>
-      </div>
-     </div>
-</div> -->
 <div class="banner d-flex bg-image">
-    <div class="contain-float m-auto d-flex text-center p-tb25px">
-      <div class="form-container m-auto">
-        <img src="./assets/img/sunflower/sunflower-fund-sunflower.png" alt="" class="profile">
-        <h1 class="text-size-default font-weight-medium color-grey">
-          iAm Hope for life Account
-        </h1>
-  <app-input [attrs] = "['--default']" class="inputs" type = "text" placeholder = "Username"></app-input>
-      
-  <app-input [attrs] = "['--default']" class="inputs" type = "text" placeholder = "Name"></app-input>
-  <app-input [attrs] = "['--default']" class="inputs" type = "text" placeholder = "Surname"></app-input>
-  <br>
-  <br>
-  <app-input [attrs] = "['--default']" class="inputs"  type = "password" placeholder = "Password"></app-input>
-  <br>
-  <app-input [attrs] = "['--default']" class="inputs"  type = "password" placeholder = "Confirm Password"></app-input>
-   
-        <div class="btn-container text-center">
-        <sunflower-button routerLink="/u/new/form" type = "primary">Sign Up</sunflower-button> 
-        <div class="btn-container">
-       <label class = "font-size-default">Already have an account? <a class="link" routerLink="/u">Sign In</a></label>
-       </div>       
-       </div>
-      </div>
-    </div>
-  </div>
+  <div class="contain-float m-auto d-flex text-center p-tb25px">
+    <form  [formGroup]="userForm"  (ngSubmit)="register()" class="form-container m-auto">
+      <img src="./assets/img/sunflower/sunflower-fund-sunflower.png" alt="" class="profile">
+      <h1 class="text-size-default font-weight-medium color-grey">
+        I am Hope for life Account
+      </h1>
   
+      <br>
+      <label class="labels ">Email Address</label>
+      <app-input [attrs]="['--default']" ngDefaultControl formControlName="email" class="inputs"
+        type="text" placeholder="Email" required ></app-input>
+        <div *ngIf="formErrors.email">
+          {{ formErrors.email }}
+        </div>
+
+
+
+      <label for="inputss" class=" labels">Password</label>
+
+      <app-input [attrs]="['--default']" ngDefaultControl formControlName="password" class="inputs"
+        type="password" placeholder="Password" required ></app-input>
+        <div *ngIf="formErrors.password">
+          {{ formErrors.password }}
+        </div>
+
+        
+
+      <div class="btn-container text-center">
+       
+        <sunflower-button  (click)="register()" ngDefaultControl type="primary submit">Sign Up</sunflower-button>
+         <div class="btn-container">
+      <label   class="font-size-default">Already have an account? <a class="link"
+              routerLink="/u">Log in</a></label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
