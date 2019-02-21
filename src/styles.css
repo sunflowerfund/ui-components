@@ -7,3 +7,9 @@ body, html {
     margin: 0;
 
   }
+/* global styling */
+  .labels{
+    /* font-size: 16px; */
+    float: left;
+    margin-left: 46px
+}

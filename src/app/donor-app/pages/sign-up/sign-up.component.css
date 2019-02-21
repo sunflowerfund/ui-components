@@ -90,6 +90,12 @@ img{
     width: 0;
 }
 
+.labels{
+       /* font-size: 16px; */
+       float: left;
+       margin-left: 46px
+}
+
 @media (max-width: 640px) {
     .imgCont img{
         background-size: cover;

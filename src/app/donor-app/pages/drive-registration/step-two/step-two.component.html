@@ -1,0 +1,147 @@
+<div class="wraper">
+  <div class="center">
+      <span class="infomate">
+          <p class="innerText">A platelet transfusion can prevent major bleeding. Certain patients are depandent on receiving HLA-compatable platelets from HLA matched donors in the coursr of their treatment (chemotherapy, transplantation and other). </p>
+           <!-- <hr> -->
+         </span>
+
+<br>
+<br>
+
+    <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle text">Are you a platelet donor</label>
+      </div>
+      <!-- Yes -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="areYouAPlateletDonor && areYouAPlateletDonorPrestine ? 'selected' : 'unselected'"
+          (click)="areYouAPlateletDonor = true; areYouAPlateletDonorPrestine=true"></div>
+        <label class="text-line-middle radio-label">Yes</label>
+      </div>
+
+      <!-- No -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="!areYouAPlateletDonor && areYouAPlateletDonorPrestine? 'selected' : 'unselected'"
+          (click)="areYouAPlateletDonor = false; areYouAPlateletDonorPrestine=true;"></div>
+        <label class="text-line-middle radio-label">No</label>
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle text">Are you willing to be approached to be a platelet donor?</label>
+      </div>
+      <!-- Yes -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="areYouWillingToBeApproachedToBeAPlateletDonor
+       && areYouWillingToBeApproachedToBeAPlateletDonorPrestine ? 'selected' : 'unselected'"
+          (click)="areYouWillingToBeApproachedToBeAPlateletDonor = true; areYouWillingToBeApproachedToBeAPlateletDonorPrestine = true;"></div>
+        <label class="text-line-middle radio-label">Yes</label>
+      </div>
+
+      <!-- No -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="!areYouWillingToBeApproachedToBeAPlateletDonor
+       &&  areYouWillingToBeApproachedToBeAPlateletDonorPrestine ? 'selected' : 'unselected'"
+          (click)=" areYouWillingToBeApproachedToBeAPlateletDonorPrestine = true; areYouWillingToBeApproachedToBeAPlateletDonor = false"></div>
+        <label class="text-line-middle radio-label">No</label>
+      </div>
+    </div>
+    <br>
+    <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle text">I consent to my personal information being given to South African National
+          Blood Services (SABS) and Western Province Blood Transfusion Services (WPBTS)</label>
+      </div>
+      <!-- Yes -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="iConsentToMyPersonalInformationBeingGivenSANBS
+         && iConsentToMyPersonalInformationBeingGivenSANBSPrestine ? 'selected' : 'unselected'"
+          (click)="iConsentToMyPersonalInformationBeingGivenSANBS = true; iConsentToMyPersonalInformationBeingGivenSANBSPrestine = true"></div>
+        <label class="text-line-middle radio-label">Yes</label>
+      </div>
+
+      <!-- No -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="!iConsentToMyPersonalInformationBeingGivenSANBS
+         && iConsentToMyPersonalInformationBeingGivenSANBSPrestine ? 'selected' : 'unselected'"
+          (click)="iConsentToMyPersonalInformationBeingGivenSANBS = false; iConsentToMyPersonalInformationBeingGivenSANBSPrestine = true"></div>
+        <label class="text-line-middle radio-label">No</label>
+      </div>
+    </div>
+    <br>
+
+    <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle ">I agree to be contacted by SANBS and WPBTS to donate platelets </label>
+      </div>
+      <!-- Yes -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="iAgreeTobeContactedBySANBSandWPBTS && iAgreeTobeContactedBySANBSandWPBTSPrestine ? 'selected' : 'unselected'"
+          (click)="iAgreeTobeContactedBySANBSandWPBTS =true; iAgreeTobeContactedBySANBSandWPBTSPrestine = true"></div>
+        <label class="text-line-middle radio-label">Yes</label>
+      </div>
+
+      <!-- No -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="!iAgreeTobeContactedBySANBSandWPBTS && iAgreeTobeContactedBySANBSandWPBTSPrestine  ? 'selected' : 'unselected'"
+          (click)="iAgreeTobeContactedBySANBSandWPBTS  = false; iAgreeTobeContactedBySANBSandWPBTSPrestine = true"></div>
+        <label class="text-line-middle radio-label">No</label>
+      </div>
+    </div>
+    <br>
+    <!-- <hr> -->
+
+<span class="isAFemale">
+ <p class="innerText">To be answered only by <b>Women</b></p>
+  <!-- <hr> -->
+</span>
+<br>
+    <div class="line">
+      <div class="height-46 display-flex">
+        <label class="text-line-middle ">Have you ever been pregnant</label>
+      </div>
+      <!-- Yes -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="haveYouEverbeenPregnant && haveYouEverbeenPregnantPrestine? 'selected' : 'unselected'"
+          (click)="haveYouEverbeenPregnant = true; haveYouEverbeenPregnantPrestine =true"></div>
+        <label class="text-line-middle radio-label">Yes</label>
+      </div>
+
+      <!-- No -->
+      <div class="display-flex">
+        <div class="radio" [ngClass]="!haveYouEverbeenPregnant && haveYouEverbeenPregnantPrestine ? 'selected' : 'unselected'"
+          (click)="haveYouEverbeenPregnant = false; haveYouEverbeenPregnantPrestine = true"></div>
+        <label class="text-line-middle radio-label">No</label>
+      </div>
+    </div>
+
+ <div  *ngIf="haveYouEverbeenPregnant">
+  <div class="line">
+    <div class="height-46 display-flex">
+      <label class="text-line-middle">If so, Number of pregnancy? </label>
+    </div>
+    <!-- input field -->
+    <app-input [attrs]="['--input-fifty']" [(ngModel)]="numberOfPregnancy" ngDefaultControl type="text" placeholder="1"></app-input>
+  </div>
+
+  <div class="line">
+    <div class="height-46 display-flex">
+      <label class="text-line-middle">Date of last pregnancy?</label>
+    </div> 
+    <div class="display-flex">
+      <sun-dropdown-menu class="mw-fc fr m-5" title="Day" [items]="Days" (output)="setMonth($event)"></sun-dropdown-menu>
+      <sun-dropdown-menu class="mw-fc fr m-5" title="Month" [items]="Months" (output)="setMonth($event)"></sun-dropdown-menu>
+      <sun-dropdown-menu class="mw-fc fr m-5" title="Year" [items]="Years" (output)="setMonth($event)"></sun-dropdown-menu>
+    </div>
+  </div>
+  <app-ng-date-picker></app-ng-date-picker>
+ </div>
+ 
+ <div class="btn-spacing btn-container  text-center">
+  <sunflower-button (click)="finish()" type="primary">Finish !</sunflower-button>
+    </div>
+
+
+  </div>
+</div>
