@@ -1,29 +1,58 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
+import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
+};
+
+// const httpParams = {
+//   params: new HttpParams().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
+// };
 @Injectable({
   providedIn: 'root'
 })
 export class DriveRegistrationService {
-step = 1;
+  step = 1;
+  baseUrl = 'http://165.255.172.236:80/api/v1/';
 
-// this.medic.areYouHealthy = true;
-  // this.medic.doesYourFamilyAgreeForyouToDonate = '';
-  // this.medic.doesYourAnkleSwellEdnOfDay = '';
-  // this.medic.areYouAHighRiskForhepatitisOrHiv = '';
-  // this.medic.whatsYourWeight = '';
-  // this.medic.whatsYourHeight = '';
-  // this.medic.AreYouARegularBloodDonor = '';
-  // this.medic.DoYouGetUpMorethanOnceAtNight = '';
-  // this.medic.haveYouEverBeenTestedForHiv = '';
-  // this.medic.AreYouOrYourPartnerRiskOfSTI = '';
-  // this.medic.areYouAPlateletDonor = '';
-  // this.medic.areYouWillingToBeAproachedToBeAPlatelet = '';
-  // this.medic.IConsentToMyPersonalInfoGiveToSANBS = '';
-  // this.medic.IAgreeToBiengContactedBySANBSAndWPBTSToDonatePlatelet = '';
-  // this.medic.HaveYouEverBeenPregnant = '';
-  // this.medic.IfSoNumberOfPregnancies = '';
-  // this.medic.dateOfLastPregnancy = '';
-  // console.log(  'are you healthy ',  this.medic.areYouHealthy);
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  getPrescreeningQuestion(): Observable<PreScreeeningQuestion[]> {
+
+    return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'prequestions', httpOptions)
+      .pipe(
+        tap(_ => this.log('fetched Prescreening questions')),
+        catchError(this.handleError('get Prescreening questions', []))
+      );
+  }
+
+
+
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+  /** Log aSunflowerUserService message with the MessageService */
+  private log(message: string) {
+    // this.messageService.add(`SunflowerUserService: ${message}`);
+    console.log(message);
+  }
+
 }

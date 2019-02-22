@@ -16,6 +16,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DriveRegistrationComponent } from './pages/drive-registration/drive-registration.component';
 import { SunflowerPage } from './pages/sunflower/sunflower.page';
+import { PrescreeningComponent } from './pages/prescreening/prescreening.component';
 
 const routes: Route[] = [
   {
@@ -31,12 +32,14 @@ const routes: Route[] = [
   { path: 'u/new/form', component: DashboardComponent },
   { path: 'medic', component: DriveRegistrationComponent },
   { path: 'components', component: ComponentsPage },
+  { path: 'get-Started', component: PrescreeningComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: [PrescreeningComponent]
   // declarations: []
 })
 export class MainRoutingModule {}
