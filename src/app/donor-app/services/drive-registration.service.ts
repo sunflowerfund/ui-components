@@ -34,7 +34,7 @@ bmi = 0;
     return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'prequestions', httpOptions)
       .pipe(
         tap(_ => this.log('fetched Prescreening questions')),
-        catchError(this.handleError('GET Prescreening questions', []))
+        catchError(this.handleError('GET PreScreening questions', []))
       );
   }
 
@@ -43,7 +43,7 @@ sendPrescreeningAnswers(answers){
   return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
   .pipe(
     tap(_ => this.log('posted Prescreening answers')),
-    catchError(this.handleError('POST Prescreening answers', []))
+    catchError(this.handleError('POST PreScreening answers', []))
   );
 }
 

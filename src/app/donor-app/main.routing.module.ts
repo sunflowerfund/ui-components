@@ -32,7 +32,7 @@ const routes: Route[] = [
   { path: 'u/new/form', component: DashboardComponent },
   { path: 'medic', component: DriveRegistrationComponent },
   { path: 'components', component: ComponentsPage },
-  { path: 'get-Started', component: PrescreeningComponent },
+  { path: 'get-started', component: PrescreeningComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 

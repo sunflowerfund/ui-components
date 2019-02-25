@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
 import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/preScreening.model';
-import { templateData } from 'src/assets/template-data/date';
+import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-prescreening',
@@ -11,10 +11,11 @@ import { templateData } from 'src/assets/template-data/date';
 })
 export class PrescreeningComponent implements OnInit {
 
-  demo = true;
-  questions;
-  // questions:PreScreeeningQuestion[];
-  answers :PreScreeningAnswers[];
+  prestine = [];
+  answerElements = [];
+  selectedAnswer = [];
+  questions: PreScreeeningQuestion[];
+  preScreeningAnswers: PreScreeningAnswers[];
 
   constructor(
     public drive: DriveRegistrationService,
@@ -23,21 +24,30 @@ export class PrescreeningComponent implements OnInit {
   getData() {
     this.drive.getPrescreeningQuestion().subscribe((response) => {
       this.questions = response;
-      console.log(this.questions);
+      // console.log(this.questions);
     }, error => {
       console.log(error);
 
     });
   }
 
-  answeringOfQuestionair():void{
-    this.drive
+  answeringOfQuestionair(): void {
+    // this.drive
+  }
+  reply() {
+    for (let index = 0; index < this.questions.length; index++) {
+      this.answerElements[index] = this.questions[index].answer;
+    }
+    this.drive.sendPrescreeningAnswers(this.answerElements).subscribe(() => {
+
+    }, error => {
+      console.log(error);
+
+    });
   }
 
-
   ngOnInit() {
-    // this.getData();
-    this.questions = templateData.Months;
+    this.getData();
   }
 
 }
