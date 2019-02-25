@@ -39,7 +39,7 @@ const routes: Route[] = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  declarations: [PrescreeningComponent]
+  declarations: []
   // declarations: []
 })
 export class MainRoutingModule {}

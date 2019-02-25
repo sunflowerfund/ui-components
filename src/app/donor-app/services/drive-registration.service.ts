@@ -18,6 +18,12 @@ export class DriveRegistrationService {
   step = 1;
   baseUrl = 'http://165.255.172.236:80/api/v1/';
 
+weight = 0;
+height = 0;
+
+bmi = 0;
+
+
 
   constructor(
     private http: HttpClient,
@@ -28,11 +34,18 @@ export class DriveRegistrationService {
     return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'prequestions', httpOptions)
       .pipe(
         tap(_ => this.log('fetched Prescreening questions')),
-        catchError(this.handleError('get Prescreening questions', []))
+        catchError(this.handleError('GET Prescreening questions', []))
       );
   }
 
 
+sendPrescreeningAnswers(answers){
+  return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
+  .pipe(
+    tap(_ => this.log('posted Prescreening answers')),
+    catchError(this.handleError('POST Prescreening answers', []))
+  );
+}
 
 
   private handleError<T>(operation = 'operation', result?: T) {

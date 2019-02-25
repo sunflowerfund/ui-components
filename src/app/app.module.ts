@@ -32,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthGuardService } from './donor-app/services/auth-guard.service';
 import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-components/ng-date-picker/ng-date-picker.component';
 import { CommonModule  } from '@angular/common';
+import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { CommonModule  } from '@angular/common';
     DriveRegistrationComponent,
     ComponentsPage,
     CircularIndicatorComponent,
+    PrescreeningComponent,
     DashboardComponent,
     StepTwoComponent,
     StepOneComponent,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
+import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/preScreening.model';
+import { templateData } from 'src/assets/template-data/date';
 
 @Component({
   selector: 'app-prescreening',
@@ -10,7 +12,10 @@ import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/mo
 export class PrescreeningComponent implements OnInit {
 
   demo = true;
-  questions:PreScreeeningQuestion[];
+  questions;
+  // questions:PreScreeeningQuestion[];
+  answers :PreScreeningAnswers[];
+
   constructor(
     public drive: DriveRegistrationService,
   ) { }
@@ -25,9 +30,14 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
+  answeringOfQuestionair():void{
+    this.drive
+  }
+
 
   ngOnInit() {
-    this.getData();
+    // this.getData();
+    this.questions = templateData.Months;
   }
 
 }

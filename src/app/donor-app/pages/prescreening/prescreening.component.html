@@ -1,10 +1,32 @@
-<div class="base" >
-  <div class="height-46 display-flex">
-    <label class="text-line-middle "></label>
-  </div> 
+ 
 
-<!-- <div type=input class="input"> </div> -->
+
+<div class="line"  *ngFor="let ques of questions; index as i" >
+  <div class="height-46 display-flex">
+    <label class="text-line-middle text">{{i+1}}. {{ques}}</label>
+  </div>
+  <!-- Yes -->
+  <div class="display-flex">
+    <div class="radio" [ngClass]="iConsentToMyPersonalInformationBeingGivenSANBS
+     && iConsentToMyPersonalInformationBeingGivenSANBSPrestine ? 'selected' : 'unselected'"
+      (click)="answers[i+1] = 1;"></div>
+    <label class="text-line-middle radio-label">Yes</label>
+  </div>
+
+  <!-- No -->
+  <div class="display-flex">
+    <div class="radio" [ngClass]="!iConsentToMyPersonalInformationBeingGivenSANBS
+     && iConsentToMyPersonalInformationBeingGivenSANBSPrestine ? 'selected' : 'unselected'"
+      (click)="iConsentToMyPersonalInformationBeingGivenSANBS = false; iConsentToMyPersonalInformationBeingGivenSANBSPrestine = true"></div>
+    <label class="text-line-middle radio-label">No</label>
+  </div>
 </div>
+
+
+
+
+
+
 
 <label for="email">Email Address</label>
 <!-- <input type="text" *ngIf="pan" class="input"> -->
