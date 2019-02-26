@@ -1,0 +1,106 @@
+/* Helpers */
+.h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  padding: 10px 0;
+  text-transform: capitalize;
+  text-overflow: clip;
+  white-space: wrap;
+  
+  text-overflow:ellipsis ; 
+}
+.font-weight-light {
+  font-weight: 200;
+  padding: 10px 0;
+}
+
+.font-weight-bold {
+  font-weight: 800;
+}
+
+.color-yellow {
+  color: var(--yellow);
+}
+
+.color-grey{
+  color: var(--grey);
+}
+
+.color-white {
+  color: var(--white);
+}
+
+.mw-fc {
+  max-width: fit-content !important;
+}
+.w-100{
+  width: 100%;
+}
+.no-margin{
+  margin: 0 15px !important;
+}
+.mh-fc{
+  max-height: fit-content!important;
+}
+.m-auto {
+  margin: auto !important;
+}
+.m-5{
+  margin: 0 5px !important;
+}
+.d-flex {
+  display: flex !important;
+}
+._1-4{
+  max-width: calc(25% - 5px);
+  padding: 0 2.5px;
+}
+.d-block {
+  display: block !important;
+}
+.fl{
+  float: left;
+}
+.ff{
+float: right;
+}
+.d-inline-block{
+  display: inline-block !important;
+}
+.p-tb25px{
+  padding-top: calc(10px + 1vw);
+  padding-bottom:  calc(10px + 1vw);
+}
+.mw-50{
+  max-width: 50%!important;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize{
+  text-transform: capitalize;
+}
+
+.white-space-preline {
+  white-space: pre-line;
+}
+
+.btn-container {
+  width: 100%;
+  padding: 10px 0;
+  display: block;
+}
+.font-size-default{
+  font-size: var(--font-size-default)
+}
+.text-transform-regular{
+  text-transform: unset !important;
+}
+.text-center {
+  text-align: center !important;
+}
+
+.align-self-auto {
+  align-self: center !important;
+  max-height: fit-content;
+}

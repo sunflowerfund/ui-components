@@ -1,0 +1,93 @@
+/* 
+ * Sunflower Fund Organisation
+ * License(s): Apache 2.0
+ * Website: https://www.sunflowerfundregistry.com/
+ * Github: https://github.com/sunflowerfund
+ * Description: This is an entry for all styles that help build a component's look and feel.
+*/
+/* font */
+/* Containers */
+@import './sunflower-bootstrap.css';
+/* Helpers */
+@import './sunflower.bootstrap.helper.css';
+
+/* Shared Attributes and Values */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800');
+
+/* Root Style for Consistent Matrix */
+:root {
+  /* Colors */
+  --yellow: rgb(255, 191, 0);
+  --dark-yellow: rgb(240, 182, 10);
+  --yellow-transparent:rgba(255, 191, 0, 0.342) ;
+  --black: rgb(0, 0, 0);
+  --grey: rgb(77, 74, 73);
+  --lightgrey: rgb(233, 228, 222);
+  --white: rgb(255, 255, 255);
+  --magenta: rgb(168, 0, 113);
+  --green: rgb(163, 204, 0);
+  --blue: rgb(0, 78, 204);
+  --lightblue: rgb(0, 237, 164);
+  --red: rgb(214, 46, 65);
+  --danger: rgb(255, 103, 121);
+  --warning:rgb(233, 138, 46);
+  /* Green - to be resolved */
+  /* Look & Feel */
+  --shadow: rgb(180, 180, 180, 0.726);
+
+  /* Sizes */
+  --font-weight-default: 500;
+  --font-size-default: 1.6rem;
+  --font-weight-small: 300;
+  --font-size-small: 1rem;
+  --font-weight-medium: 500;
+  --font-size-medium: 1.8rem;
+  --font-weight-bold: 600;
+  --font-size-large: 2rem;
+  --font-size-xlarge:2.5rem;
+  --font-size-xxlarge:3rem;
+  --font-size-xxxlarge:3.5rem;
+  --font-size-xxxxlarge: 4rem;
+  /* Breakpoints */
+  --startpoint-sm: 320px;
+  --breakpoint-sm: 640px;
+  --startpoint-md: 768px;
+  --breakpoint-md: 960px;
+  --startpoint-lg: 1024px;  
+  /* Padding Properties */
+  --padding-sides-sm: .3vw;
+  /* Gredients */
+  --background-gradient-secondary:linear-gradient(to bottom right, rgba(77, 74, 73, 0.822), rgba(255, 191, 0, 0.164));
+  --background-gradient: linear-gradient(to bottom, rgb(77, 74, 73), rgba(77, 74, 73, 0.849));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  /* Transition */
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+}
+
+html,body {
+  /* Default */
+  font-size: calc(5px + .5vw);
+  width: 100%;
+  min-height: fit-content;
+  min-width: 100vw;
+  height: 100%;
+  max-height: fit-content;
+}
+
+/* Custom scrollbar */
+/* ::-webkit-scrollbar{
+  width: 5px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--yellow);
+} */

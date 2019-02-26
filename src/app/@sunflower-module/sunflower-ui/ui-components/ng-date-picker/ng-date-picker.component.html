@@ -1,0 +1,14 @@
+<form class="form-inline">
+  <div class="form-group">
+    <div class="input-group">
+      <input class="input" placeholder="YYYYY-MM-DD"
+             name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="button calendar" (click)="d.toggle()" type="button">Select Date</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+ 
+<!-- <pre>Model: {{ model | json }}</pre> -->
