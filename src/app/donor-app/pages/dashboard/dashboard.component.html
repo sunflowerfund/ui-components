@@ -31,12 +31,12 @@
         </div>
         <label  class="labels " for="IdNumber">ID Number</label>
 
-        <input class="input" type="text" minlength="13"  maxlength="13" placeholder="200012340999"  aria-required="true"/>
+        <input class="input" type="text" minlength="13" [(ngModel)]="idnumber"  (change)="validateID()"  maxlength="13" placeholder="200012340999"  aria-required="true"/>
         <div class="btn-container text-center">
         
           <sun-dropdown-menu   title="Ethnicity" [items]=" ['African','Coloured', 'Asian/Indian','White']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
-       
+            
         </div>
       </div>
 
