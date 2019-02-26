@@ -9,6 +9,10 @@
   font-size: large;
 }
 
+.sub{
+  float: left;
+}
+
 .fifty{
     max-width: 320px;
 }

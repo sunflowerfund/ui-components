@@ -62,24 +62,34 @@
       
 
       <div class="m-auto" *ngIf="index == 3">
-        <h1 class="text-size-small font-weight-medium color-grey">
-          Fill in Next of Kin Details:
-        </h1>
+        <h2 class="text-size-small font-weight-medium color-grey">
+          <u>Fill in Next of Kin Details:</u>
+        </h2>
         <br />
-        <label  class="labels " for="First Emergency Contact">First Emergency Contact</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Name"  aria-required="true"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Relationship e.g spouse, partner, mother"></app-input>
+        <h2 class="text-size-large font-weight-medium color-grey" id="sub">First Emergency Contact</h2>
+        <!-- <label  class="labels " for="First Emergency Contact">First Emergency Contact</label> -->
+        <label  class="labels " for="Name">Name</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Jill"  aria-required="true"></app-input>
+        <label  class="labels " for="relationshipr">Relationship </label>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="e.g spouse, partner, mother"></app-input>
         <br>
-        <app-input [attrs]="['--default']" class="fifty" type="email" placeholder="E-mail"></app-input>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="Mobile number"  aria-required="true"/>
+        <label  class="labels " for="email">Email</label>
+        <app-input [attrs]="['--default']" class="fifty" type="email" placeholder="jill@gmail.com"></app-input>
+        <label  class="labels " for="CellNumber">Cellphone Number</label>
+        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="082 111 1111 "  aria-required="true"/>
         <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="Mobile number" max length="10"></app-input> -->
         <br>
-        <label  class="labels " for="First Emergency Contact">Second Emergency Contact</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Name"  aria-required="true"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Relationship e.g spouse, partner, mother"></app-input>
+        <h2 class="text-size-large font-weight-medium color-grey" id="sub">Second Emergency Contact</h2>
+        <!-- <label  class="labels " for="Second Emergency Contact">Second Emergency Contact</label> -->
+        <label  class="labels " for="Name">Name</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="John"  aria-required="true"></app-input>
+        <label  class="labels " for="Relationship">Relationship</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="e.g spouse, partner, mother"></app-input>
         <br> 
-        <app-input [attrs]="['--default']" class="fifty" type="email" placeholder="E-mail"></app-input>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="Mobile number" aria-required="true"/>
+        <label  class="labels " for="email">Email</label>
+        <app-input [attrs]="['--default']" class="fifty" type="email" placeholder="john@gmail.com"></app-input>
+        <label  class="labels " for="CellNumber">Cellphone Number</label>
+        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="086 122 2222" aria-required="true"/>
         <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="Mobile number"></app-input> -->
       </div>
       <div class="m-auto" *ngIf="index == 4">
