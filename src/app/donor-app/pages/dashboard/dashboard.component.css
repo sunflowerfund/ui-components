@@ -34,6 +34,36 @@
     border-radius: 5px;
   }
 
+  .btn-primary {
+    color: var(--black);
+    background-color: var(--yellow);
+    border-color: var(--yellow);
+    font-weight: var(--font-weight-medium);
+    /* box-shadow: 2.5px 2.5px 2px var(--shadow); */
+}
+
+
+
+button{
+
+  border: 1px solid var(--black);
+  background: none;
+  border-radius: 5px;
+  padding: calc( 5px + var(--padding-sides-sm)) calc( 25px + var(--padding-sides-sm));
+  margin: .5px;
+  width: auto;
+  max-width: 100%;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  font-size: var(--font-size-medium);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
   .next-btn{
     color: white;
     position: relative;
