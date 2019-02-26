@@ -33,7 +33,7 @@ export class DriveRegistrationService {
 
     return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'prequestions', httpOptions)
       .pipe(
-        tap(_ => this.log('fetched Prescreening questions')),
+        tap(_ => this.log('Fetched Prescreening Questions')),
         catchError(this.handleError('GET PreScreening questions', []))
       );
   }
@@ -42,7 +42,7 @@ export class DriveRegistrationService {
   sendPrescreeningAnswers(answers) {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
       .pipe(
-        tap(_ => this.log('posted Prescreening answers')),
+        tap(_ => this.log('Posted Prescreening Answers')),
         catchError(this.handleError('POST PreScreening answers', []))
       );
   }
