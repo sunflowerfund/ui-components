@@ -12,7 +12,7 @@
     <div class="display-flex">
         <div class="radio" [ngClass]="questions[i].answer && prestine[i]
          ? 'selected' : 'unselected'"
-          (click)="questions[i].answer = true;  prestine[i]= true; "></div>
+          (click)="questions[i].answer = 1;  prestine[i]= true; "></div>
         <label class="text-line-middle radio-label">Yes</label>
       </div>
     
@@ -20,7 +20,7 @@
       <div class="display-flex">
         <div class="radio" [ngClass]=" !questions[i].answer && prestine[i]
         ? 'selected' : 'unselected'"
-          (click)="questions[i].answer = false; prestine[i]= true;"></div>
+          (click)="questions[i].answer = 0; prestine[i]= true;"></div>
         <label class="text-line-middle radio-label">No</label>
       </div>
    </div>
@@ -37,12 +37,12 @@
   
   
   <label for="email">Email Address</label>
-  <!-- <input type="text" *ngIf="pan" class="input"> -->
+  <input type="text" [(ngModel)]="email" class="input">
   <br>
   <label for="cellNumber">Cell Number</label>
-  <input type="text" class="input">
-  <!-- <sunflower-button type="primary">Begin</sunflower-button> -->
+  <input type="text" [(ngModel)]="cellnumber" class="input">
   <br>
-    <button type="primary" class="btn-primary" (click)="reply();">Begin</button>
+  <sunflower-button type="primary" (click)="reply();">Begin</sunflower-button>
+  
   
 </div>
