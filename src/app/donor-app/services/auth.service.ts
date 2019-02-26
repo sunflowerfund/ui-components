@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
@@ -9,6 +7,11 @@ import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+
+// const httpParams = {
+//   params: new HttpParams().set('email', 'sunflowerfund@younglings.africa' ).set('password', 'sunflower10')
+// };
+
 @Injectable({
   providedIn: 'root'
 })

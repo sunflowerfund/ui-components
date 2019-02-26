@@ -1,6 +1,6 @@
 import { SignUpComponent } from './donor-app/pages/sign-up/sign-up.component';
 import { SignInComponent } from './donor-app/pages/sign-in/sign-in.component';
-import { FormsModule , FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
@@ -30,7 +30,11 @@ import { StepOneComponent } from './donor-app/pages/drive-registration/step-one/
 import { AuthService } from './donor-app/services/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuardService } from './donor-app/services/auth-guard.service';
-import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-components/ng-date-picker/ng-date-picker.component'; 
+import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-components/ng-date-picker/ng-date-picker.component';
+import { CommonModule  } from '@angular/common';
+import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +49,7 @@ import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-compo
     DriveRegistrationComponent,
     ComponentsPage,
     CircularIndicatorComponent,
+    PrescreeningComponent,
     DashboardComponent,
     StepTwoComponent,
     StepOneComponent,
@@ -52,9 +57,10 @@ import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-compo
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MainRoutingModule,
+    CommonModule,
     NgbModule,
     ToastrModule.forRoot(),
     FormsModule,
@@ -62,7 +68,7 @@ import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-compo
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [FormBuilder, AuthService, AuthGuardService],
-  
-      bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
