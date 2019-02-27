@@ -1,7 +1,4 @@
 <sunflower-navbar>
-  <!-- <sunflower-button routerLink="/" type="primary active" [attrs]="['btn-small']">
-    skip <i class="fa fa-chevron-right"></i>
-  </sunflower-button> -->
 </sunflower-navbar>
 
 <div class="banner d-flex background">
@@ -20,6 +17,7 @@
       <br>
 
       <div class="d-block m-auto" *ngIf="index == 1">
+          
     
         <label  class="labels " for="Firstname">First Name</label>
         <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text" placeholder="i.e Jane"></app-input>
@@ -29,23 +27,20 @@
         <div class="btn-container">
           <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
         </div>
-        <label  class="labels " for="Firstname">ID Number</label>
+        <label  class="labels " for="IdNumber">ID Number</label>
 
         <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number" placeholder="Identity Number"></app-input>
         <div class="btn-container text-center">
         
-          <sun-dropdown-menu   title="Ethnicity" [items]=" ['African','Coloured', 'Asian/Indian','White']"
+          <sun-dropdown-menu   title="Ethnicity" [items]=" ['African', 'Asian/Indian','Coloured','White']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
-       
+            
         </div>
         <sunflower-button type="primary" (click)="next('step1')">Next</sunflower-button>
 
       </div>
 
       <div class="m-auto" *ngIf="index == 2">
-        <!-- <h1 class="text-size-medium font-weight-medium color-grey">
-          Fill in Contact Details:
-        </h1> -->
         <br>
         <label  class="labels " for="Firstname">Postal Address</label>
         <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.Address" ngDefaultControl placeholder="Postal Address"></app-input>
@@ -94,8 +89,8 @@
       
       </div>
       <div class="m-auto" *ngIf="index == 4">
-        <h1 class="text-size-medium font-weight-medium color-grey">
-          Terms and Aggreements
+        <h1 class="text-size-small font-weight-medium color-grey">
+          Terms and Agreements
         </h1>
         <!-- <textarea readonly class="TsTextArea">
         1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
@@ -123,10 +118,10 @@
       </div>
     
 
-    <div class="btn-container text-center">
-          <br>  <!-- <sunflower-button type="secondary">Skip</sunflower-button> -->
-    </div>
-      <!-- eng -->
+    <!-- <div class="btn-container text-center">
+          <br>  
+    </div> -->
+      
     </div>
 
   </div>
