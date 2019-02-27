@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
 import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/preScreening.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class PrescreeningComponent implements OnInit {
 
   constructor(
     public drive: DriveRegistrationService,
+    public router: Router,
   ) { }
 
   getData() {
@@ -77,7 +79,7 @@ export class PrescreeningComponent implements OnInit {
 
     this.drive.sendPrescreeningAnswers(this.answerResponse)
     .subscribe(() => {
-
+this.router.navigate(['/u/new/form']);
     }, error => {
       console.log(error);
 
