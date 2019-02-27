@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { templateData } from 'src/assets/template-data/date';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
-import { Z_FINISH } from 'zlib';
+// import { Z_FINISH } from 'zlib';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +13,8 @@ import { Z_FINISH } from 'zlib';
 export class DashboardComponent implements OnInit {
   constructor(
     public drive: DriveRegistrationService,
+    private toastr: ToastrService,
+
   ) {
 
   }
@@ -108,7 +112,11 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.ethnicity = ethnicity;
   }
 
- 
+  showToaster(){
+    this.toastr.success('Account created Successfully.');
+}
+
+
   next(step) {
     this.index++;
     this.setUpClass(this.index);
