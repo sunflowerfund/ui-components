@@ -30,12 +30,14 @@ export class DashboardComponent implements OnInit {
     workTelephone: '',
     mobile: '',
 
-    emergency: [{
+    emergency: [
+      {
       emergencyFullContactName: '',
       relationship: '',
       emergencyEmail: '',
       EmergencyMobile: '',
-    }],
+    }
+  ],
     consent: true,
 
 
@@ -112,9 +114,9 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.ethnicity = ethnicity;
   }
 
-  showToaster(){
+  showToaster() {
     this.toastr.success('Account created Successfully.');
-}
+  }
 
 
   next(step) {
@@ -138,24 +140,24 @@ export class DashboardComponent implements OnInit {
 
     }
     if (step === 'step3') {
-      this.drive.personalDetails.Address = this.personalDetails.Address;
-      this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
-      this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
-      this.drive.personalDetails.mobile = this.personalDetails.mobile; 
+      // this.drive.personalDetails.Address = this.personalDetails.emergency;
+      // this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
+      // this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
+      // this.drive.personalDetails.mobile = this.personalDetails.mobile;
     }
     if (step === 'step4') {
 
     }
   }
 
-finish(){
-      console.log(this.personalDetails);
+  finish() {
+    console.log(this.personalDetails);
 
 
-      // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
-      //   console.log(error);
-      // });
-    }
+    // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
+    //   console.log(error);
+    // });
+  }
 
 }
 

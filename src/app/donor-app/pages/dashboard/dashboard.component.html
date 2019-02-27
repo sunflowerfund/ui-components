@@ -71,17 +71,17 @@
         <h1 class="text-size-medium font-weight-medium color-grey">
           Fill in Next of Kin Details:
         </h1>
-        <app-input [attrs]="['--default']" class="fifty" type="text"   [(ngModel)]="personalDetails.emergency[0].emergencyFullContactName" 
+        <app-input [attrs]="['--default']" class="fifty" type="text"   [(ngModel)]="personalDetails.emergency.emergencyFullContactName" 
          ngDefaultControl placeholder="First Emergency Contact"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[0].relationship"
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency.relationship"
          ngDefaultControl placeholder="Relationship"></app-input>
         <br>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[0].emergencyEmail"
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency.emergencyEmail"
          ngDefaultControl placeholder="E-mail"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[0].EmergencyMobile" 
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency.EmergencyMobile" 
         ngDefaultControl placeholder="Mobile number"></app-input>
         <br>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyFullContactName"
+        <!-- <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyFullContactName"
          ngDefaultControl placeholder="Second Emergency Contact"></app-input>
         <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].relationship" 
         ngDefaultControl placeholder="Relationship"></app-input>
@@ -89,7 +89,7 @@
         <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyEmail" 
         ngDefaultControl placeholder="E-mail"></app-input>
         <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].EmergencyMobile"
-         ngDefaultControl placeholder="Mobile number"></app-input>
+         ngDefaultControl placeholder="Mobile number"></app-input> -->
         <sunflower-button type="primary" (click)="next('step3')">Next</sunflower-button>
       
       </div>
