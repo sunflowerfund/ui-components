@@ -67,6 +67,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  validateID() {
+    console.log('qwertyuiop');
+    
+  }
   setUpClass(index) {
     this.index = index;
     if (index === 1) {
