@@ -29,7 +29,7 @@
         </div>
         <label  class="labels " for="IdNumber">ID Number</label>
 
-        <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number" placeholder="Identity Number"></app-input>
+        <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number"></app-input>
         <div class="btn-container text-center">
         
           <sun-dropdown-menu   title="Ethnicity" [items]=" ['African', 'Asian/Indian','Coloured','White']"
@@ -41,52 +41,55 @@
       </div>
 
       <div class="m-auto" *ngIf="index == 2">
-        <br>
-        <label  class="labels " for="Firstname">Postal Address</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.address1" ngDefaultControl placeholder="Postal Address"></app-input>
+          <h2 class="text-size-medium font-weight-medium color-grey">
+            Postal Address:
+            </h2>
+   
+            
+        <label  class="labels " for="line1">Line 1</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address1" ngDefaultControl></app-input>
        
-        <label  class="labels " for="Firstname">Home Tel</label>
-        <app-input [attrs]="['--default']" class="fifty" type="number"  [(ngModel)]="personalDetails.homePhone" ngDefaultControl placeholder="Home telephone"></app-input>
+       <br>
+        <label  class="labels " for="line2">Line 2</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address2" ngDefaultControl></app-input>
        
-        <label  class="labels " for="Firstname">Work Tel</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workPhone" ngDefaultControl placeholder="Work telephone"></app-input>
+       <br>
+        <label  class="labels " for="line3">Line 3</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address3" ngDefaultControl></app-input>
+       
+        <label  class="labels " for="homeTel">Home Tel</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.homePhone" ngDefaultControl></app-input>
+       
+        <label  class="labels " for="workTel">Work Tel</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.workPhone" ngDefaultControl></app-input>
 
-        <!-- <label  class="labels " for="Firstname">ID Number</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input> -->
-
-<!-- GEt user mmobile number from the service, not thwe user again -->
-
-        <!-- <label  class="labels " for="Firstname">Mobile Number</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workTelephone"
-         ngDefaultControl placeholder="Mobile number"></app-input> -->
+     
         <sunflower-button type="primary" (click)="next('step2')">Next</sunflower-button>
       
       </div>
       
 
       <div class="m-auto" *ngIf="index == 3">
-        <h1 class="text-size-medium font-weight-medium color-grey">
+        <h2 class="text-size-medium font-weight-medium color-grey">
           Fill in Next of Kin Details:
-        </h1>
-        <app-input [attrs]="['--default']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
-         ngDefaultControl placeholder="First Emergency Contact"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
-         ngDefaultControl placeholder="Relationship"></app-input>
+        </h2>
+        <label  class="labels " for="FullName">Full Name</label>
+
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
+         ngDefaultControl ></app-input>
+         <label  class="labels " for="relationship">Relationship</label>
+
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
+         ngDefaultControl ></app-input>
         <br>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
-         ngDefaultControl placeholder="E-mail"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
-        ngDefaultControl placeholder="Mobile number"></app-input>
+        <label  class="labels " for="emailAddress">Email address</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
+         ngDefaultControl ></app-input>
+         <label  class="labels " for="mobile">Mobile Number</label>
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
+        ngDefaultControl ></app-input>
         <br>
-        <!-- <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyFullContactName"
-         ngDefaultControl placeholder="Second Emergency Contact"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].relationship" 
-        ngDefaultControl placeholder="Relationship"></app-input>
-        <br>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyEmail" 
-        ngDefaultControl placeholder="E-mail"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].EmergencyMobile"
-         ngDefaultControl placeholder="Mobile number"></app-input> -->
+     
         <sunflower-button type="primary" (click)="next('step3')">Next</sunflower-button>
       
       </div>
@@ -94,30 +97,17 @@
         <h1 class="text-size-small font-weight-medium color-grey">
           Terms and Agreements
         </h1>
-        <!-- <textarea readonly class="TsTextArea">
-        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me firebaprior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
-        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
-        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
-        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
-        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
-        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
-        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
         
-      </textarea> -->
+
       <a href="https://en.calameo.com/read/0058472544559d16c13db" target="blank"><h2>Terms and Conditions </h2> </a><br>
       <a href="http://google.com"><h2> Privacy Policy </h2></a>
       <div class="check" type="check-box"></div>
 
-      <label class="container">I have read and understood the terms and conditions above
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-        </label>
-
+      
+        <label class="container">I have read and understood the terms and conditions above
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
 
 
       <div class="btn-container text-center">

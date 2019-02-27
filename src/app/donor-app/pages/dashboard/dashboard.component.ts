@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { templateData } from 'src/assets/template-data/date';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
-// import { Z_FINISH } from 'zlib';
 import { ToastrService } from 'ngx-toastr';
-import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model/personalDetailsDTO';
+import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 
 
 @Component({
@@ -15,39 +13,38 @@ export class DashboardComponent implements OnInit {
   constructor(
     public drive: DriveRegistrationService,
     private toastr: ToastrService,
+  ) { }
 
-  ) {
+  personalDetails = {
+    address1: '',
+    address2: '',
+    address3: '',
+    bmi: '',
+    country: '',
+    countryId: 0,
+    dateOfBirth: '',
+    ethnicGroupId: 0,
+    firstContactEmail: '',
+    firstContactMobile: '',
+    firstContactName: '',
+    firstContactRelationship: '',
+    firstName: '',
+    gender: 0,
+    homePhone: '',
+    idNumber: '',
+    idType: 0,
+    postalCode: '',
+    provinceId: 0,
+    secondContactEmail: '',
+    secondContactMobile: '',
+    secondContactName: '',
+    secondContactRelationship: '',
+    surname: '',
+    titleId: 0,
+    workPhone: '',
+  };
 
-  }
-  personalDetails: PersonalDetailsDTO =
-    {
-      address1: 'string',
-      address2: 'string',
-      address3: 'string',
-      birthDate: 'string',
-      countryId: 0,
-      ethnicGroupId: 'string',
-      firstContactEmail: 'string',
-      firstContactMobile: 'string',
-      firstContactName: 'string',
-      firstContactRelationship: 0,
-      firstName: 'string',
-      gender: 'string',
-      homePhone: 'string',
-      idNumber: 'string',
-      idType: 0,
-      postalCode: 'string',
-      provinceId: 0,
-      secondContactEmail: 'string',
-      secondContactMobile: 'string',
-      secondContactName: 'string',
-      secondContactRelationship: 0,
-      surname: 'string',
-      titleId: 0,
-      workPhone: 'string',
 
-
-  } ;
 
   index = 1;
   class1 = 'active indicator';
@@ -59,13 +56,8 @@ export class DashboardComponent implements OnInit {
 
 
   buttonNext = 'Next';
-  gender: string;
+  gender: number;
 
-  day: number | string;
-
-  month: number | string;
-
-  year: number | string;
 
   ethnicity: string;
 
@@ -109,63 +101,50 @@ export class DashboardComponent implements OnInit {
     }
   }
   setGender(gender: string) {
-    this.personalDetails.gender = gender;
-  }
-  // setDay(day: number | string): void {
-  //   this.day = day;
-  // }
-  // setMonth(month: number | string): void {
-  //   this.month = month;
-  // }
-  // setYear(year: number | string): void {
-  //   this.year = year;
-  // }
-  setEthnicity(ethnicity: string): void {
-    this.personalDetails.ethnicGroupId = ethnicity;
+    if (gender === 'Female') { this.personalDetails.gender = 1; }
+        this.personalDetails.gender = 0;
+
   }
 
-  showToaster() {
-    this.toastr.success('Account created Successfully.');
+
+  setEthnicity(ethnicity: string): void {
+    // this.personalDetails.ethnicGroupId = ethnicity;
   }
+
+
 
 
   next(step) {
     this.index++;
     this.setUpClass(this.index);
     if (step === 'step1') {
-      this.drive.personalDetails.firstName = this.personalDetails.firstName;
-      this.drive.personalDetails.surname = this.personalDetails.surname;
-      this.drive.personalDetails.gender = this.personalDetails.gender;
-      this.drive.personalDetails.idNumber = this.personalDetails.idNumber;
-      this.drive.personalDetails.ethnicGroupId = this.personalDetails.ethnicGroupId;
+
       console.log(this.personalDetails);
+      // this.personalDetails.birthDate
 
     }
     if (step === 'step2') {
-
-
-      this.drive.personalDetails.address1 = this.personalDetails.address1;
-      this.drive.personalDetails.homePhone = this.personalDetails.homePhone;
-      this.drive.personalDetails.workPhone = this.personalDetails.workPhone;
-
       console.log(this.personalDetails);
-
-
     }
-    if (step === 'step3') {
-      // this.drive.personalDetails. = this.personalDetails.firstContactName;
-      this.drive.personalDetails.firstContactRelationship = this.personalDetails.firstContactRelationship;
-      this.drive.personalDetails.firstContactEmail = this.personalDetails.firstContactEmail;
-      this.drive.personalDetails.firstContactMobile = this.personalDetails.firstContactMobile;
-    }
+    if (step === 'step3') { }
     if (step === 'step4') {
 
     }
   }
 
   finish() {
+    // this.personalDetails = ethnicity;
     console.log(this.personalDetails);
-    this.drive.sendPersonalInformation(this.personalDetails);
+    this.drive.sendPersonalInformation(this.personalDetails)
+      .subscribe((_response: OnlineRegistrationDTO) => {
+
+        this.drive.showToaster('success', 'Personal Details have been stored successfully');
+        // this.router.navigate(['/u/new/form']);
+      }, error => {
+        console.log(error);
+        this.drive.showToaster('error', error);
+
+      });
 
 
     // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
