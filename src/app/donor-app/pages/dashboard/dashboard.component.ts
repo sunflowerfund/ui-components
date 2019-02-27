@@ -3,6 +3,7 @@ import { templateData } from 'src/assets/template-data/date';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 // import { Z_FINISH } from 'zlib';
 import { ToastrService } from 'ngx-toastr';
+import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model/personalDetailsDTO';
 
 
 @Component({
@@ -18,39 +19,43 @@ export class DashboardComponent implements OnInit {
   ) {
 
   }
-  personalDetails = {
-    firstName: '',
-    lastName: '',
-    idNumber: '',
-    gender: '',
-    ethnicity: '',
+  personalDetails: PersonalDetailsDTO =
+    {
+      address1: 'string',
+      address2: 'string',
+      address3: 'string',
+      birthDate: 'string',
+      countryId: 0,
+      ethnicGroupId: 'string',
+      firstContactEmail: 'string',
+      firstContactMobile: 'string',
+      firstContactName: 'string',
+      firstContactRelationship: 0,
+      firstName: 'string',
+      gender: 'string',
+      homePhone: 'string',
+      idNumber: 'string',
+      idType: 0,
+      postalCode: 'string',
+      provinceId: 0,
+      secondContactEmail: 'string',
+      secondContactMobile: 'string',
+      secondContactName: 'string',
+      secondContactRelationship: 0,
+      surname: 'string',
+      titleId: 0,
+      workPhone: 'string',
 
-    Address: '',
-    homeTelephone: '',
-    workTelephone: '',
-    mobile: '',
 
-    emergency: [
-      {
-      emergencyFullContactName: '',
-      relationship: '',
-      emergencyEmail: '',
-      EmergencyMobile: '',
-    }
-  ],
-    consent: true,
-
-
-  };
+  } ;
 
   index = 1;
   class1 = 'active indicator';
   class2 = 'indicator';
   class3 = 'indicator';
   class4 = 'indicator';
-  Days;
-  Months;
-  Years;
+
+
 
 
   buttonNext = 'Next';
@@ -70,8 +75,8 @@ export class DashboardComponent implements OnInit {
 
   validateID() {
     console.log('qwertyuiop');
-    
   }
+
   setUpClass(index) {
     this.index = index;
     if (index === 1) {
@@ -116,7 +121,7 @@ export class DashboardComponent implements OnInit {
   //   this.year = year;
   // }
   setEthnicity(ethnicity: string): void {
-    this.personalDetails.ethnicity = ethnicity;
+    this.personalDetails.ethnicGroupId = ethnicity;
   }
 
   showToaster() {
@@ -129,26 +134,29 @@ export class DashboardComponent implements OnInit {
     this.setUpClass(this.index);
     if (step === 'step1') {
       this.drive.personalDetails.firstName = this.personalDetails.firstName;
-      this.drive.personalDetails.lastName = this.personalDetails.lastName;
+      this.drive.personalDetails.surname = this.personalDetails.surname;
       this.drive.personalDetails.gender = this.personalDetails.gender;
       this.drive.personalDetails.idNumber = this.personalDetails.idNumber;
-      this.drive.personalDetails.ethnicity = this.personalDetails.ethnicity;
+      this.drive.personalDetails.ethnicGroupId = this.personalDetails.ethnicGroupId;
+      console.log(this.personalDetails);
+
     }
     if (step === 'step2') {
 
 
-      this.drive.personalDetails.Address = this.personalDetails.Address;
-      this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
-      this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
-      this.drive.personalDetails.mobile = this.personalDetails.mobile;
+      this.drive.personalDetails.address1 = this.personalDetails.address1;
+      this.drive.personalDetails.homePhone = this.personalDetails.homePhone;
+      this.drive.personalDetails.workPhone = this.personalDetails.workPhone;
+
+      console.log(this.personalDetails);
 
 
     }
     if (step === 'step3') {
-      // this.drive.personalDetails.Address = this.personalDetails.emergency;
-      // this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
-      // this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
-      // this.drive.personalDetails.mobile = this.personalDetails.mobile;
+      // this.drive.personalDetails. = this.personalDetails.firstContactName;
+      this.drive.personalDetails.firstContactRelationship = this.personalDetails.firstContactRelationship;
+      this.drive.personalDetails.firstContactEmail = this.personalDetails.firstContactEmail;
+      this.drive.personalDetails.firstContactMobile = this.personalDetails.firstContactMobile;
     }
     if (step === 'step4') {
 
@@ -157,6 +165,7 @@ export class DashboardComponent implements OnInit {
 
   finish() {
     console.log(this.personalDetails);
+    this.drive.sendPersonalInformation(this.personalDetails);
 
 
     // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {

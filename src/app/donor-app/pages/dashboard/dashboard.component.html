@@ -23,7 +23,7 @@
         <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text" placeholder="i.e Jane"></app-input>
         <label  class="labels " for="Firstname">Last Name</label>
 
-        <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.lastName" ngDefaultControl type="text" placeholder="i.e Doe"></app-input>
+        <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.surname" ngDefaultControl type="text" placeholder="i.e Doe"></app-input>
         <div class="btn-container">
           <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
         </div>
@@ -43,20 +43,22 @@
       <div class="m-auto" *ngIf="index == 2">
         <br>
         <label  class="labels " for="Firstname">Postal Address</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.Address" ngDefaultControl placeholder="Postal Address"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.address1" ngDefaultControl placeholder="Postal Address"></app-input>
        
         <label  class="labels " for="Firstname">Home Tel</label>
-        <app-input [attrs]="['--default']" class="fifty" type="number"  [(ngModel)]="personalDetails.homeTelephone" ngDefaultControl placeholder="Home telephone"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="number"  [(ngModel)]="personalDetails.homePhone" ngDefaultControl placeholder="Home telephone"></app-input>
        
         <label  class="labels " for="Firstname">Work Tel</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workTelephone" ngDefaultControl placeholder="Work telephone"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workPhone" ngDefaultControl placeholder="Work telephone"></app-input>
 
         <!-- <label  class="labels " for="Firstname">ID Number</label>
         <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input> -->
 
-        <label  class="labels " for="Firstname">Mobile Number</label>
+<!-- GEt user mmobile number from the service, not thwe user again -->
+
+        <!-- <label  class="labels " for="Firstname">Mobile Number</label>
         <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workTelephone"
-         ngDefaultControl placeholder="Mobile number"></app-input>
+         ngDefaultControl placeholder="Mobile number"></app-input> -->
         <sunflower-button type="primary" (click)="next('step2')">Next</sunflower-button>
       
       </div>
@@ -66,14 +68,14 @@
         <h1 class="text-size-medium font-weight-medium color-grey">
           Fill in Next of Kin Details:
         </h1>
-        <app-input [attrs]="['--default']" class="fifty" type="text"   [(ngModel)]="personalDetails.emergency.emergencyFullContactName" 
+        <app-input [attrs]="['--default']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
          ngDefaultControl placeholder="First Emergency Contact"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency.relationship"
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
          ngDefaultControl placeholder="Relationship"></app-input>
         <br>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency.emergencyEmail"
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
          ngDefaultControl placeholder="E-mail"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency.EmergencyMobile" 
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
         ngDefaultControl placeholder="Mobile number"></app-input>
         <br>
         <!-- <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyFullContactName"
@@ -109,7 +111,15 @@
       </textarea> -->
       <a href="https://en.calameo.com/read/0058472544559d16c13db" target="blank"><h2>Terms and Conditions </h2> </a><br>
       <a href="http://google.com"><h2> Privacy Policy </h2></a>
-      <div class="check" type="check-box">I have read and understood the terms and conditions above</div>
+      <div class="check" type="check-box"></div>
+
+      <label class="container">I have read and understood the terms and conditions above
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+        </label>
+
+
+
       <div class="btn-container text-center">
           <br>
           <br>

@@ -4,6 +4,7 @@ import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/mo
 import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/preScreening.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/onlineRegistrationDTO';
 
 
 @Component({
@@ -52,9 +53,9 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
-  showToaster(){
+  showToaster() {
     this.toastr.success('Step one completed Successfully.');
-}
+  }
 
   reply() {
     this.drive.email = this.email;
@@ -76,21 +77,23 @@ export class PrescreeningComponent implements OnInit {
     this.answerResponse.p8 = this.answerElements[7];
     this.answerResponse.p9 = this.answerElements[8];
     this.answerResponse.p10 = this.answerElements[9];
-    this.drive.bmi =  this.answerElements[3] / Math.pow(this.answerElements[4], 2);
+    this.drive.bmi = this.answerElements[3] / Math.pow(this.answerElements[4], 2);
     // this.answerResponse.bmi =  Number.parseFloat(this.BMI.toFixed(2));
-// console.log('BMI ', this.BMI);
-// console.log('After Cal ', this.answerResponse.bmi);
+    // console.log('BMI ', this.BMI);
+    // console.log('After Cal ', this.answerResponse.bmi);
 
-// console.log(this.answerResponse);
+    // console.log(this.answerResponse);
 
     this.drive.sendPrescreeningAnswers(this.answerResponse)
-    .subscribe(() => {
-      this.showToaster();
-this.router.navigate(['/u/new/form']);
-    }, error => {
-      console.log(error);
+      .subscribe((_response: OnlineRegistrationDTO) => {
+        // console.log('Response', _response);
+        this.drive.CurrentUID = _response.id;
+        this.showToaster();
+        this.router.navigate(['/u/new/form']);
+      }, error => {
+        console.log(error);
 
-    });
+      });
 
   }
 

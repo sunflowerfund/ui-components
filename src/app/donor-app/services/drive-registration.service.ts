@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
+import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model/personalDetailsDTO';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -24,27 +25,11 @@ export class DriveRegistrationService {
   bmi = 0;
 
 
-  personalDetails = {
-    firstName: '',
-    lastName: '',
-    idNumber: '',
-    gender: '',
-    ethnicity: '',
+  CurrentUID = 0;
 
-    Address: '',
-    homeTelephone: '',
-    workTelephone: '',
-    mobile: '',
 
-    emergency: [{
-      emergencyFullContactName: '',
-      relationship: '',
-      emergencyEmail: '',
-      EmergencyMobile: '',
-    }],
-    consent: true,
+  personalDetails:PersonalDetailsDTO;
 
-  };
 
 
   constructor(
@@ -63,8 +48,9 @@ export class DriveRegistrationService {
 
   sendPrescreeningAnswers(answers) {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
+
       .pipe(
-        tap(_ => this.log('Posted Prescreening Answers')),
+        tap( _response => this.log('Posted Prescreening Answers')),
         catchError(this.handleError('POST PreScreening answers failed', []))
       );
   }
@@ -89,7 +75,7 @@ export class DriveRegistrationService {
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
-    };
+    }; 
   }
 
   /** Log aSunflowerUserService message with the MessageService */
