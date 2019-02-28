@@ -57,7 +57,7 @@ export class DriveRegistrationService {
   }
 
   sendPersonalInformation(personalInfo) {
-    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID, personalInfo, httpOptions)
+    return this.http.patch(this.baseUrl + 'o_registration/${this.CurrentUID}' , personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
         catchError(this.handleError('POST Personal Information failed', []))

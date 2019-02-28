@@ -12,7 +12,7 @@
 import { Timestamp } from './timestamp';
 
 
-export interface GenderDTO { 
+export interface GenderDTO {
     createDate?: Timestamp;
     createOpr?: string;
     editDate?: Timestamp;

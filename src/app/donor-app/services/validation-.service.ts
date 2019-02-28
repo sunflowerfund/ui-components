@@ -11,6 +11,7 @@ export class ValidationService {
 
   identityValidation(identity) {
 
+    this.messages.length = 0;
 
     if (isNaN(identity)) {
       this.messages.push('Value supplied is not a valid number');
@@ -22,19 +23,22 @@ export class ValidationService {
       this.invalid++;
     }
 
-    const yy = identity.substring(0, 2),
-      mm = identity.substring(2, 4),
-      dd = identity.substring(4, 6);
+    // tslint:disable-next-line:prefer-const
+    let yy = identity.substring(0, 2),
+    // tslint:disable-next-line:prefer-const
+    mm = identity.substring(2, 4),
+    // tslint:disable-next-line:prefer-const
+    dd = identity.substring(4, 6);
 
-    const dob = new Date(yy, (mm - 1), dd);
+    // tslint:disable-next-line:prefer-const
+    let dob = new Date(yy, (mm - 1), dd);
+
 
     // check values - add one to month because Date() uses 0-11 for months
-    if (!(((dob.getFullYear() + '').substring(2, 4) === yy) && (dob.getMonth() === mm - 1)
-    && (dob.getDate() === dd))) {
+    if ((((dob.getFullYear() + '').substring(2, 4) === yy) && (dob.getMonth() === mm - 1) && (dob.getDate() === dd))) {
       this.messages.push('Date in first 6 digits is invalid.');
       this.invalid++;
     }
-
     // evaluate GSSS group for gender and sequence
     const gender = parseInt(identity.substring(6, 10), 10) > 5000 ? 'M' : 'F';
 
@@ -48,7 +52,7 @@ export class ValidationService {
     }
     // ensure second to last digit is a 8 or a 9
     if (identity.substring(11, 12) < 8) {
-      this.messages.push('Second to last digit can only be a 8 or 9 but is a ' + identity.substring(11, 12) + '.<br />');
+      this.messages.push('Second to last digit can only be a 8 or 9 but is a ' + identity.substring(11, 12) + '.');
       this.invalid++;
     }
 
@@ -70,16 +74,16 @@ export class ValidationService {
     }
 
     if ((ncheck % 10) !== 0) {
-      this.messages.push('Checkbit is incorrect.<br />');
+      this.messages.push('Checkbit is incorrect.');
       this.invalid++;
     }
 
     // if one or more checks fail, display details
     if (this.invalid > 0) {
      this.status = false;
-    }this.status = true;
+    } else {this.status = true; }
 
-    return (ncheck % 10) === 0;
+    return (ncheck % 10) === 0 ;
   }
 
 }

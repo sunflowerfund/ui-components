@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 import { ToastrService } from 'ngx-toastr';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
+import { ValidationService } from '../../services/validation-.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +14,10 @@ import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/mo
 export class DashboardComponent implements OnInit {
   constructor(
     public drive: DriveRegistrationService,
-    private toastr: ToastrService,
-  ) { }
+    private router: Router,
+    private validationService: ValidationService,
+
+  ) { this.ad1 = true; }
 
   personalDetails = {
     address1: '',
@@ -44,13 +48,23 @@ export class DashboardComponent implements OnInit {
     workPhone: '',
   };
 
-
+  ad1;
 
   index = 1;
   class1 = 'active indicator';
   class2 = 'indicator';
   class3 = 'indicator';
   class4 = 'indicator';
+
+  ContactEmail: '';
+  ContactMobile: '';
+  ContactName: '';
+  ContactRelationship: '';
+
+  ContactEmail2: '';
+  ContactMobile2: '';
+  ContactName2: '';
+  ContactRelationship2: '';
 
 
 
@@ -64,9 +78,20 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  address1() {
+    this.personalDetails.firstContactEmail = this.ContactEmail;
+    this.personalDetails.firstContactMobile = this.ContactMobile;
+    this.personalDetails.firstContactName = this.ContactName;
+    this.personalDetails.firstContactRelationship = this.ContactRelationship;
 
-  validateID() {
-    console.log('qwertyuiop');
+    this.ad1 = !this.ad1;
+  }
+  validateID(idnumber) {
+    this.validationService.messages.length = 0;
+    this.validationService.identityValidation(idnumber);
+
+
+    // return this.validationService.
   }
 
   setUpClass(index) {
@@ -102,8 +127,7 @@ export class DashboardComponent implements OnInit {
   }
   setGender(gender: string) {
     if (gender === 'Female') { this.personalDetails.gender = 1; }
-        this.personalDetails.gender = 0;
-
+    this.personalDetails.gender = 0;
   }
 
 
@@ -115,21 +139,39 @@ export class DashboardComponent implements OnInit {
 
 
   next(step) {
-    this.index++;
-    this.setUpClass(this.index);
     if (step === 'step1') {
+      if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
+        this.index++;
+        this.setUpClass(this.index);
 
-      console.log(this.personalDetails);
+      }
+      if (this.validationService.messages.length > 0) {
+        for (let index = 0; index < this.validationService.messages.length; index++) {
+          this.drive.showToaster('error', this.validationService.messages[index]);
+
+        }
+      }
+
+      // console.log(this.personalDetails);
       // this.personalDetails.birthDate
 
     }
     if (step === 'step2') {
       console.log(this.personalDetails);
+      this.index++;
+      this.setUpClass(this.index);
     }
-    if (step === 'step3') { }
-    if (step === 'step4') {
+
+    if (step === 'step3') {
+      this.personalDetails.secondContactEmail = this.ContactEmail2;
+      this.personalDetails.secondContactMobile = this.ContactMobile2;
+      this.personalDetails.secondContactName = this.ContactName2;
+      this.personalDetails.secondContactRelationship = this.ContactRelationship2;
+      this.index++; this.setUpClass(this.index);
+      console.log(this.personalDetails);
 
     }
+    // if (step === 'step4') {  }
   }
 
   finish() {
@@ -139,7 +181,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((_response: OnlineRegistrationDTO) => {
 
         this.drive.showToaster('success', 'Personal Details have been stored successfully');
-        // this.router.navigate(['/u/new/form']);
+        this.router.navigate(['/medic']);
       }, error => {
         console.log(error);
         this.drive.showToaster('error', error);

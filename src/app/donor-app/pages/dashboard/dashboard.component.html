@@ -20,10 +20,10 @@
           
     
         <label  class="labels " for="Firstname">First Name</label>
-        <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text" placeholder="i.e Jane"></app-input>
+        <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text"  ></app-input>
         <label  class="labels " for="Firstname">Last Name</label>
 
-        <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.surname" ngDefaultControl type="text" placeholder="i.e Doe"></app-input>
+        <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.surname" ngDefaultControl type="text"  ></app-input>
         <div class="btn-container">
           <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
         </div>
@@ -73,24 +73,44 @@
         <h2 class="text-size-medium font-weight-medium color-grey">
           Fill in Next of Kin Details:
         </h2>
-        <label  class="labels " for="FullName">Full Name</label>
+      <div *ngIf="ad1">
+          <label  class="labels " for="FullName">Full Name</label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName2" 
          ngDefaultControl ></app-input>
          <label  class="labels " for="relationship">Relationship</label>
 
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship2"
          ngDefaultControl ></app-input>
         <br>
         <label  class="labels " for="emailAddress">Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail2"
          ngDefaultControl ></app-input>
          <label  class="labels " for="mobile">Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile2" 
         ngDefaultControl ></app-input>
+      </div>
+      <div *ngIf="!ad1" >
+          <label  class="labels " for="FullName">Full Name</label>
+
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName" 
+         ngDefaultControl ></app-input>
+         <label  class="labels " for="relationship">Relationship</label>
+
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship"
+         ngDefaultControl ></app-input>
         <br>
+        <label  class="labels " for="emailAddress">Email address</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail"
+         ngDefaultControl ></app-input>
+         <label  class="labels " for="mobile">Mobile Number</label>
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile" 
+        ngDefaultControl ></app-input>
+      </div>
+        <br>
+        <sunflower-button *ngIf="ad1" type="primary" (click)="address1()">Add Address</sunflower-button>
      
-        <sunflower-button type="primary" (click)="next('step3')">Next</sunflower-button>
+        <sunflower-button *ngIf="!ad1" type="primary" (click)="next('step3')">Next</sunflower-button>
       
       </div>
       <div class="m-auto" *ngIf="index == 4">

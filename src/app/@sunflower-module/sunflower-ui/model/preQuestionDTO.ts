@@ -11,7 +11,7 @@
  */
 
 
-export interface PreQuestionDTO { 
+export interface PreQuestionDTO {
     id?: number;
     question?: string;
     questionNumber?: number;

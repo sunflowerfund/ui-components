@@ -12,7 +12,7 @@
 import { Timestamp } from './timestamp';
 
 
-export interface PersonDTO { 
+export interface PersonDTO {
     birthDate?: string;
     commsInd?: number;
     createDate?: Timestamp;
