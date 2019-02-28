@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { templateData } from 'src/assets/template-data/date';
+import { DriveRegistrationService } from '../../services/drive-registration.service';
+// import { Z_FINISH } from 'zlib';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,17 +11,38 @@ import { templateData } from 'src/assets/template-data/date';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor() {
-    this.Days = templateData.Days;
-    this.Months = templateData.Months;
-    this.Years = templateData.Years;
+  constructor(
+    public drive: DriveRegistrationService,
+    private toastr: ToastrService,
+
+  ) {
+
   }
+  personalDetails = {
+    firstName: '',
+    lastName: '',
+    idNumber: '',
+    gender: '',
+    ethnicity: '',
 
-  idnumber
+    Address: '',
+    homeTelephone: '',
+    workTelephone: '',
+    mobile: '',
 
+    emergency: [{
+      emergencyFullContactName: '',
+      relationship: '',
+      emergencyEmail: '',
+      EmergencyMobile: '',
+    }],
+    consent: true,
+
+
+  };
 
   index = 1;
-  class1 = "active indicator";
+  class1 = 'active indicator';
   class2 = 'indicator';
   class3 = 'indicator';
   class4 = 'indicator';
@@ -77,23 +102,65 @@ export class DashboardComponent implements OnInit {
     }
   }
   setGender(gender: string) {
-    this.gender = gender;
+    this.personalDetails.gender = gender;
   }
-  setDay(day: number | string): void {
-    this.day = day;
-  }
-  setMonth(month: number | string): void {
-    this.month = month;
-  }
-  setYear(year: number | string): void {
-    this.year = year;
-  }
+  // setDay(day: number | string): void {
+  //   this.day = day;
+  // }
+  // setMonth(month: number | string): void {
+  //   this.month = month;
+  // }
+  // setYear(year: number | string): void {
+  //   this.year = year;
+  // }
   setEthnicity(ethnicity: string): void {
-    this.ethnicity = ethnicity;
+    this.personalDetails.ethnicity = ethnicity;
   }
 
+  showToaster(){
+    this.toastr.success('Account created Successfully.');
+}
 
 
+  next(step) {
+    this.index++;
+    this.setUpClass(this.index);
+    if (step === 'step1') {
+      this.drive.personalDetails.firstName = this.personalDetails.firstName;
+      this.drive.personalDetails.lastName = this.personalDetails.lastName;
+      this.drive.personalDetails.gender = this.personalDetails.gender;
+      this.drive.personalDetails.idNumber = this.personalDetails.idNumber;
+      this.drive.personalDetails.ethnicity = this.personalDetails.ethnicity;
+    }
+    if (step === 'step2') {
+
+
+      this.drive.personalDetails.Address = this.personalDetails.Address;
+      this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
+      this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
+      this.drive.personalDetails.mobile = this.personalDetails.mobile;
+
+
+    }
+    if (step === 'step3') {
+      this.drive.personalDetails.Address = this.personalDetails.Address;
+      this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
+      this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
+      this.drive.personalDetails.mobile = this.personalDetails.mobile; 
+    }
+    if (step === 'step4') {
+
+    }
+  }
+
+finish(){
+      console.log(this.personalDetails);
+
+
+      // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
+      //   console.log(error);
+      // });
+    }
 
 }
 

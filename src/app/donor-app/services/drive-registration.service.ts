@@ -16,13 +16,35 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'http://165.255.172.236:80/api/v1/';
+  baseUrl = 'http://165.255.185.123:80/api/v1/';
   weight = 0;
   height = 0;
   email = '';
   cellnumber = '';
   bmi = 0;
 
+
+  personalDetails = {
+    firstName: '',
+    lastName: '',
+    idNumber: '',
+    gender: '',
+    ethnicity: '',
+
+    Address: '',
+    homeTelephone: '',
+    workTelephone: '',
+    mobile: '',
+
+    emergency: [{
+      emergencyFullContactName: '',
+      relationship: '',
+      emergencyEmail: '',
+      EmergencyMobile: '',
+    }],
+    consent: true,
+
+  };
 
 
   constructor(
@@ -43,7 +65,15 @@ export class DriveRegistrationService {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Prescreening Answers')),
-        catchError(this.handleError('POST PreScreening answers', []))
+        catchError(this.handleError('POST PreScreening answers failed', []))
+      );
+  }
+
+  sendPersonalInformation(personalInfo) {
+    return this.http.post(this.baseUrl + 'o_registration', personalInfo, httpOptions)
+      .pipe(
+        tap(_ => this.log('Posted Personal Information ')),
+        catchError(this.handleError('POST Personal Information failed', []))
       );
   }
 
