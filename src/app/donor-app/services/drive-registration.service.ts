@@ -3,6 +3,8 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
+import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model/personalDetailsDTO';
+import { ToastrService } from 'ngx-toastr';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -16,7 +18,7 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'http://165.255.185.123:80/api/v1/';
+  baseUrl = 'https://165.255.185.123/api/v1/';
   weight = 0;
   height = 0;
   email = '';
@@ -24,31 +26,15 @@ export class DriveRegistrationService {
   bmi = 0;
 
 
-  personalDetails = {
-    firstName: '',
-    lastName: '',
-    idNumber: '',
-    gender: '',
-    ethnicity: '',
+  CurrentUID = 0;
 
-    Address: '',
-    homeTelephone: '',
-    workTelephone: '',
-    mobile: '',
 
-    emergency: [{
-      emergencyFullContactName: '',
-      relationship: '',
-      emergencyEmail: '',
-      EmergencyMobile: '',
-    }],
-    consent: true,
-
-  };
-
+  personalDetails: PersonalDetailsDTO;
 
   constructor(
     private http: HttpClient,
+    private toastr: ToastrService,
+
   ) { }
 
   getPrescreeningQuestion(): Observable<PreScreeeningQuestion[]> {
@@ -63,14 +49,15 @@ export class DriveRegistrationService {
 
   sendPrescreeningAnswers(answers) {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
+
       .pipe(
-        tap(_ => this.log('Posted Prescreening Answers')),
+        tap( _response => this.log('Posted Prescreening Answers')),
         catchError(this.handleError('POST PreScreening answers failed', []))
       );
   }
 
   sendPersonalInformation(personalInfo) {
-    return this.http.post(this.baseUrl + 'o_registration', personalInfo, httpOptions)
+    return this.http.patch(this.baseUrl + 'o_registration/${this.CurrentUID}' , personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
         catchError(this.handleError('POST Personal Information failed', []))
@@ -97,5 +84,23 @@ export class DriveRegistrationService {
     // this.messageService.add(`SunflowerUserService: ${message}`);
     console.log(message);
   }
+
+
+  showToaster(type, msg) {
+
+    if (type === 'error') {
+      this.toastr.error(msg, 'Error');
+
+    }
+    if (type === 'success') {
+      this.toastr.success(msg, 'Success');
+
+    }
+    if (type === 'warn') {
+      this.toastr.warning(msg, 'Warning');
+
+    }
+  }
+
 
 }

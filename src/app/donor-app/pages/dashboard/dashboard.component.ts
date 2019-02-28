@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { templateData } from 'src/assets/template-data/date';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
-// import { Z_FINISH } from 'zlib';
 import { ToastrService } from 'ngx-toastr';
+import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
+import { ValidationService } from '../../services/validation-.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,63 +14,86 @@ import { ToastrService } from 'ngx-toastr';
 export class DashboardComponent implements OnInit {
   constructor(
     public drive: DriveRegistrationService,
-    private toastr: ToastrService,
+    private router: Router,
+    private validationService: ValidationService,
 
-  ) {
+  ) { this.ad1 = true; }
 
-  }
   personalDetails = {
+    address1: '',
+    address2: '',
+    address3: '',
+    bmi: '',
+    country: '',
+    countryId: 0,
+    dateOfBirth: '',
+    ethnicGroupId: 0,
+    firstContactEmail: '',
+    firstContactMobile: '',
+    firstContactName: '',
+    firstContactRelationship: '',
     firstName: '',
-    lastName: '',
+    gender: 0,
+    homePhone: '',
     idNumber: '',
-    gender: '',
-    ethnicity: '',
-
-    Address: '',
-    homeTelephone: '',
-    workTelephone: '',
-    mobile: '',
-
-    emergency: [{
-      emergencyFullContactName: '',
-      relationship: '',
-      emergencyEmail: '',
-      EmergencyMobile: '',
-    }],
-    consent: true,
-
-
+    idType: 0,
+    postalCode: '',
+    provinceId: 0,
+    secondContactEmail: '',
+    secondContactMobile: '',
+    secondContactName: '',
+    secondContactRelationship: '',
+    surname: '',
+    titleId: 0,
+    workPhone: '',
   };
+
+  ad1;
 
   index = 1;
   class1 = 'active indicator';
   class2 = 'indicator';
   class3 = 'indicator';
   class4 = 'indicator';
-  Days;
-  Months;
-  Years;
+
+  ContactEmail: '';
+  ContactMobile: '';
+  ContactName: '';
+  ContactRelationship: '';
+
+  ContactEmail2: '';
+  ContactMobile2: '';
+  ContactName2: '';
+  ContactRelationship2: '';
+
+
 
 
   buttonNext = 'Next';
-  gender: string;
+  gender: number;
 
-  day: number | string;
-
-  month: number | string;
-
-  year: number | string;
 
   ethnicity: string;
 
   ngOnInit() {
   }
 
+  address1() {
+    this.personalDetails.firstContactEmail = this.ContactEmail;
+    this.personalDetails.firstContactMobile = this.ContactMobile;
+    this.personalDetails.firstContactName = this.ContactName;
+    this.personalDetails.firstContactRelationship = this.ContactRelationship;
 
-  validateID() {
-    console.log('qwertyuiop');
-    
+    this.ad1 = !this.ad1;
   }
+  validateID(idnumber) {
+    this.validationService.messages.length = 0;
+    this.validationService.identityValidation(idnumber);
+
+
+    // return this.validationService.
+  }
+
   setUpClass(index) {
     this.index = index;
     if (index === 1) {
@@ -102,65 +126,73 @@ export class DashboardComponent implements OnInit {
     }
   }
   setGender(gender: string) {
-    this.personalDetails.gender = gender;
-  }
-  // setDay(day: number | string): void {
-  //   this.day = day;
-  // }
-  // setMonth(month: number | string): void {
-  //   this.month = month;
-  // }
-  // setYear(year: number | string): void {
-  //   this.year = year;
-  // }
-  setEthnicity(ethnicity: string): void {
-    this.personalDetails.ethnicity = ethnicity;
+    if (gender === 'Female') { this.personalDetails.gender = 1; }
+    this.personalDetails.gender = 0;
   }
 
-  showToaster(){
-    this.toastr.success('Account created Successfully.');
-}
+
+  setEthnicity(ethnicity: string): void {
+    // this.personalDetails.ethnicGroupId = ethnicity;
+  }
+
+
 
 
   next(step) {
-    this.index++;
-    this.setUpClass(this.index);
     if (step === 'step1') {
-      this.drive.personalDetails.firstName = this.personalDetails.firstName;
-      this.drive.personalDetails.lastName = this.personalDetails.lastName;
-      this.drive.personalDetails.gender = this.personalDetails.gender;
-      this.drive.personalDetails.idNumber = this.personalDetails.idNumber;
-      this.drive.personalDetails.ethnicity = this.personalDetails.ethnicity;
+      if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
+        this.index++;
+        this.setUpClass(this.index);
+
+      }
+      if (this.validationService.messages.length > 0) {
+        for (let index = 0; index < this.validationService.messages.length; index++) {
+          this.drive.showToaster('error', this.validationService.messages[index]);
+
+        }
+      }
+
+      // console.log(this.personalDetails);
+      // this.personalDetails.birthDate
+
     }
     if (step === 'step2') {
-
-
-      this.drive.personalDetails.Address = this.personalDetails.Address;
-      this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
-      this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
-      this.drive.personalDetails.mobile = this.personalDetails.mobile;
-
-
+      console.log(this.personalDetails);
+      this.index++;
+      this.setUpClass(this.index);
     }
+
     if (step === 'step3') {
-      this.drive.personalDetails.Address = this.personalDetails.Address;
-      this.drive.personalDetails.homeTelephone = this.personalDetails.homeTelephone;
-      this.drive.personalDetails.workTelephone = this.personalDetails.workTelephone;
-      this.drive.personalDetails.mobile = this.personalDetails.mobile; 
-    }
-    if (step === 'step4') {
-
-    }
-  }
-
-finish(){
+      this.personalDetails.secondContactEmail = this.ContactEmail2;
+      this.personalDetails.secondContactMobile = this.ContactMobile2;
+      this.personalDetails.secondContactName = this.ContactName2;
+      this.personalDetails.secondContactRelationship = this.ContactRelationship2;
+      this.index++; this.setUpClass(this.index);
       console.log(this.personalDetails);
 
-
-      // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
-      //   console.log(error);
-      // });
     }
+    // if (step === 'step4') {  }
+  }
+
+  finish() {
+    // this.personalDetails = ethnicity;
+    console.log(this.personalDetails);
+    this.drive.sendPersonalInformation(this.personalDetails)
+      .subscribe((_response: OnlineRegistrationDTO) => {
+
+        this.drive.showToaster('success', 'Personal Details have been stored successfully');
+        this.router.navigate(['/medic']);
+      }, error => {
+        console.log(error);
+        this.drive.showToaster('error', error);
+
+      });
+
+
+    // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
+    //   console.log(error);
+    // });
+  }
 
 }
 
