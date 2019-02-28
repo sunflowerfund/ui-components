@@ -3,6 +3,7 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
 import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/preScreeningQuestion.model';
 import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/preScreening.model';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -37,6 +38,8 @@ export class PrescreeningComponent implements OnInit {
   constructor(
     public drive: DriveRegistrationService,
     public router: Router,
+    private toastr: ToastrService,
+
   ) { }
 
   getData() {
@@ -49,6 +52,9 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
+  showToaster(){
+    this.toastr.success('Step one completed Successfully.');
+}
 
   reply() {
     this.drive.email = this.email;
@@ -79,6 +85,7 @@ export class PrescreeningComponent implements OnInit {
 
     this.drive.sendPrescreeningAnswers(this.answerResponse)
     .subscribe(() => {
+      this.showToaster();
 this.router.navigate(['/u/new/form']);
     }, error => {
       console.log(error);

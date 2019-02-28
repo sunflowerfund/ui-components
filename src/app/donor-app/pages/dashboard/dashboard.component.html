@@ -20,96 +20,103 @@
           
     
         <label  class="labels " for="Firstname">First Name</label>
-        <!-- <input type="text" class="input" minlength="13" maxlength="13" placeholder="e.g Jane" /> -->
-        <app-input [attrs]="['--full']" type="text" placeholder="E.g Jane" aria-required="true"></app-input>
+        <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text" placeholder="i.e Jane"></app-input>
+        <label  class="labels " for="Firstname">Last Name</label>
 
-        <label  class="labels " for="Lastname">Last Name</label>
-        <app-input [attrs]="['--full']" type="text" placeholder="E.g Smith" aria-required="true"></app-input>
-
+        <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.lastName" ngDefaultControl type="text" placeholder="i.e Doe"></app-input>
         <div class="btn-container">
           <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
         </div>
         <label  class="labels " for="IdNumber">ID Number</label>
 
-        <input class="input" type="text" minlength="13" [(ngModel)]="idnumber"  (change)="validateID()"  maxlength="13" placeholder="200012340999"  aria-required="true"/>
+        <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number" placeholder="Identity Number"></app-input>
         <div class="btn-container text-center">
         
           <sun-dropdown-menu   title="Ethnicity" [items]=" ['African', 'Asian/Indian','Coloured','White']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
             
         </div>
+        <sunflower-button type="primary" (click)="next('step1')">Next</sunflower-button>
+
       </div>
 
       <div class="m-auto" *ngIf="index == 2">
         <br>
-        <label  class="labels " for="PostalAddress">Postal Address</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="House number & street name"></app-input>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Suburb"></app-input>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="Postal code e.g 8000">
+        <label  class="labels " for="Firstname">Postal Address</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.Address" ngDefaultControl placeholder="Postal Address"></app-input>
        
-        <label  class="labels " for="HomeTel">Home Telephone</label>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="555 - 5555555"/>
-        <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="555 - 5555555"></app-input> -->
+        <label  class="labels " for="Firstname">Home Tel</label>
+        <app-input [attrs]="['--default']" class="fifty" type="number"  [(ngModel)]="personalDetails.homeTelephone" ngDefaultControl placeholder="Home telephone"></app-input>
        
-        <label  class="labels " for="WorkTel">Work Telephone</label>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="021 - 1234567"/>
-        <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="021 - 1234567"></app-input> -->
+        <label  class="labels " for="Firstname">Work Tel</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workTelephone" ngDefaultControl placeholder="Work telephone"></app-input>
 
-        <label  class="labels " for="CellNumber">Cellphone Number</label>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="083 333 3333"  aria-required="true"/>
-        <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="083 333 3333"></app-input> -->
+        <!-- <label  class="labels " for="Firstname">ID Number</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="E-mail"></app-input> -->
+
+        <label  class="labels " for="Firstname">Mobile Number</label>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.workTelephone"
+         ngDefaultControl placeholder="Mobile number"></app-input>
+        <sunflower-button type="primary" (click)="next('step2')">Next</sunflower-button>
+      
       </div>
       
 
       <div class="m-auto" *ngIf="index == 3">
-        <h2 class="text-size-small font-weight-medium color-grey">
-          <u>Fill in Next of Kin Details:</u>
-        </h2>
-        <br />
-        <h2 class="text-size-large font-weight-medium color-grey" id="sub">First Emergency Contact</h2>
-        <br />
+        <h1 class="text-size-medium font-weight-medium color-grey">
+          Fill in Next of Kin Details:
+        </h1>
+        <app-input [attrs]="['--default']" class="fifty" type="text"   [(ngModel)]="personalDetails.emergency[0].emergencyFullContactName" 
+         ngDefaultControl placeholder="First Emergency Contact"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[0].relationship"
+         ngDefaultControl placeholder="Relationship"></app-input>
         <br>
-        <!-- <label  class="labels " for="First Emergency Contact">First Emergency Contact</label> -->
-        <label  class="labels " for="Name">Name</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="Jill"  aria-required="true"></app-input>
-        <label  class="labels " for="relationshipr">Relationship </label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="e.g spouse, partner, mother"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[0].emergencyEmail"
+         ngDefaultControl placeholder="E-mail"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[0].EmergencyMobile" 
+        ngDefaultControl placeholder="Mobile number"></app-input>
         <br>
-        <label  class="labels " for="email">Email</label>
-        <app-input [attrs]="['--default']" class="fifty" type="email" placeholder="jill@gmail.com"></app-input>
-        <label  class="labels " for="CellNumber">Cellphone Number</label>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="082 111 1111 "  aria-required="true"/>
-        <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="Mobile number" max length="10"></app-input> -->
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyFullContactName"
+         ngDefaultControl placeholder="Second Emergency Contact"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].relationship" 
+        ngDefaultControl placeholder="Relationship"></app-input>
         <br>
-        <h2 class="text-size-large font-weight-medium color-grey" id="sub">Second Emergency Contact</h2>
-        <br />
-        <br>
-        <!-- <label  class="labels " for="Second Emergency Contact">Second Emergency Contact</label> -->
-        <label  class="labels " for="Name">Name</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="John"  aria-required="true"></app-input>
-        <label  class="labels " for="Relationship">Relationship</label>
-        <app-input [attrs]="['--default']" class="fifty" type="text" placeholder="e.g spouse, partner, mother"></app-input>
-        <br> 
-        <label  class="labels " for="email">Email</label>
-        <app-input [attrs]="['--default']" class="fifty" type="email" placeholder="john@gmail.com"></app-input>
-        <label  class="labels " for="CellNumber">Cellphone Number</label>
-        <input class="input" type="text" minlength="10"  maxlength="10" placeholder="086 122 2222" aria-required="true"/>
-        <!-- <app-input [attrs]="['--default']" class="fifty" type="number" placeholder="Mobile number"></app-input> -->
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].emergencyEmail" 
+        ngDefaultControl placeholder="E-mail"></app-input>
+        <app-input [attrs]="['--default']" class="fifty" type="text"  [(ngModel)]="personalDetails.emergency[1].EmergencyMobile"
+         ngDefaultControl placeholder="Mobile number"></app-input>
+        <sunflower-button type="primary" (click)="next('step3')">Next</sunflower-button>
+      
       </div>
       <div class="m-auto" *ngIf="index == 4">
         <h1 class="text-size-small font-weight-medium color-grey">
           Terms and Agreements
         </h1>
-      <br><a href="http://google.com" target="blank">Terms and Conditions</a><br>
-      <br><a href="http://google.com">Privacy Policy</a><br>
-      <br> <input type="checkbox"  aria-required="true">I have read and understood the terms and conditions above
-    
+        <!-- <textarea readonly class="TsTextArea">
+        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
+        1.2 I have understood the information provided to me firebaprior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
+        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
+        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
+        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
+        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        1.1 I confirm that I am 18 years or older and that I am legally and mentaly competent to provide the consent envisaged in this document. If I am granting my consent on behalf of another person, I warrant that I am legally authorised to do so.
+        1.2 I have understood the information provided to me prior to signing the consent form. Any questions I asked were answered to my satisfaction, and futher information has been
+        
+      </textarea> -->
+      <a href="https://en.calameo.com/read/0058472544559d16c13db" target="blank"><h2>Terms and Conditions </h2> </a><br>
+      <a href="http://google.com"><h2> Privacy Policy </h2></a>
+      <div class="check" type="check-box">I have read and understood the terms and conditions above</div>
+      <div class="btn-container text-center">
+          <br>
+          <br>
+            <sunflower-button (click)="finish()" type="primary">Finish</sunflower-button>
+        </div>
       </div>
-    <div class="btn-container text-center">
-      <br>
-      <br>
-        <sunflower-button type="primary">Finish</sunflower-button>
-    </div>
+    
 
     <!-- <div class="btn-container text-center">
           <br>  
