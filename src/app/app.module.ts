@@ -33,6 +33,7 @@ import { AuthGuardService } from './donor-app/services/auth-guard.service';
 import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-components/ng-date-picker/ng-date-picker.component';
 import { CommonModule  } from '@angular/common';
 import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
+import { ValidationService } from './donor-app/services/validation-.service';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreeni
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [FormBuilder, AuthService, AuthGuardService],
+  providers: [FormBuilder, ValidationService, AuthService, AuthGuardService],
 
   bootstrap: [AppComponent]
 })

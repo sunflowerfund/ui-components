@@ -4,6 +4,7 @@ import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/mo
 import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/preScreening.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/onlineRegistrationDTO';
 
 
 @Component({
@@ -12,9 +13,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./prescreening.component.css']
 })
 export class PrescreeningComponent implements OnInit {
-  cellnumber;
-  email;
-
+  cellnumber: string;
+  email: string;
+  invalidPrescreening = 0;
   answerResponse = {
     p1: 0,
     p2: 0,
@@ -52,9 +53,9 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
-  showToaster(){
-    this.toastr.success('Step one completed Successfully.');
-}
+  // showToaster() {
+  //   this.toastr.success('Step one completed Successfully.');
+  // }
 
   reply() {
     this.drive.email = this.email;
@@ -76,21 +77,39 @@ export class PrescreeningComponent implements OnInit {
     this.answerResponse.p8 = this.answerElements[7];
     this.answerResponse.p9 = this.answerElements[8];
     this.answerResponse.p10 = this.answerElements[9];
-    this.drive.bmi =  this.answerElements[3] / Math.pow(this.answerElements[4], 2);
-    // this.answerResponse.bmi =  Number.parseFloat(this.BMI.toFixed(2));
-// console.log('BMI ', this.BMI);
-// console.log('After Cal ', this.answerResponse.bmi);
+    this.drive.bmi = this.answerElements[3] / Math.pow(this.answerElements[4], 2);
 
-// console.log(this.answerResponse);
+    for (let index = 0; index < this.answerElements.length; index++) {
+      if (this.answerElements[index] === undefined || this.answerElements[index] === null) {
+        this.invalidPrescreening += index;
+        console.log(this.invalidPrescreening);
+      }
 
-    this.drive.sendPrescreeningAnswers(this.answerResponse)
-    .subscribe(() => {
-      this.showToaster();
-this.router.navigate(['/u/new/form']);
-    }, error => {
-      console.log(error);
+    }
+    if (
+      this.email === '' || this.email === undefined ||
+      this.cellnumber === undefined || this.cellnumber === '') {
+      this.invalidPrescreening ++;
+    }
+    if (this.invalidPrescreening > 0) {
+      console.log('invalid', this.invalidPrescreening);
+      this.drive.showToaster('error', 'The form is not filled in or there is some missing values in it');
+      this.invalidPrescreening = 0;
+    } else {
+      this.drive.sendPrescreeningAnswers(this.answerResponse)
+        .subscribe((_response: OnlineRegistrationDTO) => {
 
-    });
+          this.drive.CurrentUID = _response.id;
+          this.drive.showToaster('success', 'Pre Screening passed');
+          this.router.navigate(['/u/new/form']);
+        }, error => {
+          console.log(error);
+          this.drive.showToaster('warn', 'Something went wrong trying to save Data, try again, please');
+
+        });
+    }
+
+
 
   }
 
