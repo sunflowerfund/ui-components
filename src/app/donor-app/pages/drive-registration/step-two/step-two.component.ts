@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { templateData } from "../../../../../assets/template-data/date";
 
 @Component({
   selector: 'app-step-two',
@@ -8,9 +7,7 @@ import { templateData } from "../../../../../assets/template-data/date";
 })
 export class StepTwoComponent implements OnInit {
   isAWomen = false;
-Days;
-Months;
-Years;
+
 
   numberOfPregnancy;
   dateOfLastPregnancy;
@@ -25,11 +22,7 @@ Years;
   areYouAPlateletDonor;
   areYouAPlateletDonorPrestine;
 
-  constructor() {
-    this.Days = templateData.Days;
-    this.Months = templateData.Months;
-    this.Years = templateData.Years;
-  }
+  constructor() {   }
 
   ngOnInit() {
   }

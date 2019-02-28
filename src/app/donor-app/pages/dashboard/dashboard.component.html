@@ -46,16 +46,16 @@
             </h2>
    
             
-        <label  class="labels " for="line1">Line 1</label>
+        <label  class="labels " for="line1">Home Address</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address1" ngDefaultControl></app-input>
        
        <br>
-        <label  class="labels " for="line2">Line 2</label>
+        <label  class="labels " for="line2">City</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address2" ngDefaultControl></app-input>
        
        <br>
-        <label  class="labels " for="line3">Line 3</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address3" ngDefaultControl></app-input>
+        <label  class="labels " for="line3">Postal code</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.address3" ngDefaultControl></app-input>
        
         <label  class="labels " for="homeTel">Home Tel</label>
         <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.homePhone" ngDefaultControl></app-input>

@@ -19,7 +19,7 @@ export class StepOneComponent implements OnInit {
   areYouAHighRiskForhepatitisOrHiv = true;
   areYouAHighRiskForhepatitisOrHivPrestine = false;
   whatsYourWeight;
-  whatsYourHeight ; 
+  whatsYourHeight ;
   AreYouARegularBloodDonor = false;
   AreYouARegularBloodDonorPrestine = false;
   DoYouGetUpMorethanOnceAtNight = false;
