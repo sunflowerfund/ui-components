@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DriveRegistrationService } from '../../../services/drive-registration.service';
+
+
 
 @Component({
   selector: 'app-step-two',
@@ -22,13 +25,16 @@ export class StepTwoComponent implements OnInit {
   areYouAPlateletDonor;
   areYouAPlateletDonorPrestine;
 
-  constructor() {   }
+  constructor(
+    private drive: DriveRegistrationService,
+  ) {   }
+
 
   ngOnInit() {
   }
 
   finish() {
-    window.alert('Well Done, All entered info is saved !!!');
+    this.drive.showToaster('success', 'Well Done, All entered info is saved !!!' );
   }
 
 }

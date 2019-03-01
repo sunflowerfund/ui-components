@@ -18,7 +18,7 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'https://165.255.185.123/api/v1/';
+  baseUrl = 'https://165.255.185.79/api/v1/';
   weight = 0;
   height = 0;
   email = '';

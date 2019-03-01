@@ -83,6 +83,11 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.firstContactMobile = this.ContactMobile;
     this.personalDetails.firstContactName = this.ContactName;
     this.personalDetails.firstContactRelationship = this.ContactRelationship;
+    console.log(this.personalDetails.firstContactEmail);
+    console.log(this.personalDetails.firstContactMobile);
+    console.log(this.personalDetails.firstContactName);
+    console.log(this.personalDetails.firstContactRelationship);
+
 
     this.ad1 = !this.ad1;
   }

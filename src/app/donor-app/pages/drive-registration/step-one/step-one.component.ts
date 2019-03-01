@@ -7,7 +7,7 @@ import { DriveRegistrationService } from 'src/app/donor-app/services/drive-regis
   styleUrls: ['./step-one.component.css', './../drive-registration.component.css']
 })
 export class StepOneComponent implements OnInit {
-  name
+  // name
 
   yesToAll = false;
   areYouHealthy;
@@ -18,8 +18,8 @@ export class StepOneComponent implements OnInit {
   doesYourAnkleSwellEdnOfDayPrestine = false;
   areYouAHighRiskForhepatitisOrHiv = true;
   areYouAHighRiskForhepatitisOrHivPrestine = false;
-  whatsYourWeight;
-  whatsYourHeight ;
+  whatsYourWeight = this.drive.weight;
+  whatsYourHeight = this.drive.height;
   AreYouARegularBloodDonor = false;
   AreYouARegularBloodDonorPrestine = false;
   DoYouGetUpMorethanOnceAtNight = false;
@@ -37,7 +37,7 @@ export class StepOneComponent implements OnInit {
   dateOfLastPregnancy = false;
 
   constructor(
-    public driveReg: DriveRegistrationService) { }
+    public drive: DriveRegistrationService) { }
 
   ngOnInit() {
     this.checkAnswering();
