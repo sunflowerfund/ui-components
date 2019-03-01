@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
 };
-
+ 
 // const httpParams = {
 //   params: new HttpParams().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
 // };
@@ -18,11 +18,11 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'https://165.255.185.79/api/v1/';
+  baseUrl = 'https://165.255.185.121/api/v1/';
   weight = 0;
   height = 0;
-  email = '';
-  cellnumber = '';
+  email = null;
+  cellnumber = null;
   bmi = 0;
 
 
@@ -57,7 +57,9 @@ export class DriveRegistrationService {
   }
 
   sendPersonalInformation(personalInfo) {
-    return this.http.patch(this.baseUrl + 'o_registration/${this.CurrentUID}' , personalInfo, httpOptions)
+    // console.log(this.baseUrl + 'o_registration/'+ this.CurrentUID +'/personaldetails' );
+    
+    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/personaldetails' , personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
         catchError(this.handleError('POST Personal Information failed', []))

@@ -12,7 +12,7 @@
 import { Timestamp } from './timestamp';
 
 
-export interface QuestionDTO { 
+export interface QuestionDTO {
     createDate?: Timestamp;
     createOpr?: string;
     editDate?: Timestamp;
@@ -20,6 +20,7 @@ export interface QuestionDTO {
     id?: number;
     question?: string;
     questionNumber?: string;
+    answer?: string;
     questionOrder?: number;
     questionType?: number;
     questionnaireSection?: number;

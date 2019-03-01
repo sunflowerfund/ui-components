@@ -9,13 +9,15 @@
   </div>
   <!-- Yes -->
   <div class="display-flex">
-    <div class="radio" [(ngModel)]="name"  ngDefaultControl  [ngClass]="areYouHealthy && areYouHealthyPrestine ? 'selected' : 'unselected'" (click)="areYouHealthy = true; areYouHealthyPrestine=true"></div>
+    <div class="radio" [(ngModel)]="ques"  ngDefaultControl  [ngClass]="areYouHealthy && areYouHealthyPrestine ? 'selected' : 'unselected'"
+     (click)="areYouHealthy = true; areYouHealthyPrestine=true; answering(120,'true','Are you Healthy') "></div>
     <label class="text-line-middle radio-label">Yes</label>
   </div>
 
   <!-- No -->
   <div class="display-flex">
-    <div class="radio" [ngClass]="!areYouHealthy && areYouHealthyPrestine? 'selected' : 'unselected'" (click)="areYouHealthy = false; areYouHealthyPrestine=true;"></div>
+    <div class="radio" [ngClass]="!areYouHealthy && areYouHealthyPrestine? 'selected' : 'unselected'" 
+    (click)="areYouHealthy = false; areYouHealthyPrestine=true;  answering(120,'false','Are you Healthy')"></div>
     <label class="text-line-middle radio-label">No</label>
   </div>
 </div>
@@ -27,14 +29,14 @@
     <!-- Yes --> 
     <div class="display-flex">
       <div class="radio" [ngClass]="doesYourFamilyAgreeForyouToDonate && doesYourFamilyAgreeForyouToDonatePrestine ? 'selected' : 'unselected'"
-       (click)="doesYourFamilyAgreeForyouToDonate = true; doesYourFamilyAgreeForyouToDonatePrestine = true;"></div>
+       (click)="doesYourFamilyAgreeForyouToDonate = true;questions[1].answer = yes; doesYourFamilyAgreeForyouToDonatePrestine = true;"></div>
       <label class="text-line-middle radio-label">Yes</label>
     </div>
 
     <!-- No -->
     <div class="display-flex">
       <div class="radio" [ngClass]="!doesYourFamilyAgreeForyouToDonate &&  doesYourFamilyAgreeForyouToDonatePrestine ? 'selected' : 'unselected'"
-       (click)=" doesYourFamilyAgreeForyouToDonatePrestine = true; doesYourFamilyAgreeForyouToDonate = false"></div>
+       (click)=" doesYourFamilyAgreeForyouToDonatePrestine = true;questions[1].answer = no; doesYourFamilyAgreeForyouToDonate = false"></div>
       <label class="text-line-middle radio-label">No</label>
     </div>
   </div>

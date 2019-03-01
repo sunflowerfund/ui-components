@@ -20,6 +20,9 @@ import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
@@ -60,6 +63,7 @@ import { ValidationService } from './donor-app/services/validation-.service';
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     MainRoutingModule,
     CommonModule,
     NgbModule,
