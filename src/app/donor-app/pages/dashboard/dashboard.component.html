@@ -76,43 +76,43 @@
 
 
       <div *ngIf="ad1">
-          <label  class="labels " for="FullName">Full Name</label>
+          <label  class="labels " for="FullName">1st Contact's Full Name </label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName2" 
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
          ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">Relationship</label>
+         <label  class="labels " for="relationship">1st Contact's Relationship</label>
 
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship2"
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
          ngDefaultControl ></app-input>
         <br>
-        <label  class="labels " for="emailAddress">Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail2"
+        <label  class="labels " for="emailAddress">1st Contact's  Email address</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
          ngDefaultControl ></app-input>
-         <label  class="labels " for="mobile">Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile2" 
+         <label  class="labels " for="mobile">1st Contact's  Mobile Number</label>
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
         ngDefaultControl ></app-input>
       </div>
 
 
       <div *ngIf="!ad1" >
-          <label  class="labels " for="FullName">Full Name</label>
+          <label  class="labels " for="FullName">2nd Contact's Full Name</label>
 
         <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName" 
          ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">Relationship</label>
+         <label  class="labels " for="relationship">2nd Contact's Relationship</label>
 
          <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship"
          ngDefaultControl ></app-input>
         <br>
-        <label  class="labels " for="emailAddress">Email address</label>
+        <label  class="labels " for="emailAddress">2nd Contact's Email address</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail"
          ngDefaultControl ></app-input>
-         <label  class="labels " for="mobile">Mobile Number</label>
+         <label  class="labels " for="mobile">2nd Contact's Mobile Number</label>
          <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile" 
         ngDefaultControl ></app-input>
       </div>
         <br>
-        <sunflower-button *ngIf="ad1" type="primary" (click)="address1()">Add Address</sunflower-button>
+        <sunflower-button *ngIf="ad1" type="primary" (click)="address1()">Add 1st Contact's Address</sunflower-button>
      
         <sunflower-button *ngIf="!ad1" type="primary" (click)="next('step3')">Next</sunflower-button>
       

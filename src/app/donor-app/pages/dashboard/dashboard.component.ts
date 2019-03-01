@@ -17,38 +17,42 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private validationService: ValidationService,
 
-  ) { this.ad1 = true; }
+  ) {  
+    this.personalDetails.bmi = this.drive.bmi
+  console.log(this.drive.bmi);
+  
+  }
 
   personalDetails = {
-    address1: '',
-    address2: '',
-    address3: '',
-    bmi: '',
-    country: '',
+    address1: null,
+    address2: null,
+    address3: null,
+    bmi: null,
+    country: 'South Africa',
     countryId: 0,
-    dateOfBirth: '',
+    dateOfBirth: null,
     ethnicGroupId: 0,
-    firstContactEmail: '',
-    firstContactMobile: '',
-    firstContactName: '',
-    firstContactRelationship: '',
-    firstName: '',
+    firstContactEmail: null,
+    firstContactMobile: null,
+    firstContactName: null,
+    firstContactRelationship: null,
+    firstName: null,
     gender: 0,
-    homePhone: '',
-    idNumber: '',
+    homePhone: null,
+    idNumber: null,
     idType: 0,
-    postalCode: '',
+    postalCode: null,
     provinceId: 0,
-    secondContactEmail: '',
-    secondContactMobile: '',
-    secondContactName: '',
-    secondContactRelationship: '',
-    surname: '',
+    secondContactEmail: null,
+    secondContactMobile: null,
+    secondContactName: null,
+    secondContactRelationship: null,
+    surname: null,
     titleId: 0,
-    workPhone: '',
+    workPhone: null,
   };
 
-  ad1;
+  ad1 = true; 
 
   index = 1;
   class1 = 'active indicator';
@@ -66,7 +70,7 @@ export class DashboardComponent implements OnInit {
   ContactName2: '';
   ContactRelationship2: '';
 
-
+  
 
 
   buttonNext = 'Next';
@@ -93,7 +97,10 @@ export class DashboardComponent implements OnInit {
   }
   validateID(idnumber) {
     this.validationService.messages.length = 0;
-    this.validationService.identityValidation(idnumber);
+    if (this.validationService.identityValidation(idnumber)) {
+      this.personalDetails.dateOfBirth = this.validationService.DOB;
+    }
+
 
 
     // return this.validationService.
@@ -156,10 +163,7 @@ export class DashboardComponent implements OnInit {
 
         }
       }
-
-      // console.log(this.personalDetails);
-      // this.personalDetails.birthDate
-
+ 
     }
     if (step === 'step2') {
       console.log(this.personalDetails);
@@ -170,7 +174,7 @@ export class DashboardComponent implements OnInit {
     if (step === 'step3') {
       this.personalDetails.secondContactEmail = this.ContactEmail2;
       this.personalDetails.secondContactMobile = this.ContactMobile2;
-      this.personalDetails.secondContactName = this.ContactName2;
+      this.personalDetails.secondContactName = this.ContactName2;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
       this.personalDetails.secondContactRelationship = this.ContactRelationship2;
       this.index++; this.setUpClass(this.index);
       console.log(this.personalDetails);
@@ -178,6 +182,7 @@ export class DashboardComponent implements OnInit {
     }
     // if (step === 'step4') {  }
   }
+
 
   finish() {
     // this.personalDetails = ethnicity;
@@ -192,6 +197,7 @@ export class DashboardComponent implements OnInit {
         this.drive.showToaster('error', error);
 
       });
+
 
 
     // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {

@@ -53,9 +53,6 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
-  // showToaster() {
-  //   this.toastr.success('Step one completed Successfully.');
-  // }
 
   reply() {
     this.drive.email = this.email;
@@ -66,6 +63,10 @@ export class PrescreeningComponent implements OnInit {
     }
     this.drive.weight = this.answerElements[3];
     this.drive.height = this.answerElements[2];
+     
+    this.drive.bmi = parseInt((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
+     
+
 
     this.answerResponse.p1 = this.answerElements[0];
     this.answerResponse.p2 = this.answerElements[1];
@@ -77,7 +78,7 @@ export class PrescreeningComponent implements OnInit {
     this.answerResponse.p8 = this.answerElements[7];
     this.answerResponse.p9 = this.answerElements[8];
     this.answerResponse.p10 = this.answerElements[9];
-    this.drive.bmi = this.answerElements[3] / Math.pow(this.answerElements[4], 2);
+    // this.drive.bmi = this.answerElements[3] / Math.pow(this.answerElements[4], 2);
 
     for (let index = 0; index < this.answerElements.length; index++) {
       if (this.answerElements[index] === undefined || this.answerElements[index] === null) {
@@ -89,7 +90,7 @@ export class PrescreeningComponent implements OnInit {
     if (
       this.email === '' || this.email === undefined ||
       this.cellnumber === undefined || this.cellnumber === '') {
-      this.invalidPrescreening ++;
+      this.invalidPrescreening++;
     }
     if (this.invalidPrescreening > 0) {
       console.log('invalid', this.invalidPrescreening);
@@ -100,6 +101,7 @@ export class PrescreeningComponent implements OnInit {
         .subscribe((_response: OnlineRegistrationDTO) => {
 
           this.drive.CurrentUID = _response.id;
+          console.log('Current UID ', this.drive.CurrentUID)
           this.drive.showToaster('success', 'Pre Screening passed');
           this.router.navigate(['/u/new/form']);
         }, error => {
