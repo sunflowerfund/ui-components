@@ -18,7 +18,7 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'https://165.255.185.121/api/v1/';
+  baseUrl = 'https://spring-sunflower.azurewebsites.net/api/v1/';
   weight = 0;
   height = 0;
   email = null;
@@ -65,6 +65,17 @@ export class DriveRegistrationService {
         catchError(this.handleError('POST Personal Information failed', []))
       );
   }
+
+  getHealthQuestion() : Observable<PreScreeeningQuestion[]> { 
+   
+    return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'questions', httpOptions)
+    .pipe(
+      tap(_ => this.log('Fetched Health Questions')),
+      catchError(this.handleError('GET Health questions', []))
+    );
+
+  }
+
 
 
   private handleError<T>(operation = 'operation', result?: T) {
