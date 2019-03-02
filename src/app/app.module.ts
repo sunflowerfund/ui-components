@@ -37,6 +37,7 @@ import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-compo
 import { CommonModule  } from '@angular/common';
 import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
 import { ValidationService } from './donor-app/services/validation-.service';
+import { HealthScreenComponent } from './donor-app/pages/health-screen/health-screen.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ValidationService } from './donor-app/services/validation-.service';
     ButtonComponent,
     SignInComponent,
     SignUpComponent,
+    HealthScreenComponent,
     InputComponent,
     DropdownMenuComponent,
     NavbarComponent,

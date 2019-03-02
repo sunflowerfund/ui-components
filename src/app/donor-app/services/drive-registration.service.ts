@@ -5,6 +5,8 @@ import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/mo
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model/personalDetailsDTO';
 import { ToastrService } from 'ngx-toastr';
+import { healthScreenQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model';
+import { pipe } from '@angular/core/src/render3';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -46,7 +48,6 @@ export class DriveRegistrationService {
       );
   }
 
-
   sendPrescreeningAnswers(answers) {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
 
@@ -66,16 +67,25 @@ export class DriveRegistrationService {
       );
   }
 
-  getHealthQuestion() : Observable<PreScreeeningQuestion[]> { 
-   
-    return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'questions', httpOptions)
-    .pipe(
-      tap(_ => this.log('Fetched Health Questions')),
-      catchError(this.handleError('GET Health questions', []))
-    );
 
+  
+  getHealthScreenQuestion(): Observable<healthScreenQuestion[]> {
+
+    return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'healthquestions', httpOptions)
+    .pipe(
+      tap(_=> this.log('Fetched HealthScreen Questions')),
+      catchError(this.handleError('GET HealthScreen questions', []))
+    );
   }
 
+  sendHealthScreenAnswers(answers) {
+    return this.http.post(this.baseUrl + 'o_registeration', answers, httpOptions)
+
+    .pipe(
+      tap( _response => this.log('Posted Health Screen Answers')),
+      catchError(this.handleError('POST Health Screen Ansers failed', []))
+    );
+  }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
