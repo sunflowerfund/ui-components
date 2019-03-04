@@ -68,10 +68,10 @@ export class DriveRegistrationService {
   }
 
 
-  
+
   getHealthScreenQuestion(): Observable<healthScreenQuestion[]> {
 
-    return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'healthquestions', httpOptions)
+    return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'questions', httpOptions)
     .pipe(
       tap(_=> this.log('Fetched HealthScreen Questions')),
       catchError(this.handleError('GET HealthScreen questions', []))
