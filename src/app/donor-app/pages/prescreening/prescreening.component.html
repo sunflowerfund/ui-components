@@ -1,8 +1,16 @@
 <sunflower-navbar class="sm-hide"></sunflower-navbar>
-<div class="container">
-   
 
 
+
+
+ <div class="loader" *ngIf="!questions"> 
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
+
+
+<div class="container"  *ngIf="questions">
+  
 <div class="line"  *ngFor="let ques of questions; index as i" >
     <div class="height-46 display-flex">
       <label class="text-line-middle text">{{ques.question}}</label>
