@@ -11,7 +11,7 @@ import { pipe } from '@angular/core/src/render3';
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
 };
- 
+
 // const httpParams = {
 //   params: new HttpParams().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
 // };
@@ -59,7 +59,7 @@ export class DriveRegistrationService {
 
   sendPersonalInformation(personalInfo) {
     // console.log(this.baseUrl + 'o_registration/'+ this.CurrentUID +'/personaldetails' );
-    
+
     return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/personaldetails' , personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),

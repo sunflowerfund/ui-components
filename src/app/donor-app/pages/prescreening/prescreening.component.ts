@@ -64,9 +64,10 @@ export class PrescreeningComponent implements OnInit {
     }
     this.drive.weight = this.answerElements[3];
     this.drive.height = this.answerElements[2];
-     
+
+    // tslint:disable-next-line:radix
     this.drive.bmi = parseInt((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
-     
+
 
 
     this.answerResponse.p1 = this.answerElements[0];
@@ -102,7 +103,7 @@ export class PrescreeningComponent implements OnInit {
         .subscribe((_response: OnlineRegistrationDTO) => {
 
           this.drive.CurrentUID = _response.id;
-          console.log('Current UID ', this.drive.CurrentUID)
+          console.log('Current UID ', this.drive.CurrentUID);
           this.drive.showToaster('success', 'Pre Screening passed');
           this.router.navigate(['/u/new/form']);
         }, error => {

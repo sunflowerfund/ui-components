@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { healthScreenQuestion } from "src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model";
+import { healthScreenQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model';
 import { healthScreenAnswers } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreen';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,43 +14,43 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
 export class HealthScreenComponent implements OnInit {
   invalidHealthScreen = 0;
   answerResponse = {
-    q2_1:0,
-    q2_1a:'',
-    q2_1b:'',
-    q2_2:0,
-    q2_2a:'',
-    q2_3:0,
-    q2_3a:'',
-    q2_4:0,
-    q2_4a:'',
-    q2_5:0,
-    q2_5a:'',
-    q2_6:0,
-    q2_6a:'',
-    q2_6b:'',
-    q2_7:0,
-    q2_7a:'',
-    q2_8:0,
-    q2_8a:'',
-    q2_9:0,
-    q2_9a:'',
-    q2_10:0,
-    q2_10a:'',
-    q2_11:0,
-    q2_11a:'',
-    q2_12:0,
-    q2_12a:'',
-    q2_13:0,
-    q2_13a:'',
-    q2_14:0,
-    q2_14a:'',
-    q2_15:0,
-    q2_15a:'',
-    
+    q2_1: 0,
+    q2_1a: '',
+    q2_1b: '',
+    q2_2: 0,
+    q2_2a: '',
+    q2_3: 0,
+    q2_3a: '',
+    q2_4: 0,
+    q2_4a: '',
+    q2_5: 0,
+    q2_5a: '',
+    q2_6: 0,
+    q2_6a: '',
+    q2_6b: '',
+    q2_7: 0,
+    q2_7a: '',
+    q2_8: 0,
+    q2_8a: '',
+    q2_9: 0,
+    q2_9a: '',
+    q2_10: 0,
+    q2_10a: '',
+    q2_11: 0,
+    q2_11a: '',
+    q2_12: 0,
+    q2_12a: '',
+    q2_13: 0,
+    q2_13a: '',
+    q2_14: 0,
+    q2_14a: '',
+    q2_15: 0,
+    q2_15a: '',
+
   };
 
   prestine = [];
-  answerElements =[];
+  answerElements = [];
   questions: healthScreenQuestion[];
   healthScreenAnswers: healthScreenAnswers[];
 
@@ -63,13 +63,15 @@ export class HealthScreenComponent implements OnInit {
   getHSData() {
     this.drive.getHealthScreenQuestion().subscribe((response) => {
       this.questions = response;
+      console.log(this.questions);
+
     }, error => {
       console.log(error);
     });
   }
 
   reply() {
-    for (let index= 0; index < this.questions.length; index++) {
+    for (let index = 0; index < this.questions.length; index++) {
       this.answerElements[index] = this.questions[index].answer;
     }
 
@@ -106,19 +108,19 @@ export class HealthScreenComponent implements OnInit {
     this.answerResponse.q2_15 = this.answerElements[30];
     this.answerResponse.q2_15a = this.answerElements[31];
 
-    for(let index = 0; index < this.answerElements.length; index++){
+    for (let index = 0; index < this.answerElements.length; index++) {
       if (this.answerElements[index] === undefined || this.answerElements[index] === null) {
         this.invalidHealthScreen += index;
         console.log(this.invalidHealthScreen);
       }
     }
-    if (this.invalidHealthScreen > 0){
+    if (this.invalidHealthScreen > 0) {
       console.log('invalid', this.invalidHealthScreen);
       this.drive.showToaster('error', 'The form is not filled in or there is some missing values in it');
       this.invalidHealthScreen = 0;
     } else {
       this.drive.sendHealthScreenAnswers(this.answerResponse)
-      .subscribe((_response: OnlineRegistrationDTO) =>{
+      .subscribe((_response: OnlineRegistrationDTO) => {
         this.drive.CurrentUID = _response.id;
         this.drive.showToaster('success', 'Health Screen saved');
         this.router.navigate(['/u/new/form']);
