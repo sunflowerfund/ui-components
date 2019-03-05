@@ -15,6 +15,8 @@ export class StepOneComponent implements OnInit {
   questionair;
   simpleMedic = [];
   prestine = [];
+  userResponse = [];
+  finalUserResponse = {};
 
 
   constructor(
@@ -29,14 +31,14 @@ export class StepOneComponent implements OnInit {
     this.drive.getHealthScreenQuestion().subscribe(
       (response) => {
         this.questionair = response;
-        console.log(this.questionair);
+// console.log(this.questionair);
 
         for (let index = 0; index < this.questionair.length; index++) {
           if (this.questionair[index].question_Type === 1) {
             this.simpleMedic.push(this.questionair[index]);
           }
         }
-        console.log(this.simpleMedic);
+        // console.log(this.simpleMedic);
       }, error => {
         console.log(error);
       }
@@ -48,7 +50,17 @@ export class StepOneComponent implements OnInit {
 
 
   checkAnswering() {
-  console.log(this.simpleMedic);
+    for (let index = 0; index < this.simpleMedic.length; index++) {
+      this.finalUserResponse[this.simpleMedic[index].answer] = this.userResponse[index];
+    }
+    console.log('sending this', this.finalUserResponse);
+    
+    this.drive.sendHealthScreenAnswers(this.finalUserResponse).subscribe(_response => {
+      console.log(_response);
+
+    }, error => { console.log(error) })
+
+
   }
 
 }

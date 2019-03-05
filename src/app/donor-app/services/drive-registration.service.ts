@@ -25,7 +25,13 @@ export class DriveRegistrationService {
   height = 0;
   email = null;
   cellnumber = null;
-  bmi = 0;
+  bmi = '';
+  person = {
+  line1: '',
+  line2: '',
+  line3: '',
+  line4: ''};
+
 
 
   CurrentUID = 0;
@@ -73,17 +79,17 @@ export class DriveRegistrationService {
 
     return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'questions', httpOptions)
     .pipe(
-      tap(_=> this.log('Fetched HealthScreen Questions')),
+      tap(_ => this.log('Fetched HealthScreen Questions')),
       catchError(this.handleError('GET HealthScreen questions', []))
     );
   }
 
   sendHealthScreenAnswers(answers) {
-    return this.http.post(this.baseUrl + 'o_registeration', answers, httpOptions)
+    return this.http.patch(this.baseUrl + 'o_registration/' +  this.CurrentUID + '/health' , answers, httpOptions)
 
     .pipe(
-      tap( _response => this.log('Posted Health Screen Answers')),
-      catchError(this.handleError('POST Health Screen Ansers failed', []))
+      tap( _response => this.log('PATCHED Health Screen Answers')),
+      catchError(this.handleError('Patched Health Screen Ansers failed', []))
     );
   }
 
