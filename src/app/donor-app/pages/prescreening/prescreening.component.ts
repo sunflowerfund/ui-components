@@ -27,7 +27,6 @@ export class PrescreeningComponent implements OnInit {
     p8: 0,
     p9: 0,
     p10: 0,
-    // bmi: 0,
   };
 
   prestine = [];
