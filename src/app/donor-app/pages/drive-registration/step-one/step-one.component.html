@@ -1,4 +1,9 @@
-<div class="wraper">
+
+ <div class="loader" *ngIf="!questionair"> 
+  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div class="wraper"  *ngIf="questionair">
   <div class="center">
     
    
@@ -7,26 +12,26 @@
             <label class="text-line-middle text">{{ques.question}}</label>
           </div>
         
-         <div *ngIf="ques.question_Type === 1" class="YESandNO">
+         <div *ngIf="ques.question_Type === 1 && ques.answer != 'q1_12b'" class="YESandNO">
             <!-- Yes -->
           <div class="display-flex">
-              <div class="radio" [ngClass]="simpleMedic[i].answer && prestine[i]
+              <div class="radio" [ngClass]="userResponse[i] && prestine[i]
                ? 'selected' : 'unselected'"
-                (click)="simpleMedic[i].answer = 1;  prestine[i]= true; "></div>
+                (click)="userResponse[i] = 1;  prestine[i]= true; "></div>
               <label class="text-line-middle radio-label">Yes</label>
-            </div>
+            </div>                                        
           
-            <!-- No -->
+            <!-- No -->                                                                                                                                                                                                                                 
             <div class="display-flex">
-              <div class="radio" [ngClass]=" !simpleMedic[i].answer && prestine[i]
+              <div class="radio" [ngClass]=" !userResponse[i] && prestine[i]
               ? 'selected' : 'unselected'"
-                (click)="simpleMedic[i].answer = 0; prestine[i]= true;"></div>
+                (click)="userResponse[i] = 0; prestine[i]= true;"></div>
               <label class="text-line-middle radio-label">No</label>
             </div>
          </div>
         
-        <div class="explain"  *ngIf="ques.question_Type === 3" >
-            <input [(ngModel)]="simpleMedic[i].answer" type="text" class="input">
+        <div class="explain"  *ngIf="ques.answer === 'q1_12b'" >
+            <input [(ngModel)]="userResponse[i]" type="text" class="input">
         </div>  
       
         </div>
