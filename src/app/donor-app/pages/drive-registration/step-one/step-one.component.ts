@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from 'src/app/donor-app/services/drive-registration.service';
 import { QuestionDTO } from 'src/app/@sunflower-module/sunflower-ui/model/questionDTO';
+import { MedicalQuestions } from 'src/app/@sunflower-module/sunflower-ui/model/medicalQuestion.model';
+// import {  } from 'src/app/@sunflower-module/sunflower-ui/model/';
 
 @Component({
   selector: 'app-step-one',
@@ -10,8 +12,9 @@ import { QuestionDTO } from 'src/app/@sunflower-module/sunflower-ui/model/questi
 export class StepOneComponent implements OnInit {
   // name
 
-  questions: QuestionDTO  [];
-
+  questionair: QuestionDTO  [];
+  medic: QuestionDTO  [];
+  
   yesToAll = false;
   areYouHealthy;
   areYouHealthyPrestine = false;
@@ -43,14 +46,32 @@ export class StepOneComponent implements OnInit {
     public drive: DriveRegistrationService) { }
 
   ngOnInit() {
-    // this.checkAnswering();
+    this.getHealthQuestionair();
   }
 
-answering(num, answer, question) {
 
-  this.questions[num].questionNumber = num;
-  this.questions[num].answer = answer;
-  this.questions[num].question = question;
+  getHealthQuestionair(){
+    this.drive.getHealthScreenQuestion().subscribe(
+      (response) => {
+        this.questionair = response;
+        for (let index = 0; index < this.questionair.length; index++) {
+          const element = this.questionair[index];
+          if (this.questionair[index].questionType === 2) {
+            this.medic[index] = this.questionair[index];             
+          }          
+        }
+        console.log(this.medic);
+      }, error =>{
+        console.log(error);        
+      }
+    );
+  }
+
+// answering(num, answer, question) {
+
+//   this.questions[num].questionNumber = num;
+//   this.questions[num].answer = answer;
+//   this.questions[num].question = question;
 
 
     // if (
@@ -67,12 +88,12 @@ answering(num, answer, question) {
     // ) {
     //   this.yesToAll = true;
     // }
-  }
+  // }
 
 
   next() {
    this.drive.step += 1;
-   console.log(this.questions);
+  //  console.log(this.questions);
   }
 
 }
