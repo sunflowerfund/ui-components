@@ -75,7 +75,7 @@
         </h2>
 
 
-      <div *ngIf="ad1">
+      <div  *ngIf="ad1" >
           <label  class="labels " for="FullName">1st Contact's Full Name </label>
 
         <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
@@ -85,34 +85,37 @@
          <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
          ngDefaultControl ></app-input>
         <br>
-        <label  class="labels " for="emailAddress">1st Contact's  Email address</label>
+        <label  class="labels" for="emailAddress">1st Contact's  Email address</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
          ngDefaultControl ></app-input>
          <label  class="labels " for="mobile">1st Contact's  Mobile Number</label>
          <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
-        ngDefaultControl ></app-input>
+        ngDefaultControl></app-input>
+
+        <sunflower-button *ngIf="ad1"  type="primary" (click)="address1()">Add 1st Contact's Address</sunflower-button>
+
       </div>
 
 
       <div *ngIf="!ad1" >
           <label  class="labels " for="FullName">2nd Contact's Full Name</label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName" 
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.secondContactName" 
          ngDefaultControl ></app-input>
          <label  class="labels " for="relationship">2nd Contact's Relationship</label>
 
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship"
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
          ngDefaultControl ></app-input>
         <br>
         <label  class="labels " for="emailAddress">2nd Contact's Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail"
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactEmail"
          ngDefaultControl ></app-input>
          <label  class="labels " for="mobile">2nd Contact's Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile" 
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactMobile" 
         ngDefaultControl ></app-input>
       </div>
+
         <br>
-        <sunflower-button *ngIf="ad1" type="primary" (click)="address1()">Add 1st Contact's Address</sunflower-button>
      
         <sunflower-button *ngIf="!ad1" type="primary" (click)="next('step3')">Next</sunflower-button>
       

@@ -17,10 +17,10 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private validationService: ValidationService,
 
-  ) {  
+  ) {
     this.personalDetails.bmi = this.drive.bmi
-  console.log(this.drive.bmi);
-  
+    // console.log(this.drive.bmi);
+
   }
 
   personalDetails = {
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
     country: 'South Africa',
     countryId: 0,
     dateOfBirth: null,
-    ethnicGroupId: 0,
+    ethnicGroup: null,
     firstContactEmail: null,
     firstContactMobile: null,
     firstContactName: null,
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
     workPhone: null,
   };
 
-  ad1 = true; 
+  ad1 = true;
 
   index = 1;
   class1 = 'active indicator';
@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
   ContactName2: '';
   ContactRelationship2: '';
 
-  
+
 
 
   buttonNext = 'Next';
@@ -83,12 +83,17 @@ export class DashboardComponent implements OnInit {
   }
 
   address1() {
-    this.drive.person.line1 = this.ContactEmail;
-    this.drive.person.line2 = this.ContactMobile;
-    this.drive.person.line3 = this.ContactName;
-    this.drive.person.line4 = this.ContactRelationship;
-    console.log(this.drive.person);
+    // this.drive.person.line1 = this.ContactEmail;
+    // this.drive.person.line2 = this.ContactMobile;
+    // this.drive.person.line3 = this.ContactName;
+    // this.drive.person.line4 = this.ContactRelationship;
 
+
+    // console.log(this.personalDetails.firstContactEmail);
+    // console.log(this.personalDetails.firstName);
+    // console.log(this.personalDetails.firstContactRelationship);
+    // console.log(this.personalDetails.firstContactMobile);
+    // console.log(this.personalDetails);
 
     this.ad1 = !this.ad1;
   }
@@ -141,40 +146,60 @@ export class DashboardComponent implements OnInit {
 
 
   setEthnicity(ethnicity: string): void {
-    // this.personalDetails.ethnicGroupId = ethnicity;
+    this.personalDetails.ethnicGroup = ethnicity;
   }
-
-
-
 
   next(step) {
     if (step === 'step1') {
+
+
+  // else{ this.drive.showToaster('error', 'You ID number is required to proceed');}
+    // if (this.validationService.messages.length > 0) {
+    //   for (let index = 0; index < this.validationService.messages.length; index++) {
+    //     this.drive.showToaster('error', this.validationService.messages[index]);
+
+    //   }
+    // }
+    if (this.personalDetails.firstName === null || this.personalDetails.firstName === undefined ) {
+      this.drive.showToaster('error', 'You Firstname is required to proceed');
+    } else { 
+      if (this.personalDetails.surname === null || this.personalDetails.surname === undefined ) {
+      this.drive.showToaster('error', 'You Lastname is required to proceed');
+         
+      } else{ 
+       if (this.personalDetails.idNumber != null || this.personalDetails.idNumber != undefined 
+  // this.personalDetails.firstName != null || this.personalDetails.firstName != undefined ||
+  // this.personalDetails.surname != null || this.personalDetails.surname != undefined 
+  ) {
       if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
+        this.personalDetails.dateOfBirth = this.validationService.DOB;
+        this.personalDetails.gender = this.validationService.gender;
+        // this.index++;
+        // this.setUpClass(this.index);
+      }else { 
         this.index++;
         this.setUpClass(this.index);
-
       }
-      if (this.validationService.messages.length > 0) {
-        for (let index = 0; index < this.validationService.messages.length; index++) {
-          this.drive.showToaster('error', this.validationService.messages[index]);
 
-        }
+    } 
       }
- 
     }
+
+    }
+   
     if (step === 'step2') {
-      console.log(this.personalDetails);
+      // console.log(this.personalDetails);
       this.index++;
       this.setUpClass(this.index);
     }
 
     if (step === 'step3') {
-      this.personalDetails.secondContactEmail = this.ContactEmail2;
-      this.personalDetails.secondContactMobile = this.ContactMobile2;
-      this.personalDetails.secondContactName = this.ContactName2;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-      this.personalDetails.secondContactRelationship = this.ContactRelationship2;
+      // this.personalDetails.secondContactEmail = this.ContactEmail2;
+      // this.personalDetails.secondContactMobile = this.ContactMobile2;
+      // this.personalDetails.secondContactName = this.ContactName2;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+      // this.personalDetails.secondContactRelationship = this.ContactRelationship2;
       this.index++; this.setUpClass(this.index);
-      console.log(this.personalDetails);
+      // console.log(this.personalDetails);
 
     }
     // if (step === 'step4') {  }

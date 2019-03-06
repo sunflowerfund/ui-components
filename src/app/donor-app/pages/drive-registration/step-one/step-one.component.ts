@@ -53,10 +53,10 @@ export class StepOneComponent implements OnInit {
     for (let index = 0; index < this.simpleMedic.length; index++) {
       this.finalUserResponse[this.simpleMedic[index].answer] = this.userResponse[index];
     }
-    console.log('sending this', this.finalUserResponse);
+    // console.log('sending this', this.finalUserResponse);
     
     this.drive.sendHealthScreenAnswers(this.finalUserResponse).subscribe(_response => {
-      console.log(_response);
+      // console.log(_response);
 
     }, error => { console.log(error) })
 
