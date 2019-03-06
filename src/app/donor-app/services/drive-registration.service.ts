@@ -89,7 +89,7 @@ export class DriveRegistrationService {
 
     .pipe(
       tap( _response => this.log('PATCHED Health Screen Answers')),
-      catchError(this.handleError('Patched Health Screen Ansers failed', []))
+      catchError(this.handleError('Patching Health Screen Answers failed', []))
     );
   }
 
@@ -108,9 +108,8 @@ export class DriveRegistrationService {
     };
   }
 
-  /** Log aSunflowerUserService message with the MessageService */
+  /** Log a message with the MessageService */
   private log(message: string) {
-    // this.messageService.add(`SunflowerUserService: ${message}`);
     console.log(message);
   }
 

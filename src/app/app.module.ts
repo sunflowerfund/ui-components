@@ -19,9 +19,7 @@ import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { environment } from '../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment'; 
 
 
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
@@ -64,8 +62,7 @@ import { HealthScreenComponent } from './donor-app/pages/health-screen/health-sc
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    BrowserAnimationsModule, 
     MainRoutingModule,
     CommonModule,
     NgbModule,

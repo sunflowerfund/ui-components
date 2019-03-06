@@ -19,6 +19,9 @@ export class StepOneComponent implements OnInit {
   finalUserResponse = {};
 
 
+  medicalAnswers: MedicalQuestions[];
+
+
   constructor(
     public drive: DriveRegistrationService) { }
 
@@ -31,7 +34,7 @@ export class StepOneComponent implements OnInit {
     this.drive.getHealthScreenQuestion().subscribe(
       (response) => {
         this.questionair = response;
-// console.log(this.questionair);
+console.log(this.questionair);
 
         for (let index = 0; index < this.questionair.length; index++) {
           if (this.questionair[index].question_Type === 1) {
@@ -53,10 +56,10 @@ export class StepOneComponent implements OnInit {
     for (let index = 0; index < this.simpleMedic.length; index++) {
       this.finalUserResponse[this.simpleMedic[index].answer] = this.userResponse[index];
     }
-    console.log('sending this', this.finalUserResponse);
+    // console.log('sending this', this.finalUserResponse);
     
     this.drive.sendHealthScreenAnswers(this.finalUserResponse).subscribe(_response => {
-      console.log(_response);
+      // console.log(_response);
 
     }, error => { console.log(error) })
 

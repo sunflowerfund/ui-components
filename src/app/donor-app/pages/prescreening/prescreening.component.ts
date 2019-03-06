@@ -65,7 +65,7 @@ export class PrescreeningComponent implements OnInit {
     this.drive.height = this.answerElements[2];
 
     // tslint:disable-next-line:radix
-    this.drive.bmi = parseInt((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
+    this.drive.bmi = ((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
 
 
 
