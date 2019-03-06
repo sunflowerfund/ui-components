@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../../services/drive-registration.service';
+import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
 
 
 
@@ -11,30 +12,24 @@ import { DriveRegistrationService } from '../../../services/drive-registration.s
 export class StepTwoComponent implements OnInit {
   isAWomen = false;
 
+  questionair;
+  simpleMedic = [];
+  simpleMedicAnswers: Answer[] = []
+  simpleAnswerText: string
+  prestine = [];
 
-  numberOfPregnancy;
-  dateOfLastPregnancy;
-  haveYouEverbeenPregnant;
-  haveYouEverbeenPregnantPrestine;
-  iAgreeTobeContactedBySANBSandWPBTS;
-  iAgreeTobeContactedBySANBSandWPBTSPrestine;
-  iConsentToMyPersonalInformationBeingGivenSANBS;
-  iConsentToMyPersonalInformationBeingGivenSANBSPrestine;
-  areYouWillingToBeApproachedToBeAPlateletDonor;
-  areYouWillingToBeApproachedToBeAPlateletDonorPrestine;
-  areYouAPlateletDonor;
-  areYouAPlateletDonorPrestine;
-
+  
   constructor(
     private drive: DriveRegistrationService,
   ) {   }
 
 
   ngOnInit() {
+  this.questionair = this.drive.questionar;
   }
 
   finish() {
-    this.drive.showToaster('success', 'Well Done, All entered info is saved !!!' );
+    this.drive.showToaster('info', 'Well Done, All entered info is saved !!!' );
   }
 
 }
