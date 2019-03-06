@@ -7,6 +7,7 @@ import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model
 import { ToastrService } from 'ngx-toastr';
 import { healthScreenQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model';
 import { pipe } from '@angular/core/src/render3';
+import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -92,7 +93,14 @@ export class DriveRegistrationService {
       catchError(this.handleError('Patching Health Screen Answers failed', []))
     );
   }
-
+  
+  answerHealthScreenAnswers(answers : Array<Answer>) {
+    return this.http.patch(this.baseUrl + 'o_registration/' +  this.CurrentUID + '/health' , answers, httpOptions)
+    .pipe(
+      tap( _response => this.log('PATCHED Health Screen Answers')),
+      catchError(this.handleError('Patching Health Screen Answers failed', []))
+    );
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

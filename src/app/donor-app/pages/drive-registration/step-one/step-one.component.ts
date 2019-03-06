@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from 'src/app/donor-app/services/drive-registration.service';
 import { QuestionDTO } from 'src/app/@sunflower-module/sunflower-ui/model/questionDTO';
 import { MedicalQuestions } from 'src/app/@sunflower-module/sunflower-ui/model/medicalQuestion.model';
+import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
 // import {  } from 'src/app/@sunflower-module/sunflower-ui/model/';
 
 @Component({
@@ -11,19 +12,16 @@ import { MedicalQuestions } from 'src/app/@sunflower-module/sunflower-ui/model/m
 })
 export class StepOneComponent implements OnInit {
   // name
-
   questionair;
   simpleMedic = [];
+  simpleMedicAnswers: Answer[] = []
+  simpleAnswerText: string
   prestine = [];
   userResponse = [];
   finalUserResponse = {};
-
-
   medicalAnswers: MedicalQuestions[];
 
-
-  constructor(
-    public drive: DriveRegistrationService) { }
+  constructor(public drive: DriveRegistrationService) { }
 
   ngOnInit() {
     this.getHealthQuestionair();
@@ -34,7 +32,7 @@ export class StepOneComponent implements OnInit {
     this.drive.getHealthScreenQuestion().subscribe(
       (response) => {
         this.questionair = response;
-console.log(this.questionair);
+        console.log(this.questionair);
 
         for (let index = 0; index < this.questionair.length; index++) {
           if (this.questionair[index].question_Type === 1) {
@@ -48,19 +46,41 @@ console.log(this.questionair);
     );
   }
 
+  answerQuestion(questionId: number, yesno: boolean) {
+    console.log("Called at qID" + questionId + " boolean: " + yesno)
+    //find if answered
+    var ArleadyAnswered = false
+    for (let oldAnswer of this.simpleMedicAnswers) {
+      if (oldAnswer.questionId == questionId) {
+        oldAnswer.yesno = yesno
+        ArleadyAnswered = true
+        break
+      }
+    }
 
+    if (!ArleadyAnswered) {
+      var answer = new Answer()
+      answer.yesno = yesno
+      answer.questionId = questionId
+      this.simpleMedicAnswers.push(answer)
+    }
+  }
 
 
 
   checkAnswering() {
-    for (let index = 0; index < this.simpleMedic.length; index++) {
-      this.finalUserResponse[this.simpleMedic[index].answer] = this.userResponse[index];
+    for (let medicaQuestion of this.simpleMedic) {
+      if (medicaQuestion['answer'] == "q1_12b") {
+        var answer = new Answer()
+        answer.yesno = false
+        answer.questionId = medicaQuestion['id']
+        this.simpleMedicAnswers.push(answer)
+        break;
+      }
     }
-    // console.log('sending this', this.finalUserResponse);
-    
-    this.drive.sendHealthScreenAnswers(this.finalUserResponse).subscribe(_response => {
-      // console.log(_response);
 
+    this.drive.answerHealthScreenAnswers(this.simpleMedicAnswers).subscribe(_response => {
+      // console.log(_response);
     }, error => { console.log(error) })
 
 
