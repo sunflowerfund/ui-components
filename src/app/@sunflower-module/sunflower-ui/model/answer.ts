@@ -1,4 +1,4 @@
-export class Answer { 
+export class Answer {
     date?: string;
     questionId?: number;
     subAnswer?: Array<Answer>;

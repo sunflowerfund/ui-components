@@ -1,51 +1,89 @@
-
- <div class="loader" *ngIf="!questionair"> 
-  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+<div class="loader" *ngIf="!questionair">
+  <div class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>
 
 <div class="wraper">
   <div class="center">
-      <span class="infomate">
-          <p class="innerText">A platelet transfusion can prevent major bleeding. Certain patients are depandent on receiving HLA-compatable platelets from HLA matched donors in the coursr of their treatment (chemotherapy, transplantation and other). </p>
-         </span>
+    <span class="infomate">
+      <p class="innerText">A platelet transfusion can prevent major bleeding. Certain patients are depandent on
+        receiving HLA-compatable platelets from HLA matched donors in the coursr of their treatment (chemotherapy,
+        transplantation and other). </p>
+    </span>
 
-<br>
-<br>
+    <br>
+    <br>
 
-    <div class="line">
+    <div class="line" *ngFor="let ques of simpleMedic; index as i">
       <div class="height-46 display-flex">
-        <label class="text-line-middle text">Are you a platelet donor</label>
-      </div>
-      <!-- Yes -->
-      <div class="display-flex">
-        <div class="radio" [ngClass]="areYouAPlateletDonor && areYouAPlateletDonorPrestine ? 'selected' : 'unselected'"
-          (click)="areYouAPlateletDonor = true;  Prestine[i] = true"></div>
-        <label class="text-line-middle radio-label">Yes</label>
+        <label class="text-line-middle text"> {{ques.question}}</label>
       </div>
 
-      <!-- No -->
-      <div class="display-flex">
-        <div class="radio" [ngClass]="!areYouAPlateletDonor && areYouAPlateletDonorPrestine? 'selected' : 'unselected'"
-          (click)="areYouAPlateletDonor = false; Prestine[i] = true;"></div>
-        <label class="text-line-middle radio-label">No</label>
+      <div *ngIf="ques.question_Type === 2">
+
+        <!-- Yes -->
+        <div class="display-flex">
+          <div class="radio"
+            [ngClass]="simpleMedicAnswers[i] && simpleMedicAnswers[i].yesno && prestine[i] ? 'selected' : 'unselected'"
+            (click)="answerQuestion(ques.id, true); prestine[i] = true"></div>
+          <label class="text-line-middle radio-label">Yes</label>
+        </div>
+
+        <!-- No -->
+        <div class="display-flex">
+          <div class="radio"
+            [ngClass]="simpleMedicAnswers[i] && !simpleMedicAnswers[i].yesno && prestine[i] ? 'selected' : 'unselected'"
+            (click)=" answerQuestion(ques.id, false);  prestine[i] = true;"></div>
+          <label class="text-line-middle radio-label">No</label>
+        </div>
       </div>
+
+      <div *ngIf="ques.answer != 'q2_6'" class="height-46  display-flex explain-section">
+        <label class="text-line-middle text">When: </label>
+        <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).when" ngDefaultControl type="text"></app-input>
+
+        <label class="text-line-middle text">Where: </label>
+        <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).where" ngDefaultControl type="text"></app-input>
+
+      </div>
+
+      <div *ngIf="ques.answer === 'q2_6'">
+        <label class="text-line-middle text">If so Which relative? </label>
+        <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).when" ngDefaultControl type="text"></app-input>
+
+        <label class="text-line-middle text">Which leukaemia?: </label>
+        <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).where" ngDefaultControl type="text"></app-input>
+
+      </div>
+
+
+
+      <br><br>
+      <br><br>
+      <br><br>
+
     </div>
 
 
-    <div class="height-46 display-flex explain-section" >
-      <label class="text-line-middle text">When: </label>
-      <app-input [attrs]="['--input-fifty']" [(ngModel)]="when" ngDefaultControl type="text" ></app-input>
 
-      <label class="text-line-middle text">Where: </label>
-      <app-input [attrs]="['--input-fifty']" [(ngModel)]="where" ngDefaultControl type="text" ></app-input>
 
-    </div>
- 
- <br>
- <br>
- <br>
- <div class="btn-spacing btn-container  text-center">
-  <sunflower-button type="primary" (click)="finish()" >Finish !</sunflower-button>
+    <br>
+    <br>
+    <br>
+    <div class="btn-spacing btn-container  text-center">
+      <sunflower-button type="primary" (click)="finish()">Finish !</sunflower-button>
     </div>
 
 

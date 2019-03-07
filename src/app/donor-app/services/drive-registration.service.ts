@@ -26,11 +26,11 @@ export class DriveRegistrationService {
   height = 0;
   email = null;
   cellnumber = null;
-  bmi = ''; 
+  bmi = '';
   questionar;
 
 
-  CurrentUID = 0;
+  CurrentUID = 106;
 
 
   personalDetails: PersonalDetailsDTO;
