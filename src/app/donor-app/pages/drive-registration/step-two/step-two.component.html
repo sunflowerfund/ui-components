@@ -36,21 +36,21 @@
         <!-- Yes -->
         <div class="display-flex">
           <div class="radio"
-            [ngClass]="simpleMedicAnswers[i] && simpleMedicAnswers[i].yesno && prestine[i] ? 'selected' : 'unselected'"
-            (click)="answerQuestion(ques.id, true); prestine[i] = true"></div>
+            [ngClass]="simpleAnswerResponse[i] && prestine[i] ? 'selected' : 'unselected'"
+            (click)="answerQuestion(ques.id, true);  simpleAnswerResponse[i] = true; prestine[i] = true"></div>
           <label class="text-line-middle radio-label">Yes</label>
         </div>
 
         <!-- No -->
         <div class="display-flex">
           <div class="radio"
-            [ngClass]="simpleMedicAnswers[i] && !simpleMedicAnswers[i].yesno && prestine[i] ? 'selected' : 'unselected'"
-            (click)=" answerQuestion(ques.id, false);  prestine[i] = true;"></div>
+            [ngClass]="!simpleAnswerResponse[i] && prestine[i] ? 'selected' : 'unselected'"
+            (click)=" answerQuestion(ques.id, false);  simpleAnswerResponse[i] = false; prestine[i] = true;"></div>
           <label class="text-line-middle radio-label">No</label>
         </div>
       </div>
 
-      <div *ngIf="ques.answer != 'q2_6'" class="height-46  display-flex explain-section">
+      <div *ngIf="ques.answer != 'q2_6' && simpleAnswerResponse[i] === true" class="height-46  display-flex explain-section">
         <label class="text-line-middle text">When: </label>
         <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).when" ngDefaultControl type="text"></app-input>
 
@@ -59,7 +59,7 @@
 
       </div>
 
-      <div *ngIf="ques.answer === 'q2_6'">
+      <div *ngIf="ques.answer === 'q2_6'  && simpleAnswerResponse[i] === true">
         <label class="text-line-middle text">If so Which relative? </label>
         <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).when" ngDefaultControl type="text"></app-input>
 

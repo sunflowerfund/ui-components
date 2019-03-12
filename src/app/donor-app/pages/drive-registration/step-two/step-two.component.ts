@@ -15,7 +15,7 @@ export class StepTwoComponent implements OnInit {
   questionair;
   simpleMedic = [];
   simpleMedicAnswers: Answer[] = [];
-  simpleAnswerText: string;
+  simpleAnswerResponse = [];
   prestine = [];
   simpleMedicAnswersMap: Map<number, Answer>;
 
@@ -31,24 +31,26 @@ export class StepTwoComponent implements OnInit {
     for (let index = 0; index < this.questionair.length; index++) {
       if (this.questionair[index].question_Type === 2) {
         this.simpleMedic.push(this.questionair[index]);
-        this.simpleMedicAnswersMap.set(this.questionair[index].questionId, new Answer());
+
+        this.simpleMedicAnswersMap.set(this.questionair[index].id, new Answer());
+
       }
     }
-    // console.log(this.simpleMedic);
 
   }
 
   answerQuestion(questionId: number, yesno: boolean) {
     const oldAnswer = this.simpleMedicAnswersMap.get(questionId);
     oldAnswer.yesno = yesno;
+    oldAnswer.questionId = questionId;
   }
 
 
   finish() {
-    console.log(this.simpleMedicAnswersMap);
+   this.simpleMedicAnswers.push( this.simpleMedicAnswersMap.values());
 
+this.drive.answerHealthScreenAnswers([this.simpleMedicAnswersMap.values()]);
     this.drive.showToaster('info', 'Well Done, All entered info is saved !!!');
-    // console.log(this.simpleMedicAnswers);
 
   }
 

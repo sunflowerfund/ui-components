@@ -30,7 +30,7 @@ export class DriveRegistrationService {
   questionar;
 
 
-  CurrentUID = 106;
+  CurrentUID = 113;
 
 
   personalDetails: PersonalDetailsDTO;
@@ -54,7 +54,7 @@ export class DriveRegistrationService {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
 
       .pipe(
-        tap( _response => this.log('Posted Prescreening Answers')),
+        tap(_response => this.log('Posted Prescreening Answers')),
         catchError(this.handleError('POST PreScreening answers failed', []))
       );
   }
@@ -62,7 +62,7 @@ export class DriveRegistrationService {
   sendPersonalInformation(personalInfo) {
     // console.log(this.baseUrl + 'o_registration/'+ this.CurrentUID +'/personaldetails' );
 
-    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/personaldetails' , personalInfo, httpOptions)
+    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/personaldetails', personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
         catchError(this.handleError('POST Personal Information failed', []))
@@ -74,27 +74,28 @@ export class DriveRegistrationService {
   getHealthScreenQuestion(): Observable<healthScreenQuestion[]> {
 
     return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'questions', httpOptions)
-    .pipe(
-      tap(_ => this.log('Fetched HealthScreen Questions')),
-      catchError(this.handleError('GET HealthScreen questions', []))
-    );
+      .pipe(
+        tap(_ => this.log('Fetched HealthScreen Questions')),
+        catchError(this.handleError('GET HealthScreen questions', []))
+      );
   }
 
   sendHealthScreenAnswers(answers) {
-    return this.http.patch(this.baseUrl + 'o_registration/' +  this.CurrentUID + '/health' , answers, httpOptions)
+    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/health', answers, httpOptions)
 
-    .pipe(
-      tap( _response => this.log('PATCHED Health Screen Answers')),
-      catchError(this.handleError('Patching Health Screen Answers failed', []))
-    );
+      .pipe(
+        tap(_response => this.log('PATCHED Health Screen Answers')),
+        catchError(this.handleError('Patching Health Screen Answers failed', []))
+      );
   }
-  
-  answerHealthScreenAnswers(answers : Array<Answer>) {
-    return this.http.patch(this.baseUrl + 'o_registration/' +  this.CurrentUID + '/health' , answers, httpOptions)
-    .pipe(
-      tap( _response => this.log('PATCHED Health Screen Answers')),
-      catchError(this.handleError('Patching Health Screen Answers failed', []))
-    );
+
+  answerHealthScreenAnswers(answers: Array<Answer>) {
+    console.log(answers);
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/health`, answers, httpOptions)
+      .pipe(
+        tap(_response => this.log('PATCHED Health Screen Answers')),
+        catchError(this.handleError('Patching Health Screen Answers failed', []))
+      );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -130,7 +131,7 @@ export class DriveRegistrationService {
     if (type === 'warn') {
       this.toastr.warning(msg, 'Warning');
 
-    }if (type === 'info') {
+    } if (type === 'info') {
       this.toastr.info(msg, 'Warning');
 
     }
