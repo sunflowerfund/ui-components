@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../../services/drive-registration.service';
 import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
+import { Router } from '@angular/router';
 
 
 
@@ -14,7 +15,7 @@ export class StepTwoComponent implements OnInit {
 
   questionair;
   simpleMedic = [];
-  simpleMedicAnswers: Answer[] = [];
+  simpleMedicAnswers: Array<Answer>;
   simpleAnswerResponse = [];
   prestine = [];
   simpleMedicAnswersMap: Map<number, Answer>;
@@ -22,6 +23,7 @@ export class StepTwoComponent implements OnInit {
 
   constructor(
     private drive: DriveRegistrationService,
+    private router: Router,
   ) { }
 
 
@@ -47,11 +49,11 @@ export class StepTwoComponent implements OnInit {
 
 
   finish() {
-   this.simpleMedicAnswers.push( this.simpleMedicAnswersMap.values());
-
-this.drive.answerHealthScreenAnswers([this.simpleMedicAnswersMap.values()]);
+    this.drive.answerHealthScreenAnswers(Array.from(this.simpleMedicAnswersMap.values())).subscribe(_response => {
+      console.log(_response);
+    });
     this.drive.showToaster('info', 'Well Done, All entered info is saved !!!');
-
+    this.router.navigate(['/']);
   }
 
 }

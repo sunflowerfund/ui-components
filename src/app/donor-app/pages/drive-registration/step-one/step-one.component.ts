@@ -17,7 +17,7 @@ export class StepOneComponent implements OnInit {
   // userResponse = [];
   // finalUserResponse = {};
   // medicalAnswers: MedicalQuestions[];
-// import {  } from 'src/app/@sunflower-module/sunflower-ui/model/';
+  // import {  } from 'src/app/@sunflower-module/sunflower-ui/model/';
 
   constructor(public drive: DriveRegistrationService) { }
 
@@ -77,13 +77,13 @@ export class StepOneComponent implements OnInit {
         break;
       }
     }
-console.log(this.simpleMedicAnswers);
+    console.log(this.simpleMedicAnswers);
 
     this.drive.answerHealthScreenAnswers(this.simpleMedicAnswers).subscribe(_response => {
       console.log(_response);
-    }, error => { console.log(error)});
+    }, error => { console.log(error) });
 
-this.drive.step++;
+    this.drive.step++;
 
 
   }

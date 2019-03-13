@@ -7,7 +7,7 @@ export class ValidationService {
   invalid = 0;
   messages = [];
   status: boolean;
-  DOB
+  DOB;
   gender;
   constructor() { }
 
