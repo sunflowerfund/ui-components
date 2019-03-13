@@ -81,7 +81,7 @@ export class StepOneComponent implements OnInit {
 
     this.drive.answerHealthScreenAnswers(this.simpleMedicAnswers).subscribe(_response => {
       console.log(_response);
-    }, error => { console.log(error) });
+    }, error => { console.log(error) ;});
 
     this.drive.step++;
 

@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     // console.log(this.drive.bmi);
 
   }
-consent = false;
+  consent = false;
   personalDetails = {
     address1: null,
     address2: null,
@@ -174,7 +174,7 @@ consent = false;
           this.drive.showToaster('error', 'Please correct you ID');
           // ++wave1;
         }
-      } 
+      }
 
     }
 
