@@ -66,6 +66,7 @@ export class PrescreeningComponent implements OnInit {
 
     // tslint:disable-next-line:radix
     this.drive.bmi = ((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
+    window.alert(`Your BMI is: ${this.drive.bmi}`);
 
 
 
@@ -84,7 +85,7 @@ export class PrescreeningComponent implements OnInit {
     for (let index = 0; index < this.answerElements.length; index++) {
       if (this.answerElements[index] === undefined || this.answerElements[index] === null) {
         this.invalidPrescreening += index;
-        console.log(this.invalidPrescreening);
+        // console.log(this.invalidPrescreening);
       }
 
     }
@@ -94,7 +95,7 @@ export class PrescreeningComponent implements OnInit {
       this.invalidPrescreening++;
     }
     if (this.invalidPrescreening > 0) {
-      console.log('invalid', this.invalidPrescreening);
+      // console.log('invalid', this.invalidPrescreening);
       this.drive.showToaster('error', 'The form is not filled in or there is some missing values in it');
       this.invalidPrescreening = 0;
     } else {

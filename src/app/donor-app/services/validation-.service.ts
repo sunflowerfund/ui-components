@@ -7,7 +7,7 @@ export class ValidationService {
   invalid = 0;
   messages = [];
   status: boolean;
-  DOB
+  DOB;
   gender;
   constructor() { }
 
@@ -42,7 +42,7 @@ export class ValidationService {
       this.invalid++;
     }
     // evaluate GSSS group for gender and sequence
-     this.gender = parseInt(identity.substring(6, 10), 10) > 5000 ? 'M' : 'F';
+     this.gender = parseInt(identity.substring(6, 10), 10) > 5000 ? 'Male' : 'Female';
 
     // ensure third to last digit is a 1 or a 0
     if (identity.substring(10, 11) > 1) {

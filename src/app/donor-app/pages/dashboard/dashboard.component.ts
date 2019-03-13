@@ -18,11 +18,11 @@ export class DashboardComponent implements OnInit {
     private validationService: ValidationService,
 
   ) {
-    this.personalDetails.bmi = this.drive.bmi
+    this.personalDetails.bmi = this.drive.bmi;
     // console.log(this.drive.bmi);
 
   }
-
+consent = false;
   personalDetails = {
     address1: null,
     address2: null,
@@ -79,22 +79,14 @@ export class DashboardComponent implements OnInit {
 
   ethnicity: string;
 
+  wave1 = 0;
+  wave2 = 0;
+  wave3 = 0;
+  wave4 = 0;
   ngOnInit() {
   }
 
   address1() {
-    // this.drive.person.line1 = this.ContactEmail;
-    // this.drive.person.line2 = this.ContactMobile;
-    // this.drive.person.line3 = this.ContactName;
-    // this.drive.person.line4 = this.ContactRelationship;
-
-
-    // console.log(this.personalDetails.firstContactEmail);
-    // console.log(this.personalDetails.firstName);
-    // console.log(this.personalDetails.firstContactRelationship);
-    // console.log(this.personalDetails.firstContactMobile);
-    // console.log(this.personalDetails);
-
     this.ad1 = !this.ad1;
   }
   validateID(idnumber) {
@@ -151,70 +143,75 @@ export class DashboardComponent implements OnInit {
 
   next(step) {
     if (step === 'step1') {
-
-
-  // else{ this.drive.showToaster('error', 'You ID number is required to proceed');}
-    // if (this.validationService.messages.length > 0) {
-    //   for (let index = 0; index < this.validationService.messages.length; index++) {
-    //     this.drive.showToaster('error', this.validationService.messages[index]);
-
-    //   }
-    // }
-    if (this.personalDetails.firstName === null || this.personalDetails.firstName === undefined ) {
-      this.drive.showToaster('error', 'You Firstname is required to proceed');
-    } else { 
-      if (this.personalDetails.surname === null || this.personalDetails.surname === undefined ) {
-      this.drive.showToaster('error', 'You Lastname is required to proceed');
-         
-      } else{ 
-       if (this.personalDetails.idNumber != null || this.personalDetails.idNumber != undefined 
-  // this.personalDetails.firstName != null || this.personalDetails.firstName != undefined ||
-  // this.personalDetails.surname != null || this.personalDetails.surname != undefined 
-  ) {
-      if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
-        this.personalDetails.dateOfBirth = this.validationService.DOB;
-        this.personalDetails.gender = this.validationService.gender;
-        // this.index++;
-        // this.setUpClass(this.index);
-      }else { 
-        this.index++;
-        this.setUpClass(this.index);
+      // let wave1 = 0;
+      if (this.personalDetails.firstName === null || this.personalDetails.firstName === undefined) {
+        this.drive.showToaster('error', 'You First name is required to proceed');
+        // ++wave1;
+      }
+      if (this.personalDetails.surname === null || this.personalDetails.surname === undefined) {
+        this.drive.showToaster('error', 'You Last name is required to proceed');
+        // ++wave1;
       }
 
-    } 
+
+      if (this.personalDetails.ethnicGroup === null || this.personalDetails.ethnicGroup === undefined
+      ) {
+        this.drive.showToaster('error', 'Please select your ethnic group tot proceed');
+        // ++wave1;
       }
-    }
+
+      if (this.personalDetails.idNumber === null || this.personalDetails.idNumber === undefined
+        || this.personalDetails.idNumber.legnth < 13) {
+        this.drive.showToaster('error', 'ID Number is required to proceed');
+        // ++wave1;
+      } else {
+        if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
+          this.personalDetails.dateOfBirth = '2019';
+          this.personalDetails.gender = this.validationService.gender;
+          this.index++;
+          this.setUpClass(this.index);
+        } else {
+          this.drive.showToaster('error', 'Please correct you ID');
+          // ++wave1;
+        }
+      } 
 
     }
-   
+
     if (step === 'step2') {
-      // console.log(this.personalDetails);
+
       this.index++;
       this.setUpClass(this.index);
     }
 
     if (step === 'step3') {
-      // this.personalDetails.secondContactEmail = this.ContactEmail2;
-      // this.personalDetails.secondContactMobile = this.ContactMobile2;
-      // this.personalDetails.secondContactName = this.ContactName2;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-      // this.personalDetails.secondContactRelationship = this.ContactRelationship2;
+
       this.index++; this.setUpClass(this.index);
-      // console.log(this.personalDetails);
+
 
     }
-    // if (step === 'step4') {  }
   }
 
 
   finish() {
     // this.personalDetails = ethnicity;
     console.log(this.personalDetails);
+    // console.log(this.consent);
+    // if (!this.consent) {
+    //   this.drive.showToaster('error', 'You need to concent to All of the above mentioned');
+    // }
+
     this.drive.sendPersonalInformation(this.personalDetails)
       .subscribe((_response: OnlineRegistrationDTO) => {
-
         this.drive.showToaster('success', 'Personal Details have been stored successfully');
-        this.router.navigate(['/medic']);
       }, error => {
+        console.log(error);
+        this.drive.showToaster('error', error);
+      });
+
+
+    this.drive.consentToPersonalData({ 'commsInd': 1, 'hla_Confirm': 1, 'stemCell_Confirm': 1 })
+      .subscribe(() => { this.router.navigate(['/medic']); }, error => {
         console.log(error);
         this.drive.showToaster('error', error);
 

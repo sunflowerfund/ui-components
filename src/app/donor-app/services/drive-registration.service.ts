@@ -30,7 +30,7 @@ export class DriveRegistrationService {
   questionar;
 
 
-  CurrentUID = 113;
+  CurrentUID = 0;
 
 
   personalDetails: PersonalDetailsDTO;
@@ -60,12 +60,17 @@ export class DriveRegistrationService {
   }
 
   sendPersonalInformation(personalInfo) {
-    // console.log(this.baseUrl + 'o_registration/'+ this.CurrentUID +'/personaldetails' );
-
-    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/personaldetails', personalInfo, httpOptions)
+     return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
         catchError(this.handleError('POST Personal Information failed', []))
+      );
+  }
+  consentToPersonalData(consent) {
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, consent, httpOptions)
+      .pipe(
+        tap(_ => this.log('Posted consent')),
+        catchError(this.handleError('PATCH consent failed', []))
       );
   }
 
@@ -81,7 +86,7 @@ export class DriveRegistrationService {
   }
 
   sendHealthScreenAnswers(answers) {
-    return this.http.patch(this.baseUrl + 'o_registration/' + this.CurrentUID + '/health', answers, httpOptions)
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/health`, answers, httpOptions)
 
       .pipe(
         tap(_response => this.log('PATCHED Health Screen Answers')),
