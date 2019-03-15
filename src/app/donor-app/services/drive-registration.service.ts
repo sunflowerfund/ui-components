@@ -21,7 +21,7 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'https://spring-sunflower.azurewebsites.net/api/v1/';
+   baseUrl = 'https://spring-sunflower.azurewebsites.net/api/v1/';
   weight = 0;
   height = 0;
   email = null;
@@ -82,6 +82,14 @@ export class DriveRegistrationService {
       .pipe(
         tap(_ => this.log('Fetched HealthScreen Questions')),
         catchError(this.handleError('GET HealthScreen questions', []))
+      );
+  }
+
+  getEthnicGroups(){
+    return this.http.get(this.baseUrl + 'ethnicgroups', httpOptions)
+      .pipe(
+        tap(_ => this.log('Fetched ethnic groups')),
+        catchError(this.handleError('GET ethnic groups failed', []))
       );
   }
 

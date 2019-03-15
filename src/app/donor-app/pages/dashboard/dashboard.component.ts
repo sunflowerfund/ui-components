@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { ValidationService } from '../../services/validation-.service';
 import { Router } from '@angular/router';
+import { EthnichGroup } from 'src/app/@sunflower-module/sunflower-ui/model/ethnicgroup.model';
 
 
 @Component({
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
   };
 
   ad1 = true;
-
+  ethnicGroup;
   index = 1;
   class1 = 'active indicator';
   class2 = 'indicator';
@@ -79,11 +80,13 @@ export class DashboardComponent implements OnInit {
 
   ethnicity: string;
 
-  wave1 = 0;
-  wave2 = 0;
-  wave3 = 0;
-  wave4 = 0;
+ 
   ngOnInit() {
+    this.drive.getEthnicGroups().subscribe((res:EthnichGroup)=>{
+      this.ethnicGroup = res;
+      console.log(res);
+      
+    })
   }
 
   address1() {
@@ -131,9 +134,8 @@ export class DashboardComponent implements OnInit {
       this.buttonNext = 'Submit';
     }
   }
-  setGender(gender: string) {
-    if (gender === 'Female') { this.personalDetails.gender = 1; }
-    this.personalDetails.gender = 0;
+  setCountry(country: string) {
+      this.personalDetails.country = country;
   }
 
 

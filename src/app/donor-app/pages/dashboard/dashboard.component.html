@@ -24,8 +24,13 @@
         <label  class="labels " for="Firstname">Last Name</label>
 
         <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.surname" ngDefaultControl type="text"  ></app-input>
+       
+        <label  class="labels " for="IdNumber">Select Country</label>
+        <br>
+        <br>
+        
         <div class="btn-container">
-          <sun-dropdown-menu title="Gender" [items]=" ['Male','Female']" (output)="setGender($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu title="Country" ngDefaultControl items="[ethnicGroup].ethnicGroup" (output)="setCountry($event)"></sun-dropdown-menu>
         </div>
         <label  class="labels " for="IdNumber">ID Number</label>
 
