@@ -1,179 +1,42 @@
-<div class="wraper">
+
+ <div class="loader" *ngIf="!questionair"> 
+  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div class="wraper"  *ngIf="questionair">
   <div class="center">
     
    
-
-<div class="line">
-  <div class="height-46 display-flex">
-    <label class="text-line-middle text">Are you Healthy</label>
-  </div>
-  <!-- Yes -->
-  <div class="display-flex">
-    <div class="radio" [(ngModel)]="name"  ngDefaultControl  [ngClass]="areYouHealthy && areYouHealthyPrestine ? 'selected' : 'unselected'" (click)="areYouHealthy = true; areYouHealthyPrestine=true"></div>
-    <label class="text-line-middle radio-label">Yes</label>
-  </div>
-
-  <!-- No -->
-  <div class="display-flex">
-    <div class="radio" [ngClass]="!areYouHealthy && areYouHealthyPrestine? 'selected' : 'unselected'" (click)="areYouHealthy = false; areYouHealthyPrestine=true;"></div>
-    <label class="text-line-middle radio-label">No</label>
-  </div>
-</div>
-
-<div class="line">
-    <div class="height-46 display-flex">
-      <label class="text-line-middle text">Does your family agree to you donating stem cells</label>
-    </div>
-    <!-- Yes --> 
-    <div class="display-flex">
-      <div class="radio" [ngClass]="doesYourFamilyAgreeForyouToDonate && doesYourFamilyAgreeForyouToDonatePrestine ? 'selected' : 'unselected'"
-       (click)="doesYourFamilyAgreeForyouToDonate = true; doesYourFamilyAgreeForyouToDonatePrestine = true;"></div>
-      <label class="text-line-middle radio-label">Yes</label>
-    </div>
-
-    <!-- No -->
-    <div class="display-flex">
-      <div class="radio" [ngClass]="!doesYourFamilyAgreeForyouToDonate &&  doesYourFamilyAgreeForyouToDonatePrestine ? 'selected' : 'unselected'"
-       (click)=" doesYourFamilyAgreeForyouToDonatePrestine = true; doesYourFamilyAgreeForyouToDonate = false"></div>
-      <label class="text-line-middle radio-label">No</label>
-    </div>
-  </div>
-  <br>
-  <div class="line">
-      <div class="height-46 display-flex">
-        <label class="text-line-middle text">Do your ankle swell up in the end of day</label>
-      </div>
-      <!-- Yes -->
-      <div class="display-flex">
-        <div class="radio" [ngClass]="doesYourAnkleSwellEdnOfDay && doesYourAnkleSwellEdnOfDayPrestine ? 'selected' : 'unselected'" 
-        (click)="doesYourAnkleSwellEdnOfDay = true; doesYourAnkleSwellEdnOfDayPrestine = true"></div>
-        <label class="text-line-middle radio-label">Yes</label>
-      </div>
-  
-      <!-- No -->
-      <div class="display-flex">
-        <div class="radio" [ngClass]="!doesYourAnkleSwellEdnOfDay && doesYourAnkleSwellEdnOfDayPrestine ? 'selected' : 'unselected'"
-         (click)="doesYourAnkleSwellEdnOfDay = false; doesYourAnkleSwellEdnOfDayPrestine = true"></div>
-        <label class="text-line-middle radio-label">No</label>
-      </div>
-    </div>
-    <br>
-
-    <div class="line">
-  <div class="height-46 display-flex">
-    <label class="text-line-middle ">Do you consider yourself a high risk for Hepatitis B, Hepatitis C or Hiv</label>
-  </div>
-  <!-- Yes -->
-  <div class="display-flex">
-    <div class="radio" [ngClass]="areYouAHighRiskForhepatitisOrHiv && areYouAHighRiskForhepatitisOrHivPrestine ? 'selected' : 'unselected'" 
-    (click)="areYouAHighRiskForhepatitisOrHiv =true; areYouAHighRiskForhepatitisOrHivPrestine = true"></div>
-    <label class="text-line-middle radio-label">Yes</label>
-  </div>
-
-  <!-- No -->
-  <div class="display-flex">
-    <div class="radio" [ngClass]="!areYouAHighRiskForhepatitisOrHiv && areYouAHighRiskForhepatitisOrHivPrestine  ? 'selected' : 'unselected'" 
-    (click)="areYouAHighRiskForhepatitisOrHiv = false; areYouAHighRiskForhepatitisOrHivPrestine = true"></div>
-    <label class="text-line-middle radio-label">No</label>
-  </div>
-</div>
-<br>
-
-<div class="line">
-    <div class="height-46 display-flex">
-      <label class="text-line-middle">What is your Weight</label>
-    </div>
-    <!-- input field -->
-        <app-input [attrs] = "['--input-fifty']" [(ngModel)]="whatsYourWeight" ngDefaultControl   type = "text" placeholder = "85 kg"></app-input>
-  </div>
-
-<div class="line">
-    <div class="height-46 display-flex">
-      <label class="text-line-middle">What is your Height</label>
-    </div>
-    <!-- input field -->
-        <app-input [attrs] = "['--input-fifty']" [(ngModel)]="whatsYourHeight" ngDefaultControl  type = "text" placeholder = "120 cm"></app-input>
-  </div>
-
-  <div class="line">
-      <div class="height-46 display-flex">
-        <label class="text-line-middle ">Are you a regular Blood donor</label>
-      </div>
-      <!-- Yes -->
-      <div class="display-flex">
-        <div class="radio" [ngClass]="AreYouARegularBloodDonor && AreYouARegularBloodDonorPrestine? 'selected' : 'unselected'" 
-        (click)="AreYouARegularBloodDonor = true; AreYouARegularBloodDonorPrestine =true"></div>
-        <label class="text-line-middle radio-label">Yes</label>
-      </div>
-  
-      <!-- No -->
-      <div class="display-flex">
-        <div class="radio" [ngClass]="!AreYouARegularBloodDonor && AreYouARegularBloodDonorPrestine ? 'selected' : 'unselected'"
-         (click)="AreYouARegularBloodDonor = false; AreYouARegularBloodDonorPrestine = true"></div>
-        <label class="text-line-middle radio-label">No</label>
-      </div>
-    </div>
-    <div class="line">
-        <div class="height-46 display-flex">
-          <label class="text-line-middle ">Do you get up more than once a night to pass urine</label>
-        </div>
-        <!-- Yes -->
-        <div class="display-flex">
-          <div class="radio" [ngClass]="DoYouGetUpMorethanOnceAtNight && DoYouGetUpMorethanOnceAtNightPrestine ? 'selected' : 'unselected'"
-           (click)="DoYouGetUpMorethanOnceAtNight = true; DoYouGetUpMorethanOnceAtNightPrestine = true "></div>
-          <label class="text-line-middle radio-label">Yes</label>
-        </div>
-    
-        <!-- No -->
-        <div class="display-flex">
-          <div class="radio" [ngClass]="!DoYouGetUpMorethanOnceAtNight  && DoYouGetUpMorethanOnceAtNightPrestine ? 'selected' : 'unselected'" 
-          (click)="DoYouGetUpMorethanOnceAtNight =false; DoYouGetUpMorethanOnceAtNightPrestine = true"></div>
-          <label class="text-line-middle radio-label">No</label>
-        </div>
-      </div>
-      <div class="line">
+      <div class="line"  *ngFor="let ques of simpleMedic; index as i" >
           <div class="height-46 display-flex">
-            <label class="text-line-middle ">Have you ever tested for Hepatitis B, Hepatitis C or HIV</label>
+            <label class="text-line-middle text">{{ques.question}}</label>
           </div>
-          <!-- Yes -->
-          <div class="display-flex">
-            <div class="radio" [ngClass]="haveYouEverBeenTestedForHiv && haveYouEverBeenTestedForHivPrestine ? 'selected' : 'unselected'"
-             (click)="haveYouEverBeenTestedForHiv =true; haveYouEverBeenTestedForHivPrestine = true"></div>
-            <label class="text-line-middle radio-label">Yes</label>
-          </div>
-      
-          <!-- No -->
-          <div class="display-flex">
-            <div class="radio" [ngClass]="!haveYouEverBeenTestedForHiv && haveYouEverBeenTestedForHivPrestine  ? 'selected' : 'unselected'" 
-            (click)="haveYouEverBeenTestedForHiv =false; haveYouEverBeenTestedForHivPrestine = true"></div>
-            <label class="text-line-middle radio-label">No</label>
-          </div>
-        </div>
-        <div class="line">
-            <div class="height-46 display-flex">
-              <label class="text-line-middle ">Are you or your partner at risk of any sexually transmitted infections</label>
-            </div>
-            <!-- Yes -->
-            <div class="display-flex">
-              <div class="radio" [ngClass]="AreYouOrYourPartnerRiskOfSTI && AreYouOrYourPartnerRiskOfSTIPrestine? 'selected' : 'unselected'"
-               (click)="AreYouOrYourPartnerRiskOfSTI =true; AreYouOrYourPartnerRiskOfSTIPrestine = true"></div>
-              <label class="text-line-middle radio-label">Yes</label>
-            </div>
         
-            <!-- No -->
+         <div *ngIf="ques.question_Type === 1 && ques.answer != 'q1_12b'" class="YESandNO">
+            <!-- Yes -->
+          <div class="display-flex">
+              <div class="radio" [ngClass]="simpleMedicAnswers[i] && simpleMedicAnswers[i].yesno && prestine[i]
+               ? 'selected' : 'unselected'"
+                (click)="answerQuestion(ques.id, true);  prestine[i]= true; "></div>
+              <label class="text-line-middle radio-label">Yes</label>
+            </div>                                        
+          
+            <!-- No -->                                                                                                                                                                                                                                 
             <div class="display-flex">
-              <div class="radio" [ngClass]="!AreYouOrYourPartnerRiskOfSTI && AreYouOrYourPartnerRiskOfSTIPrestine ? 'selected' : 'unselected'" 
-              (click)="AreYouOrYourPartnerRiskOfSTI =false; AreYouOrYourPartnerRiskOfSTIPrestine = true"></div>
+              <div class="radio" [ngClass]=" simpleMedicAnswers[i] && !simpleMedicAnswers[i].yesno && prestine[i]
+              ? 'selected' : 'unselected'"
+                (click)="answerQuestion(ques.id, false); prestine[i]= true;"></div>
               <label class="text-line-middle radio-label">No</label>
             </div>
-          </div>
-          
-          
-          <div class="btn-spacing btn-container  text-center">
-            <sunflower-button (click)="next()" ng-disabled="yesToAll" type = "primary">Continue</sunflower-button> 
-               
-           </div>
-
+         </div>
+        
+        <div class="explain"  *ngIf="ques.answer === 'q1_12b'" >
+            <input [(ngModel)]="answerText" type="text" class="input">
+        </div>  
+      
+        </div>
+ 
+        <sunflower-button type="primary" (click)="checkAnswering();">Next</sunflower-button>
 
   </div>
 </div>

@@ -75,6 +75,14 @@
   border-color: var(--yellow);
   font-weight: var(--font-weight-small);
 }
+.btn-loader {
+  color: var(--yellow);
+  background-color: transparent;
+  border-color: var(--yellow);
+  font-weight: var(--font-weight-small);
+}
+
+
 
 /* Attributes - Conditions that alter look and feel. */
 /* Attributes - Actions and Conditions: */

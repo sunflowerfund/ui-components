@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from 'src/app/donor-app/services/drive-registration.service';
+import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
 
 @Component({
   selector: 'app-step-one',
@@ -7,61 +8,84 @@ import { DriveRegistrationService } from 'src/app/donor-app/services/drive-regis
   styleUrls: ['./step-one.component.css', './../drive-registration.component.css']
 })
 export class StepOneComponent implements OnInit {
-  name
+  // name
+  questionair;
+  simpleMedic = [];
+  simpleMedicAnswers: Answer[] = [];
+  simpleAnswerText: string;
+  prestine = [];
+  // userResponse = [];
+  // finalUserResponse = {};
+  // medicalAnswers: MedicalQuestions[];
+  // import {  } from 'src/app/@sunflower-module/sunflower-ui/model/';
 
-  yesToAll = false;
-  areYouHealthy;
-  areYouHealthyPrestine = false;
-  doesYourFamilyAgreeForyouToDonate = false;
-  doesYourFamilyAgreeForyouToDonatePrestine = false;
-  doesYourAnkleSwellEdnOfDay = false;
-  doesYourAnkleSwellEdnOfDayPrestine = false;
-  areYouAHighRiskForhepatitisOrHiv = true;
-  areYouAHighRiskForhepatitisOrHivPrestine = false;
-  whatsYourWeight;
-  whatsYourHeight ; 
-  AreYouARegularBloodDonor = false;
-  AreYouARegularBloodDonorPrestine = false;
-  DoYouGetUpMorethanOnceAtNight = false;
-  DoYouGetUpMorethanOnceAtNightPrestine = false;
-  haveYouEverBeenTestedForHiv = false;
-  haveYouEverBeenTestedForHivPrestine = false;
-  AreYouOrYourPartnerRiskOfSTI = false;
-  AreYouOrYourPartnerRiskOfSTIPrestine = false;
-  areYouAPlateletDonor = false;
-  areYouWillingToBeAproachedToBeAPlatelet = false;
-  IConsentToMyPersonalInfoGiveToSANBS = false;
-  IAgreeToBiengContactedBySANBSAndWPBTSToDonatePlatelet = false;
-  HaveYouEverBeenPregnant = false;
-  IfSoNumberOfPregnancies = false;
-  dateOfLastPregnancy = false;
-
-  constructor(
-    public driveReg: DriveRegistrationService) { }
+  constructor(public drive: DriveRegistrationService) { }
 
   ngOnInit() {
-    this.checkAnswering();
+    this.getHealthQuestionair();
   }
 
-  checkAnswering() {
-    if (
-      this.areYouHealthy === false ||
-      this.doesYourFamilyAgreeForyouToDonate === false ||
-      this.doesYourAnkleSwellEdnOfDay === false ||
-      this.areYouAHighRiskForhepatitisOrHiv === false ||
-      this.whatsYourWeight === 0 ||
-      this.whatsYourHeight === 0 ||
-      this.AreYouARegularBloodDonor === false ||
-      this.DoYouGetUpMorethanOnceAtNight === false ||
-      this.haveYouEverBeenTestedForHiv === false ||
-      this.AreYouOrYourPartnerRiskOfSTI === false
-    ) {
-      this.yesToAll = true;
+
+  getHealthQuestionair() {
+    this.drive.getHealthScreenQuestion().subscribe(
+      (_response) => {
+        this.questionair = _response;
+        this.drive.questionar = _response;
+        // console.log(this.questionair);
+
+        for (let index = 0; index < this.questionair.length; index++) {
+          if (this.questionair[index].question_Type === 1) {
+            this.simpleMedic.push(this.questionair[index]);
+          }
+        }
+        // console.log(this.simpleMedic);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  answerQuestion(questionId: number, yesno: boolean) {
+    // console.log('Called at qID ' + questionId + ' boolean: ' + yesno);
+    // find if answered
+    let AlreadyAnswered = false;
+    for (const oldAnswer of this.simpleMedicAnswers) {
+      if (oldAnswer.questionId === questionId) {
+        oldAnswer.yesno = yesno;
+        AlreadyAnswered = true;
+        break;
+      }
+    }
+
+    if (!AlreadyAnswered) {
+      const answer = new Answer();
+      answer.yesno = yesno;
+      answer.questionId = questionId;
+      this.simpleMedicAnswers.push(answer);
     }
   }
 
-  next() {
-   this.driveReg.step += 1;
+
+
+  checkAnswering() {
+    for (const medicaQuestion of this.simpleMedic) {
+      if (medicaQuestion['answer'] === 'q1_12b') {
+        const answer = new Answer();
+        answer.yesno = false;
+        answer.questionId = medicaQuestion['id'];
+        this.simpleMedicAnswers.push(answer);
+        break;
+      }
+    }
+    // console.log(this.simpleMedicAnswers);
+
+    this.drive.answerHealthScreenAnswers(this.simpleMedicAnswers).subscribe(_response => {
+      console.log(_response);
+    }, error => { console.log(error) ;});
+
+    this.drive.step++;
+
+
   }
 
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { templateData } from "../../../../../assets/template-data/date";
+import { DriveRegistrationService } from '../../../services/drive-registration.service';
+import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-step-two',
@@ -8,34 +12,48 @@ import { templateData } from "../../../../../assets/template-data/date";
 })
 export class StepTwoComponent implements OnInit {
   isAWomen = false;
-Days;
-Months;
-Years;
 
-  numberOfPregnancy;
-  dateOfLastPregnancy;
-  haveYouEverbeenPregnant;
-  haveYouEverbeenPregnantPrestine;
-  iAgreeTobeContactedBySANBSandWPBTS;
-  iAgreeTobeContactedBySANBSandWPBTSPrestine;
-  iConsentToMyPersonalInformationBeingGivenSANBS;
-  iConsentToMyPersonalInformationBeingGivenSANBSPrestine;
-  areYouWillingToBeApproachedToBeAPlateletDonor;
-  areYouWillingToBeApproachedToBeAPlateletDonorPrestine;
-  areYouAPlateletDonor;
-  areYouAPlateletDonorPrestine;
+  questionair;
+  simpleMedic = [];
+  simpleMedicAnswers: Array<Answer>;
+  simpleAnswerResponse = [];
+  prestine = [];
+  simpleMedicAnswersMap: Map<number, Answer>;
 
-  constructor() {
-    this.Days = templateData.Days;
-    this.Months = templateData.Months;
-    this.Years = templateData.Years;
-  }
+
+  constructor(
+    private drive: DriveRegistrationService,
+    private router: Router,
+  ) { }
+
 
   ngOnInit() {
+    this.questionair = this.drive.questionar;
+    this.simpleMedicAnswersMap = new Map();
+    for (let index = 0; index < this.questionair.length; index++) {
+      if (this.questionair[index].question_Type === 2) {
+        this.simpleMedic.push(this.questionair[index]);
+
+        this.simpleMedicAnswersMap.set(this.questionair[index].id, new Answer());
+
+      }
+    }
+
   }
 
+  answerQuestion(questionId: number, yesno: boolean) {
+    const oldAnswer = this.simpleMedicAnswersMap.get(questionId);
+    oldAnswer.yesno = yesno;
+    oldAnswer.questionId = questionId;
+  }
+
+
   finish() {
-    window.alert('Well Done, All entered info is saved !!!');
+    this.drive.answerHealthScreenAnswers(Array.from(this.simpleMedicAnswersMap.values())).subscribe(_response => {
+      console.log(_response);
+    });
+    this.drive.showToaster('info', 'Well Done, All entered info is saved !!!');
+    this.router.navigate(['/']);
   }
 
 }

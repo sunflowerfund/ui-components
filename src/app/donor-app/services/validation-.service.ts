@@ -7,6 +7,8 @@ export class ValidationService {
   invalid = 0;
   messages = [];
   status: boolean;
+  DOB;
+  gender;
   constructor() { }
 
   identityValidation(identity) {
@@ -31,16 +33,16 @@ export class ValidationService {
     dd = identity.substring(4, 6);
 
     // tslint:disable-next-line:prefer-const
-    let dob = new Date(yy, (mm - 1), dd);
+    this.DOB = new Date(yy, (mm - 1), dd);
 
 
     // check values - add one to month because Date() uses 0-11 for months
-    if ((((dob.getFullYear() + '').substring(2, 4) === yy) && (dob.getMonth() === mm - 1) && (dob.getDate() === dd))) {
+    if ((((this.DOB.getFullYear() + '').substring(2, 4) === yy) && (this.DOB.getMonth() === mm - 1) && (this.DOB.getDate() === dd))) {
       this.messages.push('Date in first 6 digits is invalid.');
       this.invalid++;
     }
     // evaluate GSSS group for gender and sequence
-    const gender = parseInt(identity.substring(6, 10), 10) > 5000 ? 'M' : 'F';
+     this.gender = parseInt(identity.substring(6, 10), 10) > 5000 ? 'Male' : 'Female';
 
     // ensure third to last digit is a 1 or a 0
     if (identity.substring(10, 11) > 1) {

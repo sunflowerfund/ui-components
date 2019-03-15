@@ -15,6 +15,7 @@ import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/mo
 export class PrescreeningComponent implements OnInit {
   cellnumber: string;
   email: string;
+  send;
   invalidPrescreening = 0;
   answerResponse = {
     p1: 0,
@@ -27,7 +28,6 @@ export class PrescreeningComponent implements OnInit {
     p8: 0,
     p9: 0,
     p10: 0,
-    // bmi: 0,
   };
 
   prestine = [];
@@ -53,9 +53,7 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
-  // showToaster() {
-  //   this.toastr.success('Step one completed Successfully.');
-  // }
+
 
   reply() {
     this.drive.email = this.email;
@@ -67,6 +65,26 @@ export class PrescreeningComponent implements OnInit {
     this.drive.weight = this.answerElements[3];
     this.drive.height = this.answerElements[2];
 
+    // tslint:disable-next-line:radix
+    if (
+      this.drive.weight !== null || this.drive.weight !== undefined &&
+      this.drive.height !== null || this.drive.height !== undefined &&
+     ( isFinite(this.drive.height)) === false && (isFinite(this.drive.weight) === false )
+    ) {
+      this.drive.bmi = ((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
+      console.log('Its a number ', (isNaN(this.drive.height) !== true) );
+      console.log('Its a number ', this.drive.weight) ;
+      console.log('Its a number ',  this.drive.height  );
+
+      window.alert(`Your BMI is: ${this.drive.bmi} ${(!isNaN(this.drive.height))}`);
+
+    } else {
+      this.drive.showToaster('error', 'Please check your Height and Weight');
+      ++this.invalidPrescreening;
+    }
+
+
+
     this.answerResponse.p1 = this.answerElements[0];
     this.answerResponse.p2 = this.answerElements[1];
     this.answerResponse.p3 = this.answerElements[2];
@@ -77,30 +95,32 @@ export class PrescreeningComponent implements OnInit {
     this.answerResponse.p8 = this.answerElements[7];
     this.answerResponse.p9 = this.answerElements[8];
     this.answerResponse.p10 = this.answerElements[9];
-    this.drive.bmi = this.answerElements[3] / Math.pow(this.answerElements[4], 2);
+    // this.drive.bmi = this.answerElements[3] / Math.pow(this.answerElements[4], 2);
 
     for (let index = 0; index < this.answerElements.length; index++) {
       if (this.answerElements[index] === undefined || this.answerElements[index] === null) {
         this.invalidPrescreening += index;
-        console.log(this.invalidPrescreening);
+        // console.log(this.invalidPrescreening);
       }
 
     }
     if (
       this.email === '' || this.email === undefined ||
       this.cellnumber === undefined || this.cellnumber === '') {
-      this.invalidPrescreening ++;
+      this.invalidPrescreening++;
     }
     if (this.invalidPrescreening > 0) {
       console.log('invalid', this.invalidPrescreening);
       this.drive.showToaster('error', 'The form is not filled in or there is some missing values in it');
       this.invalidPrescreening = 0;
     } else {
+      this.send = true;
       this.drive.sendPrescreeningAnswers(this.answerResponse)
         .subscribe((_response: OnlineRegistrationDTO) => {
 
           this.drive.CurrentUID = _response.id;
-          this.drive.showToaster('success', 'Pre Screening passed');
+          // console.log('Current UID ', this.drive.CurrentUID);
+          this.drive.showToaster('success', 'Pre-Screening passed');
           this.router.navigate(['/u/new/form']);
         }, error => {
           console.log(error);
