@@ -19,7 +19,8 @@ import { MainRoutingModule } from './donor-app/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment'; 
+
 
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
 import { DashboardComponent } from './donor-app/pages/dashboard/dashboard.component';
@@ -34,6 +35,7 @@ import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-compo
 import { CommonModule  } from '@angular/common';
 import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
 import { ValidationService } from './donor-app/services/validation-.service';
+import { HealthScreenComponent } from './donor-app/pages/health-screen/health-screen.component';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { ValidationService } from './donor-app/services/validation-.service';
     ButtonComponent,
     SignInComponent,
     SignUpComponent,
+    HealthScreenComponent,
     InputComponent,
     DropdownMenuComponent,
     NavbarComponent,
@@ -59,7 +62,7 @@ import { ValidationService } from './donor-app/services/validation-.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     MainRoutingModule,
     CommonModule,
     NgbModule,

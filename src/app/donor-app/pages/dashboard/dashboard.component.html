@@ -32,7 +32,7 @@
         <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number"></app-input>
         <div class="btn-container text-center">
         
-          <sun-dropdown-menu   title="Ethnicity" [items]=" ['African', 'Asian/Indian','Coloured','White']"
+          <sun-dropdown-menu   title="Ethnicity" [items]=" ['Black', 'Asian', 'Indian','Coloured','White', 'Other']"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
             
         </div>
@@ -46,16 +46,16 @@
             </h2>
    
             
-        <label  class="labels " for="line1">Line 1</label>
+        <label  class="labels " for="line1">Home Address</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address1" ngDefaultControl></app-input>
        
        <br>
-        <label  class="labels " for="line2">Line 2</label>
+        <label  class="labels " for="line2">City</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address2" ngDefaultControl></app-input>
        
        <br>
-        <label  class="labels " for="line3">Line 3</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address3" ngDefaultControl></app-input>
+        <label  class="labels " for="line3">Postal code</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.address3" ngDefaultControl></app-input>
        
         <label  class="labels " for="homeTel">Home Tel</label>
         <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.homePhone" ngDefaultControl></app-input>
@@ -73,42 +73,49 @@
         <h2 class="text-size-medium font-weight-medium color-grey">
           Fill in Next of Kin Details:
         </h2>
-      <div *ngIf="ad1">
-          <label  class="labels " for="FullName">Full Name</label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName2" 
+
+      <div  *ngIf="ad1" >
+          <label  class="labels " for="FullName">1st Contact's Full Name </label>
+
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
          ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">Relationship</label>
+         <label  class="labels " for="relationship">1st Contact's Relationship</label>
 
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship2"
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
          ngDefaultControl ></app-input>
         <br>
-        <label  class="labels " for="emailAddress">Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail2"
+        <label  class="labels" for="emailAddress">1st Contact's  Email address</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
          ngDefaultControl ></app-input>
-         <label  class="labels " for="mobile">Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile2" 
-        ngDefaultControl ></app-input>
+         <label  class="labels " for="mobile">1st Contact's  Mobile Number</label>
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
+        ngDefaultControl></app-input>
+
+        <sunflower-button *ngIf="ad1"  type="primary" (click)="address1()">Add 1st Contact's Address</sunflower-button>
+
       </div>
+
+
       <div *ngIf="!ad1" >
-          <label  class="labels " for="FullName">Full Name</label>
+          <label  class="labels " for="FullName">2nd Contact's Full Name</label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="ContactName" 
+        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.secondContactName" 
          ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">Relationship</label>
+         <label  class="labels " for="relationship">2nd Contact's Relationship</label>
 
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactRelationship"
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
          ngDefaultControl ></app-input>
         <br>
-        <label  class="labels " for="emailAddress">Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactEmail"
+        <label  class="labels " for="emailAddress">2nd Contact's Email address</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactEmail"
          ngDefaultControl ></app-input>
-         <label  class="labels " for="mobile">Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="ContactMobile" 
+         <label  class="labels " for="mobile">2nd Contact's Mobile Number</label>
+         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactMobile" 
         ngDefaultControl ></app-input>
       </div>
+
         <br>
-        <sunflower-button *ngIf="ad1" type="primary" (click)="address1()">Add Address</sunflower-button>
      
         <sunflower-button *ngIf="!ad1" type="primary" (click)="next('step3')">Next</sunflower-button>
       
@@ -124,16 +131,19 @@
       <div class="check" type="check-box"></div>
 
       
-        <label class="container">I have read and understood the terms and conditions above
+     
+          <!-- <div (click)=" consent = !consent;"> -->
+   <label   class="container">I have read and understood the terms and conditions above
             <input type="checkbox">
             <span class="checkmark"></span>
           </label>
+          <!-- </div> -->
 
 
       <div class="btn-container text-center">
           <br>
           <br>
-            <sunflower-button (click)="finish()" type="primary">Finish</sunflower-button>
+            <sunflower-button (click)=" consent = !consent; finish();" type="primary">Finish</sunflower-button>
         </div>
       </div>
     

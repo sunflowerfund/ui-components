@@ -5,6 +5,9 @@ import { PreScreeeningQuestion } from 'src/app/@sunflower-module/sunflower-ui/mo
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { PersonalDetailsDTO } from 'src/app/@sunflower-module/sunflower-ui/model/personalDetailsDTO';
 import { ToastrService } from 'ngx-toastr';
+import { healthScreenQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model';
+import { pipe } from '@angular/core/src/render3';
+import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -18,12 +21,13 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-  baseUrl = 'https://165.255.185.123/api/v1/';
+  baseUrl = 'https://spring-sunflower.azurewebsites.net/api/v1/';
   weight = 0;
   height = 0;
-  email = '';
-  cellnumber = '';
-  bmi = 0;
+  email = null;
+  cellnumber = null;
+  bmi = '';
+  questionar;
 
 
   CurrentUID = 0;
@@ -46,24 +50,58 @@ export class DriveRegistrationService {
       );
   }
 
-
   sendPrescreeningAnswers(answers) {
     return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
 
       .pipe(
-        tap( _response => this.log('Posted Prescreening Answers')),
+        tap(_response => this.log('Posted Prescreening Answers')),
         catchError(this.handleError('POST PreScreening answers failed', []))
       );
   }
 
   sendPersonalInformation(personalInfo) {
-    return this.http.patch(this.baseUrl + 'o_registration/${this.CurrentUID}' , personalInfo, httpOptions)
+     return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
         catchError(this.handleError('POST Personal Information failed', []))
       );
   }
+  consentToPersonalData(consent) {
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, consent, httpOptions)
+      .pipe(
+        tap(_ => this.log('Posted consent')),
+        catchError(this.handleError('PATCH consent failed', []))
+      );
+  }
 
+
+
+  getHealthScreenQuestion(): Observable<healthScreenQuestion[]> {
+
+    return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'questions', httpOptions)
+      .pipe(
+        tap(_ => this.log('Fetched HealthScreen Questions')),
+        catchError(this.handleError('GET HealthScreen questions', []))
+      );
+  }
+
+  sendHealthScreenAnswers(answers) {
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/health`, answers, httpOptions)
+
+      .pipe(
+        tap(_response => this.log('PATCHED Health Screen Answers')),
+        catchError(this.handleError('Patching Health Screen Answers failed', []))
+      );
+  }
+
+  answerHealthScreenAnswers(answers: Array<Answer>) {
+    console.log(answers);
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/health`, answers, httpOptions)
+      .pipe(
+        tap(_response => this.log('PATCHED Health Screen Answers')),
+        catchError(this.handleError('Patching Health Screen Answers failed', []))
+      );
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -79,9 +117,8 @@ export class DriveRegistrationService {
     };
   }
 
-  /** Log aSunflowerUserService message with the MessageService */
+  /** Log a message with the MessageService */
   private log(message: string) {
-    // this.messageService.add(`SunflowerUserService: ${message}`);
     console.log(message);
   }
 
@@ -98,6 +135,9 @@ export class DriveRegistrationService {
     }
     if (type === 'warn') {
       this.toastr.warning(msg, 'Warning');
+
+    } if (type === 'info') {
+      this.toastr.info(msg, 'Warning');
 
     }
   }

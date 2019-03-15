@@ -1,49 +1,98 @@
 <sunflower-navbar class="sm-hide"></sunflower-navbar>
-<div class="container">
-   
 
 
-<div class="line"  *ngFor="let ques of questions; index as i" >
+
+
+<div class="loader" *ngIf="!questions">
+  <div class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+
+
+<div class="container" *ngIf="questions">
+
+  <div class="line" *ngFor="let ques of questions; index as i">
     <div class="height-46 display-flex">
       <label class="text-line-middle text">{{ques.question}}</label>
     </div>
-  
-   <div *ngIf="ques.question_Type === 1" class="YESandNO">
+
+    <div *ngIf="ques.question_Type === 1" class="YESandNO">
       <!-- Yes -->
-    <div class="display-flex">
+      <div class="display-flex">
         <div class="radio" [ngClass]="questions[i].answer && prestine[i]
-         ? 'selected' : 'unselected'"
-          (click)="questions[i].answer = 1;  prestine[i]= true; "></div>
+         ? 'selected' : 'unselected'" (click)="questions[i].answer = 1;  prestine[i]= true; "></div>
         <label class="text-line-middle radio-label">Yes</label>
       </div>
-    
+
       <!-- No -->
       <div class="display-flex">
         <div class="radio" [ngClass]=" !questions[i].answer && prestine[i]
-        ? 'selected' : 'unselected'"
-          (click)="questions[i].answer = 0; prestine[i]= true;"></div>
+        ? 'selected' : 'unselected'" (click)="questions[i].answer = 0; prestine[i]= true;"></div>
         <label class="text-line-middle radio-label">No</label>
       </div>
-   </div>
-  
-  <div class="explain"  *ngIf="ques.question_Type === 3" >
+    </div>
+    <div class="explain" *ngIf="ques.question_Number === 3 ">
+      <input [(ngModel)]="questions[i].answer" type="number" class="input">
+    </div>
+    <div class="explain" *ngIf="ques.question_Number === 4">
+      <input [(ngModel)]="questions[i].answer" type="number" class="input">
+    </div>
+
+    <div class="explain" *ngIf="ques.question_Number === 5">
       <input [(ngModel)]="questions[i].answer" type="text" class="input">
-  </div>  
+    </div>
 
   </div>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   <label for="email">Email Address</label>
   <input type="text" [(ngModel)]="email" class="input">
   <br>
   <label for="cellNumber">Cell Number</label>
-  <input type="text" [(ngModel)]="cellnumber" class="input">
+  <input type="number" [(ngModel)]="cellnumber" class="input">
   <br>
-  <sunflower-button type="primary" (click)="reply();">Begin</sunflower-button>
-  
-  
+
+  <div *ngIf="!send">
+    <sunflower-button type="primary" (click)="reply();">Begin</sunflower-button>
+  </div>
+  <br>
+
+  <div class="send" *ngIf="send">
+    <sunflower-button type="primary" class="--disabled btn-loader">
+      <h1>Loading</h1>
+      <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </sunflower-button>
+  </div>
+
+
 </div>
