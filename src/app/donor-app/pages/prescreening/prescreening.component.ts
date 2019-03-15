@@ -15,6 +15,7 @@ import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/mo
 export class PrescreeningComponent implements OnInit {
   cellnumber: string;
   email: string;
+  send;
   invalidPrescreening = 0;
   answerResponse = {
     p1: 0,
@@ -65,8 +66,22 @@ export class PrescreeningComponent implements OnInit {
     this.drive.height = this.answerElements[2];
 
     // tslint:disable-next-line:radix
-    this.drive.bmi = ((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
-    window.alert(`Your BMI is: ${this.drive.bmi}`);
+    if (
+      this.drive.weight !== null || this.drive.weight !== undefined &&
+      this.drive.height !== null || this.drive.height !== undefined &&
+     ( isFinite(this.drive.height)) === false && (isFinite(this.drive.weight) === false )
+    ) {
+      this.drive.bmi = ((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
+      console.log('Its a number ', (isNaN(this.drive.height) !== true) );
+      console.log('Its a number ', this.drive.weight) ;
+      console.log('Its a number ',  this.drive.height  );
+
+      window.alert(`Your BMI is: ${this.drive.bmi} ${(!isNaN(this.drive.height))}`);
+
+    } else {
+      this.drive.showToaster('error', 'Please check your Height and Weight');
+      ++this.invalidPrescreening;
+    }
 
 
 
@@ -95,16 +110,17 @@ export class PrescreeningComponent implements OnInit {
       this.invalidPrescreening++;
     }
     if (this.invalidPrescreening > 0) {
-      // console.log('invalid', this.invalidPrescreening);
+      console.log('invalid', this.invalidPrescreening);
       this.drive.showToaster('error', 'The form is not filled in or there is some missing values in it');
       this.invalidPrescreening = 0;
     } else {
+      this.send = true;
       this.drive.sendPrescreeningAnswers(this.answerResponse)
         .subscribe((_response: OnlineRegistrationDTO) => {
 
           this.drive.CurrentUID = _response.id;
-          console.log('Current UID ', this.drive.CurrentUID);
-          this.drive.showToaster('success', 'Pre Screening passed');
+          // console.log('Current UID ', this.drive.CurrentUID);
+          this.drive.showToaster('success', 'Pre-Screening passed');
           this.router.navigate(['/u/new/form']);
         }, error => {
           console.log(error);

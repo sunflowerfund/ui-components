@@ -1,3 +1,11 @@
+.btn-loadding{
+    color: var(--black);
+    /* background-color: var(--yellow); */
+    border-color: var(--yellow);
+    font-weight: var(--font-weight-medium);
+    /* box-shadow: 2.5px 2.5px 2px var(--shadow); */
+}
+
 
 
 
@@ -131,6 +139,15 @@
   width: 64px;
   height: 64px;
 }
+
+.btn-spinner {
+  /* color: official; */
+  display: inline-block;
+  position: relative;
+  width: 34px;
+  height: 34px;
+}
+
 .lds-spinner div {
   transform-origin: 32px 32px;
   animation: lds-spinner 1.2s linear infinite;
