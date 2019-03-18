@@ -30,14 +30,14 @@
         <br>
         
         <div class="btn-container">
-          <sun-dropdown-menu title="Country" ngDefaultControl items="[ethnicGroup].ethnicGroup" (output)="setCountry($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)"></sun-dropdown-menu>
         </div>
         <label  class="labels " for="IdNumber">ID Number</label>
 
         <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number"></app-input>
         <div class="btn-container text-center">
         
-          <sun-dropdown-menu   title="Ethnicity" [items]=" ['Black', 'Asian', 'Indian','Coloured','White', 'Other']"
+          <sun-dropdown-menu   title="Ethnicity" [items]="ethnicGroup"
             (output)="setEthnicity($event)"></sun-dropdown-menu>
             
         </div>
@@ -85,10 +85,11 @@
 
         <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
          ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">1st Contact's Relationship</label>
-
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactRelationship"
-         ngDefaultControl ></app-input>
+         <label  class="labels " for="relationship">1st Contact's Relationship</label><br><br><br>
+         <div class="btn-container">
+          <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)"></sun-dropdown-menu>
+        </div>
+ 
         <br>
         <label  class="labels" for="emailAddress">1st Contact's  Email address</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
@@ -107,10 +108,12 @@
 
         <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.secondContactName" 
          ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">2nd Contact's Relationship</label>
-
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
-         ngDefaultControl ></app-input>
+         <label  class="labels " for="relationship">2nd Contact's Relationship</label> <br><br><br>
+         <div class="btn-container">
+            <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)"></sun-dropdown-menu>
+          </div>
+         <!-- <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
+         ngDefaultControl ></app-input> -->
         <br>
         <label  class="labels " for="emailAddress">2nd Contact's Email address</label>
         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactEmail"
@@ -133,7 +136,7 @@
 
       <a href="https://en.calameo.com/read/0058472544559d16c13db" target="blank"><h2>Terms and Conditions </h2> </a><br>
       <a href="http://google.com"><h2> Privacy Policy </h2></a>
-      <div class="check" type="check-box"></div>
+      <div class="check" type="check-box" (click)="myconsent()"></div>
 
       
      

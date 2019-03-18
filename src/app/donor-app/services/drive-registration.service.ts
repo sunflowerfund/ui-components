@@ -45,13 +45,13 @@ export class DriveRegistrationService {
 
     return this.http.get<PreScreeeningQuestion[]>(this.baseUrl + 'prequestions', httpOptions)
       .pipe(
-        tap(_ => this.log('Fetched Prescreening Questions')),
+        tap(_ => this.log(`Fetched Prescreening Questions`)),
         catchError(this.handleError('GET PreScreening questions', []))
       );
   }
 
   sendPrescreeningAnswers(answers) {
-    return this.http.post(this.baseUrl + 'o_registration', answers, httpOptions)
+    return this.http.post(`${this.baseUrl}o_registration`, answers, httpOptions)
 
       .pipe(
         tap(_response => this.log('Posted Prescreening Answers')),
@@ -78,7 +78,7 @@ export class DriveRegistrationService {
 
   getHealthScreenQuestion(): Observable<healthScreenQuestion[]> {
 
-    return this.http.get<healthScreenQuestion[]>(this.baseUrl + 'questions', httpOptions)
+    return this.http.get<healthScreenQuestion[]>(`${this.baseUrl}questions` , httpOptions)
       .pipe(
         tap(_ => this.log('Fetched HealthScreen Questions')),
         catchError(this.handleError('GET HealthScreen questions', []))
@@ -86,10 +86,24 @@ export class DriveRegistrationService {
   }
 
   getEthnicGroups(){
-    return this.http.get(this.baseUrl + 'ethnicgroups', httpOptions)
+    return this.http.get(`${this.baseUrl}ethnicgroups` , httpOptions)
       .pipe(
         tap(_ => this.log('Fetched ethnic groups')),
         catchError(this.handleError('GET ethnic groups failed', []))
+      );
+  }
+  getCountryCodes(){
+    return this.http.get(`${this.baseUrl}countrycode`, httpOptions)
+      .pipe(
+        tap(_ => this.log('Fetched countries')),
+        catchError(this.handleError('GET countries failed', []))
+      );
+  }
+  getRelationships(){
+    return this.http.get(`${this.baseUrl}relationships`, httpOptions)
+      .pipe(
+        tap(_ => this.log('Fetched relationships')),
+        catchError(this.handleError('GET relationships failed', []))
       );
   }
 

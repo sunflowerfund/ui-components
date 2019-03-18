@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 import { ToastrService } from 'ngx-toastr';
-import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
+import { OnlineRegistrationDTO, CountryCodeDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { ValidationService } from '../../services/validation-.service';
 import { Router } from '@angular/router';
 import { EthnichGroup } from 'src/app/@sunflower-module/sunflower-ui/model/ethnicgroup.model';
@@ -54,7 +54,9 @@ export class DashboardComponent implements OnInit {
   };
 
   ad1 = true;
-  ethnicGroup;
+  ethnicGroup = [];
+  countries = [];
+  relations = [];
   index = 1;
   class1 = 'active indicator';
   class2 = 'indicator';
@@ -80,13 +82,24 @@ export class DashboardComponent implements OnInit {
 
   ethnicity: string;
 
- 
+
   ngOnInit() {
-    this.drive.getEthnicGroups().subscribe((res:EthnichGroup)=>{
-      this.ethnicGroup = res;
-      console.log(res);
-      
-    })
+    this.drive.getEthnicGroups().subscribe((res: EthnichGroup[]) => {
+      res.forEach(element => {
+        this.ethnicGroup.push(element.ethnicGroup);
+      });
+    });
+
+    this.drive.getCountryCodes().subscribe((res: CountryCodeDTO[]) => {
+      res.forEach(element => {
+        this.countries.push(element.country);
+      });
+    });
+    this.drive.getRelationships().subscribe((res: []) => {
+      res.forEach(element => {
+        this.relations.push(element);
+      });
+    });
   }
 
   address1() {
@@ -102,7 +115,10 @@ export class DashboardComponent implements OnInit {
 
     // return this.validationService.
   }
-
+  // myconsent(){
+  //   console.log(`consent [poi]`);
+    
+  // }
   setUpClass(index) {
     this.index = index;
     if (index === 1) {
@@ -135,7 +151,7 @@ export class DashboardComponent implements OnInit {
     }
   }
   setCountry(country: string) {
-      this.personalDetails.country = country;
+    this.personalDetails.country = country;
   }
 
 
@@ -148,47 +164,63 @@ export class DashboardComponent implements OnInit {
       // let wave1 = 0;
       if (this.personalDetails.firstName === null || this.personalDetails.firstName === undefined) {
         this.drive.showToaster('error', 'You First name is required to proceed');
-        // ++wave1;
-      }
-      if (this.personalDetails.surname === null || this.personalDetails.surname === undefined) {
-        this.drive.showToaster('error', 'You Last name is required to proceed');
-        // ++wave1;
-      }
-
-
-      if (this.personalDetails.ethnicGroup === null || this.personalDetails.ethnicGroup === undefined
-      ) {
-        this.drive.showToaster('error', 'Please select your ethnic group tot proceed');
-        // ++wave1;
-      }
-
-      if (this.personalDetails.idNumber === null || this.personalDetails.idNumber === undefined
-        || this.personalDetails.idNumber.legnth < 13) {
-        this.drive.showToaster('error', 'ID Number is required to proceed');
-        // ++wave1;
       } else {
-        if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
-          this.personalDetails.dateOfBirth = '2019';
-          this.personalDetails.gender = this.validationService.gender;
-          this.index++;
-          this.setUpClass(this.index);
+        if (this.personalDetails.surname === null || this.personalDetails.surname === undefined) {
+          this.drive.showToaster('error', 'You Last name is required to proceed');
         } else {
-          this.drive.showToaster('error', 'Please correct you ID');
-          // ++wave1;
+          if (this.personalDetails.ethnicGroup === null || this.personalDetails.ethnicGroup === undefined
+          ) {
+            this.drive.showToaster('error', 'Please select your ethnic group tot proceed');
+          } else {
+            if (this.personalDetails.idNumber === null || this.personalDetails.idNumber === undefined
+              || this.personalDetails.idNumber.legnth < 13) {
+              this.drive.showToaster('error', 'ID Number is required to proceed');
+            } else {
+              if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
+                this.personalDetails.dateOfBirth = '2019';
+                this.personalDetails.gender = this.validationService.gender;
+                this.index++;
+                this.setUpClass(this.index);
+              } else {
+                this.drive.showToaster('error', 'Please correct you ID');
+                // ++wave1;
+              }
+            }
+          }
         }
       }
-
     }
 
     if (step === 'step2') {
 
       this.index++;
       this.setUpClass(this.index);
+
+      if (this.personalDetails.address1 === null || this.personalDetails.address1 === undefined) {
+        this.drive.showToaster('error', 'Please add your line One of Address');
+      } else {
+        if (this.personalDetails.address2 === null || this.personalDetails.address2 === undefined) {
+          this.drive.showToaster('error', 'Please add your line two of Address');
+        } else {
+          if (this.personalDetails.address3 === null || this.personalDetails.address3 === undefined) {
+            this.drive.showToaster('error', 'Please add your line three of Address');
+          } else {
+            if (this.personalDetails.homePhone === null || this.personalDetails.homePhone === undefined) {
+              this.drive.showToaster('error', 'Please add your Home number');
+            } else {
+              if (this.personalDetails.workPhone === null || this.personalDetails.workPhone === undefined) {
+                this.drive.showToaster('error', 'Please add your Work number');
+              }
+            }
+          }
+        }
+      }
     }
 
     if (step === 'step3') {
 
-      this.index++; this.setUpClass(this.index);
+      this.index++;
+      this.setUpClass(this.index);
 
 
     }
