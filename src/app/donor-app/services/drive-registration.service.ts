@@ -21,7 +21,7 @@ const httpOptions = {
 })
 export class DriveRegistrationService {
   step = 1;
-   baseUrl = 'https://spring-sunflower.azurewebsites.net/api/v1/';
+  baseUrl = 'https://sunflowerfund.azurewebsites.net/api/v1/';
   weight = 0;
   height = 0;
   email = null;
@@ -63,7 +63,7 @@ export class DriveRegistrationService {
      return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
       .pipe(
         tap(_ => this.log('Posted Personal Information ')),
-        catchError(this.handleError('POST Personal Information failed', []))
+        catchError(this.handleError('PATCH Personal Information failed', []))
       );
   }
   consentToPersonalData(consent) {
