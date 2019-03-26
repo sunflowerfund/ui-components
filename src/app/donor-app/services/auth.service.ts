@@ -1,65 +1,117 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
+
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
+
+ 
+import * as jwt_decode from 'jwt-decode';
+import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
+import { HttpClient , HttpHeaders, HttpParams} from '@angular/common/http';
+
+
+
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'token' : window.localStorage.getItem('token')}),
+  params: new HttpParams().set('page', '0')
 };
 
-// const httpParams = {
-//   params: new HttpParams().set('email', 'sunflowerfund@younglings.africa' ).set('password', 'sunflower10')
-// };
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  currentUserToken;
+  decodedToken;
+  baseUrl = 'https://sunflowerfund.azurewebsites.net/api/v1/';
 
-  baseUrl = 'https://localhost:5000/api/auth/';
+
+
   constructor(
     private http: HttpClient,
 
   ) { }
 
+ 
 
-  /** GET SunflowerUser from the server */
-  getCurrentSunflowerUser(): Observable<SunflowerUser[]> {
-    return this.http.get<SunflowerUser[]>('this.SunflowerUseresUrl');
+
+  // initHeaders(): RequestOptions {
+  //   let apiHeaders: RequestOptions = new RequestOptions();
+  //   apiHeaders.headers = new Headers();
+  //   apiHeaders.params = new URLSearchParams();
+  //   apiHeaders.headers.append('token', window.localStorage.getItem('token'));
+  //   apiHeaders.params.append('page', '1');
+  //   return apiHeaders;
+  // }
+ 
+  /** GET SunflowerUseres from the server */
+  getAllSunflowerUseres(): Observable<OnlineRegistrationDTO[]> {
+    return this.http.get<OnlineRegistrationDTO[]>(`${this.baseUrl}/admin/list/1`, httpOptions)
+    .pipe(
+      tap(_ => this.log(`Fetched users`)),
+      catchError(this.handleError('GET all users', []))
+    );
   }
-
 
 
   /** GET SunflowerUseres from the server */
-  getSunflowerUseres(): Observable<SunflowerUser[]> {
-    return this.http.get<SunflowerUser[]>('https://localhost:5000/api/values')
-      .pipe(
-        tap(_ => this.log('fetchedSunflowerUseres')),
-        catchError(this.handleError('getSunflowerUseres', []))
+  getCurrentUser(): Observable<OnlineRegistrationDTO[]> {
+    return this.http.get<OnlineRegistrationDTO[]>(`${this.baseUrl}/user/details`, httpOptions)
+    .pipe(
+      tap(_ => this.log(`Fetched users`)),
+      catchError(this.handleError('GET all users', []))
+    );
+  }
+
+
+
+
+
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  login(sunflower: { username: string, password: string }) {
+
+    // tslint:disable-next-line:prefer-const
+    let httpHeaders = {
+      headers: new HttpHeaders().set('email', sunflower.username).set('password', sunflower.password)
+    };
+
+    // console.log('got the credentials', sunflower);
+    return this.http.get(this.baseUrl + 'login', httpHeaders).
+      pipe(
+        tap((response: any) => {
+          const user = response;
+          if (user) {
+            localStorage.setItem('token', user.token);
+            this.currentUserToken = user.token;
+            this.decodedToken = this.getDecodedAccessToken(user.token);
+            console.log(this.decodedToken);
+
+          }
+        }), catchError(this.handleError('login failed'))
       );
   }
 
-
-  login(model: any) {
-    console.log(model);
-    return this.http.post(this.baseUrl + 'login', model, httpOptions).pipe(
-      map((response: any) => {
-        const user = response;
-        if (user) {
-          localStorage.setItem('token', user.token);
-          console.log(user.token);
-        }
-      })
-    );
-  }
   // POST : add user to the server
   // tslint:disable-next-line:max-line-length
-  registerSunflowerUser(sunflower: {username: string, password: string}): Observable<SunflowerUser> {
+  registerSunflowerUser(sunflower: { username: string, password: string }): Observable<SunflowerUser> {
     console.log(sunflower);
-    return this.http.post(this.baseUrl + 'register', sunflower, httpOptions).pipe(
+    return this.http.post(this.baseUrl + 'register', sunflower).pipe(
       tap((newSunflowerUser: any) => this.log(`user added successfully !!!`)),
-      catchError(this.handleError('addSunFlowerUser'))
+      catchError(
+        this.handleError('addSunFlowerUser')
+      )
     );
 
   }
@@ -68,7 +120,7 @@ export class AuthService {
 
   /** PUT: update the user on the server */
   updateUser(sunflower: SunflowerUser): Observable<any> {
-    return this.http.put('this.heroesUrl', sunflower, httpOptions).pipe(
+    return this.http.put('this.heroesUrl', sunflower).pipe(
       tap(_ => this.log(`updated user id=${sunflower.id}`)),
       catchError(this.handleError<any>('updateUser'))
     );

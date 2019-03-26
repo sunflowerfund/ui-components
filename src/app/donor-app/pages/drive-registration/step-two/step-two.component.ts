@@ -52,7 +52,7 @@ export class StepTwoComponent implements OnInit {
     this.drive.answerHealthScreenAnswers(Array.from(this.simpleMedicAnswersMap.values())).subscribe(_response => {
       console.log(_response);
     });
-    this.drive.showToaster('info', 'Well Done, All entered info is saved !!!');
+    this.drive.showToaster('success', 'Well Done, All entered info is saved !!!');
     this.router.navigate(['/']);
   }
 

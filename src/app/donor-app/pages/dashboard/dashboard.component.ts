@@ -5,6 +5,7 @@ import { OnlineRegistrationDTO, CountryCodeDTO } from 'src/app/@sunflower-module
 import { ValidationService } from '../../services/validation-.service';
 import { Router } from '@angular/router';
 import { EthnichGroup } from 'src/app/@sunflower-module/sunflower-ui/model/ethnicgroup.model';
+import { Relationship } from 'src/app/@sunflower-module/sunflower-ui/model/relationships.model';
 
 
 @Component({
@@ -20,11 +21,17 @@ export class DashboardComponent implements OnInit {
 
   ) {
     this.personalDetails.bmi = this.drive.bmi;
-    // console.log(this.drive.bmi);
-
+    this.personalDetails.email = this.drive.email;
+    this.personalDetails.mobile = this.drive.cellnumber;
   }
   consent = false;
   personalDetails = {
+ 
+    email : null,
+    mobile : null,
+
+
+
     address1: null,
     address2: null,
     address3: null,
@@ -32,6 +39,7 @@ export class DashboardComponent implements OnInit {
     country: 'South Africa',
     countryId: 0,
     dateOfBirth: null,
+
     ethnicGroup: null,
     firstContactEmail: null,
     firstContactMobile: null,
@@ -92,12 +100,12 @@ export class DashboardComponent implements OnInit {
 
     this.drive.getCountryCodes().subscribe((res: CountryCodeDTO[]) => {
       res.forEach(element => {
-        this.countries.push(element.country);
+        this.countries.push(element.country)
       });
     });
-    this.drive.getRelationships().subscribe((res: []) => {
+    this.drive.getRelationships().subscribe((res: Relationship []) => {
       res.forEach(element => {
-        this.relations.push(element);
+        this.relations.push(element.relationship);
       });
     });
   }
@@ -157,6 +165,14 @@ export class DashboardComponent implements OnInit {
 
   setEthnicity(ethnicity: string): void {
     this.personalDetails.ethnicGroup = ethnicity;
+  }
+
+  
+  setFirstRelations(firstRelation: string): void {
+    this.personalDetails.firstContactRelationship = firstRelation;
+  }
+  setSecondRelations(secondRelation: string): void {
+    this.personalDetails.firstContactRelationship = secondRelation;
   }
 
   next(step) {
@@ -228,7 +244,8 @@ export class DashboardComponent implements OnInit {
 
 
   finish() {
-    // this.personalDetails = ethnicity;
+    this.personalDetails.email = this.drive.email;
+    this.personalDetails.mobile = this.drive.cellnumber;
     console.log(this.personalDetails);
     // console.log(this.consent);
     // if (!this.consent) {
@@ -237,7 +254,7 @@ export class DashboardComponent implements OnInit {
 
     this.drive.sendPersonalInformation(this.personalDetails)
       .subscribe((_response: OnlineRegistrationDTO) => {
-        this.drive.showToaster('success', 'Personal Details have been stored successfully');
+        this.drive.showToaster('info', 'Personal Details have been stored successfully');
       }, error => {
         console.log(error);
         this.drive.showToaster('error', error);

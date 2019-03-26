@@ -159,7 +159,7 @@ export class DriveRegistrationService {
       this.toastr.warning(msg, 'Warning');
 
     } if (type === 'info') {
-      this.toastr.info(msg, 'Warning');
+      this.toastr.info(msg, 'Info');
 
     }
   }

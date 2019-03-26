@@ -5,6 +5,7 @@ import { PreScreeningAnswers } from 'src/app/@sunflower-module/sunflower-ui/mode
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/onlineRegistrationDTO';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class PrescreeningComponent implements OnInit {
     p8: 0,
     p9: 0,
     p10: 0,
+    // mobile: 'this.cellnumber',
+    // email: 'this.email',
   };
 
   prestine = [];
@@ -72,9 +75,9 @@ export class PrescreeningComponent implements OnInit {
      ( isFinite(this.drive.height)) === false && (isFinite(this.drive.weight) === false )
     ) {
       this.drive.bmi = ((this.drive.weight / (this.drive.height * this.drive.height) * 10000).toFixed(2));
-      console.log('Its a number ', (isNaN(this.drive.height) !== true) );
-      console.log('Its a number ', this.drive.weight) ;
-      console.log('Its a number ',  this.drive.height  );
+      // console.log('Its a number ', (isNaN(this.drive.height) !== true) );
+      // console.log('Its a number ', this.drive.weight) ;
+      // console.log('Its a number ',  this.drive.height  );
 
       window.alert(`Your BMI is: ${this.drive.bmi} ${(!isNaN(this.drive.height))}`);
 
@@ -115,12 +118,16 @@ export class PrescreeningComponent implements OnInit {
       this.invalidPrescreening = 0;
     } else {
       this.send = true;
+      // this.drive.email = this.email;
+      // this.drive.cellnumber = this.cellnumber;
+      // this.answerResponse.email = this.email;
+      // this.answerResponse.mobile = this.cellnumber;
       this.drive.sendPrescreeningAnswers(this.answerResponse)
         .subscribe((_response: OnlineRegistrationDTO) => {
 
           this.drive.CurrentUID = _response.id;
           // console.log('Current UID ', this.drive.CurrentUID);
-          this.drive.showToaster('success', 'Pre-Screening passed');
+          this.drive.showToaster('info', 'Pre-Screening passed');
           this.router.navigate(['/u/new/form']);
         }, error => {
           console.log(error);

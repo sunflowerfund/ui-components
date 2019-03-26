@@ -25,10 +25,9 @@ export class SignInComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.user).subscribe(() => {}, error => {
-      console.log(error);
-
-    });
+    this.auth.login(this.user).subscribe(_=>
+      this.router.navigate(['medic/more'])
+    );
   }
 
 }

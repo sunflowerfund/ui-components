@@ -17,7 +17,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DriveRegistrationComponent } from './pages/drive-registration/drive-registration.component';
 import { SunflowerPage } from './pages/sunflower/sunflower.page';
 import { PrescreeningComponent } from './pages/prescreening/prescreening.component';
-import { HealthScreenComponent } from './pages/health-screen/health-screen.component';
+import { StaffViewComponent } from './pages/staff-view/staff-view.component';
 
 const routes: Route[] = [
   {
@@ -31,7 +31,7 @@ const routes: Route[] = [
     ]
   },
   { path: 'u/new/form', component: DashboardComponent },
-  { path: 'medic/more', component: HealthScreenComponent },
+  { path: 'medic/more', component: StaffViewComponent },
   { path: 'medic', component: DriveRegistrationComponent },
   { path: 'components', component: ComponentsPage },
   { path: 'get-started', component: PrescreeningComponent },

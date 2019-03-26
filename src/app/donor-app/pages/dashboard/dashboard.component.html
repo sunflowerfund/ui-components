@@ -87,7 +87,7 @@
          ngDefaultControl ></app-input>
          <label  class="labels " for="relationship">1st Contact's Relationship</label><br><br><br>
          <div class="btn-container">
-          <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations" (output)="setFirstRelations($event)"></sun-dropdown-menu>
         </div>
  
         <br>
@@ -110,7 +110,7 @@
          ngDefaultControl ></app-input>
          <label  class="labels " for="relationship">2nd Contact's Relationship</label> <br><br><br>
          <div class="btn-container">
-            <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)"></sun-dropdown-menu>
+            <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations" (output)="setSecondRelations($event)"></sun-dropdown-menu>
           </div>
          <!-- <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
          ngDefaultControl ></app-input> -->
