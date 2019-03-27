@@ -9,28 +9,55 @@
       <th>Surname</th>
       <th>ID Number</th>
       <th>Status</th>
-     </tr>
+      <th>Action</th>
+    </tr>
   </thead>
   <tbody *ngFor="let person of people; let i = index">
-    <tr >
+
+    <tr>
       <th scope="row">{{i + 1}}</th>
-      <td>{{person.name}}</td>
+      <td>{{person.firstName}}</td>
       <td>{{person.surname}}</td>
-      <td>{{person.IDnumber}}</td>
-      <td>{{person.status}}</td>
-         </tr>
-     </tbody>
+      <td>{{person.idNumber}}</td>
+      <td>
+        <span *ngIf="person.status === 0">Pending</span>
+      </td>
+      <td>
+    <sunflower-button type="primary" (click)="reply();">View More</sunflower-button>  
+        </td>
+    </tr>
+
+  </tbody>
+  <div class="loader" *ngIf="!people">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
 </table>
+<br>
 
-
-
-<div class="personal">
-  <label class="name">Name:</label>
-  <span>{{currentUser.firstName}}</span><br>
-  <label class="name">Suname:</label>
-  <span>{{currentUser.surname}}</span><br>
-  <label class="name">ID Number:</label>
-  <span>{{currentUser.idNumber}}</span><br>
-  <label class="name">Status:</label>
-  <span>{{currentUser.status}}</span><br>
+<div class="pagination">
+  <a href="#">&laquo; Prev</a>
+  <a (click)="expression()" [ngClass]="true ? active : not-active" >1</a>
+  <a (click)="expression()" [ngClass]=" false ? active : not-active" href="#">2</a>
+  <a (click)="expression()" [ngClass]="(page !== 3) ? active : not-active" href="#">3</a>
+  <a (click)="expression()" [ngClass]="(page === 4) ? active : not-active" href="#">4</a>
+  <a (click)="expression()" [ngClass]="(page === 5) ? active : not-active">5</a>
+  <a (click)="expression()" [ngClass]="(page === 6) ? active : not-active">6</a>
+  <a href="#">Next&raquo;</a>
 </div>
+
+
+<br>

@@ -9,13 +9,14 @@ import * as jwt_decode from 'jwt-decode';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
 import { HttpClient , HttpHeaders, HttpParams} from '@angular/common/http';
+import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.model';
 
 
 
 
 const httpOptions = {
-  headers: new HttpHeaders({'token' : window.localStorage.getItem('token')}),
-  params: new HttpParams().set('page', '0')
+  headers: new HttpHeaders({'Authorization' : window.localStorage.getItem('token')}),
+  params: new HttpParams().set('page', '2').set('size', '15')
 };
 
 
@@ -49,8 +50,8 @@ export class AuthService {
   // }
  
   /** GET SunflowerUseres from the server */
-  getAllSunflowerUseres(): Observable<OnlineRegistrationDTO[]> {
-    return this.http.get<OnlineRegistrationDTO[]>(`${this.baseUrl}/admin/list/1`, httpOptions)
+  getAllSunflowerUseres(): Observable<ViewData[]> {
+    return this.http.get<ViewData[]>(`${this.baseUrl}/admin/list`, httpOptions)
     .pipe(
       tap(_ => this.log(`Fetched users`)),
       catchError(this.handleError('GET all users', []))
