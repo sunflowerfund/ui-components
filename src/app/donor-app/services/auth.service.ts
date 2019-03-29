@@ -50,8 +50,8 @@ export class AuthService {
   // }
  
   /** GET SunflowerUseres from the server */
-  getAllSunflowerUseres(): Observable<ViewData[]> {
-    return this.http.get<ViewData[]>(`${this.baseUrl}/admin/list`, httpOptions)
+  getAllSunflowerUseres(): Observable<T> {
+    return this.http.get(`${this.baseUrl}/admin/list`, httpOptions)
     .pipe(
       tap(_ => this.log(`Fetched users`)),
       catchError(this.handleError('GET all users', []))

@@ -22,14 +22,18 @@ page = 4;
 
 
   ngOnInit() {
-    this.auth.getAllSunflowerUseres().subscribe((res: ViewData[]) => {
+    this.auth.getAllSunflowerUseres().subscribe((res: ViewData) => {
       
       console.log(res);
       this.people = res.content;
-      this.page = res.number;
+      this.page = res.number; 
       console.log(this.page);
       
     });
+  }
+
+  view(id:number){
+    window.open(`https://sunflowerfund.azurewebsites.net/api/v1/o_registration/${id}/pdf`)
   }
 
   expression() {

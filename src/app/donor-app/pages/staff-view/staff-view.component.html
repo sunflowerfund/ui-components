@@ -1,4 +1,4 @@
-<h1>All Online registered people</h1>
+<h1>All Online onboarded Donors </h1>
 <br>
 
 <table id="people">
@@ -23,7 +23,7 @@
         <span *ngIf="person.status === 0">Pending</span>
       </td>
       <td>
-    <sunflower-button type="primary" (click)="reply();">View More</sunflower-button>  
+    <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button>  
         </td>
     </tr>
 
@@ -48,16 +48,6 @@
 </table>
 <br>
 
-<div class="pagination">
-  <a href="#">&laquo; Prev</a>
-  <a (click)="expression()" [ngClass]="true ? active : not-active" >1</a>
-  <a (click)="expression()" [ngClass]=" false ? active : not-active" href="#">2</a>
-  <a (click)="expression()" [ngClass]="(page !== 3) ? active : not-active" href="#">3</a>
-  <a (click)="expression()" [ngClass]="(page === 4) ? active : not-active" href="#">4</a>
-  <a (click)="expression()" [ngClass]="(page === 5) ? active : not-active">5</a>
-  <a (click)="expression()" [ngClass]="(page === 6) ? active : not-active">6</a>
-  <a href="#">Next&raquo;</a>
-</div>
-
+ 
 
 <br>
