@@ -1,4 +1,4 @@
-<h1>All Online registered people</h1>
+<h1>All Online onboarded Donors </h1>
 <br>
 
 <table id="people">
@@ -9,28 +9,45 @@
       <th>Surname</th>
       <th>ID Number</th>
       <th>Status</th>
-     </tr>
+      <th>Action</th>
+    </tr>
   </thead>
   <tbody *ngFor="let person of people; let i = index">
-    <tr >
+
+    <tr>
       <th scope="row">{{i + 1}}</th>
-      <td>{{person.name}}</td>
+      <td>{{person.firstName}}</td>
       <td>{{person.surname}}</td>
-      <td>{{person.IDnumber}}</td>
-      <td>{{person.status}}</td>
-         </tr>
-     </tbody>
+      <td>{{person.idNumber}}</td>
+      <td>
+        <span *ngIf="person.status === 0">Pending</span>
+      </td>
+      <td>
+    <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button>  
+        </td>
+    </tr>
+
+  </tbody>
+  <div class="loader" *ngIf="!people">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
 </table>
+<br>
 
+ 
 
-
-<div class="personal">
-  <label class="name">Name:</label>
-  <span>{{currentUser.firstName}}</span><br>
-  <label class="name">Suname:</label>
-  <span>{{currentUser.surname}}</span><br>
-  <label class="name">ID Number:</label>
-  <span>{{currentUser.idNumber}}</span><br>
-  <label class="name">Status:</label>
-  <span>{{currentUser.status}}</span><br>
-</div>
+<br>
