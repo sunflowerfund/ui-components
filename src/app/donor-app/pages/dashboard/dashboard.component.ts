@@ -26,9 +26,9 @@ export class DashboardComponent implements OnInit {
   }
   consent = false;
   personalDetails = {
- 
-    email : null,
-    mobile : null,
+
+    email: null,
+    mobile: null,
 
 
 
@@ -103,7 +103,7 @@ export class DashboardComponent implements OnInit {
         this.countries.push(element.country)
       });
     });
-    this.drive.getRelationships().subscribe((res: Relationship []) => {
+    this.drive.getRelationships().subscribe((res: Relationship[]) => {
       res.forEach(element => {
         this.relations.push(element.relationship);
       });
@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
   }
   // myconsent(){
   //   console.log(`consent [poi]`);
-    
+
   // }
   setUpClass(index) {
     this.index = index;
@@ -167,7 +167,7 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.ethnicGroup = ethnicity;
   }
 
-  
+
   setFirstRelations(firstRelation: string): void {
     this.personalDetails.firstContactRelationship = firstRelation;
   }
@@ -261,7 +261,7 @@ export class DashboardComponent implements OnInit {
       });
 
 
-    this.drive.consentToPersonalData({ 'commsInd': 1, 'hla_Confirm': 1, 'stemCell_Confirm': 1 })
+    this.drive.consentToPersonalData(this.drive.consented)
       .subscribe(() => { this.router.navigate(['/medic']); }, error => {
         console.log(error);
         this.drive.showToaster('error', error);

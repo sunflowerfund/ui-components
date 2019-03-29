@@ -29,8 +29,15 @@ export class DriveRegistrationService {
   bmi = '';
   questionar;
 
+  consented = {
+    'commsInd': 1,
+    'hla_Confirm': 1,
+    'stemCell_Confirm': 1,
+    'signature': 'null'
+  };
 
   CurrentUID = 0;
+
 
 
   personalDetails: PersonalDetailsDTO;

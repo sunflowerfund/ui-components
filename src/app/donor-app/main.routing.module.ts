@@ -18,6 +18,7 @@ import { DriveRegistrationComponent } from './pages/drive-registration/drive-reg
 import { SunflowerPage } from './pages/sunflower/sunflower.page';
 import { PrescreeningComponent } from './pages/prescreening/prescreening.component';
 import { StaffViewComponent } from './pages/staff-view/staff-view.component';
+import { SignatureCanvasComponent } from './pages/signature-canvas/signature-canvas.component';
 
 const routes: Route[] = [
   {
@@ -41,7 +42,6 @@ const routes: Route[] = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  declarations: []
-  // declarations: []
+  declarations: [] 
 })
 export class MainRoutingModule {}

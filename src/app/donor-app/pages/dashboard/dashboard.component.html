@@ -141,14 +141,20 @@
       
      
           <!-- <div (click)=" consent = !consent;"> -->
-   <label   class="container">I have read and understood the terms and conditions above
+   <!-- <label   class="container">I have read and understood the terms and conditions above
             <input type="checkbox">
             <span class="checkmark"></span>
-          </label>
+          </label> -->
           <!-- </div> -->
 
 
       <div class="btn-container text-center">
+          <br>
+          <br>
+          <app-signature-canvas></app-signature-canvas>
+          <br>
+          <br>
+          <br>
           <br>
           <br>
             <sunflower-button (click)=" consent = !consent; finish();" type="primary">Finish</sunflower-button>

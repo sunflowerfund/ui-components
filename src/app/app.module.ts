@@ -4,6 +4,7 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { SignaturePadModule } from 'angular2-signaturepad';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './@sunflower-module/sunflower-ui/ui-components/button/button.component';
@@ -36,6 +37,7 @@ import { CommonModule  } from '@angular/common';
 import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
 import { ValidationService } from './donor-app/services/validation-.service';
 import { StaffViewComponent } from './donor-app/pages/staff-view/staff-view.component';
+import { SignatureCanvasComponent } from './donor-app/pages/signature-canvas/signature-canvas.component';
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { StaffViewComponent } from './donor-app/pages/staff-view/staff-view.comp
     ComponentsPage,
     CircularIndicatorComponent,
     PrescreeningComponent,
+    SignatureCanvasComponent,
     DashboardComponent,
     StepTwoComponent,
     StepOneComponent,
@@ -65,6 +68,7 @@ import { StaffViewComponent } from './donor-app/pages/staff-view/staff-view.comp
     BrowserAnimationsModule, 
     MainRoutingModule,
     CommonModule,
+    SignaturePadModule,
     NgbModule,
     ToastrModule.forRoot(),
     FormsModule,
