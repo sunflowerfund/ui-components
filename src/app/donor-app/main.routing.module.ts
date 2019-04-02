@@ -32,7 +32,7 @@ const routes: Route[] = [
     ]
   },
   { path: 'u/new/form', component: DashboardComponent },
-  { path: 'medic/more', component: StaffViewComponent },
+  { path: 'admin/dash', component: StaffViewComponent },
   { path: 'medic', component: DriveRegistrationComponent },
   { path: 'components', component: ComponentsPage },
   { path: 'get-started', component: PrescreeningComponent },

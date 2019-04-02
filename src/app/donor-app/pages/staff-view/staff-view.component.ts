@@ -9,11 +9,11 @@ import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.
 @Component({
   selector: 'app-staff-view',
   templateUrl: './staff-view.component.html',
-  styleUrls: ['./staff-view.component.css',  ]
+  styleUrls: ['./staff-view.component.css',]
 })
 export class StaffViewComponent implements OnInit {
-currentUser;
-page = 4;
+  currentUser;
+  page = 4;
   people: OnlineRegistrationDTO[];
   constructor(
     public auth: AuthService,
@@ -22,17 +22,17 @@ page = 4;
 
 
   ngOnInit() {
-    this.auth.getAllSunflowerUseres().subscribe((res: ViewData) => {
-      
-      console.log(res);
+    this.auth.getAllSunflowerUseres()
+    .subscribe((res: any) => {
+      console.log('content ', res);
       this.people = res.content;
-      this.page = res.number; 
+      this.page = res.number;
       console.log(this.page);
-      
+
     });
   }
 
-  view(id:number){
+  view(id: number) {
     window.open(`https://sunflowerfund.azurewebsites.net/api/v1/o_registration/${id}/pdf`)
   }
 

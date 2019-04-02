@@ -33,10 +33,10 @@ export class DriveRegistrationService {
     'commsInd': 1,
     'hla_Confirm': 1,
     'stemCell_Confirm': 1,
-    'signature': 'null'
+    'signature': null
   };
 
-  CurrentUID = 0;
+  CurrentUID = 6;
 
 
 
@@ -73,8 +73,10 @@ export class DriveRegistrationService {
         catchError(this.handleError('PATCH Personal Information failed', []))
       );
   }
-  consentToPersonalData(consent) {
-    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, consent, httpOptions)
+  consentToPersonalData() {
+    // console.log('censent deatails', this.consented);
+    
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, this.consented, httpOptions)
       .pipe(
         tap(_ => this.log('Posted consent')),
         catchError(this.handleError('PATCH consent failed', []))

@@ -10,7 +10,10 @@
   padding: 8px;
 }
 
-
+.wrap{
+  margin-top: 60px;
+  padding: 27px;
+}
 #people tr:nth-child(even){background-color: #f2f2f2;}
 
 #people tr:hover {background-color: #ddd;}

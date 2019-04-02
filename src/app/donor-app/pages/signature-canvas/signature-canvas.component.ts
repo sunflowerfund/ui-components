@@ -14,7 +14,7 @@ export class SignatureCanvasComponent implements OnInit {
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
 
-  private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
+  public signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'minWidth': 5,
     'canvasWidth': 375,
     'canvasHeight': 175,

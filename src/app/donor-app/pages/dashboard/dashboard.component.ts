@@ -6,7 +6,7 @@ import { ValidationService } from '../../services/validation-.service';
 import { Router } from '@angular/router';
 import { EthnichGroup } from 'src/app/@sunflower-module/sunflower-ui/model/ethnicgroup.model';
 import { Relationship } from 'src/app/@sunflower-module/sunflower-ui/model/relationships.model';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,22 +41,23 @@ export class DashboardComponent implements OnInit {
     dateOfBirth: null,
 
     ethnicGroup: null,
-    firstContactEmail: null,
-    firstContactMobile: null,
-    firstContactName: null,
+    firstContact_Email: null,
+    firstContact_Mobile: null,
+    firstContact_Name: null,
     firstContactRelationship: null,
+    secondContact_Email: null,
+    secondContact_Mobile: null,
+    secondContact_Name: null,
+    secondContactRelationship: null,
     firstName: null,
+    surname: null,
     gender: 0,
     homePhone: null,
     idNumber: null,
     idType: 0,
     postalCode: null,
     provinceId: 0,
-    secondContactEmail: null,
-    secondContactMobile: null,
-    secondContactName: null,
-    secondContactRelationship: null,
-    surname: null,
+    
     titleId: 0,
     workPhone: null,
   };
@@ -193,7 +194,11 @@ export class DashboardComponent implements OnInit {
               this.drive.showToaster('error', 'ID Number is required to proceed');
             } else {
               if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
-                this.personalDetails.dateOfBirth = '2019';
+                const datePipe = new DatePipe('en-ZA');
+                this.personalDetails.dateOfBirth = datePipe.transform(this.validationService.DOB, 'yyyy-MM-dd');
+                
+                // console.log(this.personalDetails.dateOfBirth);
+
                 this.personalDetails.gender = this.validationService.gender;
                 this.index++;
                 this.setUpClass(this.index);
@@ -231,9 +236,12 @@ export class DashboardComponent implements OnInit {
           }
         }
       }
+
+      
     }
 
     if (step === 'step3') {
+      console.log(this.personalDetails);
 
       this.index++;
       this.setUpClass(this.index);
@@ -261,7 +269,7 @@ export class DashboardComponent implements OnInit {
       });
 
 
-    this.drive.consentToPersonalData(this.drive.consented)
+    this.drive.consentToPersonalData()
       .subscribe(() => { this.router.navigate(['/medic']); }, error => {
         console.log(error);
         this.drive.showToaster('error', error);
@@ -269,10 +277,7 @@ export class DashboardComponent implements OnInit {
       });
 
 
-
-    // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
-    //   console.log(error);
-    // });
+ 
   }
 
 }
