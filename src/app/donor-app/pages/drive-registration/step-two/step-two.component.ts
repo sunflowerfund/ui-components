@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from '../../../services/drive-registration.service';
 import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
-import { Router } from '@angular/router';
+import { Router , NavigationEnd } from '@angular/router';
 
 
 
@@ -38,6 +38,13 @@ export class StepTwoComponent implements OnInit {
 
       }
     }
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0);
+  });
 
   }
 

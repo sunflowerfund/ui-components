@@ -36,7 +36,7 @@ export class DriveRegistrationService {
     'signature': null
   };
 
-  CurrentUID = 6;
+  CurrentUID = 0;
 
 
 
@@ -67,15 +67,19 @@ export class DriveRegistrationService {
   }
 
   sendPersonalInformation(personalInfo) {
+    console.log('check for personal info', personalInfo);
+
      return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
       .pipe(
-        tap(_ => this.log('Posted Personal Information ')),
+        tap( res_ =>
+          // console.log('results', res_)
+           this.log('Posted Personal Information ')
+          ),
         catchError(this.handleError('PATCH Personal Information failed', []))
       );
   }
   consentToPersonalData() {
-    // console.log('censent deatails', this.consented);
-    
+
     return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, this.consented, httpOptions)
       .pipe(
         tap(_ => this.log('Posted consent')),
@@ -94,21 +98,21 @@ export class DriveRegistrationService {
       );
   }
 
-  getEthnicGroups(){
+  getEthnicGroups() {
     return this.http.get(`${this.baseUrl}ethnicgroups` , httpOptions)
       .pipe(
         tap(_ => this.log('Fetched ethnic groups')),
         catchError(this.handleError('GET ethnic groups failed', []))
       );
   }
-  getCountryCodes(){
+  getCountryCodes() {
     return this.http.get(`${this.baseUrl}countrycode`, httpOptions)
       .pipe(
         tap(_ => this.log('Fetched countries')),
         catchError(this.handleError('GET countries failed', []))
       );
   }
-  getRelationships(){
+  getRelationships() {
     return this.http.get(`${this.baseUrl}relationships`, httpOptions)
       .pipe(
         tap(_ => this.log('Fetched relationships')),

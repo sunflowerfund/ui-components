@@ -3,7 +3,7 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
 import { ToastrService } from 'ngx-toastr';
 import { OnlineRegistrationDTO, CountryCodeDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { ValidationService } from '../../services/validation-.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { EthnichGroup } from 'src/app/@sunflower-module/sunflower-ui/model/ethnicgroup.model';
 import { Relationship } from 'src/app/@sunflower-module/sunflower-ui/model/relationships.model';
 import { DatePipe } from '@angular/common';
@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.email = this.drive.email;
     this.personalDetails.mobile = this.drive.cellnumber;
   }
+  send = false;
   consent = false;
   personalDetails = {
 
@@ -41,13 +42,13 @@ export class DashboardComponent implements OnInit {
     dateOfBirth: null,
 
     ethnicGroup: null,
-    firstContact_Email: null,
-    firstContact_Mobile: null,
-    firstContact_Name: null,
+    firstContactEmail: null,
+    firstContactMobile: null,
+    firstContactName: null,
     firstContactRelationship: null,
-    secondContact_Email: null,
-    secondContact_Mobile: null,
-    secondContact_Name: null,
+    secondContactEmail: null,
+    secondContactMobile: null,
+    secondContactName: null,
     secondContactRelationship: null,
     firstName: null,
     surname: null,
@@ -57,7 +58,7 @@ export class DashboardComponent implements OnInit {
     idType: 0,
     postalCode: null,
     provinceId: 0,
-    
+
     titleId: 0,
     workPhone: null,
   };
@@ -93,6 +94,13 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
+
     this.drive.getEthnicGroups().subscribe((res: EthnichGroup[]) => {
       res.forEach(element => {
         this.ethnicGroup.push(element.ethnicGroup);
@@ -101,7 +109,7 @@ export class DashboardComponent implements OnInit {
 
     this.drive.getCountryCodes().subscribe((res: CountryCodeDTO[]) => {
       res.forEach(element => {
-        this.countries.push(element.country)
+        this.countries.push(element.country);
       });
     });
     this.drive.getRelationships().subscribe((res: Relationship[]) => {
@@ -196,7 +204,6 @@ export class DashboardComponent implements OnInit {
               if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
                 const datePipe = new DatePipe('en-ZA');
                 this.personalDetails.dateOfBirth = datePipe.transform(this.validationService.DOB, 'yyyy-MM-dd');
-                
                 // console.log(this.personalDetails.dateOfBirth);
 
                 this.personalDetails.gender = this.validationService.gender;
@@ -237,7 +244,6 @@ export class DashboardComponent implements OnInit {
         }
       }
 
-      
     }
 
     if (step === 'step3') {
@@ -277,7 +283,7 @@ export class DashboardComponent implements OnInit {
       });
 
 
- 
+
   }
 
 }

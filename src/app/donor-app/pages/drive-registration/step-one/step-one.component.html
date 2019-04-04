@@ -14,18 +14,18 @@
         
          <div *ngIf="ques.question_Type === 1 && ques.answer != 'q1_12b'" class="YESandNO">
             <!-- Yes -->
-          <div class="display-flex">
+          <div class="display-flex"(click)="answerQuestion(ques.id, true);  prestine[i]= true; ">
               <div class="radio" [ngClass]="simpleMedicAnswers[i] && simpleMedicAnswers[i].yesno && prestine[i]
                ? 'selected' : 'unselected'"
-                (click)="answerQuestion(ques.id, true);  prestine[i]= true; "></div>
+                ></div>
               <label class="text-line-middle radio-label">Yes</label>
             </div>                                        
           
             <!-- No -->                                                                                                                                                                                                                                 
-            <div class="display-flex">
+            <div class="display-flex"(click)="answerQuestion(ques.id, false); prestine[i]= true;">
               <div class="radio" [ngClass]=" simpleMedicAnswers[i] && !simpleMedicAnswers[i].yesno && prestine[i]
               ? 'selected' : 'unselected'"
-                (click)="answerQuestion(ques.id, false); prestine[i]= true;"></div>
+                ></div>
               <label class="text-line-middle radio-label">No</label>
             </div>
          </div>

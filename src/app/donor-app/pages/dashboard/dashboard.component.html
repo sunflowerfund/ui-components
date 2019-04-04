@@ -111,7 +111,7 @@
          <label  class="labels " for="relationship">2nd Contact's Relationship</label> <br><br><br>
          <div class="btn-container">
             <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations" (output)="setSecondRelations($event)"></sun-dropdown-menu>
-          </div>
+          </div>  
          <!-- <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
          ngDefaultControl ></app-input> -->
         <br>
@@ -157,7 +157,27 @@
           <br>
           <br>
           <br>
-            <sunflower-button (click)=" consent = !consent; finish();" type="primary">Finish</sunflower-button>
+            <sunflower-button *ngIf="!send" (click)=" consent = !consent; send = !send; finish();" type="primary">Save all</sunflower-button>
+
+            <div class="send" *ngIf="send">
+                <sunflower-button type="primary" class="--disabled btn-loader">
+                  <!-- <h1>Loading</h1> -->
+                  <div class="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </sunflower-button>
+              </div>
         </div>
       </div>
     
@@ -170,3 +190,5 @@
 
   </div>
 </div>
+
+ 

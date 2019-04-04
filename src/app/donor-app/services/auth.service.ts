@@ -4,7 +4,7 @@ import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
- 
+
 import * as jwt_decode from 'jwt-decode';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
@@ -37,7 +37,7 @@ export class AuthService {
 
   ) { }
 
- 
+
 
 
   // initHeaders(): RequestOptions {
@@ -48,7 +48,7 @@ export class AuthService {
   //   apiHeaders.params.append('page', '1');
   //   return apiHeaders;
   // }
- 
+
   /** GET SunflowerUseres from the server */
   getAllSunflowerUseres(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/admin/list`, httpOptions)
