@@ -39,12 +39,8 @@ export class StepTwoComponent implements OnInit {
       }
     }
 
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-          return;
-      }
-      window.scrollTo(0, 0);
-  });
+   
+  window.scrollTo(0, 0);
 
   }
 

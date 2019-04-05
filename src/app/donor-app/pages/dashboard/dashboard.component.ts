@@ -195,7 +195,7 @@ export class DashboardComponent implements OnInit {
         } else {
           if (this.personalDetails.ethnicGroup === null || this.personalDetails.ethnicGroup === undefined
           ) {
-            this.drive.showToaster('error', 'Please select your ethnic group tot proceed');
+            this.drive.showToaster('error', 'Please select your ethnic group to proceed');
           } else {
             if (this.personalDetails.idNumber === null || this.personalDetails.idNumber === undefined
               || this.personalDetails.idNumber.legnth < 13) {
@@ -234,10 +234,10 @@ export class DashboardComponent implements OnInit {
             this.drive.showToaster('error', 'Please add your line three of Address');
           } else {
             if (this.personalDetails.homePhone === null || this.personalDetails.homePhone === undefined) {
-              this.drive.showToaster('error', 'Please add your Home number');
+              this.drive.showToaster('warn', 'Please add your Home number');
             } else {
               if (this.personalDetails.workPhone === null || this.personalDetails.workPhone === undefined) {
-                this.drive.showToaster('error', 'Please add your Work number');
+                this.drive.showToaster('warn', 'Please add your Work number');
               }
             }
           }

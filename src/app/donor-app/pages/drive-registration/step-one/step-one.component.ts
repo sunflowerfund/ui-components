@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriveRegistrationService } from 'src/app/donor-app/services/drive-registration.service';
 import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
+import { ValidationService } from 'src/app/donor-app/services/validation-.service';
 
 @Component({
   selector: 'app-step-one',
@@ -14,15 +15,23 @@ export class StepOneComponent implements OnInit {
   simpleMedicAnswers: Answer[] = [];
   simpleAnswerText: string;
   prestine = [];
+  gender;
   // userResponse = [];
   // finalUserResponse = {};
   // medicalAnswers: MedicalQuestions[];
   // import {  } from 'src/app/@sunflower-module/sunflower-ui/model/';
 
-  constructor(public drive: DriveRegistrationService) { }
+  constructor(
+    public drive: DriveRegistrationService,
+    public validateService: ValidationService,
+
+    ) { }
 
   ngOnInit() {
     this.getHealthQuestionair();
+    this.gender = this.validateService.gender;
+    console.log(this.gender);
+    
   }
 
 
@@ -38,7 +47,7 @@ export class StepOneComponent implements OnInit {
             this.simpleMedic.push(this.questionair[index]);
           }
         }
-        // console.log(this.simpleMedic);
+        console.log(this.simpleMedic);
       }, error => {
         console.log(error);
       }

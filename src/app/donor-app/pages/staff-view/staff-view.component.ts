@@ -24,7 +24,7 @@ export class StaffViewComponent implements OnInit {
   ngOnInit() {
     this.auth.getAllSunflowerUseres()
     .subscribe((res: any) => {
-      console.log('content ', res);
+      // console.log('content ', res);
       this.people = res.content;
       this.page = res.number;
       console.log(this.page);
@@ -38,6 +38,6 @@ export class StaffViewComponent implements OnInit {
 
   expression() {
     this.page++;
-    console.log(this.page);
+    // console.log(this.page);
   }
 }
