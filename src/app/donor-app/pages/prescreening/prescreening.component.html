@@ -31,16 +31,16 @@
 
     <div *ngIf="ques.question_Type === 1" class="YESandNO">
       <!-- Yes -->
-      <div class="display-flex">
+      <div class="display-flex" (click)="questions[i].answer = 1;  prestine[i]= true; ">
         <div class="radio" [ngClass]="questions[i].answer && prestine[i]
-         ? 'selected' : 'unselected'" (click)="questions[i].answer = 1;  prestine[i]= true; "></div>
+         ? 'selected' : 'unselected'"></div>
         <label class="text-line-middle radio-label">Yes</label>
       </div>
 
       <!-- No -->
-      <div class="display-flex">
+      <div class="display-flex" (click)="questions[i].answer = 0; prestine[i]= true;">
         <div class="radio" [ngClass]=" !questions[i].answer && prestine[i]
-        ? 'selected' : 'unselected'" (click)="questions[i].answer = 0; prestine[i]= true;"></div>
+        ? 'selected' : 'unselected'"></div>
         <label class="text-line-middle radio-label">No</label>
       </div>
     </div>

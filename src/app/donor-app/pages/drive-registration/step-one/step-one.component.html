@@ -4,33 +4,34 @@
 </div>
 
 <div class="wraper"  *ngIf="questionair">
+ 
   <div class="center">
-    
+  <h1 style="text-align:center">Medical Questions</h1>   <hr><br>
    
       <div class="line"  *ngFor="let ques of simpleMedic; index as i" >
           <div class="height-46 display-flex">
             <label class="text-line-middle text">{{ques.question}}</label>
           </div>
         
-         <div *ngIf="ques.question_Type === 1 && ques.answer != 'q1_12b'" class="YESandNO">
+         <div *ngIf="ques.question_Type === 1 && ques.answer != 'q1_12b' " class="YESandNO">
             <!-- Yes -->
-          <div class="display-flex">
+          <div class="display-flex" (click)="answerQuestion(ques.id, true);  prestine[i]= true;">
               <div class="radio" [ngClass]="simpleMedicAnswers[i] && simpleMedicAnswers[i].yesno && prestine[i]
                ? 'selected' : 'unselected'"
-                (click)="answerQuestion(ques.id, true);  prestine[i]= true; "></div>
+                ></div>
               <label class="text-line-middle radio-label">Yes</label>
             </div>                                        
           
             <!-- No -->                                                                                                                                                                                                                                 
-            <div class="display-flex">
+            <div class="display-flex" (click)="answerQuestion(ques.id, false); prestine[i]= true;">
               <div class="radio" [ngClass]=" simpleMedicAnswers[i] && !simpleMedicAnswers[i].yesno && prestine[i]
               ? 'selected' : 'unselected'"
-                (click)="answerQuestion(ques.id, false); prestine[i]= true;"></div>
+                ></div>
               <label class="text-line-middle radio-label">No</label>
             </div>
          </div>
         
-        <div class="explain"  *ngIf="ques.answer === 'q1_12b'" >
+        <div class="explain"  *ngIf="ques.answer === 'q1_12b'  " >
             <input [(ngModel)]="answerText" type="text" class="input">
         </div>  
       

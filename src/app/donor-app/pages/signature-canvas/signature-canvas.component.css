@@ -1,0 +1,9 @@
+#clear{
+    background-color: #ffffff;
+    color: #000000;
+    height: 40px;
+    width: 66px;
+    text-transform: uppercase;
+    margin: 15px;
+    border: .5px var(--yellow) solid;
+}

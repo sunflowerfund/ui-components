@@ -4,7 +4,7 @@ import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
- 
+
 import * as jwt_decode from 'jwt-decode';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
@@ -16,7 +16,7 @@ import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.
 
 const httpOptions = {
   headers: new HttpHeaders({'Authorization' : window.localStorage.getItem('token')}),
-  params: new HttpParams().set('page', '2').set('size', '15')
+  params: new HttpParams().set('page', '0').set('size', '10')
 };
 
 
@@ -37,7 +37,7 @@ export class AuthService {
 
   ) { }
 
- 
+
 
 
   // initHeaders(): RequestOptions {
@@ -48,10 +48,10 @@ export class AuthService {
   //   apiHeaders.params.append('page', '1');
   //   return apiHeaders;
   // }
- 
+
   /** GET SunflowerUseres from the server */
-  getAllSunflowerUseres(): Observable<T> {
-    return this.http.get(`${this.baseUrl}/admin/list`, httpOptions)
+  getAllSunflowerUseres(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/admin/list`, httpOptions)
     .pipe(
       tap(_ => this.log(`Fetched users`)),
       catchError(this.handleError('GET all users', []))

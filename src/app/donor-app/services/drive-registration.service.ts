@@ -29,8 +29,15 @@ export class DriveRegistrationService {
   bmi = '';
   questionar;
 
+  consented = {
+    'commsInd': 1,
+    'hla_Confirm': 1,
+    'stemCell_Confirm': 1,
+    'signature': null
+  };
 
   CurrentUID = 0;
+
 
 
   personalDetails: PersonalDetailsDTO;
@@ -60,14 +67,20 @@ export class DriveRegistrationService {
   }
 
   sendPersonalInformation(personalInfo) {
+    console.log('check for personal info', personalInfo);
+
      return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
       .pipe(
-        tap(_ => this.log('Posted Personal Information ')),
+        tap( res_ =>
+          // console.log('results', res_)
+           this.log('Posted Personal Information ')
+          ),
         catchError(this.handleError('PATCH Personal Information failed', []))
       );
   }
-  consentToPersonalData(consent) {
-    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, consent, httpOptions)
+  consentToPersonalData() {
+
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/consent`, this.consented, httpOptions)
       .pipe(
         tap(_ => this.log('Posted consent')),
         catchError(this.handleError('PATCH consent failed', []))
@@ -85,21 +98,21 @@ export class DriveRegistrationService {
       );
   }
 
-  getEthnicGroups(){
+  getEthnicGroups() {
     return this.http.get(`${this.baseUrl}ethnicgroups` , httpOptions)
       .pipe(
         tap(_ => this.log('Fetched ethnic groups')),
         catchError(this.handleError('GET ethnic groups failed', []))
       );
   }
-  getCountryCodes(){
+  getCountryCodes() {
     return this.http.get(`${this.baseUrl}countrycode`, httpOptions)
       .pipe(
         tap(_ => this.log('Fetched countries')),
         catchError(this.handleError('GET countries failed', []))
       );
   }
-  getRelationships(){
+  getRelationships() {
     return this.http.get(`${this.baseUrl}relationships`, httpOptions)
       .pipe(
         tap(_ => this.log('Fetched relationships')),

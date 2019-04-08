@@ -3,10 +3,10 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
 import { ToastrService } from 'ngx-toastr';
 import { OnlineRegistrationDTO, CountryCodeDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { ValidationService } from '../../services/validation-.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { EthnichGroup } from 'src/app/@sunflower-module/sunflower-ui/model/ethnicgroup.model';
 import { Relationship } from 'src/app/@sunflower-module/sunflower-ui/model/relationships.model';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,11 +24,12 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.email = this.drive.email;
     this.personalDetails.mobile = this.drive.cellnumber;
   }
+  send = false;
   consent = false;
   personalDetails = {
- 
-    email : null,
-    mobile : null,
+
+    email: null,
+    mobile: null,
 
 
 
@@ -45,18 +46,19 @@ export class DashboardComponent implements OnInit {
     firstContactMobile: null,
     firstContactName: null,
     firstContactRelationship: null,
+    secondContactEmail: null,
+    secondContactMobile: null,
+    secondContactName: null,
+    secondContactRelationship: null,
     firstName: null,
+    surname: null,
     gender: 0,
     homePhone: null,
     idNumber: null,
     idType: 0,
     postalCode: null,
     provinceId: 0,
-    secondContactEmail: null,
-    secondContactMobile: null,
-    secondContactName: null,
-    secondContactRelationship: null,
-    surname: null,
+
     titleId: 0,
     workPhone: null,
   };
@@ -92,6 +94,13 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
+
     this.drive.getEthnicGroups().subscribe((res: EthnichGroup[]) => {
       res.forEach(element => {
         this.ethnicGroup.push(element.ethnicGroup);
@@ -100,10 +109,10 @@ export class DashboardComponent implements OnInit {
 
     this.drive.getCountryCodes().subscribe((res: CountryCodeDTO[]) => {
       res.forEach(element => {
-        this.countries.push(element.country)
+        this.countries.push(element.country);
       });
     });
-    this.drive.getRelationships().subscribe((res: Relationship []) => {
+    this.drive.getRelationships().subscribe((res: Relationship[]) => {
       res.forEach(element => {
         this.relations.push(element.relationship);
       });
@@ -125,7 +134,7 @@ export class DashboardComponent implements OnInit {
   }
   // myconsent(){
   //   console.log(`consent [poi]`);
-    
+
   // }
   setUpClass(index) {
     this.index = index;
@@ -167,7 +176,7 @@ export class DashboardComponent implements OnInit {
     this.personalDetails.ethnicGroup = ethnicity;
   }
 
-  
+
   setFirstRelations(firstRelation: string): void {
     this.personalDetails.firstContactRelationship = firstRelation;
   }
@@ -186,14 +195,17 @@ export class DashboardComponent implements OnInit {
         } else {
           if (this.personalDetails.ethnicGroup === null || this.personalDetails.ethnicGroup === undefined
           ) {
-            this.drive.showToaster('error', 'Please select your ethnic group tot proceed');
+            this.drive.showToaster('error', 'Please select your ethnic group to proceed');
           } else {
             if (this.personalDetails.idNumber === null || this.personalDetails.idNumber === undefined
               || this.personalDetails.idNumber.legnth < 13) {
               this.drive.showToaster('error', 'ID Number is required to proceed');
             } else {
               if (this.validationService.identityValidation(this.personalDetails.idNumber)) {
-                this.personalDetails.dateOfBirth = '2019';
+                const datePipe = new DatePipe('en-ZA');
+                this.personalDetails.dateOfBirth = datePipe.transform(this.validationService.DOB, 'yyyy-MM-dd');
+                // console.log(this.personalDetails.dateOfBirth);
+
                 this.personalDetails.gender = this.validationService.gender;
                 this.index++;
                 this.setUpClass(this.index);
@@ -222,18 +234,20 @@ export class DashboardComponent implements OnInit {
             this.drive.showToaster('error', 'Please add your line three of Address');
           } else {
             if (this.personalDetails.homePhone === null || this.personalDetails.homePhone === undefined) {
-              this.drive.showToaster('error', 'Please add your Home number');
+              this.drive.showToaster('warn', 'Please add your Home number');
             } else {
               if (this.personalDetails.workPhone === null || this.personalDetails.workPhone === undefined) {
-                this.drive.showToaster('error', 'Please add your Work number');
+                this.drive.showToaster('warn', 'Please add your Work number');
               }
             }
           }
         }
       }
+
     }
 
     if (step === 'step3') {
+      console.log(this.personalDetails);
 
       this.index++;
       this.setUpClass(this.index);
@@ -261,7 +275,7 @@ export class DashboardComponent implements OnInit {
       });
 
 
-    this.drive.consentToPersonalData({ 'commsInd': 1, 'hla_Confirm': 1, 'stemCell_Confirm': 1 })
+    this.drive.consentToPersonalData()
       .subscribe(() => { this.router.navigate(['/medic']); }, error => {
         console.log(error);
         this.drive.showToaster('error', error);
@@ -270,9 +284,6 @@ export class DashboardComponent implements OnInit {
 
 
 
-    // this.drive.sendPersonalInformation(this.personalDetails).subscribe(() => { }, error => {
-    //   console.log(error);
-    // });
   }
 
 }

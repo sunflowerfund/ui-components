@@ -17,6 +17,12 @@
 
 <div class="wraper">
   <div class="center">
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <h1 style="text-align:center">Medical Questions</h1>   <hr><br>
     <span class="infomate">
       <p class="innerText">A platelet transfusion can prevent major bleeding. Certain patients are depandent on
         receiving HLA-compatable platelets from HLA matched donors in the coursr of their treatment (chemotherapy,
@@ -34,23 +40,23 @@
       <div *ngIf="ques.question_Type === 2">
 
         <!-- Yes -->
-        <div class="display-flex">
+        <div class="display-flex" (click)="answerQuestion(ques.id, true);  simpleAnswerResponse[i] = true; prestine[i] = true">
           <div class="radio"
             [ngClass]="simpleAnswerResponse[i] && prestine[i] ? 'selected' : 'unselected'"
-            (click)="answerQuestion(ques.id, true);  simpleAnswerResponse[i] = true; prestine[i] = true"></div>
+           ></div>
           <label class="text-line-middle radio-label">Yes</label>
         </div>
 
         <!-- No -->
-        <div class="display-flex">
+        <div class="display-flex" (click)=" answerQuestion(ques.id, false);  simpleAnswerResponse[i] = false; prestine[i] = true;">
           <div class="radio"
             [ngClass]="!simpleAnswerResponse[i] && prestine[i] ? 'selected' : 'unselected'"
-            (click)=" answerQuestion(ques.id, false);  simpleAnswerResponse[i] = false; prestine[i] = true;"></div>
+            ></div>
           <label class="text-line-middle radio-label">No</label>
         </div>
       </div>
 
-      <div *ngIf="ques.answer != 'q2_6' && simpleAnswerResponse[i] === true" class="height-46  display-flex explain-section">
+      <div *ngIf="ques.answer != 'q2_6' && simpleAnswerResponse[i] === true " class="height-46  display-flex explain-section">
         <label class="text-line-middle text">When: </label>
         <app-input [attrs]="['--input-fifty']" [(ngModel)]="this.simpleMedicAnswersMap.get(ques.id).when" ngDefaultControl type="text"></app-input>
 

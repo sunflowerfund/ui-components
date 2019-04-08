@@ -23,6 +23,7 @@
     "@angular/router": "~7.1.0",
     "@angular/service-worker": "~7.1.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.2",
+    "angular2-signaturepad": "^2.8.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "firebase": "^5.8.4",
