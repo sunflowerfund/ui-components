@@ -6,7 +6,7 @@ import { Path } from "../../model/path.model";
     <div class="navbar" [class.active]="isNavbarActive">
       <div class="navbar-brand" routerLink="/">
         <img
-          src="./assets/img/sunflower/sunflower-fund-sunflower.png"
+          src="./assets/logo.png"
           class="brand-img"
           alt=""
         />

@@ -8,11 +8,17 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
 })
 
 
-export class DriveRegistrationComponent {
-
+export class DriveRegistrationComponent { 
   steps;
+  email: any;
 
-  constructor(public driveReg: DriveRegistrationService) {
+  constructor(
+    public driveReg: DriveRegistrationService
+    ) {
     this.steps = this.driveReg.step;
+    this.email = this.driveReg.email;
+  }
+  closeModal(modalID: string){
+    this.driveReg.close(modalID);
   }
 }

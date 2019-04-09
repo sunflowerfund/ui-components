@@ -10,7 +10,7 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  bodyText
+  bodyText;
   user = {
     username: '',
     password: ''
@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit() {
-    this.bodyText = this.auth.Bodytext;
+    this.bodyText = this.auth.bodyText;
   }
 
   register() {
