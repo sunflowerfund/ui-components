@@ -71,7 +71,7 @@ formErrors = {
   }
 
 
-  showToaster(){
+  showToaster() {
     this.toastr.success('Account created Successfully.');
 }
 

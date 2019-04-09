@@ -30,8 +30,8 @@ export class StepOneComponent implements OnInit {
   ngOnInit() {
     this.getHealthQuestionair();
     this.gender = this.validateService.gender;
-    console.log(this.gender);
-    
+    // console.log(this.gender);
+
   }
 
 
@@ -47,7 +47,7 @@ export class StepOneComponent implements OnInit {
             this.simpleMedic.push(this.questionair[index]);
           }
         }
-        console.log(this.simpleMedic);
+        // console.log(this.simpleMedic);
       }, error => {
         console.log(error);
       }
@@ -89,8 +89,9 @@ export class StepOneComponent implements OnInit {
     // console.log(this.simpleMedicAnswers);
 
     this.drive.answerHealthScreenAnswers(this.simpleMedicAnswers).subscribe(_response => {
-      console.log(_response);
-    }, error => { console.log(error) ;});
+      // console.log(_response);
+      // this.drive.open('app-modal')
+    }, error => { console.log(error) ; });
 
     this.drive.step++;
 

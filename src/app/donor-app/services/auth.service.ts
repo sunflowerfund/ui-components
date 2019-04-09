@@ -30,8 +30,8 @@ export class AuthService {
   decodedToken;
   baseUrl = 'https://sunflowerfund.azurewebsites.net/api/v1/';
 
-modals = [];
-bodyText:string = null;
+  public modals: any[] = [];
+bodyText: string = null;
 
   constructor(
     private http: HttpClient,

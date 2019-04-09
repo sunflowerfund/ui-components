@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { healthScreenQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model';
 import { pipe } from '@angular/core/src/render3';
 import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -47,6 +48,7 @@ export class DriveRegistrationService {
   constructor(
     private http: HttpClient,
     private toastr: ToastrService,
+    private router: Router,
 
   ) { }
 
@@ -164,6 +166,8 @@ export class DriveRegistrationService {
     // close modal specified by id
     let modal: any = this.modals.filter(x => x.id === id)[0];
     modal.close();
+    this.router.navigate(['/']);
+
   }
 
 
