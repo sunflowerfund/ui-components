@@ -39,7 +39,7 @@ export class StepTwoComponent implements OnInit {
       }
     }
 
-   
+
   window.scrollTo(0, 0);
 
   }
@@ -53,10 +53,11 @@ export class StepTwoComponent implements OnInit {
 
   finish() {
     this.drive.answerHealthScreenAnswers(Array.from(this.simpleMedicAnswersMap.values())).subscribe(_response => {
-      console.log(_response);
+      // console.log(_response);
     });
-    this.drive.showToaster('success', 'Well Done, All entered info is saved !!!');
-    this.router.navigate(['/']);
+    this.drive.open('app-modal');
+    // this.drive.showToaster('success', 'Well Done, All entered info is saved !!!');
+    // this.router.navigate(['/']);
   }
 
 }

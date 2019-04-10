@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { healthScreenQuestion } from 'src/app/@sunflower-module/sunflower-ui/model/healthScreenQuestion.model';
 import { pipe } from '@angular/core/src/render3';
 import { Answer } from 'src/app/@sunflower-module/sunflower-ui/model/answer';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders().set('email', 'sunflowerfund@younglings.africa').set('password', 'sunflower10')
@@ -38,6 +39,8 @@ export class DriveRegistrationService {
 
   CurrentUID = 0;
 
+  public modals: any[] = [];
+
 
 
   personalDetails: PersonalDetailsDTO;
@@ -45,6 +48,7 @@ export class DriveRegistrationService {
   constructor(
     private http: HttpClient,
     private toastr: ToastrService,
+    private router: Router,
 
   ) { }
 
@@ -69,12 +73,12 @@ export class DriveRegistrationService {
   sendPersonalInformation(personalInfo) {
     console.log('check for personal info', personalInfo);
 
-     return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
+    return this.http.patch(`${this.baseUrl}o_registration/${this.CurrentUID}/personaldetails`, personalInfo, httpOptions)
       .pipe(
-        tap( res_ =>
+        tap(res_ =>
           // console.log('results', res_)
-           this.log('Posted Personal Information ')
-          ),
+          this.log('Posted Personal Information ')
+        ),
         catchError(this.handleError('PATCH Personal Information failed', []))
       );
   }
@@ -91,7 +95,7 @@ export class DriveRegistrationService {
 
   getHealthScreenQuestion(): Observable<healthScreenQuestion[]> {
 
-    return this.http.get<healthScreenQuestion[]>(`${this.baseUrl}questions` , httpOptions)
+    return this.http.get<healthScreenQuestion[]>(`${this.baseUrl}questions`, httpOptions)
       .pipe(
         tap(_ => this.log('Fetched HealthScreen Questions')),
         catchError(this.handleError('GET HealthScreen questions', []))
@@ -99,7 +103,7 @@ export class DriveRegistrationService {
   }
 
   getEthnicGroups() {
-    return this.http.get(`${this.baseUrl}ethnicgroups` , httpOptions)
+    return this.http.get(`${this.baseUrl}ethnicgroups`, httpOptions)
       .pipe(
         tap(_ => this.log('Fetched ethnic groups')),
         catchError(this.handleError('GET ethnic groups failed', []))
@@ -137,6 +141,57 @@ export class DriveRegistrationService {
         catchError(this.handleError('Patching Health Screen Answers failed', []))
       );
   }
+
+
+
+
+
+  add(modal: any) {
+    // add modal to array of active modals
+    this.modals.push(modal);
+  }
+
+  remove(id: string) {
+    // remove modal from array of active modals
+    this.modals = this.modals.filter(x => x.id !== id);
+  }
+
+  open(id: string) {
+    // open modal specified by id
+    let modal: any = this.modals.filter(x => x.id === id)[0];
+    modal.open();
+  }
+
+  close(id: string) {
+    // close modal specified by id
+    let modal: any = this.modals.filter(x => x.id === id)[0];
+    modal.close();
+    this.router.navigate(['/']);
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
