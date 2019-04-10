@@ -1,7 +1,7 @@
 <div class="banner d-flex bg-image">
   <div class="contain-float m-auto d-flex text-center p-tb25px">
     <div class="form-container m-auto">
-      <img src="./assets/img/sunflower/sunflower-fund-sunflower.png" alt="" class="profile">
+      <img src="./assets/logo.png" alt="" class="profile">
       <h1 class="text-size-default font-weight-medium color-grey">
         I am Hope for life Account
       </h1>
@@ -26,3 +26,16 @@
     </div>
   </div>
 </div>
+
+<jw-modal  id="login-modal">
+  <div class="modal">
+      <div class="modal-body">
+          <h1>A Log in Modal!</h1>
+          <p>
+             <input type="text" [(ngModel)]="bodyText" />
+          </p>
+          <button (click)="closeModal('login-modal');">Close</button>
+      </div>
+  </div>
+  <div class="modal-background"></div>
+</jw-modal > 

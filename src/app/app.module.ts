@@ -38,6 +38,7 @@ import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreeni
 import { ValidationService } from './donor-app/services/validation-.service';
 import { StaffViewComponent } from './donor-app/pages/staff-view/staff-view.component';
 import { SignatureCanvasComponent } from './donor-app/pages/signature-canvas/signature-canvas.component';
+import { ModalComponent } from './@sunflower-module/sunflower-ui/css/components/appmodal/appModal.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { SignatureCanvasComponent } from './donor-app/pages/signature-canvas/sig
     DropdownMenuComponent,
     NavbarComponent,
     HomePage,
+    ModalComponent,
     SunflowerPage,
     DriveRegistrationComponent,
     ComponentsPage,

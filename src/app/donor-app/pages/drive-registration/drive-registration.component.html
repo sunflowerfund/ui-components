@@ -2,3 +2,28 @@
 
 <app-step-one *ngIf="this.driveReg.step === 1" ></app-step-one>
 <app-step-two *ngIf="this.driveReg.step === 2"></app-step-two>
+ 
+<jw-modal  id="app-modal" data-backdrop="static" data-keyboard="false">
+    <div class="modal">
+        <div class="modal-body">
+         <div class="top">
+                <h1>Onboarding Complete!</h1> 
+            <button id="btn-closer" (click)="closeModal('app-modal');">X</button>
+         </div>
+          <br>
+<div id="img-approve">
+        <img id="approve" src="./../../../../assets/img/icons/icons8-checked.svg" alt="Completed">
+
+</div>    
+<p>
+                An email has been sent to <b style="color: var(--yellow)">{{email}} </b> with an auto generated password,
+                please use those credentials to login and check on the status of your application
+            </p>
+            <div style="text-align:center">
+
+                <button id="okay" (click)="closeModal('app-modal');">OK</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</jw-modal > 
