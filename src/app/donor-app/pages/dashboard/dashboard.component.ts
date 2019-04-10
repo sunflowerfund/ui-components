@@ -111,6 +111,8 @@ export class DashboardComponent implements OnInit {
       res.forEach(element => {
         this.countries.push(element.country);
       });
+
+    this.countries.sort();
     });
     this.drive.getRelationships().subscribe((res: Relationship[]) => {
       res.forEach(element => {
