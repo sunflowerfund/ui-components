@@ -31,7 +31,6 @@ export class StepOneComponent implements OnInit {
     this.getHealthQuestionair();
     this.gender = this.validateService.gender;
     // console.log(this.gender);
-
   }
 
 
