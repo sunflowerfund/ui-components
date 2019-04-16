@@ -16,7 +16,7 @@ import { InputComponent } from './@sunflower-module/sunflower-ui/ui-components/i
 import { HomePage } from './donor-app/pages/home/home.page';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainRoutingModule } from './donor-app/main.routing.module';
+import { MainRoutingModule } from './donor-app/modules/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
