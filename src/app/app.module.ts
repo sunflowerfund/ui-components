@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SignaturePadModule } from 'angular2-signaturepad';
-import { RouterModule, Routes } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './@sunflower-module/sunflower-ui/ui-components/button/button.component';
 import { DropdownMenuComponent } from './@sunflower-module/sunflower-ui/ui-components/dropdown-menu/dropdown-menu.component';
@@ -20,7 +20,7 @@ import { MainRoutingModule } from './donor-app/modules/main.routing.module';
 import { ComponentsPage } from './donor-app/pages/components.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { environment } from '../environments/environment'; 
+import { environment } from '../environments/environment';
 
 
 import { CircularIndicatorComponent } from './@sunflower-module/sunflower-ui/ui-components/circular-indicator/circular-indicator.component';
@@ -33,12 +33,15 @@ import { AuthService } from './donor-app/services/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuardService } from './donor-app/services/auth-guard.service';
 import { NgDatePickerComponent } from './@sunflower-module/sunflower-ui/ui-components/ng-date-picker/ng-date-picker.component';
-import { CommonModule  } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { PrescreeningComponent } from './donor-app/pages/prescreening/prescreening.component';
 import { ValidationService } from './donor-app/services/validation-.service';
 import { StaffViewComponent } from './donor-app/pages/staff-view/staff-view.component';
 import { SignatureCanvasComponent } from './donor-app/pages/signature-canvas/signature-canvas.component';
 import { ModalComponent } from './@sunflower-module/sunflower-ui/css/components/appmodal/appModal.component';
+import { NotificationService } from './donor-app/services/notification.service';
+import { ErrorsModule } from './donor-app/modules/errors.module';
+import { ErrorsComponent } from './donor-app/pages/errors/errors.component';
 
 
 @NgModule({
@@ -63,11 +66,13 @@ import { ModalComponent } from './@sunflower-module/sunflower-ui/css/components/
     StepTwoComponent,
     StepOneComponent,
     NgDatePickerComponent,
+    ErrorsComponent,
   ],
   imports: [
+    ErrorsModule,
     BrowserModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     MainRoutingModule,
     CommonModule,
     SignaturePadModule,
@@ -77,7 +82,13 @@ import { ModalComponent } from './@sunflower-module/sunflower-ui/css/components/
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [FormBuilder, ValidationService, AuthService, AuthGuardService],
+  providers: [
+    FormBuilder,
+    ValidationService,
+    AuthService,
+    NotificationService,
+    AuthGuardService,  
+  ],
 
   bootstrap: [AppComponent]
 })
