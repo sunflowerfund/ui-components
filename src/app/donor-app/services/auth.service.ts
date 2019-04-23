@@ -8,14 +8,14 @@ import { catchError, tap } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
-import { HttpClient , HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.model';
 
 
 
 
 const httpOptions = {
-  headers: new HttpHeaders({'Authorization' : window.localStorage.getItem('token')}),
+  headers: new HttpHeaders({ 'Authorization': window.localStorage.getItem('token') }),
   params: new HttpParams().set('page', '0').set('size', '10')
 };
 
@@ -31,7 +31,7 @@ export class AuthService {
   baseUrl = 'https://sunflowerfund.azurewebsites.net/api/v1/';
 
   public modals: any[] = [];
-bodyText: string = null;
+  bodyText: string = null;
 
   constructor(
     private http: HttpClient,
@@ -53,20 +53,20 @@ bodyText: string = null;
   /** GET SunflowerUseres from the server */
   getAllSunflowerUseres(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/admin/list`, httpOptions)
-    .pipe(
-      tap(_ => this.log(`Fetched users`)),
-      catchError(this.handleError('GET all users', []))
-    );
+      .pipe(
+        tap(_ => this.log(`Fetched users`)),
+        catchError(this.handleError('GET all users', []))
+      );
   }
 
 
   /** GET SunflowerUseres from the server */
   getCurrentUser(): Observable<OnlineRegistrationDTO[]> {
     return this.http.get<OnlineRegistrationDTO[]>(`${this.baseUrl}/user/details`, httpOptions)
-    .pipe(
-      tap(_ => this.log(`Fetched users`)),
-      catchError(this.handleError('GET all users', []))
-    );
+      .pipe(
+        tap(_ => this.log(`Fetched users`)),
+        catchError(this.handleError('GET all users', []))
+      );
   }
 
 
@@ -101,7 +101,8 @@ bodyText: string = null;
             console.log(this.decodedToken);
 
           }
-        }), catchError(this.handleError('login failed'))
+        })
+        // , catchError(this.handleError('login failed'))
       );
   }
 
@@ -171,7 +172,7 @@ bodyText: string = null;
 
 
 
- 
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

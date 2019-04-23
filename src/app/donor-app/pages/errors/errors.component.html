@@ -1,23 +1,10 @@
-<p>
-  errors works!
-</p>
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+<div class="error-container">
 
-@Component({
-  selector: 'wk-error',
-  templateUrl: './errors.component.html',
-  styleUrls: ['./errors.component.scss']
-})
-export class ErrorsComponent implements OnInit {
-  routeParams;
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-  ) { }
-
-  ngOnInit() {
-    this.routeParams = this.activatedRoute.snapshot.queryParams;
-  }
-}
+  <div *ngIf="routeParams?.error">
+    <h1>ERROR {{ routeParams?.error }}</h1>
+    <a  [routerLink]="'/'">
+      <h5>Go to Home</h5>
+    </a>
+  </div>
+  
+</div>

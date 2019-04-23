@@ -32,10 +32,11 @@ export class SignInComponent implements OnInit {
 
     // this.drive.open('login-modal');
     this.auth.login(this.user).subscribe(_ =>
-      this.router.navigate(['admin/dash']),
-      error => {
-        this.drive.open('login-modal');
-    }
+      this.router.navigate(['admin/dash'])
+    //   ,
+    //   error => {
+    //     this.drive.open('login-modal');
+    // }
     );
   }
 

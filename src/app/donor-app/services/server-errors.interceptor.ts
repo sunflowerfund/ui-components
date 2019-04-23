@@ -16,5 +16,5 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
     // If the call fails, retry until 5 times before throwing an error
     return next.handle(request).pipe(retry(5));
   }
-  
+
 }

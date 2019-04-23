@@ -19,8 +19,13 @@ export class NotificationService {
   constructor() {}
 
   notify(message) {
+console.log('notification called but nothing happened');
+
     this._notification.next(message);
+
+
     setTimeout(() => this._notification.next(null), 3000);
   }
 
 }
+
