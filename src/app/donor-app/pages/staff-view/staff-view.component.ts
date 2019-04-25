@@ -13,8 +13,17 @@ import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.
 })
 export class StaffViewComponent implements OnInit {
   currentUser;
-  page = 4;
   people: OnlineRegistrationDTO[];
+
+  response = {
+    people: this.people,
+    pageNumber: 0,
+    totalPages: 0,
+    isFirstPage: 0,
+    isLastPage: 0,
+    totalElements: 0,
+    numberOfElements: 0
+  }
   constructor(
     public auth: AuthService,
     private toastr: ToastrService,
@@ -23,21 +32,66 @@ export class StaffViewComponent implements OnInit {
 
   ngOnInit() {
     this.auth.getAllSunflowerUseres()
-    .subscribe((res: any) => {
-      // console.log('content ', res);
-      this.people = res.content;
-      this.page = res.number;
-      console.log(this.page);
+      .subscribe((res: any) => {
 
-    });
+        this.response.people = res.content;
+        this.response.totalPages = res.totalPages;
+        this.response.isFirstPage = res.first;
+        this.response.isLastPage = res.last;
+        this.response.pageNumber = res.number + 1;
+        this.response.totalElements = res.totalElements;
+        this.response.numberOfElements = res.numberOfElements;
+        console.log('My object', this.response);
+        console.log(res);
+      });
   }
 
   view(id: number) {
     window.open(`https://sunflowerfund.azurewebsites.net/api/v1/o_registration/${id}/pdf`)
   }
 
+  forward() {
+    this.auth.NextUserList(this.response.pageNumber)
+      .subscribe((res: any) => {
+
+        this.response.people = res.content;
+        this.response.totalPages = res.totalPages;
+        this.response.isFirstPage = res.first;
+        this.response.isLastPage = res.last;
+        this.response.pageNumber = res.number + 1;
+        this.response.totalElements = res.totalElements;
+        this.response.numberOfElements = res.numberOfElements;
+        console.log('Next Page', this.response);
+        console.log(res);
+      });
+
+    console.log('next');
+
+  }
+
+  backwards() {
+    this.auth.previouseUserList(this.response.pageNumber)
+      .subscribe((res: any) => {
+
+        this.response.people = res.content;
+        this.response.totalPages = res.totalPages;
+        this.response.isFirstPage = res.first;
+        this.response.isLastPage = res.last;
+        this.response.pageNumber = res.number;
+        this.response.totalElements = res.totalElements;
+        this.response.numberOfElements = res.numberOfElements;
+        console.log('Next Page', this.response);
+        console.log(res);
+      });
+
+    console.log('back');
+
+
+  }
   expression() {
-    this.page++;
+    // this.auth.NextUserList(this.pageNumber)
+
+    // this.pae++;
     // console.log(this.page);
   }
 }
