@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   NextUserList(pagenumber): Observable<any> {
-    httpOptions.params = new HttpParams().set('page', '' + pagenumber).set('size', '20')
+    httpOptions.params = new HttpParams().set('page', '' + pagenumber).set('size', '20');
     return this.http.get<any>(`${this.baseUrl}/admin/list`, httpOptions)
       .pipe(
         tap(_ => this.log(`Fetched users`)),
@@ -69,7 +69,7 @@ export class AuthService {
   }
 
   previouseUserList(pagenumber): Observable<any> {
-    httpOptions.params = new HttpParams().set('page', '' + pagenumber).set('size', '20')
+    httpOptions.params = new HttpParams().set('page', '' + pagenumber).set('size', '20');
     return this.http.get<any>(`${this.baseUrl}/admin/list`, httpOptions)
       .pipe(
         tap(_ => this.log(`Fetched users`)),

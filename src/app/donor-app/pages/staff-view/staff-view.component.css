@@ -1,3 +1,8 @@
+.wrap{
+  margin-top: 60px;
+  padding: 27px;
+}
+
 #people {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -9,25 +14,22 @@
   border: 1px solid #ddd;
   padding: 8px;
 }
-/* .row{
-  width: 15px;
-} */
-.wrap{
-  margin-top: 60px;
-  padding: 27px;
-}
+
 #people tr:nth-child(even){background-color: #f2f2f2;}
 
 #people tr:hover {background-color: #ddd;}
 
 #people th {
-  width: 5%;
+  /* width: 5%; */
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: var(--yellow);
-  color: white;
+  color: black;
 }
+
+
+
 .navigatorItem{
   color: black;
   border: none;
@@ -40,39 +42,11 @@
 }
 .navigatorItem:hover{
   background-color: grey;
-  color: white
-}
+  color: black
+} 
 
-.loader{
-  width: 50%;
-  margin: auto;
-}
-.pagination {
-  display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.pagination a.active {
-  background-color: var(--yellow);
-  color: white;
-  border-radius: 5px;
-}
-
-.pagination a.not-active {
-  background-color: var(--red);
-  color: white;
-  border-radius: 5px;
-}
-
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-  border-radius: 5px;
+.spinner{ 
+  text-align: center; 
 }
 
 .paginator{
@@ -81,3 +55,15 @@
   justify-content: space-around;
   align-items:baseline;
 }
+.view-More{
+  color: black;
+  border: none;
+  background-color: var(--yellow);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+.view-More:hover{
+  background-color: grey;
+  color: black
+} 

@@ -7,60 +7,49 @@
   <h1>All Online onboarded Donors </h1>
   <br>
 
-  <table id="people">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>ID Number</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let person of response.people; let i = index">
+<div class="table-wrap" *ngIf="response.people" >
+    <table id="people">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>ID Number</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let person of response.people; let i = index">
+    
+          <tr>
+            <td scope="row" style="width:50px">{{i + 1}}</td>
+            <td>{{person.firstName}}</td>
+            <td>{{person.surname}}</td>
+            <td>{{person.idNumber}}</td>
+            <td>
+              <span *ngIf="person.status === 0">Pending</span>
+            </td>
+            <td>
+              <!-- <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button> -->
+              <button class="view-More">View More</button>
+            </td>
+          </tr>
+    
+        </tbody>
+        <br>
+        <h3 >Showing {{response.numberOfElements}} of {{response.totalElements}} records</h3><br>
+        <div class="paginator">
+          <button class="navigatorItem" (click)="backwards()" *ngIf="!response.isFirstPage ">Prev</button>
+          <p>Page <b> {{response.pageNumber}}</b> of <b>{{response.totalPages}}</b> </p>
+          <button class="navigatorItem" (click)="forward()" *ngIf="!response.isLastPage">Next</button>
+        </div> 
+    
+      </table>
+</div>
 
-      <tr>
-        <th scope="row">{{i + 1}}</th>
-        <td>{{person.firstName}}</td>
-        <td>{{person.surname}}</td>
-        <td>{{person.idNumber}}</td>
-        <td>
-          <span *ngIf="person.status === 0">Pending</span>
-        </td>
-        <td>
-          <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button>
-        </td>
-      </tr>
 
-    </tbody>
-    <br>
-    <h3>Showing {{response.numberOfElements}} of {{response.totalElements}} records</h3><br>
-    <div class="paginator">
+  <div class="spinner" *ngIf="!response.people" >
+      <img  src="../../../../assets/img/Bigger-Spinner.svg" alt="spinner">
+</div>
 
-      <button class="navigatorItem" (click)="backwards()" *ngIf="!response.isFirstPage ">Prev</button>
-      <p>Page <b> {{response.pageNumber}}</b> of <b>{{response.totalPages}}</b> </p>
-      <button class="navigatorItem" (click)="forward()" *ngIf="!response.isLastPage">Next</button>
-    </div>
-
-
-
-    <div class="loader" *ngIf="!people">
-      <div class="lds-spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-
-  </table>
 </div>

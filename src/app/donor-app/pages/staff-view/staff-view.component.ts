@@ -9,7 +9,7 @@ import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.
 @Component({
   selector: 'app-staff-view',
   templateUrl: './staff-view.component.html',
-  styleUrls: ['./staff-view.component.css',]
+  styleUrls: ['./staff-view.component.css', ]
 })
 export class StaffViewComponent implements OnInit {
   currentUser;
@@ -23,7 +23,7 @@ export class StaffViewComponent implements OnInit {
     isLastPage: 0,
     totalElements: 0,
     numberOfElements: 0
-  }
+  };
   constructor(
     public auth: AuthService,
     private toastr: ToastrService,
@@ -47,7 +47,7 @@ export class StaffViewComponent implements OnInit {
   }
 
   view(id: number) {
-    window.open(`https://sunflowerfund.azurewebsites.net/api/v1/o_registration/${id}/pdf`)
+    window.open(`https://sunflowerfund.azurewebsites.net/api/v1/o_registration/${id}/pdf`);
   }
 
   forward() {
