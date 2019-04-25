@@ -7,7 +7,18 @@
  * Module that will monitor how you navigate through the app/site
  */
  .background{
-  background: var(--background-gradient-secondary), url('../../../../assets/img/background/ani-kids.jpg');
+  /* background:
+  -webkit-image-set(
+    var(--background-gradient-secondary),
+    url('../../../../assets/img/w9t3st0piym6hgakfcqc/ani-kids_zyn5p1/ani-kids_zyn5p1_c_scale,w_1400.jpg') 1x
+    
+  ); */
+  background: 
+  
+    var(--background-gradient-secondary),
+    url('../../../../assets/img/w9t3st0piym6hgakfcqc/ani-kids_zyn5p1/ani-kids_zyn5p1_c_scale,w_1400.jpg');
+ 
+   
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
