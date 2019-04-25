@@ -17,62 +17,70 @@
       <br>
 
       <div class="d-block m-auto" *ngIf="index == 1">
-          
-    
-        <label  class="labels " for="Firstname">First Name</label>
-        <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text"  ></app-input>
-        <label  class="labels " for="Firstname">Last Name</label>
 
-        <app-input [attrs]="['--full']"  [(ngModel)]="personalDetails.surname" ngDefaultControl type="text"  ></app-input>
-       
-        <label  class="labels " for="IdNumber">Select Country</label>
+
+        <label class="labels " for="Firstname">First Name</label>
+        <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.firstName" ngDefaultControl type="text">
+        </app-input>
+        <label class="labels " for="Firstname">Last Name</label>
+
+        <app-input [attrs]="['--full']" [(ngModel)]="personalDetails.surname" ngDefaultControl type="text"></app-input>
+
+        <label class="labels " for="IdNumber">Select Country</label>
         <br>
         <br>
-        
+
         <div class="btn-container">
-          <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)"></sun-dropdown-menu>
+          <sun-dropdown-menu title="Country" ngDefaultControl [items]="countries" (output)="setCountry($event)">
+          </sun-dropdown-menu>
         </div>
-        <label  class="labels " for="IdNumber">ID Number</label>
+        <label class="labels " for="IdNumber">ID Number</label>
 
-        <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl type="number"></app-input>
+        <app-input [attrs]="['--full']" class="inputs" [(ngModel)]="personalDetails.idNumber" ngDefaultControl
+          type="number"></app-input>
         <div class="btn-container text-center">
-        
-          <sun-dropdown-menu   title="Ethnicity" [items]="ethnicGroup"
-            (output)="setEthnicity($event)"></sun-dropdown-menu>
-            
+
+          <sun-dropdown-menu title="Ethnicity" [items]="ethnicGroup" (output)="setEthnicity($event)">
+          </sun-dropdown-menu>
+
         </div>
         <sunflower-button type="primary" (click)="next('step1')">Next</sunflower-button>
 
       </div>
 
       <div class="m-auto" *ngIf="index == 2">
-          <h2 class="text-size-medium font-weight-medium color-grey">
-            Postal Address:
-            </h2>
-   
-            
-        <label  class="labels " for="line1">Home Address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address1" ngDefaultControl></app-input>
-       
-       <br>
-        <label  class="labels " for="line2">City</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.address2" ngDefaultControl></app-input>
-       
-       <br>
-        <label  class="labels " for="line3">Postal code</label>
-        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.address3" ngDefaultControl></app-input>
-       
-        <label  class="labels " for="homeTel">Home Tel</label>
-        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.homePhone" ngDefaultControl></app-input>
-       
-        <label  class="labels " for="workTel">Work Tel</label>
-        <app-input [attrs]="['--full']" class="fifty" type="number"  [(ngModel)]="personalDetails.workPhone" ngDefaultControl></app-input>
+        <h2 class="text-size-medium font-weight-medium color-grey">
+          Postal Address:
+        </h2>
 
-     
+
+        <label class="labels " for="line1">Home Address</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.address1"
+          ngDefaultControl></app-input>
+
+        <br>
+        <label class="labels " for="line2">City</label>
+        <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.address2"
+          ngDefaultControl></app-input>
+
+        <br>
+        <label class="labels " for="line3">Postal code</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number" [(ngModel)]="personalDetails.address3"
+          ngDefaultControl></app-input>
+
+        <label class="labels " for="homeTel">Home Tel</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number" [(ngModel)]="personalDetails.homePhone"
+          ngDefaultControl></app-input>
+
+        <label class="labels " for="workTel">Work Tel</label>
+        <app-input [attrs]="['--full']" class="fifty" type="number" [(ngModel)]="personalDetails.workPhone"
+          ngDefaultControl></app-input>
+
+
         <sunflower-button type="primary" (click)="next('step2')">Next</sunflower-button>
-      
+
       </div>
-      
+
 
       <div class="m-auto" *ngIf="index == 3">
         <h2 class="text-size-medium font-weight-medium color-grey">
@@ -80,75 +88,93 @@
         </h2>
 
 
-      <div  *ngIf="ad1" >
-          <label  class="labels " for="FullName">1st Contact's Full Name </label>
+        <div *ngIf="ad1">
+          <label class="labels " for="FullName">1st Contact's Full Name </label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.firstContactName" 
-         ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">1st Contact's Relationship</label><br><br><br>
-         <div class="btn-container">
-          <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations" (output)="setFirstRelations($event)"></sun-dropdown-menu>
+          <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.firstContactName"
+            ngDefaultControl></app-input>
+          <label class="labels " for="relationship">1st Contact's Relationship</label><br><br><br>
+          <div class="btn-container">
+            <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations"
+              (output)="setFirstRelations($event)"></sun-dropdown-menu>
+          </div>
+
+          <br>
+          <label class="labels" for="emailAddress">1st Contact's Email address</label>
+          <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.firstContactEmail"
+            ngDefaultControl></app-input>
+          <label class="labels " for="mobile">1st Contact's Mobile Number</label>
+          <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.firstContactMobile"
+            ngDefaultControl></app-input>
+
+          <sunflower-button *ngIf="ad1" type="primary" (click)="address1()">Add 1st Contact's Address</sunflower-button>
+
         </div>
- 
-        <br>
-        <label  class="labels" for="emailAddress">1st Contact's  Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactEmail"
-         ngDefaultControl ></app-input>
-         <label  class="labels " for="mobile">1st Contact's  Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.firstContactMobile" 
-        ngDefaultControl></app-input>
-
-        <sunflower-button *ngIf="ad1"  type="primary" (click)="address1()">Add 1st Contact's Address</sunflower-button>
-
-      </div>
 
 
-      <div *ngIf="!ad1" >
-          <label  class="labels " for="FullName">2nd Contact's Full Name</label>
+        <div *ngIf="!ad1">
+          <label class="labels " for="FullName">2nd Contact's Full Name</label>
 
-        <app-input [attrs]="['--full']" class="fifty" type="text"   [(ngModel)]="personalDetails.secondContactName" 
-         ngDefaultControl ></app-input>
-         <label  class="labels " for="relationship">2nd Contact's Relationship</label> <br><br><br>
-         <div class="btn-container">
-            <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations" (output)="setSecondRelations($event)"></sun-dropdown-menu>
-          </div>  
-         <!-- <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
+          <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.secondContactName"
+            ngDefaultControl></app-input>
+          <label class="labels " for="relationship">2nd Contact's Relationship</label> <br><br><br>
+          <div class="btn-container">
+            <sun-dropdown-menu title="Relationship" ngDefaultControl [items]="relations"
+              (output)="setSecondRelations($event)"></sun-dropdown-menu>
+          </div>
+          <!-- <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactRelationship"
          ngDefaultControl ></app-input> -->
-        <br>
-        <label  class="labels " for="emailAddress">2nd Contact's Email address</label>
-        <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactEmail"
-         ngDefaultControl ></app-input>
-         <label  class="labels " for="mobile">2nd Contact's Mobile Number</label>
-         <app-input [attrs]="['--full']" class="fifty" type="text"  [(ngModel)]="personalDetails.secondContactMobile" 
-        ngDefaultControl ></app-input>
-      </div>
+          <br>
+          <label class="labels " for="emailAddress">2nd Contact's Email address</label>
+          <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.secondContactEmail"
+            ngDefaultControl></app-input>
+          <label class="labels " for="mobile">2nd Contact's Mobile Number</label>
+          <app-input [attrs]="['--full']" class="fifty" type="text" [(ngModel)]="personalDetails.secondContactMobile"
+            ngDefaultControl></app-input>
+        </div>
 
         <br>
-     
+
         <sunflower-button *ngIf="!ad1" type="primary" (click)="next('step3')">Next</sunflower-button>
-      
+
       </div>
       <div class="m-auto" *ngIf="index == 4">
         <h1 class="text-size-small font-weight-medium color-grey">
           Terms and Agreements
         </h1>
-        
 
-      <a href="https://en.calameo.com/read/0058472544559d16c13db" target="blank"><h2>Terms and Conditions </h2> </a><br>
-      <a href="http://google.com"><h2> Privacy Policy </h2></a>
-      <div class="check" type="check-box" (click)="myconsent()"></div>
 
-      
-     
-          <!-- <div (click)=" consent = !consent;"> -->
-   <!-- <label   class="container">I have read and understood the terms and conditions above
+        <a href="https://en.calameo.com/read/0058472544559d16c13db" target="blank">
+          <h2>Terms and Conditions </h2>
+        </a><br>
+        <a href="http://google.com">
+          <h2> Privacy Policy </h2>
+        </a>
+        <div class="check" type="check-box" (click)="myconsent()"></div>
+
+
+
+        <div (click)=" consent = !consent;">
+          <label class="container">I have read and understood the terms and conditions above
             <input type="checkbox">
             <span class="checkmark"></span>
-          </label> -->
-          <!-- </div> -->
+          </label>
+        </div>
+        <div (click)=" consent = !consent;">
+          <label class="container">I agree to further Communications from The Sunflower Fund
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div (click)=" consent = !consent;">
+          <label class="container">I consent to Stem cell something something
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
 
 
-      <div class="btn-container text-center">
+        <div class="btn-container text-center">
           <br>
           <br>
           <app-signature-canvas></app-signature-canvas>
@@ -157,38 +183,37 @@
           <br>
           <br>
           <br>
-            <sunflower-button *ngIf="!send" (click)=" consent = !consent; send = !send; finish();" type="primary">Save all</sunflower-button>
+          <sunflower-button *ngIf="!send" (click)=" consent = !consent; send = !send; finish();" type="primary">Save all
+          </sunflower-button>
 
-            <div class="send" *ngIf="send">
-                <sunflower-button type="primary" class="--disabled btn-loader">
-                  <!-- <h1>Loading</h1> -->
-                  <div class="lds-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </sunflower-button>
+          <div class="send" *ngIf="send">
+            <sunflower-button type="primary" class="--disabled btn-loader">
+              <!-- <h1>Loading</h1> -->
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
+            </sunflower-button>
+          </div>
         </div>
       </div>
-    
 
-    <!-- <div class="btn-container text-center">
+
+      <!-- <div class="btn-container text-center">
           <br>  
     </div> -->
-      
+
     </div>
 
   </div>
 </div>
-
- 

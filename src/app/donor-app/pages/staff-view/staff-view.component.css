@@ -9,7 +9,9 @@
   border: 1px solid #ddd;
   padding: 8px;
 }
-
+/* .row{
+  width: 15px;
+} */
 .wrap{
   margin-top: 60px;
   padding: 27px;
@@ -19,13 +21,27 @@
 #people tr:hover {background-color: #ddd;}
 
 #people th {
+  width: 5%;
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: var(--yellow);
   color: white;
 }
-
+.navigatorItem{
+  color: black;
+  border: none;
+  background-color: var(--yellow);
+  border-radius: 5px;
+  height: 35px;
+  font-size: 2rem;
+  width: 65px;
+  cursor: pointer;
+}
+.navigatorItem:hover{
+  background-color: grey;
+  color: white
+}
 
 .loader{
   width: 50%;
@@ -57,4 +73,11 @@
 .pagination a:hover:not(.active) {
   background-color: #ddd;
   border-radius: 5px;
+}
+
+.paginator{
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items:baseline;
 }

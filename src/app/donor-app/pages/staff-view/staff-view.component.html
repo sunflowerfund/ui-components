@@ -1,55 +1,66 @@
 <sunflower-navbar>
-  </sunflower-navbar>
- 
-  
-  <div class="wrap">
-    
-<h1>All Online onboarded Donors </h1>
-<br>
+</sunflower-navbar>
 
-<table id="people">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>ID Number</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let person of people; let i = index">
 
-    <tr>
-      <th scope="row">{{i + 1}}</th>
-      <td>{{person.firstName}}</td>
-      <td>{{person.surname}}</td>
-      <td>{{person.idNumber}}</td>
-      <td>
-        <span *ngIf="person.status === 0">Pending</span>
-      </td>
-      <td>
-    <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button>  
+<div class="wrap">
+
+  <h1>All Online onboarded Donors </h1>
+  <br>
+
+  <table id="people">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>ID Number</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let person of response.people; let i = index">
+
+      <tr>
+        <th scope="row">{{i + 1}}</th>
+        <td>{{person.firstName}}</td>
+        <td>{{person.surname}}</td>
+        <td>{{person.idNumber}}</td>
+        <td>
+          <span *ngIf="person.status === 0">Pending</span>
         </td>
-    </tr>
+        <td>
+          <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button>
+        </td>
+      </tr>
 
-  </tbody>
-  <div class="loader" *ngIf="!people">
-    <div class="lds-spinner">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    </tbody>
+    <br>
+    <h3>Showing {{response.numberOfElements}} of {{response.totalElements}} records</h3><br>
+    <div class="paginator">
+
+      <button class="navigatorItem" (click)="backwards()" *ngIf="!response.isFirstPage ">Prev</button>
+      <p>Page <b> {{response.pageNumber}}</b> of <b>{{response.totalPages}}</b> </p>
+      <button class="navigatorItem" (click)="forward()" *ngIf="!response.isLastPage">Next</button>
     </div>
-  </div>
 
-</table>
-  </div>
+
+
+    <div class="loader" *ngIf="!people">
+      <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+  </table>
+</div>
