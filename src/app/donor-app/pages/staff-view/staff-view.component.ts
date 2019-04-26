@@ -25,6 +25,7 @@ export class StaffViewComponent implements OnInit {
     numberOfElements: 0
   };
   constructor(
+    public router: Router,
     public auth: AuthService,
     private toastr: ToastrService,
   ) { }
@@ -46,8 +47,9 @@ export class StaffViewComponent implements OnInit {
       });
   }
 
-  view(id: number) {
-    window.open(`https://sunflowerfund.azurewebsites.net/api/v1/o_registration/${id}/pdf`);
+  view(selectedUser) {
+    this.auth.selectedUser = selectedUser;
+    this.router.navigate(['admin/view']);
   }
 
   forward() {
@@ -87,11 +89,5 @@ export class StaffViewComponent implements OnInit {
     console.log('back');
 
 
-  }
-  expression() {
-    // this.auth.NextUserList(this.pageNumber)
-
-    // this.pae++;
-    // console.log(this.page);
-  }
+  } 
 }

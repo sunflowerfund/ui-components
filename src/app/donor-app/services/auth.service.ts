@@ -28,6 +28,7 @@ const httpOptions = {
 export class AuthService {
   currentUserToken;
   decodedToken;
+  selectedUser;
   baseUrl = 'https://sunflowerfund.azurewebsites.net/api/v1/';
 
   public modals: any[] = [];

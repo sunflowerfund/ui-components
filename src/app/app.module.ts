@@ -42,6 +42,7 @@ import { ModalComponent } from './@sunflower-module/sunflower-ui/css/components/
 import { NotificationService } from './donor-app/services/notification.service';
 import { ErrorsModule } from './donor-app/modules/errors.module';
 import { ErrorsComponent } from './donor-app/pages/errors/errors.component';
+import { DetailsComponent } from './donor-app/pages/details/details.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { ErrorsComponent } from './donor-app/pages/errors/errors.component';
     StepOneComponent,
     NgDatePickerComponent,
     ErrorsComponent,
+    DetailsComponent,
   ],
   imports: [
     ErrorsModule,

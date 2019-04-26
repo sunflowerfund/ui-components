@@ -18,7 +18,7 @@ import { DriveRegistrationComponent } from '../pages/drive-registration/drive-re
 import { SunflowerPage } from '../pages/sunflower/sunflower.page';
 import { PrescreeningComponent } from '../pages/prescreening/prescreening.component';
 import { StaffViewComponent } from '../pages/staff-view/staff-view.component';
-import { SignatureCanvasComponent } from '../pages/signature-canvas/signature-canvas.component';
+import { DetailsComponent } from '../pages/details/details.component';
  
 const routes: Route[] = [
   {
@@ -33,6 +33,7 @@ const routes: Route[] = [
   },
   { path: 'u/new/form', component: DashboardComponent },
   { path: 'admin/dash', component: StaffViewComponent },
+  { path: 'admin/view', component: DetailsComponent },
   { path: 'medic', component: DriveRegistrationComponent },
   { path: 'components', component: ComponentsPage },
   { path: 'get-started', component: PrescreeningComponent },

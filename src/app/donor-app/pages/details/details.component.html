@@ -1,0 +1,107 @@
+<sunflower-navbar>
+  </sunflower-navbar>
+
+<div class="wrap" *ngIf="user" >
+
+  <div class="container">
+    <div class="details">
+
+      <div class="wrap-collabsible">
+        <input id="collapsible" class="toggle" type="checkbox">
+        <label for="collapsible" class="lbl-toggle">Personal Info</label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+            <p>Firstname:<b>{{user.firstName}} </b></p><br>
+            <p>Lastname: <b>   {{user.surname}}</b> </p><br>
+            <p>Identity Number: <b>{{user.idNumber}}  </b> </p><br>
+            <p>Ethnicity: <b>{{user.ethnicGroupId}} </b> </p><br>
+            <p>Date of Birth: <b>  {{user.dateOfBirth}}</b></p><br>
+            <p>Postal Address: <b>{{user.address1}}, {{user.address2}}, {{user.address3}} </b>  </p><br>
+            <p>Gender: <b> {{user.genderId}}  </b></p><br>
+            <p>Home Telephone: <b>  {{user.homePhone}}</b> </p><br>
+            <p>Work Telephone :  <b> {{user.workPhone}}  </b></p><br>
+            <p>Mobile Telephone : <b> {{user.mobile}} </b> </p><br>
+            <p>Email Address : <b>  {{user.email}}</b> </p> <br>
+            <p>Account Created on: <b> {{user.created_Date}} </b> </p> <br>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="wrap-collabsible">
+        <input id="collapsible-1" class="toggle" type="checkbox">
+        <label for="collapsible-1" class="lbl-toggle">Next of kin</label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+              <div class="first" *ngIf="user.firstContact_Email">
+                  <h1>1st Emergency Contact</h1>
+                  <p>Firstname: {{ user.firstContact_Name }} </p>
+                  <p>Cell Number: {{user.firstContact_Mobile}} </p>
+                  <p>Email Address: <b>  {{user.firstContact_Email}} </b></p>
+                  <p>Relationship: <b> {{user.firstContact_Relationship}}  </b></p>
+              </div>
+              <br>
+              <br>
+              <div class="second" *ngIf="user.secondContact_Email">
+                  <h1>2st Emergency Contact</h1>
+                  <p>Firstname: {{ user.secondContact_Name }} </p>
+                  <p>Cell Number: {{user.secondContact_Mobile}} </p>
+                  <p>Email Address: <b>  {{user.secondContact_Email}} </b></p>
+                  <p>Relationship: <b> {{user.secondContact_Relationship}}  </b></p>
+              </div>
+
+              <div class="empty"  *ngIf="!user.secondContact_Email === null && !user.firstContact_Email === null" >
+                <h3>No Next of kin found...</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="wrap-collabsible">
+        <input id="collapsible-2" class="toggle" type="checkbox">
+        <label for="collapsible-2" class="lbl-toggle">Section 1 Medical questions</label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+            <p>Firstnmae: </p>
+            <p>Lastname: </p>
+            <p>Cell Number: </p>
+            <p>Email Address: </p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="wrap-collabsible">
+        <input id="collapsible-3" class="toggle" type="checkbox">
+        <label for="collapsible-3" class="lbl-toggle">Section 2 Medical questions</label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+            <p>Firstnmae: </p>
+            <p>Lastname: </p>
+            <p>Cell Number: </p>
+            <p>Email Address: </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="actions">
+      <button class="action" (click)="expression" >Defer</button>
+      <button class="action" (click)="expression">Reviewed</button>
+      <button class="action" (click)="expression">Accept</button>
+      <button class="action" (click)="generatePDF()">Generate PDF</button>
+    </div>
+    <!-- <div class="personal-kin">
+ 
+</div> -->
+
+
+  </div>
+
+</div>
+<div class="spinner" *ngIf="!user">
+   
+    <img style="  margin-top: 10%;" src="../../.././../assets/img/Bigger-Spinner.svg" alt="Bigger-Spinner">
+</div>
+  
