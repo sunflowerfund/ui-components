@@ -1,7 +1,7 @@
 <sunflower-navbar>
-  </sunflower-navbar>
+</sunflower-navbar>
 
-<div class="wrap" *ngIf="user" >
+<div class="wrap" *ngIf="!user">
 
   <div class="container">
     <div class="details">
@@ -12,16 +12,16 @@
         <div class="collapsible-content">
           <div class="content-inner">
             <p>Firstname:<b>{{user.firstName}} </b></p><br>
-            <p>Lastname: <b>   {{user.surname}}</b> </p><br>
-            <p>Identity Number: <b>{{user.idNumber}}  </b> </p><br>
+            <p>Lastname: <b> {{user.surname}}</b> </p><br>
+            <p>Identity Number: <b>{{user.idNumber}} </b> </p><br>
             <p>Ethnicity: <b>{{user.ethnicGroupId}} </b> </p><br>
-            <p>Date of Birth: <b>  {{user.dateOfBirth}}</b></p><br>
-            <p>Postal Address: <b>{{user.address1}}, {{user.address2}}, {{user.address3}} </b>  </p><br>
-            <p>Gender: <b> {{user.genderId}}  </b></p><br>
-            <p>Home Telephone: <b>  {{user.homePhone}}</b> </p><br>
-            <p>Work Telephone :  <b> {{user.workPhone}}  </b></p><br>
+            <p>Date of Birth: <b> {{user.dateOfBirth}}</b></p><br>
+            <p>Postal Address: <b>{{user.address1}}, {{user.address2}}, {{user.address3}} </b> </p><br>
+            <p>Gender: <b> {{user.genderId}} </b></p><br>
+            <p>Home Telephone: <b> {{user.homePhone}}</b> </p><br>
+            <p>Work Telephone : <b> {{user.workPhone}} </b></p><br>
             <p>Mobile Telephone : <b> {{user.mobile}} </b> </p><br>
-            <p>Email Address : <b>  {{user.email}}</b> </p> <br>
+            <p>Email Address : <b> {{user.email}}</b> </p> <br>
             <p>Account Created on: <b> {{user.created_Date}} </b> </p> <br>
           </div>
         </div>
@@ -33,46 +33,77 @@
         <label for="collapsible-1" class="lbl-toggle">Next of kin</label>
         <div class="collapsible-content">
           <div class="content-inner">
-              <div class="first" *ngIf="user.firstContact_Email">
-                  <h1>1st Emergency Contact</h1>
-                  <p>Firstname: {{ user.firstContact_Name }} </p>
-                  <p>Cell Number: {{user.firstContact_Mobile}} </p>
-                  <p>Email Address: <b>  {{user.firstContact_Email}} </b></p>
-                  <p>Relationship: <b> {{user.firstContact_Relationship}}  </b></p>
-              </div>
-              <br>
-              <br>
-              <div class="second" *ngIf="user.secondContact_Email">
-                  <h1>2st Emergency Contact</h1>
-                  <p>Firstname: {{ user.secondContact_Name }} </p>
-                  <p>Cell Number: {{user.secondContact_Mobile}} </p>
-                  <p>Email Address: <b>  {{user.secondContact_Email}} </b></p>
-                  <p>Relationship: <b> {{user.secondContact_Relationship}}  </b></p>
-              </div>
+            <div class="first" *ngIf="user.firstContact_Email">
+              <h1>1st Emergency Contact</h1>
+              <p>Firstname: {{ user.firstContact_Name }} </p>
+              <p>Cell Number: {{user.firstContact_Mobile}} </p>
+              <p>Email Address: <b> {{user.firstContact_Email}} </b></p>
+              <p>Relationship: <b> {{user.firstContact_Relationship}} </b></p>
+            </div>
+            <br>
+            <br>
+            <div class="second" *ngIf="user.secondContact_Email">
+              <h1>2st Emergency Contact</h1>
+              <p>Firstname: {{ user.secondContact_Name }} </p>
+              <p>Cell Number: {{user.secondContact_Mobile}} </p>
+              <p>Email Address: <b> {{user.secondContact_Email}} </b></p>
+              <p>Relationship: <b> {{user.secondContact_Relationship}} </b></p>
+            </div>
 
-              <div class="empty"  *ngIf="!user.secondContact_Email === null && !user.firstContact_Email === null" >
-                <h3>No Next of kin found...</h3>
-              </div>
+            <div class="empty" *ngIf="!user.secondContact_Email === null && !user.firstContact_Email === null">
+              <h3>No Next of kin found...</h3>
+            </div>
           </div>
         </div>
       </div>
       <br>
       <div class="wrap-collabsible">
         <input id="collapsible-2" class="toggle" type="checkbox">
-        <label for="collapsible-2" class="lbl-toggle">Section 1 Medical questions</label>
+        <label for="collapsible-2" class="lbl-toggle">Presceening Base Questions</label>
         <div class="collapsible-content">
           <div class="content-inner">
-            <p>Firstnmae: </p>
-            <p>Lastname: </p>
-            <p>Cell Number: </p>
-            <p>Email Address: </p>
+            <p>Are you between the age of 18 and 45? </p>
+            <p>Do you weigh over 50kg? </p>
+            <p>What is your height?</p>
+            <p>What is your weight?</p>
+            <p>Are you on any medication? For what condition?</p>
+            <p>Have you had any operations?/p>
+              <p>Have you had a baby in the last year? Are you planning a pregnancy?</p>
+              <p>Have you ever had any form of cancer or any other serious illness?/p>
+                <p>Do you suffer from Asthma or any allergies?</p>
+                <p>Do you have a first degree relative with Leukaemia?</p>
+                <!-- <p>What is your weight?</p>
+            <p>What is your weight?</p> -->
+          </div>
+        </div>
+      </div> <br>
+      <div class="wrap-collabsible">
+        <input id="collapsible-3" class="toggle" type="checkbox">
+        <label for="collapsible-3" class="lbl-toggle">Section 1 Medical questions</label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+            <p>Are you healthy?</p>
+            <p>Does your family agree to you donating stem cells?</p>
+            <p>Do your ankles swell up at the end of the day?</p>
+            <p>Do you consider yourself a risk for Hepatitis B, Hepatitis C, or HIV?</p>
+            <p>Are you a regular blood donor?</p>
+            <p>Do you get up more than once a night to pass urine?</p>
+            <p>Have you ever tested POSITIVE for Hepatitis B, Hepatitis C, or HIV?</p>
+            <p>Are you or your partner at risk of any sexually transmitted infections? </p>
+            <p>Are you a platelet donor? </p>
+            <p>Are you willing to be approached to be a platelet donor?</p>
+            <p>I consent to my personal information being given to South African National Blood Service(SANBS) and
+              Western Province Blood Transfusion Service (WPBTS)</p>
+            <p>I agree to being contacted by SANBS and WPBTS to donate platelets</p>
+            <p>Have you ever been pregnant?</p>
+            <p>number of pregnancies?</p>
           </div>
         </div>
       </div>
       <br>
       <div class="wrap-collabsible">
-        <input id="collapsible-3" class="toggle" type="checkbox">
-        <label for="collapsible-3" class="lbl-toggle">Section 2 Medical questions</label>
+        <input id="collapsible-4" class="toggle" type="checkbox">
+        <label for="collapsible-4" class="lbl-toggle">Section 2 Medical questions</label>
         <div class="collapsible-content">
           <div class="content-inner">
             <p>Firstnmae: </p>
@@ -86,11 +117,22 @@
 
     </div>
 
+
+    <div class="actins">
+      <h2>Status</h2>
+      <p>Sent to the international Registry: </p>
+      <p>Last seen: </p>
+      <!-- <p></p> -->
+      <!-- <button class="action" (click)="expression">Reviewed</button> -->
+      <!-- <button class="action" (click)="expression">Accept</button> -->
+      <!-- <button class="action" (click)="generatePDF()">Generate PDF</button> -->
+    </div>
+
     <div class="actions">
-      <button class="action" (click)="expression" >Defer</button>
-      <button class="action" (click)="expression">Reviewed</button>
-      <button class="action" (click)="expression">Accept</button>
-      <button class="action" (click)="generatePDF()">Generate PDF</button>
+      <button class="action" (click)="expression()">Defer</button>
+      <button class="action" (click)="expredssion">Reviewed</button>
+      <button class="action" (click)="expreddssion()">Accept</button>
+      <button class="action"  [ngClass]="!user ? '--disabled' : 'unselected'" (click)="generatePDF()">Generate PDF</button>
     </div>
     <!-- <div class="personal-kin">
  
@@ -101,7 +143,6 @@
 
 </div>
 <div class="spinner" *ngIf="!user">
-   
-    <img style="  margin-top: 10%;" src="../../.././../assets/img/Bigger-Spinner.svg" alt="Bigger-Spinner">
+
+  <img style="  margin-top: 10%;" src="../../.././../assets/img/Bigger-Spinner.svg" alt="Bigger-Spinner">
 </div>
-  
