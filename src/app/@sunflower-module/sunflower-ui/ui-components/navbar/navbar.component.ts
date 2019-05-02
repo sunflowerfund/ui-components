@@ -11,7 +11,7 @@ import { Path } from "../../model/path.model";
           alt=""
         />
       </div>
-      <div class="navbar-brand-name"  routerLink="/">Sunflower Fund</div>
+      <div class="navbar-brand-name"  routerLink="/">The Sunflower Fund</div>
       <div class="navbar-container">
         <a *ngFor="let path of paths" class="navbar-item fa" [ngClass]="path.icon">{{ path.name }}</a>
         <ng-content></ng-content>

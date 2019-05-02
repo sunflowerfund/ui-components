@@ -14,6 +14,11 @@ import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.
 export class StaffViewComponent implements OnInit {
   currentUser;
   people: OnlineRegistrationDTO[];
+  sorts = {
+    CreatedDate:'',
+    name:'',
+
+  }
 
   response = {
     people: this.people,
@@ -52,6 +57,12 @@ export class StaffViewComponent implements OnInit {
     this.router.navigate(['admin/view']);
   }
 
+  sort(){
+
+  }
+
+
+  
   forward() {
     this.auth.NextUserList(this.response.pageNumber)
       .subscribe((res: any) => {

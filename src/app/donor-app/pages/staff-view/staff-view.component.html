@@ -7,6 +7,11 @@
   <h1>All Online onboarded Donors </h1>
   <br>
 
+<div class="sort">
+  <sun-dropdown-menu title="Sort By" ngDefaultControl [items]="sorts"
+  (output)="sort($event)"></sun-dropdown-menu>
+</div>
+
 <div class="table-wrap" *ngIf="response.people" >
     <table id="people">
         <thead>
