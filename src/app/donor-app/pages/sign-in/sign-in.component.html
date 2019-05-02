@@ -6,7 +6,8 @@
         I am Hope for life Account
       </h1>
       <br>
-      <label class="labels ">Email Address</label>
+    <div class="origin_state" *ngIf="!logging">
+        <label class="labels ">Email Address</label>
 
       <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" class="inputs" type="text" placeholder="Username"></app-input>
       <br>
@@ -24,18 +25,25 @@
      </div>       
      </div>
     </div>
+
+    <div class="logging" *ngIf="logging">
+        <img   style="height:150px; width: 150px"src="../../../../assets/img/Bigger-Spinner.svg" alt="">
+      </div>
+
+    </div>
   </div>
 </div>
+
 
 <jw-modal  id="login-modal">
   <div class="modal">
       <div class="modal-body">
-          <h1>A Log in Modal!</h1>
-          <p>
-             <input type="text" [(ngModel)]="bodyText" />
+          <h1>Log in Failed!</h1>
+          <p>  {{bodyText}}
           </p>
-          <button (click)="closeModal('login-modal');">Close</button>
+          <button (click)="closeModal('login-modal');">X</button>
       </div>
   </div>
   <div class="modal-background"></div>
 </jw-modal > 
+

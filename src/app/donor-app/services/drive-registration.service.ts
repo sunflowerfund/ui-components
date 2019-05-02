@@ -166,7 +166,7 @@ export class DriveRegistrationService {
     // close modal specified by id
     let modal: any = this.modals.filter(x => x.id === id)[0];
     modal.close();
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
 
   }
 

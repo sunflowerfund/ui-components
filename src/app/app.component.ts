@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   showNotification: boolean;
 
   public bodyText: string;
-  title = 'Sunflower Fund';
+  title = 'The Sunflower Fund';
   hello = 'Hello';
 
   constructor(

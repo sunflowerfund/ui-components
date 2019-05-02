@@ -10,18 +10,21 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  bodyText;
+  bodyText = ' Error while trying to log in \n \n check you credentials and try again if problem persist check your connection';
+  
   user = {
     username: '',
     password: ''
   };
+  logging = false;
+
   constructor(
     private router: Router,
     public drive: DriveRegistrationService,
     private auth: AuthService) { }
 
   ngOnInit() {
-    this.bodyText = this.auth.bodyText;
+    // this.bodyText = this.auth.bodyText;
   }
 
   register() {
@@ -29,14 +32,15 @@ export class SignInComponent implements OnInit {
   }
 
   login() {
-
+    this.logging = !this.logging;
     // this.drive.open('login-modal');
     this.auth.login(this.user).subscribe(_ =>
       this.router.navigate(['admin/dash'])
-    //   ,
-    //   error => {
-    //     this.drive.open('login-modal');
-    // }
+      ,
+      error => {
+        this.logging = !this.logging;
+        this.drive.open('login-modal');
+    }
     );
   }
 

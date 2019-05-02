@@ -234,7 +234,7 @@ ul{
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -265,7 +265,7 @@ ul{
   background-color: #ccc;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a yellow background */
 .container input:checked ~ .checkmark {
   background-color: var(--yellow);
 }

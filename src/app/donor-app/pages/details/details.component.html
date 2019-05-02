@@ -1,7 +1,7 @@
 <sunflower-navbar>
 </sunflower-navbar>
 
-<div class="wrap" *ngIf="!user">
+<div class="wrap" *ngIf="user">
 
   <div class="container">
     <div class="details">
@@ -43,7 +43,7 @@
             <br>
             <br>
             <div class="second" *ngIf="user.secondContact_Email">
-              <h1>2st Emergency Contact</h1>
+              <h1>2nd Emergency Contact</h1>
               <p>Firstname: {{ user.secondContact_Name }} </p>
               <p>Cell Number: {{user.secondContact_Mobile}} </p>
               <p>Email Address: <b> {{user.secondContact_Email}} </b></p>
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <br>
+      <br> 
       <div class="wrap-collabsible">
         <input id="collapsible-2" class="toggle" type="checkbox">
         <label for="collapsible-2" class="lbl-toggle">Presceening Base Questions</label>
@@ -119,8 +119,9 @@
 
 
     <div class="actins">
-      <h2>Status</h2>
-      <p>Sent to the international Registry: </p>
+      <h2>Status {{user.status}} </h2>
+      <p>Sent to the international Registry: False </p>
+      <p>BMI: {{user.bmi}} </p>
       <p>Last seen: </p>
       <!-- <p></p> -->
       <!-- <button class="action" (click)="expression">Reviewed</button> -->

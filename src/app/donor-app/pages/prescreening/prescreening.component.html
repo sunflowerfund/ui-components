@@ -22,6 +22,7 @@
 
 
 
+
 <div class="container" *ngIf="questions">
 
   <div class="line" *ngFor="let ques of questions; index as i">
@@ -45,10 +46,10 @@
       </div>
     </div>
     <div class="explain" *ngIf="ques.question_Number === 3 ">
-      <input [(ngModel)]="questions[i].answer" type="number" class="input">
+      <input [(ngModel)]="questions[i].answer" type="text" class="input">
     </div>
     <div class="explain" *ngIf="ques.question_Number === 4">
-      <input [(ngModel)]="questions[i].answer" type="number" class="input">
+      <input [(ngModel)]="questions[i].answer" type="text" class="input">
     </div>
 
     <div class="explain" *ngIf="ques.question_Number === 5">
