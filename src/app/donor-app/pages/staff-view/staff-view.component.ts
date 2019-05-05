@@ -47,8 +47,8 @@ export class StaffViewComponent implements OnInit {
         this.response.pageNumber = res.number + 1;
         this.response.totalElements = res.totalElements;
         this.response.numberOfElements = res.numberOfElements;
-        console.log('My object', this.response);
-        console.log(res);
+        // console.log('My object', this.response);
+        // console.log(res);
       });
   }
 

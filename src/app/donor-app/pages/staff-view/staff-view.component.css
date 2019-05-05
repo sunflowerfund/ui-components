@@ -52,6 +52,7 @@
 .paginator{
   margin: auto;
   display: flex;
+  width: 200px;
   justify-content: space-around;
   align-items:baseline;
 }

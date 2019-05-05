@@ -4,21 +4,8 @@
 
 
 <div class="loader" *ngIf="!questions">
-  <div class="lds-spinner">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-</div>
+  <img src="../../../../assets/img/Bigger-Spinner.svg" style="height:200px; width:200px" alt=" Loading">
+ </div>
 
 
 
@@ -26,25 +13,25 @@
 <div class="container" *ngIf="questions">
 
   <div class="line" *ngFor="let ques of questions; index as i">
-    <div class="height-46 display-flex">
+    <div class="question-line qline display-flex">
       <label class="text-line-middle text">{{ques.question}}</label>
     </div>
 
     <div *ngIf="ques.question_Type === 1" class="YESandNO">
       <!-- Yes -->
-      <div class="display-flex" (click)="questions[i].answer = 1;  prestine[i]= true; ">
-        <div class="radio" [ngClass]="questions[i].answer && prestine[i]
-         ? 'selected' : 'unselected'"></div>
+      <div class="display-flex yes" (click)="questions[i].answer = 1;  prestine[i]= true; ">
+        <div class="radio" [ngClass]="questions[i].answer && prestine[i] ? 'selected' : 'unselected'"></div>
         <label class="text-line-middle radio-label">Yes</label>
       </div>
 
       <!-- No -->
-      <div class="display-flex" (click)="questions[i].answer = 0; prestine[i]= true;">
+      <div class="display-flex no" (click)="questions[i].answer = 0; prestine[i]= true;">
         <div class="radio" [ngClass]=" !questions[i].answer && prestine[i]
         ? 'selected' : 'unselected'"></div>
         <label class="text-line-middle radio-label">No</label>
       </div>
     </div>
+
     <div class="explain" *ngIf="ques.question_Number === 3 ">
       <input [(ngModel)]="questions[i].answer" type="text" class="input">
     </div>
@@ -55,7 +42,7 @@
     <div class="explain" *ngIf="ques.question_Number === 5">
       <input [(ngModel)]="questions[i].answer" type="text" class="input">
     </div>
-
+<br>
   </div>
 
 
@@ -97,3 +84,27 @@
 
 
 </div>
+
+
+<jw-modal  id="BMI-Too-low">
+    <div class="modal"> 
+        <div class="modal-body">
+          <button id="btn-closer" (click)="closeModal('BMI-Too-low');">X</button>
+          <br>
+          <br>
+          <br>
+          <br>
+            <h1 style="text-align:center"> <Span style="color:red; font-size: 10rem; text-transform: uppercase;">Error <br></Span> Log in Failed!</h1>
+            <br>
+            <br>
+            <p>  {{bodyText}}
+            </p>
+            <div style="text-align;"> 
+  
+              <button id="okay" (click)="closeModal('BMI-Too-low');">Okay</button>
+            </div>
+           
+        </div>
+    </div>
+    <div class="modal-background"></div>
+  </jw-modal > 

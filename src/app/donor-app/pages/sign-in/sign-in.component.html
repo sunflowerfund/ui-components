@@ -9,17 +9,17 @@
     <div class="origin_state" *ngIf="!logging">
         <label class="labels ">Email Address</label>
 
-      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" class="inputs" type="text" placeholder="Username"></app-input>
+      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" id="username" class="inputs" type="text" placeholder="Username"></app-input>
       <br>
       <label class="labels ">Password</label>
-      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.password" class="inputs" type="password" placeholder="Password"></app-input>
+      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.password" id="password" class="inputs" type="password" placeholder="Password"></app-input>
       
       <div class="btn-container d-inline-block">
       <div class = "labelRemember d-inline-block text-left">Remember Me?</div>
       <div class = "labelForgot d-inline-block text-right">Forgot Password?</div>        
       </div>
       <div class="btn-container text-center">
-      <sunflower-button  (click)="login()" type = "primary">Log in</sunflower-button> 
+      <sunflower-button  (click)="login()" id="login" type = "primary">Log in</sunflower-button> 
       <div class="btn-container">
      <label (click) = "register()" class = "font-size-default">Don't have an account? <a class="link" routerLink="/u/new">Sign Up</a></label>
      </div>       
@@ -36,14 +36,25 @@
 
 
 <jw-modal  id="login-modal">
-  <div class="modal">
+  <div class="modal"> 
       <div class="modal-body">
-          <h1>Log in Failed!</h1>
+        <button id="btn-closer" (click)="closeModal('login-modal');">X</button>
+        <br>
+        <br>
+        <br>
+        <br>
+          <h1 style="text-align:center"> <Span style="color:red; font-size: 10rem; text-transform: uppercase;">Error <br></Span> Log in Failed!</h1>
+          <br>
+          <br>
           <p>  {{bodyText}}
           </p>
-          <button (click)="closeModal('login-modal');">X</button>
+          <div style="text-align;"> 
+
+            <button id="okay" (click)="closeModal('login-modal');">Okay</button>
+          </div>
+         
       </div>
   </div>
   <div class="modal-background"></div>
 </jw-modal > 
-
+   

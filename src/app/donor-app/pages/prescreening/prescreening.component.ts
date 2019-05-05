@@ -38,6 +38,7 @@ export class PrescreeningComponent implements OnInit {
   selectedAnswer = [];
   questions: PreScreeeningQuestion[];
   preScreeningAnswers: PreScreeningAnswers[];
+  bodyText= 'Unfortunately your BMI is too Low therefore you do not qualify to become a Donor,  though we have saved your email addresss  to keep you updated with our latest offerings and events'
 
   constructor(
     public drive: DriveRegistrationService,
@@ -79,7 +80,12 @@ export class PrescreeningComponent implements OnInit {
       // console.log('Its a number ', this.drive.weight) ;
       // console.log('Its a number ',  this.drive.height  );
 
-      window.alert(`Your BMI is: ${this.drive.bmi} ${(!isNaN(this.drive.height))}`);
+      // window.alert(`Your BMI is: ${this.drive.bmi} ${(!isNaN(this.drive.height))}`);
+      if (parseInt(this.drive.bmi) < 18.5 ) {
+        this.drive.showToaster('warn', 'BMI too low cant proceed');
+        
+        
+      }
 
     } else {
       this.drive.showToaster('error', 'Please check your Height and Weight');
@@ -127,7 +133,7 @@ export class PrescreeningComponent implements OnInit {
 
           this.drive.CurrentUID = _response.id;
           // console.log('Current UID ', this.drive.CurrentUID);
-          this.drive.showToaster('info', 'Pre-Screening passed');
+          // this.drive.showToaster('info', 'Pre-Screening passed');
           this.router.navigate(['/u/new/form']);
         }, error => {
           console.log(error);

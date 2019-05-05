@@ -7,16 +7,16 @@
   <h1>All Online onboarded Donors </h1>
   <br>
 
-<div class="sort">
+<!-- <div class="sort">
   <sun-dropdown-menu title="Sort By" ngDefaultControl [items]="sorts"
   (output)="sort($event)"></sun-dropdown-menu>
-</div>
+</div> -->
 
 <div class="table-wrap" *ngIf="response.people" >
     <table id="people">
         <thead>
           <tr>
-            <th>#</th>
+            <!-- <th>#</th> -->
             <th>Name</th>
             <th>Surname</th>
             <th>ID Number</th>
@@ -27,14 +27,14 @@
         <tbody *ngFor="let person of response.people; let i = index">
     
           <tr>
-            <td scope="row" style="width:50px">{{i + 1}}</td>
+            <!-- <td scope="row" style="width:50px">{{i + 1}}</td> -->
             <td>{{person.firstName}}</td>
             <td>{{person.surname}}</td>
             <td>{{person.idNumber}}</td>
             <td>
               <span *ngIf="person.status === 0">Pending</span>
             </td>
-            <td>
+            <td>  
               <!-- <sunflower-button type="primary" (click)="view(person.id);">View More</sunflower-button> -->
               <button class="view-More" (click)="view(person);" >View More</button>
             </td>
