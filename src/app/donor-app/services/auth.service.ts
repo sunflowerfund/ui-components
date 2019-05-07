@@ -20,13 +20,14 @@ const httpOptions = {
 };
 
 
-
+  
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   currentUserToken;
+  currentUserValue = localStorage.getItem('token');
   decodedToken;
   selectedUser;
   baseUrl = 'https://sunflowerfund.azurewebsites.net/api/v1/';
@@ -38,18 +39,6 @@ export class AuthService {
     private http: HttpClient,
 
   ) { }
-
-
-
-
-  // initHeaders(): RequestOptions {
-  //   let apiHeaders: RequestOptions = new RequestOptions();
-  //   apiHeaders.headers = new Headers();
-  //   apiHeaders.params = new URLSearchParams();
-  //   apiHeaders.headers.append('token', window.localStorage.getItem('token'));
-  //   apiHeaders.params.append('page', '1');
-  //   return apiHeaders;
-  // }
 
   /** GET SunflowerUseres from the server */
   getAllSunflowerUseres(): Observable<any> {
@@ -90,7 +79,10 @@ export class AuthService {
   }
 
 
-
+  logout() {
+    localStorage.removeItem('token');
+  
+}
 
 
 
@@ -138,7 +130,6 @@ export class AuthService {
     );
 
   }
-
 
 
   /** PUT: update the user on the server */

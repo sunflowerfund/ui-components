@@ -20,7 +20,7 @@
     <div *ngIf="ques.question_Type === 1" class="YESandNO">
       <!-- Yes -->
       <div class="display-flex yes" (click)="questions[i].answer = 1;  prestine[i]= true; ">
-        <div class="radio" [ngClass]="questions[i].answer && prestine[i] ? 'selected' : 'unselected'"></div>
+        <div class="radio" [id]="i" [ngClass]="questions[i].answer && prestine[i] ? 'selected' : 'unselected'"></div>
         <label class="text-line-middle radio-label">Yes</label>
       </div>
 
@@ -33,14 +33,14 @@
     </div>
 
     <div class="explain" *ngIf="ques.question_Number === 3 ">
-      <input [(ngModel)]="questions[i].answer" type="text" class="input">
+      <input [(ngModel)]="questions[i].answer" [id]="i" type="text" class="input">
     </div>
     <div class="explain" *ngIf="ques.question_Number === 4">
-      <input [(ngModel)]="questions[i].answer" type="text" class="input">
+      <input [(ngModel)]="questions[i].answer" [id]="i" type="text" class="input">
     </div>
 
     <div class="explain" *ngIf="ques.question_Number === 5">
-      <input [(ngModel)]="questions[i].answer" type="text" class="input">
+      <input [(ngModel)]="questions[i].answer" [id]="i" type="text" class="input">
     </div>
 <br>
   </div>

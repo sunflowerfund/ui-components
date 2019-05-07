@@ -9,14 +9,14 @@ import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.
 @Component({
   selector: 'app-staff-view',
   templateUrl: './staff-view.component.html',
-  styleUrls: ['./staff-view.component.css', ]
+  styleUrls: ['./staff-view.component.css',]
 })
 export class StaffViewComponent implements OnInit {
   currentUser;
   people: OnlineRegistrationDTO[];
   sorts = {
-    CreatedDate:'',
-    name:'',
+    CreatedDate: '',
+    name: '',
 
   }
 
@@ -57,12 +57,15 @@ export class StaffViewComponent implements OnInit {
     this.router.navigate(['admin/view']);
   }
 
-  sort(){
-
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/']);
+    // console.log('log after service');
+    
   }
 
 
-  
+
   forward() {
     this.auth.NextUserList(this.response.pageNumber)
       .subscribe((res: any) => {
@@ -100,5 +103,5 @@ export class StaffViewComponent implements OnInit {
     console.log('back');
 
 
-  } 
+  }
 }

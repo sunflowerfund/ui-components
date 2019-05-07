@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
 
@@ -17,14 +17,19 @@ export class SignInComponent implements OnInit {
     password: ''
   };
   logging = false;
+  returnUrl: string;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     public drive: DriveRegistrationService,
     private auth: AuthService) { }
 
   ngOnInit() {
-    // this.bodyText = this.auth.bodyText;
+    // reseting user status
+    this.auth.logout();
+// redirecting to where the user wanted  to go prior logging in or to the home page 
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   register() {
@@ -34,8 +39,11 @@ export class SignInComponent implements OnInit {
   login() {
     this.logging = !this.logging;
     // this.drive.open('login-modal');
-    this.auth.login(this.user).subscribe(_ =>
-      this.router.navigate(['admin/dash'])
+    this.auth.login(this.user).subscribe( _res =>
+      // console.log(this.returnUrl)
+      
+      this.router.navigate([this.returnUrl])
+      
       ,
       error => {
         this.logging = !this.logging;
@@ -44,6 +52,7 @@ export class SignInComponent implements OnInit {
     );
   }
 
+  
 
   openModal(id: string) {
     this.drive.open(id);

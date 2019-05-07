@@ -19,6 +19,7 @@ import { SunflowerPage } from '../pages/sunflower/sunflower.page';
 import { PrescreeningComponent } from '../pages/prescreening/prescreening.component';
 import { StaffViewComponent } from '../pages/staff-view/staff-view.component';
 import { DetailsComponent } from '../pages/details/details.component';
+import { AuthGuardService } from '../services/auth-guard.service';
  
 const routes: Route[] = [
   {
@@ -32,8 +33,8 @@ const routes: Route[] = [
     ]
   },
   { path: 'u/new/form', component: DashboardComponent },
-  { path: 'admin/dash', component: StaffViewComponent },
-  { path: 'admin/view', component: DetailsComponent },
+  { path: 'admin/dash', component: StaffViewComponent ,canActivate: [AuthGuardService]},
+  { path: 'admin/view', component: DetailsComponent ,canActivate: [AuthGuardService] },
   { path: 'medic', component: DriveRegistrationComponent },
   { path: 'components', component: ComponentsPage },
   { path: 'get-started', component: PrescreeningComponent },

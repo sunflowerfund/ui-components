@@ -150,10 +150,10 @@
         <a href="http://google.com">
           <h2> Privacy Policy </h2>
         </a>
-        <div class="check" type="check-box" (click)="myconsent()"></div>
+        <div class="check" type="check-box" (click)="myconsent()"> something big in here</div>
 
 
-<!-- 
+
         <div (click)=" consent = !consent;">
           <label class="container">I confirm that I would like to register as a blood donor read and understood the terms and conditions above
             <input type="checkbox">
@@ -162,17 +162,18 @@
         </div>  
 
         <div >
-          <label class="container">I agree that The Sunflower Fund may use my HLA unliked data for research
-            <input type="checkbox">
-            <span class="checkmark"></span>
+          <label class="container-1">I agree that The Sunflower Fund may use my HLA unliked data for research
+            <input type="checkbox-1">
+            <span class="checkmark-1"></span>
           </label>
         </div>
-        <div (click)=" consent = !consent;">
-          <label class="container">I agree to receiving communication from The Sunflower Fund
-            <input type="checkbox">
-            <span class="checkmark"></span>
+
+        <div (click)=" feeds = !feeds;">
+          <label class="container-2">I agree to receiving communication from The Sunflower Fund
+            <input type="checkbox-2">
+            <span class="checkmark-2"></span>
           </label>
-        </div> -->
+        </div>
 
 
         <div class="btn-container text-center">
@@ -184,7 +185,7 @@
           <br>
           <br>
           <br>
-          <sunflower-button *ngIf="!send" (click)=" consent = !consent; send = !send; finish();" type="primary">Save all
+          <sunflower-button *ngIf="!send" (click)=" consent = !consent; send = !send; finish();" type="primary">Save
           </sunflower-button>
 
           <div class="send" *ngIf="send">

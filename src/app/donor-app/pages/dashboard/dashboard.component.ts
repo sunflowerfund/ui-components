@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   }
   send = false;
   consent = false;
+  feeds = false;
   personalDetails = {
 
     email: null,
