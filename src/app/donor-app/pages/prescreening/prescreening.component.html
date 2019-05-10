@@ -24,7 +24,7 @@
         <label class="text-line-middle radio-label">Yes</label>
       </div>
 
-      <!-- No -->
+      <!-- No --> 
       <div class="display-flex no" (click)="questions[i].answer = 0; prestine[i]= true;">
         <div class="radio" [ngClass]=" !questions[i].answer && prestine[i]
         ? 'selected' : 'unselected'"></div>
@@ -54,7 +54,7 @@
   <input type="text" [(ngModel)]="email" class="input">
   <br>
   <label for="cellNumber">Cell Number</label>
-  <input type="number" [(ngModel)]="cellnumber" class="input">
+  <input type="tel" [(ngModel)]="cellnumber" class="input">
   <br>
 
   <div *ngIf="!send">
@@ -94,12 +94,14 @@
           <br>
           <br>
           <br>
-            <h1 style="text-align:center"> <Span style="color:red; font-size: 10rem; text-transform: uppercase;">Error <br></Span> Log in Failed!</h1>
+            <h1 style="text-align:center"> 
+              <Span style="color:red; font-size: 10rem; text-transform: uppercase;">BMI <br></Span> 
+              your BMI is {{ this.drive.bmi}} </h1>
             <br>
-            <br>
+            <br>  
             <p>  {{bodyText}}
             </p>
-            <div style="text-align;"> 
+            <div style="text-align:center;"> 
   
               <button id="okay" (click)="closeModal('BMI-Too-low');">Okay</button>
             </div>

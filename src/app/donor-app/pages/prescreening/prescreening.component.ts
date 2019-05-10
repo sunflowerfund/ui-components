@@ -57,7 +57,9 @@ export class PrescreeningComponent implements OnInit {
     });
   }
 
-
+  closeModal(modal){
+    this.drive.close(modal);
+  }
 
   reply() {
     this.drive.email = this.email;
@@ -82,8 +84,9 @@ export class PrescreeningComponent implements OnInit {
 
       // window.alert(`Your BMI is: ${this.drive.bmi} ${(!isNaN(this.drive.height))}`);
       if (parseInt(this.drive.bmi) < 18.5 ) {
-        this.drive.showToaster('warn', 'BMI too low cant proceed');
-        
+        this.drive.showToaster('warn', 'BMI too low can not proceed');
+        this.drive.open('BMI-Too-low');
+        // ++this.invalidPrescreening;
         
       }
 

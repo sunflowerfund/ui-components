@@ -1,22 +1,29 @@
-.isAFemale{
-    
+.isAFemale {
     font-size: xx-large;
     width: 100%;
     text-align: center;
-  
 }
-.innerText{
+
+.innerText {
     background-color: var(--yellow);
     color: black;
     border-radius: 5px;
     padding: 10px;
 }
-.infomate{
+
+.infomate {
     font-size: 15px;
 }
-.fr{
+
+.fr {
     float: right;
-} 
-.height-46  {
+}
+
+.height-46 {
     height: 46px;
-    width: 268px;}
+    width: 268px;
+}
+
+.explain-section {
+    margin-top: 20px;
+}
