@@ -103,6 +103,7 @@ height: 100%;
   border-radius: 5px;
   float:unset ;
   margin: 3 5px 10px;
+  border: 2px solid var(--yellow);
 }
 .mw-550px{
   max-width: 550px;
@@ -131,3 +132,17 @@ height: 100%;
     background-repeat: no-repeat;
 
 */
+.link{
+  font-size: small;
+  color: black;
+}
+
+.link:hover {
+  color: var(--yellow);
+  transition: .5s;
+  cursor: pointer;
+}
+.wrap{
+  display: flex;
+  justify-content: center;
+}

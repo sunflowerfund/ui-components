@@ -7,7 +7,13 @@
   float: left;
   margin-left: 46px
 }
-
+.logger{
+  width: 15%; 
+}
+#logder{
+padding-top: 5px;
+/* border: var(--yellow) dashed 2px; */
+}
 .rememmber {
   width: 320px;
   display: inline-block;

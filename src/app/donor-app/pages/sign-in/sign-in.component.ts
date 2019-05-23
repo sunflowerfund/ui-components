@@ -17,6 +17,8 @@ export class SignInComponent implements OnInit {
     password: ''
   };
   logging = false;
+  failed = false;
+  empty = false;
   returnUrl: string;
 
   constructor(
@@ -37,9 +39,14 @@ export class SignInComponent implements OnInit {
   }
 
   login() {
-    this.logging = !this.logging;
-    // this.drive.open('login-modal');
-    this.auth.login(this.user).subscribe( _res =>
+   
+    if (this.user.password === '' || this.user.password === null || this.user.username === '' || this.user.username === null) {
+      this.empty= true;
+    }else {
+      this.empty = false;
+       this.logging = !this.logging;
+    this.failed = false;
+  this.auth.login(this.user).subscribe( _res =>
       // console.log(this.returnUrl)
       
       this.router.navigate([this.returnUrl])
@@ -47,9 +54,13 @@ export class SignInComponent implements OnInit {
       ,
       error => {
         this.logging = !this.logging;
-        this.drive.open('login-modal');
+        this.failed = true;
+        // this.drive.open('login-modal');
     }
     );
+
+    } 
+  
   }
 
   
