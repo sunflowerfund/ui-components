@@ -46,11 +46,11 @@ export class AppComponent implements OnInit {
 
   }
 
-  openModal(id: string) {
-    this.drive.open(id);
-  }
+  // openModal(id: string) {
+  //   this.drive.open(id);
+  // }
 
-  closeModal(id: string) {
-    this.drive.close(id);
-  }
+  // closeModal(id: string) {
+  //   this.drive.close(id);
+  // }
 }

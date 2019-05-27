@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DriveRegistrationService } from '../../services/drive-registration.service';
+import { log } from 'util';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,7 +12,7 @@ import { DriveRegistrationService } from '../../services/drive-registration.serv
 })
 export class SignInComponent implements OnInit {
   bodyText = ' Error while trying to log in \n \n check you credentials and try again if problem persist check your connection';
-  
+
   user = {
     username: '',
     password: ''
@@ -30,8 +31,8 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
     // reseting user status
     this.auth.logout();
-// redirecting to where the user wanted  to go prior logging in or to the home page 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // redirecting to where the user wanted  to go prior logging in or to the home page 
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
   }
 
   register() {
@@ -39,31 +40,26 @@ export class SignInComponent implements OnInit {
   }
 
   login() {
-   
-    if (this.user.password === '' || this.user.password === null || this.user.username === '' || this.user.username === null) {
-      this.empty= true;
-    }else {
-      this.empty = false;
-       this.logging = !this.logging;
-    this.failed = false;
-  this.auth.login(this.user).subscribe( _res =>
-      // console.log(this.returnUrl)
-      
-      this.router.navigate([this.returnUrl])
-      
-      ,
-      error => {
-        this.logging = !this.logging;
-        this.failed = true;
-        // this.drive.open('login-modal');
-    }
-    );
+    // this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
 
-    } 
-  
+    if (this.user.password === '' || this.user.password === null || this.user.username === '' || this.user.username === null) {
+      this.empty = true;
+    } else {
+      this.empty = false;
+      this.logging = !this.logging;
+      this.failed = false;
+      this.auth.login(this.user).subscribe((_res) => (this.router.navigateByUrl(this.returnUrl)),
+        error => {
+          this.logging = !this.logging;
+          this.failed = true;
+        }
+      );
+        
+    }
+
   }
 
-  
+
 
   openModal(id: string) {
     this.drive.open(id);

@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   }
 
   register(){
-    this.router.navigate(['/u/new/form'])
+    this.router.navigate(['/auth/new/form'])
   }
 
 }

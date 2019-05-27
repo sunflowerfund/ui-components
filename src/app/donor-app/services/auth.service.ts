@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
+// import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import * as jwt_decode from 'jwt-decode';
 import { OnlineRegistrationDTO } from 'src/app/@sunflower-module/sunflower-ui/model/models';
 import { SunflowerUser } from 'src/app/@sunflower-module/sunflower-ui/model/user.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.model';
+// import { ViewData } from 'src/app/@sunflower-module/sunflower-ui/model/viewData.model';
 
 
 
@@ -110,7 +110,7 @@ export class AuthService {
             localStorage.setItem('token', user.token);
             this.currentUserToken = user.token;
             this.decodedToken = this.getDecodedAccessToken(user.token);
-            console.log(this.decodedToken);
+            console.log('loggedIn successfully!!');
 
           }
         })

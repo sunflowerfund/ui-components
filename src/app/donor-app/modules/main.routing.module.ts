@@ -27,7 +27,7 @@ const routes: Route[] = [
     component: SunflowerPage,
     children: [
       { path: '', component: HomePage },
-      { path: 'u', component: SignInComponent },
+      { path: 'auth', component: SignInComponent },
       { path: 'u/new', component: SignUpComponent },
       { path: '', redirectTo: '/', pathMatch: 'full' }
     ]

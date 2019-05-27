@@ -7,9 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-
-  // returnUrl: string; 
-
+ 
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -22,7 +20,8 @@ export class AuthGuardService implements CanActivate {
         // logged in so return true
         return true;
     }
-
+    // console.log('Guard Activated Url: ' + state.url);
+    // console.log('Route is this one : ' + route);
     // not logged in so redirect to login page with the return url
     this.router.navigate(['/u'], { queryParams: { returnUrl: state.url } });
     return false;

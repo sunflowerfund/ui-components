@@ -6,33 +6,40 @@
         I am Hope for life Account
       </h1>
       <br>
-    <div class="origin_state" >
-        <h3 *ngIf="empty" style="color: red">You can't log in with blank credentials</h3>
+      <div class="origin_state">
+        <div class="error">
+          <h3 *ngIf="failed" style="color: red"> Error logging in, either provided username or password was incorrect
+          </h3>
+          <h3 *ngIf="empty" style="color: red">You can't log in with blank credentials</h3>
+        </div>
 
         <label class="labels ">Email Address</label>
 
-      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" id="username" class="inputs" type="text" placeholder="Username"></app-input>
-      <br>
-      <label class="labels ">Password</label>
-      <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.password" id="password" class="inputs" type="password" placeholder="Password"></app-input>
-      <div class="error">
-        <h3 *ngIf="failed" style="color: red"> Error logging in, Either provided username or password was incorrect</h3>
-      </div>
-      <div class="btn-container d-inline-block">
-      <div class = "labelRemember d-inline-block text-left">Remember Me?</div>
-      <div class = "labelForgot d-inline-block text-right">Forgot Password?</div>        
-      </div>
-      <div class="btn-container text-center">
+        <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.username" id="username" class="inputs"
+          type="text" placeholder="Username"></app-input>
+        <br>
+        <label class="labels ">Password</label>
+        <app-input [attrs]="['--default']" ngDefaultControl [(ngModel)]="user.password" id="password" class="inputs"
+          type="password" placeholder="Password"></app-input>
 
-<sunflower-button  *ngIf="!logging"  (click)="login()" id="login" type = "primary">Log in  </sunflower-button> 
-<div *ngIf="logging"  id="logder" type = "primary"><p>logging in</p> <img class="logger" src="./../../../../assets/img/black-spinner.svg" alt=""> </div> 
+        <div class="btn-container d-inline-block">
+          <div class="labelRemember d-inline-block text-left">Remember Me?</div>
+          <div class="labelForgot d-inline-block text-right">Forgot Password?</div>
+        </div>
+        <div class="btn-container text-center">
 
-      <div class="btn-container">
-     <label (click) = "register()" class = "font-size-default">Don't have an account? <a class="link" routerLink="/u/new">Sign Up</a></label>
-     </div>       
-     </div>
-    </div>
-    <!-- <div class="logging" *ngIf="logging">
+          <sunflower-button *ngIf="!logging" (click)="login()" id="login" type="primary">Log in </sunflower-button>
+          <div *ngIf="logging" id="logder" type="primary">
+            <p>logging in</p> <img class="logger" src="./../../../../assets/img/black-spinner.svg" alt="">
+          </div>
+
+          <div class="btn-container">
+            <label (click)="register()" class="font-size-default">Don't have an account? <a class="link"
+                routerLink="/u/new">Sign Up</a></label>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="logging" *ngIf="logging">
         <img   style="height:150px; width: 150px"src="../../../../assets/img/Bigger-Spinner.svg" alt="">
       </div> -->
 
@@ -63,4 +70,3 @@
   </div>
   <div class="modal-background"></div>
 </jw-modal >  -->
-   

@@ -137,7 +137,7 @@ export class PrescreeningComponent implements OnInit {
           this.drive.CurrentUID = _response.id;
           // console.log('Current UID ', this.drive.CurrentUID);
           // this.drive.showToaster('info', 'Pre-Screening passed');
-          this.router.navigate(['/u/new/form']);
+          this.router.navigate(['/auth/new/form']);
         }, error => {
           console.log(error);
           this.drive.showToaster('warn', 'Something went wrong trying to save Data, try again, please');
